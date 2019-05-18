@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet');
+
+a:link, a:visited {
+    font-size: smaller;
+    text-decoration: none;
+    text-align: center
+	}
+a:hover {
+	text-decoration: underline; 
+	color: #0300a0
+	}
+a:active {
+	text-decoration: none
+	}

@@ -1,0 +1,36 @@
+<hr/>
+<form>
+  <div class="form-row">
+
+    <div class="form-group col-md-6">
+      <label for="inputName">Nome do plano</label>
+      <input type="text" class="form-control"  placeholder="Ex: Abrir açougue, Abrir papelaria...">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="datedomes">Data estimada para conculsão</label>
+      <input type="date" [(ngModel)]="datadomes" name="datadomes" class="form-control">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="datedomes">Finalidade do plano</label>
+      <select id="inputEstado" class="form-control">
+          <option selected>Escolher...</option>
+          <option>Estudantis</option>
+          <option>Empreendedorismo</option>
+        </select>
+    </div>
+
+   
+  </div>
+  
+<div class="row justify-content-center">
+  <button  class="btn btn-primary btn-lg" mat-raised-button type="submit" color="primary" routerLink="/nav">
+    Criar plano
+  </button>
+</div>
+
+</form>
+<hr/>
+  
+

@@ -1,0 +1,79 @@
+
+<form [formGroup]="form" fxLayoutAlign="center" novalidate>		
+  <mat-list>
+
+							<div class="fixed-top"></div>
+							<nav class="navbar navbar-light bg-faded">
+								<div class="container">
+									<a href="#" class="navbar-brand">
+										<img src="/assets/logo.png" />
+									</a>
+								</div>
+							</nav>
+					
+    <mat-list-item>
+	  <mat-form-field>
+	    <input matInput placeholder="Email" 
+	    	formControlName="email">
+	  </mat-form-field>
+	</mat-list-item>
+    
+				<mat-list-item>
+						<mat-form-field>
+							<mat-pass-toggle-visibility #toggle matSuffix matTooltip={{vs}} (click)="visualizarsenha()">
+							</mat-pass-toggle-visibility>
+							<input matInput placeholder="Senha" [type]="toggle.type" 
+								formControlName="senha">
+						</mat-form-field>
+					</mat-list-item>
+
+					<mat-list-item>
+					
+					<a href="" class="a:link" class="a:hover" class="a:active">Esqueci minha senha!</a>
+				
+			</mat-list-item>
+
+			
+			<!--<mat-list-item>
+				<mat-label>Password</mat-label>
+				<mat-pass-toggle-visibility #toggle matSuffix></mat-pass-toggle-visibility>
+				<input matInput #password
+							 [type]="toggle.type"
+							 required
+							 placeholder="Password">
+				<mat-hint  aria-live="polite">
+					{{password.value.length}} / 25
+				</mat-hint>
+			</mat-list-item>-->
+
+	  <!--<span matTooltip="Mostrar senha">
+	    <a class="ls-label-text-prefix ls-toggle-pass ls-ico-eye" ></a>	
+			<button (click)="isVisible = !isVisible"
+			class="mat-icon-button cdk-focused cdk-mouse-focused" mat-icon-button
+			matRippleCentered="true"
+			matRipple>
+					<mat-icon>{{isVisible ? 'visibility' : 'visibility_off' }}</mat-icon>
+			</button>-->
+
+	  
+    <mat-list-item fxLayoutAlign="center">
+	  <button mat-raised-button color="primary" routerLink="">
+	  	Entrar
+	  </button>
+	</mat-list-item>
+    <mat-list-item fxLayoutAlign="center">
+
+				<a href="/cadastro-pf" class="a:link" class="a:hover" class="a:active"> 
+				NÃO TENHO CADASTRO!
+				</a>
+
+      
+	  <!--<a mat-button color="primary" routerLink="/cadastro-pj">
+	  	Cadastrar PJ
+	  </a>-->
+	</mat-list-item>
+  </mat-list> 
+</form>
+
+
+<!--[disabled]="form.invalid" (click)="logar()">--> <!-- Código que estava dentro do button logar -->
