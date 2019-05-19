@@ -37,9 +37,10 @@ import { CriarComponent } from './telasplano/criar/criar.component';
 import { PerfilComponent } from './telasiniciais/perfil/perfil.component';
 import { DescricaoComponent } from './telasiniciais/descricao/descricao.component';
 import { from } from 'rxjs';
-import { NavComponent } from './planodenegocio/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { GerenciarplanoComponent } from './telasplano/gerenciarplano/gerenciarplano.component';
+import { PlanodenegocioModule } from './planodenegocio/planodenegocio.module';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +51,6 @@ import { GerenciarplanoComponent } from './telasplano/gerenciarplano/gerenciarpl
     CriarComponent,
     PerfilComponent,
     DescricaoComponent,
-    NavComponent,
     GerenciarplanoComponent
     
   ],
@@ -62,6 +62,7 @@ import { GerenciarplanoComponent } from './telasplano/gerenciarplano/gerenciarpl
     FormsModule,
     DlDateTimeDateModule,  // <--- Determines the data type of the model
     DlDateTimePickerModule,
+    PlanodenegocioModule,
     LoginModule,
     LoginRoutingModule,
     CadastroPjModule,

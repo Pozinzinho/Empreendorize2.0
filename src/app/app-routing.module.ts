@@ -7,8 +7,9 @@ import { HomeComponent } from './telasiniciais/home/home.component'
 import { CriarComponent } from './telasplano/criar/criar.component'
 import { PerfilComponent } from './telasiniciais/perfil/perfil.component'
 import { DescricaoComponent } from './telasiniciais/descricao/descricao.component'
-import { NavComponent } from './planodenegocio/nav.component'
 import { GerenciarplanoComponent } from './telasplano/gerenciarplano/gerenciarplano.component'
+
+
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -16,8 +17,8 @@ export const routes: Routes = [
     {path: 'criar', component: CriarComponent},
     {path: 'perfil', component: PerfilComponent},
     {path: 'descricao', component: DescricaoComponent},
-    {path: 'nav', component: NavComponent},
-    {path: 'gerenciarplano', component: GerenciarplanoComponent}
+    {path: 'gerenciarplano', component: GerenciarplanoComponent},
+    
 
     
 ];
