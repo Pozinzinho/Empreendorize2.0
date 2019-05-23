@@ -10,9 +10,21 @@ import { map } from 'rxjs/operators';
 })
 export class MenulateralComponent implements OnInit {
 
+public mostrar: boolean;
+mensagem: String="Abrir menu lateral";
+
   constructor() { }
 
   ngOnInit() {
   }
+
+  toggle() {
+    this.mostrar = !this.mostrar;
+    if(this.mensagem == "Fechar menu lateral"){
+      this.mensagem = "Abrir menu lateral";
+    }else{
+      this.mensagem = "Fechar menu lateral";
+}
+}
 
 }
