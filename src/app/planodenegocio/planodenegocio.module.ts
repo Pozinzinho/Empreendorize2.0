@@ -9,6 +9,7 @@ import { PlanodenegocioRoutingModule } from './planodenegocio.routing.module';
 
 import {planodengocioRoutes} from './planodenegocio.routing.module';
 import { RouterModule } from '@angular/router';
+import { DadosempComponent } from './dadosemp/dadosemp.component';
 
 @NgModule(
     {
@@ -19,7 +20,7 @@ import { RouterModule } from '@angular/router';
             PlanodenegocioRoutingModule
         ],
         exports:[],
-        declarations:[PlanodenegocioComponent, IntroducaoComponent, MenulateralComponent ],
+        declarations:[PlanodenegocioComponent, IntroducaoComponent, MenulateralComponent, DadosempComponent ],
         providers:[]
     }
 )
