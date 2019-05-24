@@ -1,32 +1,259 @@
+
+
 <div class="d-flex" id="wrapper">
 
-  <!-- Sidebar -->
+  <!------------------------------------------ ABRE SIDEBAR ---------------------------------------------------------------->
   <div   class="bg-light border-right" *ngIf="mostrar" id="sidebar-wrapper">
     <div class="sidebar-heading">Plano de negócios</div>
     <div class="list-group list-group-flush">
 
-          <a class="list-group-item list-group-item-action bg-light" (click)="isCollapsed = !isCollapsed"
-          [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">Sumário executivo</a>
-          <div id="collapseExample" [ngbCollapse]="!isCollapsed">
-              <div>
-                  <a routerLink="/planodenegocio/introducao" class="w3-bar-item w3-button">Link</a>
-               </div>
+<!-------------------------------------------- ABRE INTRODUÇÃO AO PLANO ----------------------------------------------------->
+              <div class="accordion" id="accordionExample">
+                  
+                    <div routerLink="/planodenegocio/introplano" id="headingOne">
+                        <a  class="list-group-item list-group-item-action bg-light btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Introdução ao plano
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 
-               <div>
-                  <a routerLink="/planodenegocio/dadosempreendedores" class="w3-bar-item w3-button">dadosemp</a>
-              </div>
-          </div>
-          
-      <a href="#" class="list-group-item list-group-item-action bg-light">Análise de mercado</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Plano de marketing</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Plano operacional</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Plano financeiro</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Construção do cenário</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Avaliação estratégica</a>
-      <a href="#" class="list-group-item list-group-item-action bg-light">Análise do plano</a>
+                        <a routerLink="/planodenegocio/resumo" class="list-group-item btn btn-link">
+                          Resumo do plano
+                        </a>
+
+                        <a routerLink="/planodenegocio/dadosempreendedores" class="list-group-item btn btn-link">
+                          Dados dos empreendedores
+                        </a>
+
+                        <a routerLink="/planodenegocio/missao" class="list-group-item btn btn-link">
+                          Missão da empresa
+                        </a>
+
+                        <a routerLink="/planodenegocio/setordeatv" class="list-group-item btn btn-link">
+                          Setor de atividade
+                        </a>
+
+                        <a routerLink="/planodenegocio/formajuridica" class="list-group-item btn btn-link">
+                          Forma jurídica
+                        </a>
+
+                        <a routerLink="/planodenegocio/enqtribu" class="list-group-item btn btn-link">
+                          Enquadramento tributário
+                        </a>
+
+                        <a routerLink="/planodenegocio/capitalsocial" class="list-group-item btn btn-link">
+                          Capital social
+                        </a>
+
+                        <a routerLink="/planodenegocio/fonterecursos" class="list-group-item btn btn-link">
+                          Fonte e recursos
+                        </a>
+
+                    </div>
+<!-------------------------------------------- FECHA INTRODUÇÃO AO PLANO ----------------------------------------------------->
+
+
+<!-------------------------------------------- ABRE ESTUDO DE MERCADO ----------------------------------------------------->
+                        <div routerLink="/planodenegocio/introestudodemercado" id="headingTwo">
+                            <a class="list-group-item list-group-item-action bg-light btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                              Estudo de mercado
+                            </a>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+
+                            <a routerLink="/planodenegocio/estudocliente" class="list-group-item btn btn-link">
+                              Estudo dos clientes
+                            </a>
+    
+                            <a routerLink="/planodenegocio/estudoconcorrente" class="list-group-item btn btn-link">
+                              Estudo dos concorrentes
+                            </a>
+    
+                            <a routerLink="/planodenegocio/estudofornecedores" class="list-group-item btn btn-link">
+                              Estudo dos fornecedores
+                            </a>
+
+                        </div>
+<!-------------------------------------------- FECHA ESTUDO DE MERCADO ----------------------------------------------------->
+
+
+<!-------------------------------------------- ABRE PLANO DE MARKETING ----------------------------------------------------->
+                        <div routerLink="/planodenegocio/introplanodemarketing" id="headingThree">
+                            <a class="list-group-item list-group-item-action bg-light btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                              Plano de marketing
+                            </a>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+
+                            <a routerLink="/planodenegocio/produtoseservicos" class="list-group-item btn btn-link">
+                              Produtos e serviços
+                            </a>
+    
+                            <a routerLink="/planodenegocio/preco" class="list-group-item btn btn-link">
+                              Preço
+                            </a>
+    
+                            <a routerLink="/planodenegocio/estrategiaspromocionais" class="list-group-item btn btn-link">
+                              Estratégias promocionais
+                            </a>
+    
+                            <a routerLink="/planodenegocio/estruturacomercializacao" class="list-group-item btn btn-link">
+                              Estrutura de comercialização
+                            </a>
+    
+                            <a routerLink="/planodenegocio/localizacaonegocio" class="list-group-item btn btn-link">
+                              Localização do negócio
+                            </a>
+
+                        </div>
+<!-------------------------------------------- FECHA PLANO DE MARKETING ----------------------------------------------------->
+
+
+
+<!-------------------------------------------- ABRE PLANOS ORGANIZACIONAIS ----------------------------------------------------->
+                        <div routerLink="/planodenegocio/introplanoorganizacional" id="headingFour">
+                            <a class="list-group-item list-group-item-action bg-light btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                              Planos organizacionais
+                            </a>
+                        </div>
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+
+                            <a  routerLink="/planodenegocio/leiaute" class="list-group-item btn btn-link">
+                              Leiaute
+                            </a>
+    
+                            <a routerLink="/planodenegocio/capacidadeinstalada" class="list-group-item btn btn-link">
+                              Capacidade instalada
+                            </a>
+    
+                            <a routerLink="/planodenegocio/processosop" class="list-group-item btn btn-link">
+                              Processos operacionais
+                            </a>
+    
+                            <a routerLink="/planodenegocio/necessidadedepessoal" class="list-group-item btn btn-link">
+                              Necessidade de pessoal
+                            </a>
+
+                        </div>
+<!-------------------------------------------- FECHA PLANOS ORGANIZACIONAIS ----------------------------------------------------->
+
+
+
+<!-------------------------------------------- ABRE PLANO MONETÁRIO ----------------------------------------------------->
+                        <div routerLink="/planodenegocio/introplanomonetario" id="headingFive">
+                            <a class="list-group-item list-group-item-action bg-light btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                              Plano monetário
+                            </a>
+                        </div>
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+
+                            <a routerLink="/planodenegocio/investimentosfixos" class="list-group-item btn btn-link">
+                              Investimentos fixos
+                            </a>
+    
+                            <a routerLink="/planodenegocio/estoqueinicial" class="list-group-item btn btn-link">
+                              Estoque inicial
+                            </a>
+    
+                            <a routerLink="/planodenegocio/caixaminimo" class="list-group-item btn btn-link">
+                              Caixa mínimo
+                            </a>
+    
+                            <a routerLink="/planodenegocio/investimentospreop" class="list-group-item btn btn-link">
+                              Investimentos pré-operacionais
+                            </a>
+                            
+                            <a routerLink="/planodenegocio/investimentototal" class="list-group-item btn btn-link">
+                              Investimento total
+                            </a>
+    
+                            <a routerLink="/planodenegocio/faturamentomensal" class="list-group-item btn btn-link">
+                              Faturamento mensal
+                            </a>
+    
+                            <a routerLink="/planodenegocio/custouni" class="list-group-item btn btn-link">
+                              Custo unitário
+                            </a>
+    
+                            <a routerLink="/planodenegocio/custosdecomerc" class="list-group-item btn btn-link">
+                              Custos de comercialização
+                            </a>
+
+                            <a routerLink="/planodenegocio/apuracao" class="list-group-item btn btn-link">
+                              Apuração do custo
+                            </a>
+    
+                            <a routerLink="/planodenegocio/custosmdo" class="list-group-item btn btn-link">
+                              Custos de mão de obra
+                            </a>
+    
+                            <a routerLink="/planodenegocio/custodedepre" class="list-group-item btn btn-link">
+                              Custos com depreciação
+                            </a>
+    
+                            <a routerLink="/planodenegocio/custosfixosop" class="list-group-item btn btn-link">
+                              Custos fixos operacionais
+                            </a>
+                            
+                            <a routerLink="/planodenegocio/demonstrativoresultados" class="list-group-item btn btn-link">
+                              Demonstrativo de resultados
+                            </a>
+    
+                            <a routerLink="/planodenegocio/indicadoresviabilidade" class="list-group-item btn btn-link">
+                              Indicadores de viabilidade
+                            </a>
+
+                        </div>
+<!-------------------------------------------- FECHA PLANO MONETÁRIO ----------------------------------------------------->
+
+
+
+<!-------------------------------------------- ABRE PERSPECTIVA ESTRATÉGICA ----------------------------------------------------->
+                        <div routerLink="/planodenegocio/introperspectiva" id="headingSix">
+                            <a class="list-group-item list-group-item-action bg-light btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                              Perspectiva estratégica
+                            </a>
+                        </div>
+                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                          <a routerLink="/planodenegocio/acoespec" class="list-group-item  btn btn-link">
+                           Ações preventivas e corretivas
+                          </a>
+                        </div>
+<!-------------------------------------------- FECHA PERSPECTIVA ESTRATÉGICA ----------------------------------------------------->
+
+
+<!-------------------------------------------- ABRE ANÁLISE CRÍTICA ----------------------------------------------------->
+                        <div routerLink="/planodenegocio/introanalisecritica" id="headingSeven">
+                            <a class="list-group-item list-group-item-action bg-light btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                              Análise crítica
+                            </a>
+                        </div>
+                        <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+                          <a routerLink="/planodenegocio/matrizfofa" class="list-group-item  btn btn-link">
+                           Matriz F.O.FA
+                          </a>
+                        </div>
+<!-------------------------------------------- FECHA ANÁLISE CRÍTICA ----------------------------------------------------->
+
+
+
+<!-------------------------------------------- ABRE CONCLUSÃO ----------------------------------------------------->
+                        <div routerLink="/planodenegocio/introconclusao" id="headingEight">
+                            <a class="list-group-item list-group-item-action bg-light btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                              Conclusão
+                            </a>
+                        </div>
+                        <div routerLink="/planodenegocio/analiseplano" id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
+                          <a class="list-group-item  btn btn-link">
+                           Análise do plano
+                          </a>
+                        </div>
+<!-------------------------------------------- FECHA CONCLUSÃO ----------------------------------------------------->
+      </div>
     </div>
   </div>
-  <!-- /#sidebar-wrapper -->
+<!------------------------------------------ FECHA SIDEBAR ---------------------------------------------------------------->
+
 
   <!-- Page Content -->
   <div id="page-content-wrapper">
@@ -61,9 +288,12 @@
         </ul>
       </div>
     </nav>
+
+    <div class="container-fluid">
         <router-outlet></router-outlet>
+      </div>
+
   </div>
   <!-- /#page-content-wrapper -->
 
 </div>
-

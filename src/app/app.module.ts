@@ -42,6 +42,7 @@ import { GerenciarplanoComponent } from './telasplano/gerenciarplano/gerenciarpl
 import { PlanodenegocioModule } from './planodenegocio/planodenegocio.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { PlanodenegocioModule } from './planodenegocio/planodenegocio.module';
     PerfilComponent,
     DescricaoComponent,
     GerenciarplanoComponent
+
     
   ],
   imports: [

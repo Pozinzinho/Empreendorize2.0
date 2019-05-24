@@ -10,8 +10,8 @@ import { map } from 'rxjs/operators';
 })
 export class MenulateralComponent implements OnInit {
 
-public mostrar: boolean;
-mensagem: String="Abrir menu lateral";
+public mostrar: boolean = true;
+mensagem: String="Fechar menu lateral";
 
   constructor() { }
 
@@ -20,10 +20,10 @@ mensagem: String="Abrir menu lateral";
 
   toggle() {
     this.mostrar = !this.mostrar;
-    if(this.mensagem == "Fechar menu lateral"){
-      this.mensagem = "Abrir menu lateral";
-    }else{
+    if(this.mensagem == "Abrir menu lateral"){
       this.mensagem = "Fechar menu lateral";
+    }else{
+      this.mensagem = "Abrir menu lateral";
 }
 }
 
