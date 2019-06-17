@@ -29,3 +29,14 @@ h3 {
     font-weight: bold;
     font-size: 20px
 }
+
+
+.ng-valid[required], .ng-valid.required  {     
+    border-left: 5px solid rgba(32, 77, 32, 0.623); 
+}   
+
+.ng-invalid:not(form)  {     
+    border-left: 5px solid rgb(148, 27, 27); 
+} 
+ 
+#toast-container > div {     opacity:1; }

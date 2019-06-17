@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
-
+import { MDBBootstrapModule } from 'angular-bootstrap-md'; 
 
 import {routes} from '../app/app-routing.module';
 
@@ -16,14 +16,11 @@ import {
   MatIconModule, MatButtonModule, MatSidenavModule, MatListModule, MatMenuModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
 import { AppComponent } from './app.component';
 
 import { 
   LoginModule, 
   LoginRoutingModule, 
-  CadastroPjModule,
-  CadastroPjRoutingModule,
   CadastroPfModule,
   CadastroPfRoutingModule
 } from './autenticacao';
@@ -40,6 +37,8 @@ import { from } from 'rxjs';
 import { LayoutModule } from '@angular/cdk/layout';
 import { GerenciarplanoComponent } from './telasplano/gerenciarplano/gerenciarplano.component';
 import { PlanodenegocioModule } from './planodenegocio/planodenegocio.module';
+import { LoginUserModule } from './login-user/login-user.module';
+
 
 
 
@@ -53,8 +52,6 @@ import { PlanodenegocioModule } from './planodenegocio/planodenegocio.module';
     PerfilComponent,
     DescricaoComponent,
     GerenciarplanoComponent
-
-    
   ],
   imports: [
     BrowserModule,
@@ -67,14 +64,14 @@ import { PlanodenegocioModule } from './planodenegocio/planodenegocio.module';
     PlanodenegocioModule,
     LoginModule,
     LoginRoutingModule,
-    CadastroPjModule,
-    CadastroPjRoutingModule,
     CadastroPfModule,
     CadastroPfRoutingModule,
     MatPasswordStrengthModule.forRoot(),
     RouterModule.forRoot(routes),  //forRoot para globais //forChild para filhas
     AppRoutingModule, LayoutModule, MatButtonModule, MatSidenavModule, MatListModule, MatCheckboxModule,
     MatMenuModule, MatToolbarModule, MatIconModule,
+    MDBBootstrapModule.forRoot(),
+    LoginUserModule 
   ],
   exports:[
     MatListModule,
