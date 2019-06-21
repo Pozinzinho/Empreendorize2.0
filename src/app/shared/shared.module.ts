@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
 
 import {
@@ -13,10 +14,15 @@ import {
 import { 
   MascaraDirective } from './directives/mascara.directive';
 
+
 @NgModule({
-  declarations: [MascaraDirective],
+  declarations: [
+    MascaraDirective],
+    
   imports: [
-    CommonModule, MatToolbarModule
+    CommonModule, 
+    MatToolbarModule,
+    MDBBootstrapModule.forRoot()
   ],
   exports:[
     MascaraDirective

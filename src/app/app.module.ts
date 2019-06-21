@@ -1,13 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
-import { MDBBootstrapModule } from 'angular-bootstrap-md'; 
 
 import {routes} from '../app/app-routing.module';
 
@@ -15,6 +13,7 @@ import {
   MatToolbarModule,
   MatIconModule, MatButtonModule, MatSidenavModule, MatListModule, MatMenuModule
 } from '@angular/material';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 
@@ -33,12 +32,22 @@ import { MatPasswordStrengthModule } from '@angular-material-extensions/password
 import { CriarComponent } from './telasplano/criar/criar.component';
 import { PerfilComponent } from './telasiniciais/perfil/perfil.component';
 import { DescricaoComponent } from './telasiniciais/descricao/descricao.component';
-import { from } from 'rxjs';
 import { LayoutModule } from '@angular/cdk/layout';
 import { GerenciarplanoComponent } from './telasplano/gerenciarplano/gerenciarplano.component';
 import { PlanodenegocioModule } from './planodenegocio/planodenegocio.module';
-import { LoginUserModule } from './login-user/login-user.module';
-
+import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { ResendRegistrationTokenComponent } from './components/resend-registration-token/resend-registration-token.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ListUserComponent } from './components/list-user/list-user.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiService } from './core/api.service';
+import { LoginUserComponent } from './components/login-user/login-user.component';
+import { InterceptorService } from './core/interceptor.service';
+import { DeleteUserModalComponent } from './shared/components/modals/delete-user-modal/delete-user-modal.component';
+import { ToastrModule } from 'ngx-toastr';
+import { MessageService } from './core/message.service';
 
 
 
@@ -51,7 +60,13 @@ import { LoginUserModule } from './login-user/login-user.module';
     CriarComponent,
     PerfilComponent,
     DescricaoComponent,
-    GerenciarplanoComponent
+    GerenciarplanoComponent,
+    RegisterUserComponent,
+    ResendRegistrationTokenComponent,
+    EditUserComponent,
+    ListUserComponent,
+    LoginUserComponent,
+    DeleteUserModalComponent
   ],
   imports: [
     BrowserModule,
@@ -68,16 +83,31 @@ import { LoginUserModule } from './login-user/login-user.module';
     CadastroPfRoutingModule,
     MatPasswordStrengthModule.forRoot(),
     RouterModule.forRoot(routes),  //forRoot para globais //forChild para filhas
-    AppRoutingModule, LayoutModule, MatButtonModule, MatSidenavModule, MatListModule, MatCheckboxModule,
+    LayoutModule, MatButtonModule, MatSidenavModule, MatListModule, MatCheckboxModule,
     MatMenuModule, MatToolbarModule, MatIconModule,
     MDBBootstrapModule.forRoot(),
-    LoginUserModule 
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({       
+      timeOut: 4000, 
+      positionClass: 'toast-top-center'    
+    }) 
   ],
   exports:[
     MatListModule,
     MatMenuModule
   ],
-  providers: [FormsModule],
-  bootstrap: [AppComponent]
+  providers: [ApiService, MessageService,
+    {      
+      provide: HTTP_INTERCEPTORS,       
+      useClass: InterceptorService,       
+      multi : true, 
+    }, 
+      FormsModule, AuthGuard],
+      bootstrap: [AppComponent],
+      schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }

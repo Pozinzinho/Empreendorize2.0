@@ -19,9 +19,22 @@
     height: 230px
 }
 
-.active {
-    color: #FFF 
-}
+/* .active {
+    color: rgb(214, 209, 209) 
+} */
+
 .body{
     background-color: white;
+}
+
+.navbar .nav-item.avatar .dropdown-toggle img {     
+    height: 35px; 
+} 
+
+img.img-fluid.rounded-circle.z-depth-0 {   
+      height: 35px; 
+    } 
+    
+.active {     
+    background:#dc824f;
 }

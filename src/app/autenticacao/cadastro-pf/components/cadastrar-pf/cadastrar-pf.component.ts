@@ -4,8 +4,7 @@ import { MatSnackBar } from '@angular/material';//Para criação do alerta
 import { Router } from '@angular/router';//Para o roteamento
 
 import { 
-  CpfValidator, 
-  CnpjValidator 
+  CpfValidator
 } from '../../../../shared/validators';
 
 import { CadastroPf } from '../../models';
@@ -35,8 +34,7 @@ export class CadastrarPfComponent implements OnInit {
   		nome: ['', [Validators.required, Validators.minLength(3)]],
   		email: ['', [Validators.required, Validators.email]],
   		senha: ['', [Validators.required, Validators.minLength(6)]],
-  		cpf: ['', [Validators.required, CpfValidator]],
-  		cnpj: ['', [Validators.required, CnpjValidator]]
+  		cpf: ['', [Validators.required, CpfValidator]]
   	});
   }
 
