@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDto } from 'src/app/core/model/userDto';
 import { ApiService } from 'src/app/core/api.service';
 import { Router } from '@angular/router';
 import { MessageService } from 'src/app/core/message.service';
+import { UserDto } from 'src/app/core/model/model-user/userDto';
 
 @Component({
   selector: 'app-resend-registration-token',

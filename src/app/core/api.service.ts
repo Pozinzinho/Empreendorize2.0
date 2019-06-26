@@ -3,8 +3,9 @@ import { Observable } from 'rxjs';
 
 import * as AppUtils from '../shared/comum/app.utils';
 import { HttpParams, HttpClient } from '@angular/common/http';
-import { UserLogin } from './model/login';
-import { UserDto } from './model/userDto';
+import { UserLogin } from './model/model-user/login';
+import { UserDto } from './model/model-user/userDto';
+
 
 
 @Injectable({
@@ -12,9 +13,11 @@ import { UserDto } from './model/userDto';
 })
 export class ApiService {
   public baseUrl: string;
+  public baseUrlP: string;
 
   constructor(private httpClient: HttpClient) {
     this.baseUrl = `${AppUtils.BASE_URL}` + 'api/users';
+    this.baseUrlP = `${AppUtils.BASE_URL}` + 'api/planos';
   }
 
   login(user: UserLogin): Observable <any> {
@@ -86,6 +89,10 @@ export class ApiService {
 
   getUsers(): Observable<any> {
     return this.httpClient.get<any>(`${this.baseUrl}`, AppUtils.OPTIONS_OBJECTO);
+  }
+
+  getPlanos(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrlP}`, AppUtils.OPTIONS_OBJECTO);
   }
   
   getRole(roles: Array<any>) {

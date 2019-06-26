@@ -1,5 +1,6 @@
 import { Role } from './role';
 
+
 export class UserDto{
 
     id?: string;

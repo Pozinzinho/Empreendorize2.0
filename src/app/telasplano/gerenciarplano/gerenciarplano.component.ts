@@ -1,5 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-declare var $;
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/core/api.service';
+import { MessageService } from 'src/app/core/message.service';
+import { PlanosDto } from 'src/app/core/model/model-planos/planosDto';
 
 @Component({
   selector: 'app-gerenciarplano',
@@ -8,14 +11,24 @@ declare var $;
 })
 export class GerenciarplanoComponent implements OnInit {
 
-  @ViewChild('dataTable') table;
-  dataTable: any;
+  planos: PlanosDto[];
 
-  constructor() {}
+  constructor(private router: Router,
+              private apiService: ApiService,
+              private messageService: MessageService) { }
 
-  ngOnInit(): void {
-    this.dataTable = $(this.table.nativeElement);
-    this.dataTable.DataTable();
+  ngOnInit() {
+    if (!this.apiService.isAuthenticated()) {
+      this.router.navigate(['loginUser']);
+    }
+    this.apiService.getPlanos().subscribe(planos => {
+      this.planos = planos;
+    }, error => {
+      this.messageService.showError('Lista de planos','Falha ao carregar lista de planos!');
+    });
+  }
+  getRole(plano: PlanosDto) {
+    return this.apiService.getRole(plano.role);
   }
 
 }

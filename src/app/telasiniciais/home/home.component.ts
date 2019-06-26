@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDto } from 'src/app/core/model/userDto';
+import { UserDto } from 'src/app/core/model/model-user/userDto';
+
 
 @Component({
   selector: 'app-home',

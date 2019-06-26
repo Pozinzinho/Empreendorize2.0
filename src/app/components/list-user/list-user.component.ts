@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDto } from 'src/app/core/model/userDto';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
 import { MessageService } from 'src/app/core/message.service';
+import { UserDto } from 'src/app/core/model/model-user/userDto';
 
 @Component({
   selector: 'app-list-user',

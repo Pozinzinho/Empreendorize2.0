@@ -51,8 +51,7 @@ export class InterceptorService implements HttpInterceptor {
               localStorage.removeItem('accessToken');
               return this.getAccessToken(request, next);
             case 401:
-              this.messageService.showError('', error.error.message);
-              return this.router.navigate(['loginUser']);
+              return this.handle401Error(error);
             case 400:
               this.messageService.showError('Falha de autenticação', 'Usuário ou senha inválidos');
               return this.router.navigate(['loginUser']);
@@ -75,13 +74,13 @@ export class InterceptorService implements HttpInterceptor {
         }
       );
   }
+  
   handleErrorGeneral(error) {
     if ( error.status === 409 || error.status === 404 ) {
-      return this.apiService.logout();
+      return EmptyObservable.create();
     }
     return EmptyObservable.create();
   }
-
   handle303Error(error) {
     if (error.error.message === 'invalidToken') {
       this.messageService.showError('Vericação de registro', 'Token Inválido, favor solicitar novo token');

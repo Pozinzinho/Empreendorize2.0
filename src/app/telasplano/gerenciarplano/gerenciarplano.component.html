@@ -1,32 +1,31 @@
-<table #dataTable class="display" style="width:100%">
-  <thead>
+<section class="grey-text w-responsive mx-auto p-5">    
+    <h2 class="h4 mb-4 text-center font-weight-bold"> Lista de Planos</h2>
+    <table class="table table-striped">
+      <thead>
       <tr>
-          <th>Nome do plano</th>
-          <th>Data estimada para conclusão</th>
-          <th>Finalidade do plano</th>
+        <th class="hidden">Id</th>
+        <th>Nome do plano</th>
+        <th>Data conclusão</th>
+        <th>Finalidade</th>
+        <th>Role</th>
+      </tr>
+      </thead>
+      <tbody>
 
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Criar açougue</td>
-          <td>18/05/2020</td>
-          <td>Estudantil</td>
-          
-      </tr>
-      <tr>
-          <td>Empresa de software</td>
-          <td>15/12/2030</td>
-          <td>Empreendedorismo</td>
+      <!-- Lista plano do banco planos -->
+      <tr *ngFor="let plano of planos; let i = index;"> 
         
+        <td class="hidden">{{i+1}}</td>
+        <td>{{plano.nomePlano}}</td>
+        <td>{{plano.dataConclusao}}</td>
+        <td>{{plano.finalidade}}</td>
+        <td>{{getRole(plano)}}</td>
+
+        <td>
+          
+        </td>
       </tr>
-  </tbody>
-  <tfoot>
-      <tr>
-          <th>Nome do plano</th>
-          <th>Data estimada para conclusão</th>
-          <th>Finalidade do plano</th>
-       
-      </tr>
-  </tfoot>
-</table>
+      </tbody>
+    </table>
+  </section>
+  

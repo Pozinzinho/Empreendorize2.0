@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDto } from 'src/app/core/model/userDto';
 import { ApiService } from 'src/app/core/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MessageService } from 'src/app/core/message.service';
+import { UserDto } from 'src/app/core/model/model-user/userDto';
 
 @Component({
   selector: 'app-edit-user',

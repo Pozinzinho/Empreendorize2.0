@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UserDto } from 'src/app/core/model/userDto';
 import { ApiService } from 'src/app/core/api.service';
 import { Location } from '@angular/common';
 import { MessageService } from 'src/app/core/message.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { UserDto } from 'src/app/core/model/model-user/userDto';
 
 @Component({
   selector: 'app-register-user',
