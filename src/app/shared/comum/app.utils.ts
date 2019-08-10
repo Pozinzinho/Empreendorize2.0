@@ -17,4 +17,4 @@ export const HEADERS_REGISTER = new HttpHeaders({
 });
 export const HEADERS_COMMUN = new HttpHeaders({
  Authorization: 'Basic ' + btoa('cliente' + ':' + '123')
- });
+});

@@ -1,0 +1,131 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar class="default-color">
+      <p class="texto-branco">
+        Plano de negócios
+      </p>
+    </mat-toolbar>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header routerLink="/planodenegocio/introplano">
+          <mat-panel-title>
+            Introdução ao plano
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        
+        <a mat-list-item routerLink="/planodenegocio/dadosempreendedores">Dados dos empreendedores</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/missao">Missão da empresa</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/setordeatv">Setores de atividades</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/capitalsocial">Capital social</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/fonterecursos">Fonte de recursos</a>
+        
+        
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header routerLink="/planodenegocio/introestudodemercado">
+          <mat-panel-title>
+            Estudo de mercado
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <a mat-list-item routerLink="/planodenegocio/estudocliente">Estudo dos clientes</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/estudoconcorrente">Estudo dos concorrentes</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/estudofornecedores">Estudo dos fornecedores</a>
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header routerLink="/planodenegocio/introplanodemarketing">
+          <mat-panel-title>
+            Plano de marketing
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <a routerLink="/planodenegocio/produtoseservicos">Produtos e serviços</a>
+        <mat-divider></mat-divider>
+        <a routerLink="/planodenegocio/preco">Preço</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/estrategiaspromocionais">Estratégias promocionais</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/estruturacomercializacao">Estrutura de comercialização</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/localizacaonegocio">Localização</a>
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header routerLink="/planodenegocio/introplanomonetario">
+          <mat-panel-title>
+            Plano monetário
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <a mat-list-item routerLink="/planodenegocio/investimentosfixos">Investimentos fixos</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/investimentospreop">Investimentos pré-operacionais</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/investimentototal">Investimento total</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/faturamentomensal">Faturamento mensal</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/custouni">Custo unitário</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/custosdecomerc">Custos de comercialização</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/custodedepre">Custos de depreciação</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/custosfixosop">Custos fixos operacionais mensais</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/demonstrativoresultados">Demonstrativo de resultados</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/planodenegocio/indicadoresviabilidade">Indicadores de viabilidade</a>
+
+      </mat-expansion-panel>
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header routerLink="/planodenegocio/introanalisecritica">
+          <mat-panel-title>
+            Análise crítica
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <a mat-list-item routerLink="/planodenegocio/matrizfofa">Matriz F.O.F.A</a>
+
+      </mat-expansion-panel>
+
+
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header routerLink="/planodenegocio/introconclusao">
+          <mat-panel-title>
+            Conclusão
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/planodenegocio/analiseplano">Análise do plano</a>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="default-color">
+      <button class="texto-branco" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <span class="texto-branco">TEXTO QUE DESCREVE EM QUE TELA SE ESTÁ TRABALHANDO</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

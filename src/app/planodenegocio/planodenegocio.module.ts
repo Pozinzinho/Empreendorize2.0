@@ -3,8 +3,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 
 import { PlanodenegocioComponent } from "./planodenegocio.component";
-import { ResumoComponent } from './introducaoaoplano/resumo/resumo.component';
-import { MenulateralComponent } from './menulateral/menulateral.component';
 import { PlanodenegocioRoutingModule } from './planodenegocio.routing.module';
 
 import {planodengocioRoutes} from './planodenegocio.routing.module';
@@ -12,8 +10,6 @@ import { RouterModule } from '@angular/router';
 import { DadosempComponent } from './introducaoaoplano/dadosemp/dadosemp.component';
 import { MissaoComponent } from './introducaoaoplano/missao/missao.component';
 import { SetordeatvComponent } from './introducaoaoplano/setordeatv/setordeatv.component';
-import { FormajuridicaComponent } from './introducaoaoplano/formajuridica/formajuridica.component';
-import { EnqtribuComponent } from './introducaoaoplano/enqtribu/enqtribu.component';
 import { CapitalsocialComponent } from './introducaoaoplano/capitalsocial/capitalsocial.component';
 import { FonterecursosComponent } from './introducaoaoplano/fonterecursos/fonterecursos.component';
 import { IntroplanoComponent } from './introducaoaoplano/introplano/introplano.component';
@@ -27,44 +23,120 @@ import { PrecoComponent } from './planodemarketing/preco/preco.component';
 import { EstrategiapromocionalComponent } from './planodemarketing/estrategiapromocional/estrategiapromocional.component';
 import { EstruturadecomercializacaoComponent } from './planodemarketing/estruturadecomercializacao/estruturadecomercializacao.component';
 import { LocalizacaodonegocioComponent } from './planodemarketing/localizacaodonegocio/localizacaodonegocio.component';
-import { IntroplanosorganizacionaisComponent } from './planosorganizacionais/introplanosorganizacionais/introplanosorganizacionais.component';
-import { LeiauteComponent } from './planosorganizacionais/leiaute/leiaute.component';
-import { CapacidadeinstaladaComponent } from './planosorganizacionais/capacidadeinstalada/capacidadeinstalada.component';
-import { ProcessooperacionalComponent } from './planosorganizacionais/processooperacional/processooperacional.component';
-import { NecessidadepessoalComponent } from './planosorganizacionais/necessidadepessoal/necessidadepessoal.component';
 import { IntroplanomonetarioComponent } from './planomonetario/introplanomonetario/introplanomonetario.component';
 import { InvestimentosfixosComponent } from './planomonetario/investimentosfixos/investimentosfixos.component';
-import { EstoqueinicialComponent } from './planomonetario/estoqueinicial/estoqueinicial.component';
-import { CaixaminimoComponent } from './planomonetario/caixaminimo/caixaminimo.component';
 import { InvestimentospreopComponent } from './planomonetario/investimentospreop/investimentospreop.component';
 import { InvestimentototalComponent } from './planomonetario/investimentototal/investimentototal.component';
 import { FaturamentomensalComponent } from './planomonetario/faturamentomensal/faturamentomensal.component';
 import { CustounitarioComponent } from './planomonetario/custounitario/custounitario.component';
 import { CustosdecomercializacaoComponent } from './planomonetario/custosdecomercializacao/custosdecomercializacao.component';
-import { ApuracaodocustoComponent } from './planomonetario/apuracaodocusto/apuracaodocusto.component';
-import { CustosdemdoComponent } from './planomonetario/custosdemdo/custosdemdo.component';
 import { CustosdedepreComponent } from './planomonetario/custosdedepre/custosdedepre.component';
 import { CustosfixosopComponent } from './planomonetario/custosfixosop/custosfixosop.component';
 import { DemonstrativoderesultadosComponent } from './planomonetario/demonstrativoderesultados/demonstrativoderesultados.component';
 import { IndicadoresdeviabilidadeComponent } from './planomonetario/indicadoresdeviabilidade/indicadoresdeviabilidade.component';
-import { IntroperspectivaComponent } from './perspectivaestrategica/introperspectiva/introperspectiva.component';
-import { AcoesprevecorreComponent } from './perspectivaestrategica/acoesprevecorre/acoesprevecorre.component';
 import { IntroanalisecriticaComponent } from './analisecritica/introanalisecritica/introanalisecritica.component';
 import { MatrizfofaComponent } from './analisecritica/matrizfofa/matrizfofa.component';
 import { IntroconclusaoComponent } from './conclusao/introconclusao/introconclusao.component';
 import { AnaliseplanoComponent } from './conclusao/analiseplano/analiseplano.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from '../app-routing.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { SideNavComponent } from '../planodenegocio/side-nav/side-nav.component';
+
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule,
+MatIconModule, MatListModule, MatExpansionModule, MatOptionModule, MatSelectModule, MatInputModule, MatTableModule, MatPaginator, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule, MatCardModule, MatFormField, MatFormFieldModule, MatMenuModule, MatTooltipModule } from '@angular/material';
+import {MatDividerModule} from '@angular/material/divider';
+import { SimpleSidenavModule } from 'simple-sidenav';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DadosempAddComponent } from './introducaoaoplano/dadosemp/dadosemp-add/dadosemp-add.component';
+import { DadosempEditComponent } from './introducaoaoplano/dadosemp/dadosemp-edit/dadosemp-edit.component';
+import { DadosempDetailComponent } from './introducaoaoplano/dadosemp/dadosemp-detail/dadosemp-detail.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule(
     {
         imports:[
+            BrowserModule,
+            FormsModule,
+            ReactiveFormsModule,
+            BrowserAnimationsModule,
+            AppRoutingModule,
+            SimpleSidenavModule,
+            LayoutModule,
+            MatInputModule,
+            MatTableModule,
+            MatPaginatorModule,
+            MatSortModule,
+            MatProgressSpinnerModule,
+            MatCardModule,
+            MatFormFieldModule,
+            MatDividerModule,
+            MatSelectModule,
+            MatOptionModule,
+            MatToolbarModule,
+            MatExpansionModule,
+            MatButtonModule,
+            MatSidenavModule,
+            MatIconModule,
+            MatListModule,
+            MatTooltipModule,
             CommonModule,
             NgbModule,
+            MDBBootstrapModule.forRoot(),
             RouterModule.forChild(planodengocioRoutes),
-            PlanodenegocioRoutingModule
+            PlanodenegocioRoutingModule,
+            ToastrModule.forRoot({       
+                timeOut: 4000, 
+                positionClass: 'toast-top-center'    
+              })
         ],
-        exports:[],
-        declarations:[PlanodenegocioComponent, ResumoComponent, MenulateralComponent, DadosempComponent, MissaoComponent, SetordeatvComponent, FormajuridicaComponent, EnqtribuComponent, CapitalsocialComponent, FonterecursosComponent, IntroplanoComponent, IntroestudodemercadoComponent, EstudodosclientesComponent, EstudodosconcorrentesComponent, EstudodosfornecedoresComponent, IntroplanodemarketingComponent, ProdutoseservicosComponent, PrecoComponent, EstrategiapromocionalComponent, EstruturadecomercializacaoComponent, LocalizacaodonegocioComponent, IntroplanosorganizacionaisComponent, LeiauteComponent, CapacidadeinstaladaComponent, ProcessooperacionalComponent, NecessidadepessoalComponent, IntroplanomonetarioComponent, InvestimentosfixosComponent, EstoqueinicialComponent, CaixaminimoComponent, InvestimentospreopComponent, InvestimentototalComponent, FaturamentomensalComponent, CustounitarioComponent, CustosdecomercializacaoComponent, ApuracaodocustoComponent, CustosdemdoComponent, CustosdedepreComponent, CustosfixosopComponent, DemonstrativoderesultadosComponent, IndicadoresdeviabilidadeComponent, IntroperspectivaComponent, AcoesprevecorreComponent, IntroanalisecriticaComponent, MatrizfofaComponent, IntroconclusaoComponent, AnaliseplanoComponent ],
-        providers:[]
+        exports:[
+            MatToolbarModule,
+            MatListModule,
+            MatMenuModule
+        ],
+        declarations:[
+            PlanodenegocioComponent, 
+            DadosempComponent, 
+            DadosempAddComponent,
+            DadosempEditComponent,
+            DadosempDetailComponent,
+            MissaoComponent, 
+            SetordeatvComponent,
+            CapitalsocialComponent, 
+            FonterecursosComponent, 
+            IntroplanoComponent, 
+            IntroestudodemercadoComponent, 
+            EstudodosclientesComponent, 
+            EstudodosconcorrentesComponent, 
+            EstudodosfornecedoresComponent, 
+            IntroplanodemarketingComponent, 
+            ProdutoseservicosComponent, 
+            PrecoComponent, 
+            EstrategiapromocionalComponent, 
+            EstruturadecomercializacaoComponent, 
+            LocalizacaodonegocioComponent,
+            IntroplanomonetarioComponent, 
+            InvestimentosfixosComponent, 
+            InvestimentospreopComponent, 
+            InvestimentototalComponent, 
+            FaturamentomensalComponent, 
+            CustounitarioComponent, 
+            CustosdecomercializacaoComponent,
+            CustosdedepreComponent, 
+            CustosfixosopComponent, 
+            DemonstrativoderesultadosComponent, 
+            IndicadoresdeviabilidadeComponent,
+            IntroanalisecriticaComponent, 
+            MatrizfofaComponent, 
+            IntroconclusaoComponent, 
+            AnaliseplanoComponent,
+            SideNavComponent
+        ],
+        providers:[],
+        bootstrap:[PlanodenegocioComponent]
     }
 )
 

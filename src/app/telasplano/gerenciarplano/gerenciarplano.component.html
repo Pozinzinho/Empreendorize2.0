@@ -7,7 +7,6 @@
         <th>Nome do plano</th>
         <th>Data conclusão</th>
         <th>Finalidade</th>
-        <th>Role</th>
       </tr>
       </thead>
       <tbody>
@@ -19,10 +18,13 @@
         <td>{{plano.nomePlano}}</td>
         <td>{{plano.dataConclusao}}</td>
         <td>{{plano.finalidade}}</td>
-        <td>{{getRole(plano)}}</td>
 
         <td>
-          
+            <div class="btn-group btn-group-sm">
+              <button class="btn btn-danger " (click)="excluirPlano.show()"> Excluir</button>
+              <button class="btn btn-info " [routerLink]="['/editarPlano', plano.id]" style="margin-left: 20px;"> Editar</button>
+            </div>
+            <app-excluir-plano #excluirPlano [recebeItem]="plano" (resposta)="deletePlano($event)"></app-excluir-plano>
         </td>
       </tr>
       </tbody>

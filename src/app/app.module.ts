@@ -45,9 +45,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiService } from './core/api.service';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { InterceptorService } from './core/interceptor.service';
-import { DeleteUserModalComponent } from './shared/components/modals/delete-user-modal/delete-user-modal.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MessageService } from './core/message.service';
+import { EditarPlanoComponent } from './telasplano/editar-plano/editar-plano.component';
+import { ExcluirPlanoComponent } from './telasplano/excluir-plano/excluir-plano.component';
+import { DeleteUserModalComponent } from './shared/components/modals/delete-user-modal/delete-user-modal.component';
+
 
 
 
@@ -66,6 +69,8 @@ import { MessageService } from './core/message.service';
     EditUserComponent,
     ListUserComponent,
     LoginUserComponent,
+    EditarPlanoComponent,
+    ExcluirPlanoComponent,
     DeleteUserModalComponent
   ],
   imports: [

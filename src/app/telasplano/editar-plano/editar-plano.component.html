@@ -1,0 +1,36 @@
+<section class="grey-text w-responsive mx-auto p-5">
+  <form (ngSubmit)="update()" #detailCustomerForm="ngForm">
+    <h4 class="h4 mb-4 text-center"><span class="badge badge-light ">{{plano.id}}</span> -> {{plano.nomePlano}}</h4>
+
+    <div class="form-group col-md-6">
+      <label for="nomePlano">Nome do plano</label>
+      <input type="text" class="form-control" id="nomePlano" name="nomePlano" [(ngModel)]="plano.nomePlano"
+        #nomePlano="ngModel" placeholder="Ex: Abrir açougue, Abrir papelaria...">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="datedomes">Data estimada para conculsão</label>
+      <input id="dataConclusao" type="text" [(ngModel)]="plano.dataConclusao" name="datadomes" class="form-control">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="datedomes">Finalidade do plano</label>
+      <select id="finalide" name="finalidade" [(ngModel)]="plano.finalidade" class="form-control">
+        <option selected>Escolher...</option>
+        <option>Estudantil</option>
+        <option>Empreendedorismo</option>
+      </select>
+    </div>
+
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+      <button *ngIf="!submitted" class="btn btn-dark" (click)="updatePlano()">Atualizar</button>
+      <button *ngIf="submitted" class="btn btn-dark btn-block" type="button">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Carregando...
+      </button>
+    </div>
+
+
+  </form>
+</section>

@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {MatSlideToggleChange} from '@angular/material';
-import {MatPasswordStrengthComponent} from '@angular-material-extensions/password-strength';
 
 import { HomeComponent } from './telasiniciais/home/home.component'
 import { CriarComponent } from './telasplano/criar/criar.component'
@@ -14,6 +12,7 @@ import { ResendRegistrationTokenComponent } from './components/resend-registrati
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
+import { EditarPlanoComponent } from './telasplano/editar-plano/editar-plano.component';
 
 
 
@@ -28,7 +27,8 @@ export const routes: Routes = [
     {path: 'criar', component: CriarComponent,  canActivate: [AuthGuard], canLoad: [AuthGuard]},
     {path: 'perfil', component: PerfilComponent,  canActivate: [AuthGuard], canLoad: [AuthGuard]},
     {path: 'descricao', component: DescricaoComponent,  canActivate: [AuthGuard], canLoad: [AuthGuard]},
-    {path: 'gerenciarplano', component: GerenciarplanoComponent,  canActivate: [AuthGuard], canLoad: [AuthGuard]}
+    {path: 'gerenciarplano', component: GerenciarplanoComponent,  canActivate: [AuthGuard], canLoad: [AuthGuard]},
+    {path: 'editarPlano/:id', component: EditarPlanoComponent,  canActivate: [AuthGuard], canLoad: [AuthGuard]}
 ];
 
 @NgModule({

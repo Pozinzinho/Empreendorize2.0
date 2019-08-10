@@ -18,6 +18,9 @@ export class LoginUserComponent implements OnInit {
     private messageService: MessageService) { }
 
   ngOnInit() {
+    if(!(localStorage.getItem('accessToken') === "")){
+      this.router.navigate(['home']);
+    }
   }
 
   public login() {
@@ -34,9 +37,9 @@ export class LoginUserComponent implements OnInit {
     localStorage.setItem('refreshToken', data.refresh_token);
     this.apiService.getMainUser(localStorage.getItem('accessToken')).subscribe(user => {
       this.redirectPage(user);
-      this.messageService.showSuccess('Bem vindo ao empreendedorize', 'Vamos começar já o seu plano de negócios');
+      this.messageService.showSuccess('Bem-vindo ao empreendedorize', 'Vamos começar já o seu plano de negócios');
     }, error => {
-      this.messageService.showError('Usuário principal', 'Falha ao capturar usuário logado');
+      this.messageService.showError('Usuário principal', error);
     });
   }
 

@@ -5,6 +5,7 @@ import * as AppUtils from '../shared/comum/app.utils';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { UserLogin } from './model/model-user/login';
 import { UserDto } from './model/model-user/userDto';
+import { PlanoDto } from './model/model-plano/planoDto';
 
 
 
@@ -67,6 +68,10 @@ export class ApiService {
     return this.httpClient.post<any>(AppUtils.REGISTER_URL, user, {headers: AppUtils.HEADERS_COMMUN});
   }
 
+  registerPlano(plano: PlanoDto): Observable<any>{
+    return this.httpClient.post<any>(`${this.baseUrlP}`, plano,  AppUtils.OPTIONS_OBJECTO);
+  }
+
   confirmationRegisterToken(token: string): Observable<any> {
     const params = new HttpParams()
       .set('token', token);
@@ -108,17 +113,28 @@ export class ApiService {
   }
 
   deleteUser(id: string): Observable<any> {
-    return this.httpClient.delete<any>(`${this.baseUrl}/${id}}`, AppUtils.OPTIONS_OBJECTO);
+    return this.httpClient.delete<any>(`${this.baseUrl}/${id}`, AppUtils.OPTIONS_OBJECTO);
+  }
+
+  deletePlano(id: string): Observable<any>{
+    return this.httpClient.delete<any>(`${this.baseUrlP}/${id}`, AppUtils.OPTIONS_OBJECTO);
   }
 
   getUserById(id: string): Observable<any> {
     return this.httpClient.get<any>(`${this.baseUrl}/${id}`, AppUtils.OPTIONS_OBJECTO);
   }
 
+  getPlanosById(id: string): Observable<any>{
+    return this.httpClient.get<any>(`${this.baseUrlP}/${id}`, AppUtils.OPTIONS_OBJECTO);
+  }
+
   updateUser(user: UserDto): Observable<any> {
     return this.httpClient.put<any>(`${this.baseUrl}/${user.id}`, user, AppUtils.OPTIONS_OBJECTO);
     }
 
+  updatePlano(plano: PlanoDto): Observable<any> {
+    return this.httpClient.put<any>(`${this.baseUrlP}/${plano.id}`, plano, AppUtils.OPTIONS_OBJECTO);
+  }
 
     logout(): Observable<any> {
       return this.httpClient.get<any>(`${AppUtils.BASE_URL}` + 'api/logout', AppUtils.OPTIONS_OBJECTO);

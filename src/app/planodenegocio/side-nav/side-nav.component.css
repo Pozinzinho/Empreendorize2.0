@@ -1,0 +1,56 @@
+.sidenav-container {
+  height: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+  
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.texto-branco{
+  color: #ffffff;
+}
+
+.texto-violeta{
+  color: #EE82EE;
+}
+
+.texto-azulmarinho{
+  color: #97FFFF;
+}
+
+.span
+{
+  vertical-align: middle;
+  text-align: center;
+  line-height: 25;
+}
+
+a{
+  color: #00EEEE;
+  text-align: center;
+  height: 100%;
+  min-height: 100%;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+a:hover{
+  color: #008B8B;
+  font-size: 15px;
+}

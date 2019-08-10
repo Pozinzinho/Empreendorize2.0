@@ -1,3 +1,6 @@
-#page-content-wrapper {
-    min-width: 100vw;
-  }
+.cor-botton{
+    background-color: #32CD32;
+}
+.cor-botton:hover{
+    background-color: #ADFF2F;
+}

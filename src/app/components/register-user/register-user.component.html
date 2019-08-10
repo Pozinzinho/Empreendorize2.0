@@ -51,6 +51,7 @@
           </div>
         </div>
 
+      
         <button *ngIf="!submitted"  class="btn btn-dark btn-block" (click)="save()" [disabled]="!RegisterUserForm.form.valid">Enviar</button>
         <button *ngIf="submitted" class="btn btn-dark btn-block" type="button">
           <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
