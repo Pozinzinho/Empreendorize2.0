@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { UserDto } from 'src/app/core/model/model-user/userDto';
 
+
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
@@ -16,6 +17,7 @@ export class RegisterUserComponent implements OnInit, OnDestroy {
   public user = new UserDto;
   private unsubscribeMessage = new Subject();
   submitted = false;
+
 
   constructor( 
     private apiService: ApiService, 
@@ -28,10 +30,11 @@ export class RegisterUserComponent implements OnInit, OnDestroy {
         this.submitted = false;
       }
     });
+
+    
   }
 
   save(): void {
-    this.submitted = true;
     this.apiService.registerUser(this.user).subscribe(data => {
       this.messageService.showSuccess('Cadastro realizado com sucesso!', 
       'Por favor, verifique seu e-mail para confirmação do cadastro');
@@ -47,5 +50,17 @@ export class RegisterUserComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.unsubscribeMessage.next();
     this.unsubscribeMessage.complete();
+  }
+
+  onSubmit(){
+    this.submitted = true;
+    this.save();
+  }
+
+  verificaFormulario(){
+    if(this.submitted == false){
+      this.messageService.showError('Formulário inválido!', 
+      'Por favor, verifique se todos os dados estão inseridos corretamente');
+    }
   }
 }

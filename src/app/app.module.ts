@@ -50,13 +50,15 @@ import { MessageService } from './core/message.service';
 import { EditarPlanoComponent } from './telasplano/editar-plano/editar-plano.component';
 import { ExcluirPlanoComponent } from './telasplano/excluir-plano/excluir-plano.component';
 import { DeleteUserModalComponent } from './shared/components/modals/delete-user-modal/delete-user-modal.component';
-
+import {NgxMaskModule} from 'ngx-mask';
+import { MustMatchDirective } from './helpers/must-match.directive';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    MustMatchDirective,
     HomeComponent,
     RodapeComponent,
     TopoComponent,
@@ -72,6 +74,7 @@ import { DeleteUserModalComponent } from './shared/components/modals/delete-user
     EditarPlanoComponent,
     ExcluirPlanoComponent,
     DeleteUserModalComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -96,6 +99,7 @@ import { DeleteUserModalComponent } from './shared/components/modals/delete-user
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
+    NgxMaskModule.forRoot(),
     ToastrModule.forRoot({       
       timeOut: 4000, 
       positionClass: 'toast-top-center'    
