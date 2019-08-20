@@ -27,9 +27,6 @@ export class GerenciarplanoComponent implements OnInit {
       this.messageService.showError('Lista de planos','Falha ao carregar lista de planos!');
     });
   }
-  getRole(plano: PlanoDto) {
-    return this.apiService.getRole(plano.role);
-  }
 
   deletePlano(plano: PlanoDto): void {
     this.apiService.deletePlano(plano.id).subscribe(() => {

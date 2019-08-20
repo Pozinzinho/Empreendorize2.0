@@ -21,7 +21,8 @@
 
         <td>
             <div class="btn-group btn-group-sm">
-              <button class="btn btn-danger " (click)="excluirPlano.show()"> Excluir</button>
+                <button class="btn btn-success " [routerLink]="['/planodenegocio', plano.id]" > Abrir</button>
+              <button class="btn btn-danger " (click)="excluirPlano.show()" style="margin-left: 20px;"> Excluir</button>
               <button class="btn btn-info " [routerLink]="['/editarPlano', plano.id]" style="margin-left: 20px;"> Editar</button>
             </div>
             <app-excluir-plano #excluirPlano [recebeItem]="plano" (resposta)="deletePlano($event)"></app-excluir-plano>

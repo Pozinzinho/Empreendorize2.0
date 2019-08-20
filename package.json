@@ -16,7 +16,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-devkit/build-angular": "^0.13.9",
     "@angular-material-extensions/password-strength": "^3.8.1",
     "@angular/animations": "^7.2.15",
     "@angular/cdk": "^7.3.7",
@@ -63,8 +62,12 @@
     "material-design-icons": "^3.0.1",
     "mdbootstrap": "^4.8.1",
     "moment": "^2.24.0",
+    "ng-image-slider": "^2.0.1",
+    "ng-simple-slideshow": "^1.2.9",
     "ng-uikit": "^0.1.6",
     "ngx-mask": "^8.0.3",
+    "ngx-slides": "^1.0.1",
+    "ngx-spinner": "^7.2.0",
     "ngx-toastr": "^10.0.4",
     "open-iconic": "^1.1.1",
     "path": "^0.12.7",
@@ -81,5 +84,7 @@
     "uikit": "^3.1.5-dev.ea3668d58",
     "zone.js": "~0.8.26"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^0.13.9"
+  }
 }

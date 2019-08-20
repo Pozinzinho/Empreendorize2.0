@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/core/api.service';
 import { Router } from '@angular/router';
 import { MessageService } from 'src/app/core/message.service';
 import { UserLogin } from 'src/app/core/model/model-user/login';
+import  {NgxSpinnerService}  from 'ngx-spinner';
 
 @Component({
   selector: 'app-login-user',
@@ -14,19 +15,31 @@ export class LoginUserComponent implements OnInit {
   user = new UserLogin();
 
   constructor(private apiService: ApiService, 
+    private spinner: NgxSpinnerService,
     private router:Router, 
     private messageService: MessageService) { }
 
+  
+
   ngOnInit() {
+
+    
+    this.spinner.hide();
+    
+
     if(!(localStorage.getItem('accessToken') === "")){
       this.router.navigate(['home']);
     }
   }
 
   public login() {
+
+    this.spinner.show();
+
     this.apiService.login(this.user).subscribe(data => {
       this.loginSuccess(data);
     }, error => {
+      this.spinner.hide();
       this.messageService.showError('Login', 'Falha de autenticação');
     });
   }
@@ -47,4 +60,6 @@ export class LoginUserComponent implements OnInit {
     localStorage.setItem('currentUser', JSON.stringify(user));
     this.router.navigate(['home']);
   }
+
+  
 }

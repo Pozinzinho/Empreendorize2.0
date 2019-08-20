@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/api.service';
 import { Router } from '@angular/router';
 import { MessageService } from 'src/app/core/message.service';
+import { Role } from 'src/app/core/model/model-user/role';
+import { getValueInRange } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-topo',
@@ -11,11 +13,20 @@ import { MessageService } from 'src/app/core/message.service';
 })
 export class TopoComponent implements OnInit {
 
+  verificaRole : boolean = false;
+  roles: Role[];
+
+  public nomeDoRole : string;
+
   constructor(private apiService: ApiService, 
     private router: Router,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private role: Role) { }
 
   ngOnInit() {
+    //  this.apiService.getRoleUser().subscribe(roles => {
+    //    this.roles = roles;
+    // });
   }
 
   logou() {
@@ -26,6 +37,7 @@ export class TopoComponent implements OnInit {
     }, error => {
       this.messageService.showError('Logout', 'Erro na realização de logout');
     });
+
   }
 
   clearLocalStore() {
@@ -36,5 +48,19 @@ export class TopoComponent implements OnInit {
 
   isAutenticated(): Observable<boolean> {
     return this.apiService.isAuthenticated();
+  }
+
+  isAdmin(): Observable<boolean>{
+    return new Observable<boolean> (observer => {
+  
+
+      this.nomeDoRole = "ROLE_USER";
+      if(this.nomeDoRole == "ROLE_ADMIN"){
+        observer.next(true);
+        observer.complete();
+      } else {
+        observer.next(false);
+      }
+    });
   }
 }

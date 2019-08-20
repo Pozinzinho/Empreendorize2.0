@@ -35,7 +35,7 @@ export class CriarComponent implements OnInit {
     this.apiService.registerPlano(this.plano).subscribe(data => {
       this.messageService.showSuccess('Plano de negócios criado com sucesso!', 
       'Vamos começar seu planejamento!');
-      this.router.navigate(['/planodenegocio']);
+      this.router.navigate(['/planodenegocio/:id']);
     }, error => {
       this.messageService.showError('Cadastro de plano', 'Falha ao cadastrar Plano de Negócios!');
     });

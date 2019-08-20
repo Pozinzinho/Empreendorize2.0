@@ -1,0 +1,63 @@
+<section class="grey-text w-responsive mx-auto p-5">    
+    <h2 class="h4 mb-4 text-center font-weight-bold">Sua empresa</h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th class="hidden">Id</th>
+        <th>Qualidade</th>
+        <th>Preço</th>
+        <th>Condições de pg</th>
+        <th>Localização</th>
+        <th>Atendimento</th>
+        <th>Serviços</th>
+        <th>Garantias</th>
+        <th>Conclusões</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let estudoProprio of estudoProprio; let i = index;">
+        <td class="hidden">{{i+1}}</td>
+        <td>{{estudoProprio.qualidade}}</td>
+        <td>{{estudoProprio.preco}}</td>
+        <td>{{estudoProprio.condicoesDePag}}</td>
+        <td>{{estudoProprio.localizacao}}</td>
+        <td>{{estudoProprio.atendimento}}</td>
+        <td>{{estudoProprio.servicos}}</td>
+        <td>{{estudoProprio.servicos}}</td>
+        <td>{{estudoProprio.servicos}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h2 class="h4 mb-4 text-center font-weight-bold">Concorrentes</h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th class="hidden">Id</th>
+        <th>Qualidade</th>
+        <th>Preço</th>
+        <th>Condições de pg</th>
+        <th>Localização</th>
+        <th>Atendimento</th>
+        <th>Serviços</th>
+        <th>Garantias</th>
+        <th>Conclusões</th>
+      </tr>
+      </thead>
+
+    <tbody>
+        <tr *ngFor="let estudoDosConcorrentes of estudoDosConcorrentes; let i = index;">
+            <td class="hidden">{{i+1}}</td>
+            <td>{{estudoDosConcorrentes.qualidade}}</td>
+            <td>{{estudoDosConcorrentes.preco}}</td>
+            <td>{{estudoDosConcorrentes.condicoesDePag}}</td>
+            <td>{{estudoDosConcorrentes.localizacao}}</td>
+            <td>{{estudoDosConcorrentes.atendimento}}</td>
+            <td>{{estudoDosConcorrentes.servicos}}</td>
+            <td>{{estudoDosConcorrentes.servicos}}</td>
+            <td>{{estudoDosConcorrentes.servicos}}</td>
+        </tr>
+    </tbody>
+    </table>
+  </section>

@@ -9,7 +9,7 @@ import { CapitalsocialComponent } from './introducaoaoplano/capitalsocial/capita
 import { FonterecursosComponent } from './introducaoaoplano/fonterecursos/fonterecursos.component';
 import { IntroestudodemercadoComponent } from './estudodemercado/introestudodemercado/introestudodemercado.component';
 import { EstudodosclientesComponent } from './estudodemercado/estudodosclientes/estudodosclientes.component';
-import { EstudodosconcorrentesComponent } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes.component';
+import { EstudodosconcorrentesComponent } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes-list/estudodosconcorrentes.component';
 import { EstudodosfornecedoresComponent } from './estudodemercado/estudodosfornecedores/estudodosfornecedores.component';
 import { IntroplanodemarketingComponent } from './planodemarketing/introplanodemarketing/introplanodemarketing.component';
 import { ProdutoseservicosComponent } from './planodemarketing/produtoseservicos/produtoseservicos.component';
@@ -34,7 +34,7 @@ import { AnaliseplanoComponent } from './conclusao/analiseplano/analiseplano.com
 import { DadosempAddComponent } from './introducaoaoplano/dadosemp/dadosemp-add/dadosemp-add.component';
 import { DadosempEditComponent } from './introducaoaoplano/dadosemp/dadosemp-edit/dadosemp-edit.component';
 export const planodengocioRoutes = [
-    {path: 'planodenegocio', component: PlanodenegocioComponent, children: 
+    {path: 'planodenegocio/:id', component: PlanodenegocioComponent, children: 
     [
 
         //COMPONENTES INTROCUÇÃO AO PLANO ----------------------------------------
@@ -87,7 +87,7 @@ export const planodengocioRoutes = [
 
         //COMPONENTES CONCLUSÃO ----------------------------------------------------
         {path: 'introconclusao', component: IntroconclusaoComponent},
-        {path: 'analiseplano', component: AnaliseplanoComponent}
+        {path: 'analiseplano/:id', component: AnaliseplanoComponent}
         //--------------------------------------------------------------------------
     ]
 }

@@ -1,47 +1,162 @@
-<form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Senha</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Senha">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputAddress">Endereço</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="Rua dos Bobos, nº 0">
-  </div>
-  <div class="form-group">
-    <label for="inputAddress2">Endereço 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartamento, hotel, casa, etc.">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">Cidade</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputEstado">Estado</label>
-      <select id="inputEstado" class="form-control">
-        <option selected>Escolher...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputCEP">CEP</label>
-      <input type="text" class="form-control" id="inputCEP">
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Clique em mim
-      </label>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Entrar</button>
-</form>
 
+  <section class="grey-text w-responsive mx-auto p-5">
+      <form #EditUserForm="ngForm" (ngSubmit)="EditUserForm.form.valid && onSubmit()">
+        <h4 class="h4 mb-4 text-center"><span> Perfil do usuário {{user.nomeusu}} {{user.sobrenomeusu}} </span></h4>
+    
+    
+        <!--                        DETALHES DO USUÁRIO                                       -->
+    
+    
+        <h1 class="h4 mb-4 text-center font-weight-bold">Detalhes de identificação e contato</h1>
+    
+        <div class="form-group col-md-3">
+          <label for="cpf">CPF*</label>
+          <input type="text" class="form-control" id="cpf" required minlength="11"
+            [ngClass]="{ 'is-invalid': EditUserForm.submitted && cpf.invalid }" placeholder="CPF" [(ngModel)]="user.cpf"
+            name="cpf" #cpf="ngModel" mask="000.000.000-00">
+          <div *ngIf="EditUserForm.submitted && cpf.invalid" class="alert alert-danger">
+            <div *ngIf="cpf.errors.required">O campo de CPF é obrigatório</div>
+            <div *ngIf="cpf.errors.minlength">Seu CPF está faltando dígitos</div>
+          </div>
+        </div>
+    
+        <div class="form-group col-md-4">
+          <label for="nomeusu">Nome*</label>
+          <input type="text" class="form-control" id="firstName" required maxlength="32"
+            [ngClass]="{ 'is-invalid': EditUserForm.submitted && nomeusu.invalid }" placeholder="Nome de usuário"
+            [(ngModel)]="user.nomeusu" name="nomeusu" #nomeusu="ngModel">
+          <div *ngIf="EditUserForm.submitted && nomeusu.invalid" class="alert alert-danger">
+            <div *ngIf="nomeusu.errors.required">O campo de nome é obrigatório</div>
+          </div>
+        </div>
+    
+        <div class="form-group col-md-4">
+          <label for="sobrenomeusu">Sobrenome*</label>
+          <input type="text" class="form-control" id="sobrenomeusu" required maxlength="100"
+            [ngClass]="{ 'is-invalid': EditUserForm.submitted && sobrenomeusu.invalid }" placeholder="Sobrenome"
+            [(ngModel)]="user.sobrenomeusu" name="sobrenomeusu" #sobrenomeusu="ngModel">
+          <div *ngIf="EditUserForm.submitted && sobrenomeusu.invalid" class="alert alert-danger">
+            <div *ngIf="sobrenomeusu.errors.required">O campo de sobrenome é obrigatório</div>
+          </div>
+        </div>
+    
+        <div class="form-group col-md-3">
+          <label for="fone1">Fone 1*</label>
+          <input type="text" class="form-control" id="fone1" required
+            [ngClass]="{ 'is-invalid': EditUserForm.submitted && fone1.invalid }" 
+            placeholder="Ex: (DDD) + Número" minlength="11"
+            [(ngModel)]="user.fone1" name="fone1" #fone1="ngModel" mask="(00)00000-0000">
+          <div *ngIf="EditUserForm.submitted && fone1.invalid" class="alert alert-danger">
+            <div *ngIf="fone1.errors.required">O campo de telefone é obrigatório</div>
+            <div *ngIf="fone1.errors.minlength">Seu número de telefone está incompleto</div>
+          </div>
+        </div>
+    
+        <div class="form-group col-md-7">
+          <label for="fone2">Fone 2*</label>
+          <input type="text" class="form-control" id="fone2" required
+            [ngClass]="{ 'is-invalid': EditUserForm.submitted && fone2.invalid }" minlength="11"
+            placeholder="Caso não use 2 números, utilize o número de alguém próximo" [(ngModel)]="user.fone2"
+            name="fone2" #fone2="ngModel" mask="(00)00000-0000">
+          <div *ngIf="EditUserForm.submitted && fone2.invalid" class="alert alert-danger">
+            <div *ngIf="fone2.errors.required">O campo do segundo número é obrigatório</div>
+           <div *ngIf="fone2.errors.minlength">Seu número de telefone está incompleto</div>
+          </div>
+        </div>
+
+        <!--                        DETALHES DO ENDEREÇO                                      -->
+    
+        <h1 class="h4 mb-4 text-center font-weight-bold">Detalhes do endereço</h1>
+    
+        <div class="form-group col-md-10">
+          <label for="endereco">Endereço*</label>
+          <input type="text" class="form-control" id="endereco" required maxlength="50"
+            [ngClass]="{ 'is-invalid': EditUserForm.submitted && endereco.invalid }"
+            placeholder="Ex: Rua Previsto de Morais, nº 904, setor morada do leste" [(ngModel)]="user.endereco"
+            name="endereco" #endereco="ngModel">
+          <div *ngIf="EditUserForm.submitted && endereco.invalid" class="alert alert-danger">
+            <div *ngIf="endereco.errors.required">O campo pertinente ao endereço é obrigatório</div>
+          </div>
+        </div>
+    
+        <div class="form-group col-md-6">
+          <label for="cidade">Cidade*</label>
+          <input type="text" class="form-control" id="cidade" required maxlength="32"
+            [ngClass]="{ 'is-invalid': EditUserForm.submitted && cidade.invalid }" placeholder="Cidade atual"
+            [(ngModel)]="user.cidade" name="cidade" #cidade="ngModel">
+          <div *ngIf="EditUserForm.submitted && cidade.invalid" class="alert alert-danger">
+            <div *ngIf="cidade.errors.required">O campo pertinente a cidade é obrigatório</div>
+          </div>
+        </div>
+    
+        <div class="form-group col-md-2">
+          <label for="estado">Estado</label>
+          <select type="text" class="form-control"  id="estado" required name="estado"
+          [ngClass]="{ 'is-invalid': EditUserForm.submitted && estado.invalid }"
+          [(ngModel)]="user.estado" #estado="ngModel">
+            <option>AC</option>
+            <option>AL</option>
+            <option>AP</option>
+            <option>AM</option>
+            <option>BA</option>
+            <option>CE</option>
+            <option>DF</option>
+            <option>ES</option>
+            <option selected>GO</option>
+            <option>MA</option>
+            <option>MT</option>
+            <option>MS</option>
+            <option>MG</option>
+            <option>PA</option>
+            <option>PB</option>
+            <option>PR</option>
+            <option>PE</option>
+            <option>PI</option>
+            <option>RJ</option>
+            <option>RN</option>
+            <option>RS</option>
+            <option>RO</option>
+            <option>RR</option>
+            <option>SC</option>
+            <option>SP</option>
+            <option>SE</option>
+            <option>TO</option>
+          </select>
+          <div *ngIf="EditUserForm.submitted && estado.invalid" class="alert alert-danger">
+            <div *ngIf="estado.errors.required">O campo pertinente ao estado é obrigatório</div>
+          </div>
+        </div>
+    
+    
+        <!--                        DETALHES DO CURRÍCULO                                     -->
+    
+        <h1 class="h4 mb-4 text-center font-weight-bold">Detalhes profissionais</h1>
+    
+        <div class="form-group">
+          <label for="observacao">Perfil
+            <strong>(Breve currículo)*</strong>
+          </label>
+          <textarea type="text" class="form-control" rows="3" name="curriculo" id="curriculo" required
+            [ngClass]="{ 'is-invalid': EditUserForm.submitted && curriculo.invalid }"
+            placeholder="Ex: Tecnólogo em análise e desenvolvimento de sistemas | Experiência em gestão de empresas | Estudante | etc..."
+            [(ngModel)]="user.curriculo" #curriculo="ngModel">
+          </textarea>
+          <div *ngIf="EditUserForm.submitted && curriculo.invalid" class="alert alert-danger">
+            <div *ngIf="curriculo.errors.required">O campo de currículo é obrigatório</div>
+        </div>
+        </div>
+    
+    
+        <div class="btn-group btn-group-sm">
+          <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+          <button button class="btn btn-dark">Atualizar</button>
+
+        </div>
+        <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+          <p style="font-size: 20px; color: white">Alterando...</p>
+        </ngx-spinner>
+      
+    
+      </form>
+    
+    </section>

@@ -52,6 +52,7 @@ import { ExcluirPlanoComponent } from './telasplano/excluir-plano/excluir-plano.
 import { DeleteUserModalComponent } from './shared/components/modals/delete-user-modal/delete-user-modal.component';
 import {NgxMaskModule} from 'ngx-mask';
 import { MustMatchDirective } from './helpers/must-match.directive';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 
@@ -98,10 +99,11 @@ import { MustMatchDirective } from './helpers/must-match.directive';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxSpinnerModule,
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
     ToastrModule.forRoot({       
-      timeOut: 4000, 
+      timeOut: 4000,
       positionClass: 'toast-top-center'    
     }) 
   ],

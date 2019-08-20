@@ -10,107 +10,98 @@
 
     <mat-accordion>
       <mat-expansion-panel>
-        <mat-expansion-panel-header routerLink="/planodenegocio/introplano">
+        <mat-expansion-panel-header routerLink="/planodenegocio/:id/introplano" (click)="clicouIntroducao()">
           <mat-panel-title>
             Introdução ao plano
           </mat-panel-title>
         </mat-expansion-panel-header>
         
-        <a mat-list-item routerLink="/planodenegocio/dadosempreendedores">Dados dos empreendedores</a>
+      
+        <a mat-list-item routerLink="/planodenegocio/:id/missao" (click)="clicouIntroducaoME()">Missão da empresa</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/missao">Missão da empresa</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/setordeatv" (click)="clicouIntroducaoSA()">Setores de atividades</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/setordeatv">Setores de atividades</a>
-        <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/capitalsocial">Capital social</a>
-        <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/fonterecursos">Fonte de recursos</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/capitalsocial" (click)="clicouIntroducaoCS()">Capital social</a>
         
         
       </mat-expansion-panel>
 
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header routerLink="/planodenegocio/introestudodemercado">
+        <mat-expansion-panel-header routerLink="/planodenegocio/:id/introestudodemercado" (click)="clicouEstudoDeMercado()">
           <mat-panel-title>
             Estudo de mercado
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <a mat-list-item routerLink="/planodenegocio/estudocliente">Estudo dos clientes</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/estudocliente" (click)="clicouEstudoDosClientes()">Estudo dos clientes</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/estudoconcorrente">Estudo dos concorrentes</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/estudoconcorrente" (click)="clicouEstudoDosConcorrentes()">Estudo dos concorrentes</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/estudofornecedores">Estudo dos fornecedores</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/estudofornecedores" (click)="clicouEstudoDosFornecedores()">Estudo dos fornecedores</a>
 
       </mat-expansion-panel>
 
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header routerLink="/planodenegocio/introplanodemarketing">
+        <mat-expansion-panel-header routerLink="/planodenegocio/:id/introplanodemarketing" (click)="clicouPlanoDeMarketing()">
           <mat-panel-title>
             Plano de marketing
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <a routerLink="/planodenegocio/produtoseservicos">Produtos e serviços</a>
+        <a routerLink="/planodenegocio/:id/produtoseservicos" (click)="clicouPlanoDeMarketingPS()">Produtos e serviços</a>
         <mat-divider></mat-divider>
-        <a routerLink="/planodenegocio/preco">Preço</a>
+        <a routerLink="/planodenegocio/:id/preco" (click)="clicouPlanoDeMarketingP()">Preço</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/estrategiaspromocionais">Estratégias promocionais</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/estrategiaspromocionais" (click)="clicouPlanoDeMarketingEP()">Estratégias promocionais</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/estruturacomercializacao">Estrutura de comercialização</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/estruturacomercializacao" (click)="clicouPlanoDeMarketingEC()">Estrutura de comercialização</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/localizacaonegocio">Localização</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/localizacaonegocio" (click)="clicouPlanoDeMarketingLN()">Localização</a>
 
       </mat-expansion-panel>
 
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header routerLink="/planodenegocio/introplanomonetario">
+        <mat-expansion-panel-header routerLink="/planodenegocio/:id/introplanomonetario" (click)="clicouPlanoMonetario()">
           <mat-panel-title>
             Plano monetário
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <a mat-list-item routerLink="/planodenegocio/investimentosfixos">Investimentos fixos</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/investimentosfixos" (click)="clicouPlanoMonetarioIF()">Investimentos fixos</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/investimentospreop">Investimentos pré-operacionais</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/investimentospreop"(click)="clicouPlanoMonetarioIPO()">Investimentos pré-operacionais</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/investimentototal">Investimento total</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/investimentototal" (click)="clicouPlanoMonetarioIT()">Investimento total</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/faturamentomensal">Faturamento mensal</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/faturamentomensal" (click)="clicouPlanoMonetarioFM()">Faturamento mensal</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/custouni">Custo unitário</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/custouni" (click)="clicouPlanoMonetarioCU()">Custo unitário</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/custosdecomerc">Custos de comercialização</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/custosfixosop" (click)="clicouIntroducao()">Custos fixos operacionais mensais</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/custodedepre">Custos de depreciação</a>
-        <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/custosfixosop">Custos fixos operacionais mensais</a>
-        <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/demonstrativoresultados">Demonstrativo de resultados</a>
-        <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/indicadoresviabilidade">Indicadores de viabilidade</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/demonstrativoresultados" (click)="clicouPlanoMonetarioDR()">Demonstrativo de resultados</a>
 
       </mat-expansion-panel>
 
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header routerLink="/planodenegocio/introanalisecritica">
+        <mat-expansion-panel-header routerLink="/planodenegocio/:id/introanalisecritica" (click)="clicouAnaliseCritica()">
           <mat-panel-title>
             Análise crítica
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <a mat-list-item routerLink="/planodenegocio/matrizfofa">Matriz F.O.F.A</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/matrizfofa" (click)="clicouAnaliseCriticaF()">Matriz F.O.F.A</a>
 
       </mat-expansion-panel>
 
 
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header routerLink="/planodenegocio/introconclusao">
+        <mat-expansion-panel-header routerLink="/planodenegocio/:id/introconclusao" (click)="clicouConclusao()">
           <mat-panel-title>
             Conclusão
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <a mat-list-item routerLink="/planodenegocio/analiseplano">Análise do plano</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/analiseplano/:id" (click)="clicouAnaliseDoPlano()">Análise do plano</a>
       </mat-expansion-panel>
 
     </mat-accordion>
@@ -123,7 +114,7 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
 
-      <span class="texto-branco">TEXTO QUE DESCREVE EM QUE TELA SE ESTÁ TRABALHANDO</span>
+      <span class="texto-branco">{{recebeTitulo}}</span>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

@@ -15,7 +15,7 @@ import { FonterecursosComponent } from './introducaoaoplano/fonterecursos/fonter
 import { IntroplanoComponent } from './introducaoaoplano/introplano/introplano.component';
 import { IntroestudodemercadoComponent } from './estudodemercado/introestudodemercado/introestudodemercado.component';
 import { EstudodosclientesComponent } from './estudodemercado/estudodosclientes/estudodosclientes.component';
-import { EstudodosconcorrentesComponent } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes.component';
+import { EstudodosconcorrentesComponent } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes-list/estudodosconcorrentes.component';
 import { EstudodosfornecedoresComponent } from './estudodemercado/estudodosfornecedores/estudodosfornecedores.component';
 import { IntroplanodemarketingComponent } from './planodemarketing/introplanodemarketing/introplanodemarketing.component';
 import { ProdutoseservicosComponent } from './planodemarketing/produtoseservicos/produtoseservicos.component';

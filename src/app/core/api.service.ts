@@ -15,10 +15,19 @@ import { PlanoDto } from './model/model-plano/planoDto';
 export class ApiService {
   public baseUrl: string;
   public baseUrlP: string;
+  public baseUrlAP: string;
+  public baseUrlR: string;
+  public baseUrlEP: string;
+  public baseUrlEC: string;
 
   constructor(private httpClient: HttpClient) {
     this.baseUrl = `${AppUtils.BASE_URL}` + 'api/users';
+    this.baseUrlR = `${AppUtils.BASE_URL}` + 'api/users/roles/main';
+
     this.baseUrlP = `${AppUtils.BASE_URL}` + 'api/planos';
+    this.baseUrlEP = `${AppUtils.BASE_URL}` + 'api/estudoProprio';
+    this.baseUrlEC = `${AppUtils.BASE_URL}` + 'api/estudoDosConcorrentes';
+    this.baseUrlAP = `${AppUtils.BASE_URL}` + 'api/analiseDoPlano';
   }
 
   login(user: UserLogin): Observable <any> {
@@ -96,10 +105,26 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.baseUrl}`, AppUtils.OPTIONS_OBJECTO);
   }
 
+  getEstudoProprio(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrlEP}`, AppUtils.OPTIONS_OBJECTO);
+  }
+
+  getEstudoDosConcorrentes(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrlEC}`, AppUtils.OPTIONS_OBJECTO);
+  }
+
+  getRoleUser(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrlR}`, AppUtils.OPTIONS_OBJECTO);
+  }
+
   getPlanos(): Observable<any> {
     return this.httpClient.get<any>(`${this.baseUrlP}`, AppUtils.OPTIONS_OBJECTO);
   }
   
+  getAnaliseDoPlano(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrlAP}`, AppUtils.OPTIONS_OBJECTO);
+  }
+
   getRole(roles: Array<any>) {
     let role: any;
     if (this.isAuthenticated() && roles) {
@@ -126,6 +151,10 @@ export class ApiService {
 
   getPlanosById(id: string): Observable<any>{
     return this.httpClient.get<any>(`${this.baseUrlP}/${id}`, AppUtils.OPTIONS_OBJECTO);
+  }
+
+  getAnaliseDoPlanoById(id: string): Observable<any>{
+    return this.httpClient.get<any>(`${this.baseUrlAP}/${id}`, AppUtils.OPTIONS_OBJECTO);
   }
 
   updateUser(user: UserDto): Observable<any> {
