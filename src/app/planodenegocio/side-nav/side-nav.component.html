@@ -10,34 +10,35 @@
 
     <mat-accordion>
       <mat-expansion-panel>
-        <mat-expansion-panel-header routerLink="/planodenegocio/:id/introplano" (click)="clicouIntroducao()">
+        <mat-expansion-panel-header queryParamsHandling="preserve" [routerLink]="['introplano']"  (click)="clicouIntroducao()">
           <mat-panel-title>
             Introdução ao plano
           </mat-panel-title>
         </mat-expansion-panel-header>
         
       
-        <a mat-list-item routerLink="/planodenegocio/:id/missao" (click)="clicouIntroducaoME()">Missão da empresa</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['missao']" (click)="clicouIntroducaoME()">Missão da empresa</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/:id/setordeatv" (click)="clicouIntroducaoSA()">Setores de atividades</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['setordeatv']" (click)="clicouIntroducaoSA()">Setores de atividades</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/:id/capitalsocial" (click)="clicouIntroducaoCS()">Capital social</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['capitalsocial']" (click)="clicouIntroducaoCS()">Capital social</a>
         
         
       </mat-expansion-panel>
 
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header routerLink="/planodenegocio/:id/introestudodemercado" (click)="clicouEstudoDeMercado()">
+        <mat-expansion-panel-header queryParamsHandling="preserve" [routerLink]="['introestudodemercado']" (click)="clicouEstudoDeMercado()">
           <mat-panel-title>
             Estudo de mercado
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <a mat-list-item routerLink="/planodenegocio/:id/estudocliente" (click)="clicouEstudoDosClientes()">Estudo dos clientes</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['estudocliente']" (click)="clicouEstudoDosClientes()">Estudo dos clientes</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/:id/estudoconcorrente" (click)="clicouEstudoDosConcorrentes()">Estudo dos concorrentes</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['estudoconcorrente']"
+         (click)="clicouEstudoDosConcorrentes()">Estudo dos concorrentes</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/:id/estudofornecedores" (click)="clicouEstudoDosFornecedores()">Estudo dos fornecedores</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['estudofornecedores']" (click)="clicouEstudoDosFornecedores()">Estudo dos fornecedores</a>
 
       </mat-expansion-panel>
 
@@ -84,7 +85,7 @@
       </mat-expansion-panel>
 
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header routerLink="/planodenegocio/:id/introanalisecritica" (click)="clicouAnaliseCritica()">
+        <mat-expansion-panel-header routerLink="/planodenegocio/:id/analiseplano" (click)="clicouAnaliseCritica()">
           <mat-panel-title>
             Análise crítica
           </mat-panel-title>
@@ -101,7 +102,7 @@
             Conclusão
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <a mat-list-item routerLink="/planodenegocio/:id/analiseplano/:id" (click)="clicouAnaliseDoPlano()">Análise do plano</a>
+        <a mat-list-item routerLink="/planodenegocio/:id/analiseplano" (click)="clicouAnaliseDoPlano()">Análise do plano</a>
       </mat-expansion-panel>
 
     </mat-accordion>

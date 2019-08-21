@@ -26,7 +26,7 @@ export class ApiService {
 
     this.baseUrlP = `${AppUtils.BASE_URL}` + 'api/planos';
     this.baseUrlEP = `${AppUtils.BASE_URL}` + 'api/estudoProprio';
-    this.baseUrlEC = `${AppUtils.BASE_URL}` + 'api/estudoDosConcorrentes';
+    this.baseUrlEC =  '/estudoDosConcorrentes';
     this.baseUrlAP = `${AppUtils.BASE_URL}` + 'api/analiseDoPlano';
   }
 
@@ -109,8 +109,10 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.baseUrlEP}`, AppUtils.OPTIONS_OBJECTO);
   }
 
-  getEstudoDosConcorrentes(): Observable<any> {
-    return this.httpClient.get<any>(`${this.baseUrlEC}`, AppUtils.OPTIONS_OBJECTO);
+  getEstudoDosConcorrentes(id: string): Observable<any> {
+    console.log("url abaixo");
+    console.log(`${AppUtils.BASE_URL2}${id}${this.baseUrlEC}`);
+    return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEC}`, AppUtils.OPTIONS_OBJECTO);
   }
 
   getRoleUser(): Observable<any> {
