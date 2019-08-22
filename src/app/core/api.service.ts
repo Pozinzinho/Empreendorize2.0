@@ -6,6 +6,7 @@ import { HttpParams, HttpClient } from '@angular/common/http';
 import { UserLogin } from './model/model-user/login';
 import { UserDto } from './model/model-user/userDto';
 import { PlanoDto } from './model/model-plano/planoDto';
+import { AnaliseDoPlanoDto } from './model/models-do-plano/model-conclusao/AnaliseDoPlanoDto';
 
 
 
@@ -25,9 +26,9 @@ export class ApiService {
     this.baseUrlR = `${AppUtils.BASE_URL}` + 'api/users/roles/main';
 
     this.baseUrlP = `${AppUtils.BASE_URL}` + 'api/planos';
-    this.baseUrlEP = `${AppUtils.BASE_URL}` + 'api/estudoProprio';
+    this.baseUrlEP = '/estudoProprio';
     this.baseUrlEC =  '/estudoDosConcorrentes';
-    this.baseUrlAP = `${AppUtils.BASE_URL}` + 'api/analiseDoPlano';
+    this.baseUrlAP = '/analiseDoPlano';
   }
 
   login(user: UserLogin): Observable <any> {
@@ -105,15 +106,24 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.baseUrl}`, AppUtils.OPTIONS_OBJECTO);
   }
 
-  getEstudoProprio(): Observable<any> {
-    return this.httpClient.get<any>(`${this.baseUrlEP}`, AppUtils.OPTIONS_OBJECTO);
+  getEstudoProprio(id: string): Observable<any> {
+    return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEP}`, AppUtils.OPTIONS_OBJECTO);
   }
 
   getEstudoDosConcorrentes(id: string): Observable<any> {
-    console.log("url abaixo");
-    console.log(`${AppUtils.BASE_URL2}${id}${this.baseUrlEC}`);
     return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEC}`, AppUtils.OPTIONS_OBJECTO);
   }
+
+  getAnaliseDoPlano(id: string): Observable<any> {
+    return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlAP}`, AppUtils.OPTIONS_OBJECTO);
+  }
+
+  updateAnaliseDoPlano(analise: AnaliseDoPlanoDto, id: string): Observable<any> {
+    return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlAP}/${analise.id}`, 
+    analise, AppUtils.OPTIONS_OBJECTO);
+  }
+
+  
 
   getRoleUser(): Observable<any> {
     return this.httpClient.get<any>(`${this.baseUrlR}`, AppUtils.OPTIONS_OBJECTO);
@@ -121,10 +131,6 @@ export class ApiService {
 
   getPlanos(): Observable<any> {
     return this.httpClient.get<any>(`${this.baseUrlP}`, AppUtils.OPTIONS_OBJECTO);
-  }
-  
-  getAnaliseDoPlano(): Observable<any> {
-    return this.httpClient.get<any>(`${this.baseUrlAP}`, AppUtils.OPTIONS_OBJECTO);
   }
 
   getRole(roles: Array<any>) {
@@ -155,8 +161,8 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.baseUrlP}/${id}`, AppUtils.OPTIONS_OBJECTO);
   }
 
-  getAnaliseDoPlanoById(id: string): Observable<any>{
-    return this.httpClient.get<any>(`${this.baseUrlAP}/${id}`, AppUtils.OPTIONS_OBJECTO);
+  getAnaliseDoPlanoById(idPlano: string, idAnalise: string): Observable<any>{
+    return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlAP}/${idAnalise}`, AppUtils.OPTIONS_OBJECTO);
   }
 
   updateUser(user: UserDto): Observable<any> {

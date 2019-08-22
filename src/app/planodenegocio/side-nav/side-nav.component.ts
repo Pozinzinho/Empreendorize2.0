@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AnaliseDoPlanoDto } from 'src/app/core/model/models-do-plano/model-conclusao/AnaliseDoPlanoDto';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ApiService } from 'src/app/core/api.service';
+import { MessageService } from 'src/app/core/message.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -10,6 +14,8 @@ import { map } from 'rxjs/operators';
 })
 export class SideNavComponent {
 
+  analiseDoPlano :  AnaliseDoPlanoDto[];
+  private idPlano : any;
 
   recebeTitulo = 'Empreendedorize';
 
@@ -22,8 +28,32 @@ export class SideNavComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private router: Router,
+    private route: ActivatedRoute,
+    private apiService: ApiService,
+    private messageService: MessageService
     ) {}
+
+    ngOnInit() {
+      //----------- PEGA ID DA URL DA ROTA PAI -----------
+      this.idPlano = this.route.snapshot.paramMap.get('id');
+      //--------------------------------------------------
+      console.log("Abaixo está o id do plano",this.idPlano)
+
+      //----------- Setar análises -----------------------------------------------
+      this.apiService.getAnaliseDoPlano(this.idPlano).subscribe(analiseDoPlano => {
+        this.analiseDoPlano = analiseDoPlano;
+      }, error => {
+        this.messageService.showError('Lista de análise','Falha ao carregar análise do plano!');
+      });
+      //---------------------------------------------------------------------------------------
+    }
+
+    pegaID(){
+      
+    }
 
   // ------------------------------ MAPA DA INTRODUÇÃO --------------------------
   clicouIntroducao(){

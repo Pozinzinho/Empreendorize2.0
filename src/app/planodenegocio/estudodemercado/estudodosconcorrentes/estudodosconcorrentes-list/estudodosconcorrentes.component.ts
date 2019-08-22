@@ -17,7 +17,6 @@ export class EstudodosconcorrentesComponent implements OnInit {
   estudoDosConcorrentes: EstudoDosConcorrentesDto[];
 
   private idUser : any;
-  private parentRouteId: number;
   
 
   constructor(
@@ -29,28 +28,22 @@ export class EstudodosconcorrentesComponent implements OnInit {
 
   ngOnInit() {
 
-    const id: string = this.route.snapshot.params.id;
-    const url: string = this.route.snapshot.url.join('');
-    const user = this.route.snapshot.data.user;
+    // const id: string = this.route.snapshot.params.id;
+    // const url: string = this.route.snapshot.url.join('');
+    // const user = this.route.snapshot.data.user;
     
 
+    //----------- PEGA ID DA URL DA ROTA PAI -----------
     this.route.parent.params.subscribe((param: any) => {
       this.idUser = param['id'];
     });
-
-    console.log(this.idUser, "Pegou id");
-
-    console.log(id, "pegou id");
-
-    console.log(url, "pegou url");
-
-    console.log(user, "pegou user");
+    //--------------------------------------------------
 
     if (!this.apiService.isAuthenticated()) {
       this.router.navigate(['loginUser']);
     }
 
-    this.apiService.getEstudoProprio().subscribe(estudoProprio => {
+    this.apiService.getEstudoProprio(this.idUser).subscribe(estudoProprio => {
       this.estudoProprio = estudoProprio;
     }, error => {
       this.messageService.showError('Lista de estudo proprio','Falha ao carregar estudo próprio!');

@@ -1,20 +1,34 @@
-<section class="grey-text w-responsive mx-auto p-5">
-        <form #AnalisePNForm="ngForm" (ngSubmit)="AnalisePNForm.form.valid && onSubmit()">
-      
-      
-          <h1 class="h4 mb-4 text-center font-weight-bold">Detalhes profissionais</h1>
-      
-          <div class="form-group">
-            <label for="descricaoAnalise">Análise do plano
-              <strong>(Considerações finais)*</strong>
-            </label>
-            <textarea type="text" class="form-control" rows="3" name="descricaoAnalise" id="descricaoAnalise"
-              [ngClass]="{ 'is-invalid': AnalisePNForm.submitted && curriculo.invalid }"
-              placeholder="Ex: Tecnólogo em análise e desenvolvimento de sistemas | Experiência em gestão de empresas | Estudante | etc..."
-              [(ngModel)]="analiseDoPlano.descricaoAnalise" #descricaoAnalise="ngModel">
-            </textarea>
-          </div>
-          
-        </form>
-      
-      </section>
+
+  <section class="grey-text w-responsive mx-auto p-5" >
+    <form #EditAnaliseDoPlano="ngForm" (ngSubmit)="EditAnaliseDoPlano.form.valid && onSubmit()">
+      <div class="form-group" >
+
+
+        <label for="descricaoAnalise">Análise do plano
+          <strong>(Descreva o que achou do plano)*</strong>
+        </label>
+        <textarea type="string" class="form-control" rows="3" name="descricaoAnalise" id="descricaoAnalise" 
+          required
+          [ngClass]="{ 'is-invalid': EditAnaliseDoPlano.submitted && descricaoAnalise.invalid }"
+          placeholder="Ex: Descreva aqui o que achou do plano"
+          [(ngModel)]="analise.descricaoAnalise" #descricaoAnalise="ngModel">
+        </textarea>
+        <div *ngIf="EditAnaliseDoPlano.submitted && descricaoAnalise.invalid" class="alert alert-danger">
+          <div *ngIf="descricaoAnalise.errors.required">O campo de análise do plano é obrigatório</div>
+      </div>
+      </div>
+  
+  
+      <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+        <button button class="btn btn-dark">Atualizar</button>
+      </div>
+
+      <!-- <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+        <p style="font-size: 20px; color: white">Alterando...</p>
+      </ngx-spinner> -->
+    
+  
+    </form>
+  
+  </section>

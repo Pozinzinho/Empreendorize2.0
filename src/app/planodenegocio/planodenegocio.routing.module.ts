@@ -89,6 +89,7 @@ export const planodengocioRoutes = [
         {path: 'introconclusao', component: IntroconclusaoComponent},
         {path: 'analiseplano/:id', component: AnaliseplanoComponent}
         //--------------------------------------------------------------------------
+
     ]
 }
     

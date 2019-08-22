@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MessageService } from 'src/app/core/message.service';
 import { UserDto } from 'src/app/core/model/model-user/userDto';
+import  {NgxSpinnerService}  from 'ngx-spinner';
 
 @Component({
   selector: 'app-edit-user',
@@ -17,7 +18,8 @@ export class EditUserComponent implements OnInit {
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
               private location: Location,
-              private messageService: MessageService) { }
+              private messageService: MessageService,
+              private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.idUser = this.route.snapshot.paramMap.get('id');

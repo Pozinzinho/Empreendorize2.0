@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" 
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="!(isHandset$ | async)">
     <mat-toolbar class="default-color">
@@ -15,15 +15,15 @@
             Introdução ao plano
           </mat-panel-title>
         </mat-expansion-panel-header>
-        
-      
+
+
         <a mat-list-item queryParamsHandling="preserve" [routerLink]="['missao']" (click)="clicouIntroducaoME()">Missão da empresa</a>
         <mat-divider></mat-divider>
         <a mat-list-item queryParamsHandling="preserve" [routerLink]="['setordeatv']" (click)="clicouIntroducaoSA()">Setores de atividades</a>
         <mat-divider></mat-divider>
         <a mat-list-item queryParamsHandling="preserve" [routerLink]="['capitalsocial']" (click)="clicouIntroducaoCS()">Capital social</a>
-        
-        
+
+
       </mat-expansion-panel>
 
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
@@ -43,67 +43,69 @@
       </mat-expansion-panel>
 
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header routerLink="/planodenegocio/:id/introplanodemarketing" (click)="clicouPlanoDeMarketing()">
+        <mat-expansion-panel-header queryParamsHandling="preserve" [routerLink]="['introplanodemarketing']" (click)="clicouPlanoDeMarketing()">
           <mat-panel-title>
             Plano de marketing
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <a routerLink="/planodenegocio/:id/produtoseservicos" (click)="clicouPlanoDeMarketingPS()">Produtos e serviços</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['produtoseservicos']" (click)="clicouPlanoDeMarketingPS()">Produtos e serviços</a>
         <mat-divider></mat-divider>
-        <a routerLink="/planodenegocio/:id/preco" (click)="clicouPlanoDeMarketingP()">Preço</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['preco']" (click)="clicouPlanoDeMarketingP()">Preço</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/:id/estrategiaspromocionais" (click)="clicouPlanoDeMarketingEP()">Estratégias promocionais</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['estrategiaspromocionais']" (click)="clicouPlanoDeMarketingEP()">Estratégias promocionais</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/:id/estruturacomercializacao" (click)="clicouPlanoDeMarketingEC()">Estrutura de comercialização</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['estruturacomercializacao']" (click)="clicouPlanoDeMarketingEC()">Estrutura de comercialização</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/:id/localizacaonegocio" (click)="clicouPlanoDeMarketingLN()">Localização</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['localizacaonegocio']" (click)="clicouPlanoDeMarketingLN()">Localização</a>
 
       </mat-expansion-panel>
 
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header routerLink="/planodenegocio/:id/introplanomonetario" (click)="clicouPlanoMonetario()">
+        <mat-expansion-panel-header queryParamsHandling="preserve" [routerLink]="['introplanomonetario']" (click)="clicouPlanoMonetario()">
           <mat-panel-title>
             Plano monetário
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <a mat-list-item routerLink="/planodenegocio/:id/investimentosfixos" (click)="clicouPlanoMonetarioIF()">Investimentos fixos</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['investimentosfixos']" (click)="clicouPlanoMonetarioIF()">Investimentos fixos</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/:id/investimentospreop"(click)="clicouPlanoMonetarioIPO()">Investimentos pré-operacionais</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['investimentospreop']"(click)="clicouPlanoMonetarioIPO()">Investimentos pré-operacionais</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/:id/investimentototal" (click)="clicouPlanoMonetarioIT()">Investimento total</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['investimentototal']" (click)="clicouPlanoMonetarioIT()">Investimento total</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/:id/faturamentomensal" (click)="clicouPlanoMonetarioFM()">Faturamento mensal</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['faturamentomensal']" (click)="clicouPlanoMonetarioFM()">Faturamento mensal</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/:id/custouni" (click)="clicouPlanoMonetarioCU()">Custo unitário</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['custouni']" (click)="clicouPlanoMonetarioCU()">Custo unitário</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/:id/custosfixosop" (click)="clicouIntroducao()">Custos fixos operacionais mensais</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['custosfixosop']" (click)="clicouIntroducao()">Custos fixos operacionais mensais</a>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/planodenegocio/:id/demonstrativoresultados" (click)="clicouPlanoMonetarioDR()">Demonstrativo de resultados</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['demonstrativoresultados']" (click)="clicouPlanoMonetarioDR()">Demonstrativo de resultados</a>
 
       </mat-expansion-panel>
 
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header routerLink="/planodenegocio/:id/analiseplano" (click)="clicouAnaliseCritica()">
+        <mat-expansion-panel-header queryParamsHandling="preserve" [routerLink]="['analiseplano']" (click)="clicouAnaliseCritica()">
           <mat-panel-title>
             Análise crítica
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <a mat-list-item routerLink="/planodenegocio/:id/matrizfofa" (click)="clicouAnaliseCriticaF()">Matriz F.O.F.A</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['matrizfofa']" (click)="clicouAnaliseCriticaF()">Matriz F.O.F.A</a>
 
       </mat-expansion-panel>
 
 
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header routerLink="/planodenegocio/:id/introconclusao" (click)="clicouConclusao()">
+      <mat-expansion-panel  (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header queryParamsHandling="preserve" [routerLink]="['introconclusao']" (click)="clicouConclusao()">
           <mat-panel-title>
             Conclusão
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <a mat-list-item routerLink="/planodenegocio/:id/analiseplano" (click)="clicouAnaliseDoPlano()">Análise do plano</a>
+        <a mat-list-item *ngFor="let analiseDoPlano of analiseDoPlano" queryParamsHandling="preserve" [routerLink]="['analiseplano/', analiseDoPlano.id]" 
+        (click)="clicouAnaliseDoPlano()">Analise do plano</a>
       </mat-expansion-panel>
+
 
     </mat-accordion>
   </mat-sidenav>

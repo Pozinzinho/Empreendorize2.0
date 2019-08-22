@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/core/api.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'src/app/core/message.service';
+import  {NgxSpinnerService}  from 'ngx-spinner';
 
 @Component({
   selector: 'app-editar-plano',
@@ -18,7 +19,8 @@ export class EditarPlanoComponent implements OnInit {
     private apiService: ApiService,
     private route: ActivatedRoute,
     private location: Location,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private spinner: NgxSpinnerService,
   ) { }
 
   ngOnInit() {
