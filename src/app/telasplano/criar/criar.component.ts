@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PlanoDto } from 'src/app/core/model/model-plano/planoDto';
 import { ApiService } from 'src/app/core/api.service';
 import { MessageService } from 'src/app/core/message.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -16,9 +16,12 @@ export class CriarComponent implements OnInit {
   private unsubscribeMessage = new Subject();
   submitted = false;
 
+  private idPlano: any;
+
   constructor(
     private apiService: ApiService, 
     private router:Router,
+    private route: ActivatedRoute,
     private messageService: MessageService
   ) { }
 
@@ -35,7 +38,8 @@ export class CriarComponent implements OnInit {
     this.apiService.registerPlano(this.plano).subscribe(data => {
       this.messageService.showSuccess('Plano de negócios criado com sucesso!', 
       'Vamos começar seu planejamento!');
-      this.router.navigate(['/planodenegocio/:id']);
+
+      this.router.navigate(['/planodenegocio', data.id]);
     }, error => {
       this.messageService.showError('Cadastro de plano', 'Falha ao cadastrar Plano de Negócios!');
     });

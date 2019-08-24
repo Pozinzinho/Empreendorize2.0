@@ -102,7 +102,7 @@
             Conclusão
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <a mat-list-item *ngFor="let analiseDoPlano of analiseDoPlano" queryParamsHandling="preserve" [routerLink]="['analiseplano/', analiseDoPlano.id]" 
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['analiseplano/', analise.id]" 
         (click)="clicouAnaliseDoPlano()">Analise do plano</a>
       </mat-expansion-panel>
 

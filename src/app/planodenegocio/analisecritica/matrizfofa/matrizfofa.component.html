@@ -1,1 +1,89 @@
-<h1 class="mt-4">Matriz F.O.F.A</h1>
+<section class="grey-text w-responsive mx-auto p-5">
+    <form #EditAnaliseDoPlano="ngForm" (ngSubmit)="EditAnaliseDoPlano.form.valid && onSubmit()">
+
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="descricaoAnalise">Forças
+                                <strong>(Descreva os pontos fortes da sua empresa)*</strong>
+                            </label>
+                            <textarea type="string" class="form-control" rows="3" name="descricaoAnalise"
+                                id="descricaoAnalise" required
+                                [ngClass]="{ 'is-invalid': EditAnaliseDoPlano.submitted && descricaoAnalise.invalid }"
+                                placeholder="Ex: Descreva aqui o que achou do plano">
+                                        </textarea>
+                            <div *ngIf="EditAnaliseDoPlano.submitted && descricaoAnalise.invalid"
+                                class="alert alert-danger">
+                                <div *ngIf="descricaoAnalise.errors.required">O campo de análise do plano é obrigatório
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="form-group">
+                            <label for="descricaoAnalise">Oportunidades
+                                <strong>(Descreva oportunidades abstraidas do ambiente externo)*</strong>
+                            </label>
+                            <textarea type="string" class="form-control" rows="3" name="descricaoAnalise"
+                                id="descricaoAnalise" required
+                                [ngClass]="{ 'is-invalid': EditAnaliseDoPlano.submitted && descricaoAnalise.invalid }"
+                                placeholder="Ex: Descreva aqui o que achou do plano">
+                                        </textarea>
+                            <div *ngIf="EditAnaliseDoPlano.submitted && descricaoAnalise.invalid"
+                                class="alert alert-danger">
+                                <div *ngIf="descricaoAnalise.errors.required">O campo de análise do plano é obrigatório
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+
+
+
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="descricaoAnalise">Fraquezas
+                                <strong>(Descreva os pontos fracos da sua empresa)*</strong>
+                            </label>
+                            <textarea type="string" class="form-control" rows="3" name="descricaoAnalise"
+                                id="descricaoAnalise" required
+                                [ngClass]="{ 'is-invalid': EditAnaliseDoPlano.submitted && descricaoAnalise.invalid }"
+                                placeholder="Ex: Descreva aqui o que achou do plano">
+                                        </textarea>
+                            <div *ngIf="EditAnaliseDoPlano.submitted && descricaoAnalise.invalid"
+                                class="alert alert-danger">
+                                <div *ngIf="descricaoAnalise.errors.required">O campo de análise do plano é obrigatório
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="form-group">
+                            <label for="descricaoAnalise">Ameaças
+                                <strong>(Descreva as ameaças abstraidas do ambiente externo)*</strong>
+                            </label>
+                            <textarea type="string" class="form-control" rows="3" name="descricaoAnalise"
+                                id="descricaoAnalise" required
+                                [ngClass]="{ 'is-invalid': EditAnaliseDoPlano.submitted && descricaoAnalise.invalid }"
+                                placeholder="Ex: Descreva aqui o que achou do plano">
+                                        </textarea>
+                            <div *ngIf="EditAnaliseDoPlano.submitted && descricaoAnalise.invalid"
+                                class="alert alert-danger">
+                                <div *ngIf="descricaoAnalise.errors.required">O campo de análise do plano é obrigatório</div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </form>
+
+</section>

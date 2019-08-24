@@ -5,28 +5,46 @@ import { Router } from '@angular/router';
 import { MessageService } from 'src/app/core/message.service';
 import { Role } from 'src/app/core/model/model-user/role';
 import { getValueInRange } from '@ng-bootstrap/ng-bootstrap/util/util';
+import { UserDto } from 'src/app/core/model/model-user/userDto';
 
 @Component({
   selector: 'app-topo',
   templateUrl: './topo.component.html',
   styleUrls: ['./topo.component.css']
 })
+@Injectable({
+  providedIn: 'root',
+})
 export class TopoComponent implements OnInit {
 
-  verificaRole : boolean = false;
   roles: Role[];
+  users: UserDto[];
+  public user = new UserDto;
 
   public nomeDoRole : string;
 
   constructor(private apiService: ApiService, 
     private router: Router,
-    private messageService: MessageService,
-    private role: Role) { }
+    private messageService: MessageService) { }
 
   ngOnInit() {
-    //  this.apiService.getRoleUser().subscribe(roles => {
-    //    this.roles = roles;
-    // });
+
+  }
+
+  verificaRoleNovamente(){
+      this.user = JSON.parse(localStorage.getItem('currentUser'));
+        console.log("role do usuário logado", this.user.roles);
+        this.apiService.getUserById(this.user.id).subscribe(users => {
+          this.users = users;
+        }, error => {
+        });
+        this.getRole(this.user);
+        console.log("Nome role", this.getRole(this.user));
+        this.nomeDoRole= this.getRole(this.user);
+  }
+
+  getRole(user: UserDto) {
+    return this.apiService.getRole(user.roles);
   }
 
   logou() {
@@ -48,19 +66,5 @@ export class TopoComponent implements OnInit {
 
   isAutenticated(): Observable<boolean> {
     return this.apiService.isAuthenticated();
-  }
-
-  isAdmin(): Observable<boolean>{
-    return new Observable<boolean> (observer => {
-  
-
-      this.nomeDoRole = "ROLE_USER";
-      if(this.nomeDoRole == "ROLE_ADMIN"){
-        observer.next(true);
-        observer.complete();
-      } else {
-        observer.next(false);
-      }
-    });
   }
 }

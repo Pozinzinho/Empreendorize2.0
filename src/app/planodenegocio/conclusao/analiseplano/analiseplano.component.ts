@@ -17,6 +17,7 @@ export class AnaliseplanoComponent implements OnInit {
   private idPlano : any;
   idAnalise: string;
 
+
   public analise = new  AnaliseDoPlanoDto();
 
   constructor(
@@ -35,20 +36,58 @@ export class AnaliseplanoComponent implements OnInit {
     });
     //--------------------------------------------------
 
-    // this.apiService.getAnaliseDoPlano(this.idPlano).subscribe(analiseDoPlano => {
-    //   this.analiseDoPlano = analiseDoPlano;
-    // }, error => {
-    //   this.messageService.showError('Lista de análise','Falha ao carregar análise do plano!');
-    // });
+    this.recuperaPlano();
+    this.pegarIdAnalise();
+    
+  }
 
-    this.idAnalise = this.route.snapshot.paramMap.get('id');
-    console.log(this.idAnalise, "Id da análise");
-
+  // -------------------------------- RECUPERAR O PLANO PELO ID ---------------------------
+  recuperaPlano(){
     this.apiService.getAnaliseDoPlanoById(this.idPlano, this.idAnalise).subscribe(analise => {
       this.analise = analise;
       console.log('Retornou analise com sucesso! ');
     }, error => {
       console.log('Error ao capturar plano por ID! ', error);
+    });
+  }
+
+   //----------- Setar id da análise -----------------------------------------------
+  pegarIdAnalise() {
+    this.apiService.getAnaliseDoPlano(this.idPlano).subscribe(analiseDoPlano => {
+      this.analiseDoPlano = analiseDoPlano;
+      this.idAnalise = analiseDoPlano[0].id;
+      console.log("Abaixo está o id da análise", this.idAnalise)
+      this.iniciaAnalise();
+      if(this.idAnalise != "undefined"){
+        this.router.navigate(['/planodenegocio/',this.idPlano,'analiseplano', this.idAnalise]);
+      }
+      
+    }, error => {
+
+    });
+    //---------------------------------------------------------------------------------------
+
+  }
+
+    iniciaAnalise(){
+      this.apiService.getAnaliseDoPlanoById(this.idPlano, this.idAnalise).subscribe(analise => {
+        this.analise = analise;
+        console.log('Retornou analise com sucesso! ', this.analise);
+      }, error => {
+        console.log('Error ao capturar plano por ID! ', error);
+      });
+    }
+
+  save(): void {
+    this.apiService.registerAnaliseDoPlano(this.analise, this.idPlano).subscribe(data => {
+      this.messageService.showSuccess('Cadastro realizado com sucesso!', 
+      'Análise cadastrada');
+      console.log("Id do da rota", data.id)
+      this.idAnalise = data.id;
+      this.recuperaPlano();
+      this.router.navigate(['/planodenegocio/',this.idPlano,'analiseplano', data.id]);
+    }, error => {
+      this.messageService.showError('Cadastro análise', 'Falha ao cadastrar Análise!');
     });
   }
 
@@ -66,7 +105,13 @@ export class AnaliseplanoComponent implements OnInit {
   }
 
   onSubmit(){
-    this.update();
+    console.log("Valor atual id analise", this.idAnalise)
+    if(typeof this.idAnalise === "undefined"){
+      this.save();
+    }else{
+      this.update();
+    }
+    
   }
 
 }

@@ -46,7 +46,7 @@ export class InterceptorService implements HttpInterceptor {
               return this.handleErrorGeneral(error);
             case 404:
               this.spinner.hide();
-              this.messageService.showError('Usuário não encontrado', 'Favor verificar se o seu e-mail foi didigato corretamente');
+              // this.messageService.showError('Usuário não encontrado', 'Favor verificar se o seu e-mail foi didigato corretamente');
               return this.handleErrorGeneral(error);
             case 403:
               this.spinner.hide();

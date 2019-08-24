@@ -16,10 +16,13 @@ export class SideNavComponent {
 
   analiseDoPlano :  AnaliseDoPlanoDto[];
   private idPlano : any;
-
+  idAnalise: string;
+  
   recebeTitulo = 'Empreendedorize';
 
   panelOpenState = false;
+
+  public analise = new  AnaliseDoPlanoDto();
 
   
 
@@ -30,7 +33,6 @@ export class SideNavComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private router: Router,
     private route: ActivatedRoute,
     private apiService: ApiService,
     private messageService: MessageService
@@ -42,18 +44,32 @@ export class SideNavComponent {
       //--------------------------------------------------
       console.log("Abaixo está o id do plano",this.idPlano)
 
-      //----------- Setar análises -----------------------------------------------
-      this.apiService.getAnaliseDoPlano(this.idPlano).subscribe(analiseDoPlano => {
-        this.analiseDoPlano = analiseDoPlano;
-      }, error => {
-        this.messageService.showError('Lista de análise','Falha ao carregar análise do plano!');
-      });
-      //---------------------------------------------------------------------------------------
+      this.pegarIdAnalise();
     }
 
-    pegaID(){
-      
+  pegarIdAnalise() {
+    //----------- Setar id da análise -----------------------------------------------
+    this.apiService.getAnaliseDoPlano(this.idPlano).subscribe(analiseDoPlano => {
+      this.analiseDoPlano = analiseDoPlano;
+      this.idAnalise = analiseDoPlano[0].id;
+      console.log("Abaixo está o id da análise", this.idAnalise)
+      this.iniciaAnalise();
+    }, error => {
+
+    });
+    //---------------------------------------------------------------------------------------
+
+  }
+
+    iniciaAnalise(){
+      this.apiService.getAnaliseDoPlanoById(this.idPlano, this.idAnalise).subscribe(analise => {
+        this.analise = analise;
+        console.log('Retornou analise com sucesso! ', this.analise);
+      }, error => {
+        console.log('Error ao capturar plano por ID! ', error);
+      });
     }
+
 
   // ------------------------------ MAPA DA INTRODUÇÃO --------------------------
   clicouIntroducao(){

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDto } from 'src/app/core/model/model-user/userDto';
+import { TopoComponent } from '../topo/topo.component';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
+    
   }
 
 }

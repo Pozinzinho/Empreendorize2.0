@@ -4,12 +4,14 @@ import { Router } from '@angular/router';
 import { MessageService } from 'src/app/core/message.service';
 import { UserLogin } from 'src/app/core/model/model-user/login';
 import  {NgxSpinnerService}  from 'ngx-spinner';
+import { TopoComponent } from 'src/app/telasiniciais/topo/topo.component';
 
 @Component({
   selector: 'app-login-user',
   templateUrl: './login-user.component.html',
   styleUrls: ['./login-user.component.css']
 })
+
 export class LoginUserComponent implements OnInit {
 
   user = new UserLogin();
@@ -17,7 +19,8 @@ export class LoginUserComponent implements OnInit {
   constructor(private apiService: ApiService, 
     private spinner: NgxSpinnerService,
     private router:Router, 
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private topoComponent: TopoComponent) { }
 
   
 
