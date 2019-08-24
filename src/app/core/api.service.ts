@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import * as AppUtils from '../shared/comum/app.utils';
 import { HttpParams, HttpClient } from '@angular/common/http';
@@ -22,6 +22,7 @@ export class ApiService {
   public baseUrlEC: string;
 
   public user = new UserDto;
+  public roleAtual : string;
 
   constructor(private httpClient: HttpClient) {
     this.baseUrl = `${AppUtils.BASE_URL}` + 'api/users';
@@ -78,18 +79,26 @@ export class ApiService {
     });
   }
 
-  //Método para verificação do usuário logado.
-  // isAdm(): Observable<boolean> {
-  //   return new Observable<boolean> (observer => {
-  //     this.user = JSON.parse(localStorage.getItem('currentUser'));
-  //     console.log("role do usuário logado", this.user.roles[0].name);
-  //     if (this.user.roles[0].name == "ROLE_ADMIN") {
-  //       observer.next(true);
-  //       observer.complete();
-  //     } else {
-  //       observer.next(false);
-  //     }
-  //   });
+  // Método para verificação do role dde usuário.
+  isAdm(): Observable<boolean> {
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    this.roleAtual = this.user.roles[0].name;
+    if (typeof this.roleAtual != "undefined") {
+      return new Observable<boolean>(observer => {
+        if (this.roleAtual == "ROLE_ADMIN") {
+          observer.next(true);
+          observer.complete();
+        } else {
+          observer.next(false);
+        }
+      });
+    }
+  }
+
+  // isAdm(value: string) {
+  //   this.user = JSON.parse(localStorage.getItem('currentUser'));
+  //   value = this.user.roles[0].name
+  //   this.roleAtual.next(value); 
   // }
 
   registerUser(user: UserDto): Observable<any> {

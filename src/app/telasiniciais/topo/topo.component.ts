@@ -62,4 +62,10 @@ export class TopoComponent implements OnInit {
   isAutenticated(): Observable<boolean> {
     return this.apiService.isAuthenticated();
   }
+
+  isADM(): Observable<boolean> {
+    if(typeof this.nomeDoRole != "undefined"){
+      return this.apiService.isAdm();
+    }
+  }
 }
