@@ -21,6 +21,8 @@ export class ApiService {
   public baseUrlEP: string;
   public baseUrlEC: string;
 
+  public user = new UserDto;
+
   constructor(private httpClient: HttpClient) {
     this.baseUrl = `${AppUtils.BASE_URL}` + 'api/users';
     this.baseUrlR = `${AppUtils.BASE_URL}` + 'api/users/roles/main';
@@ -29,6 +31,8 @@ export class ApiService {
     this.baseUrlEP = '/estudoProprio';
     this.baseUrlEC =  '/estudoDosConcorrentes';
     this.baseUrlAP = '/analiseDoPlano';
+
+    
   }
 
   login(user: UserLogin): Observable <any> {
@@ -73,6 +77,20 @@ export class ApiService {
       }
     });
   }
+
+  //Método para verificação do usuário logado.
+  // isAdm(): Observable<boolean> {
+  //   return new Observable<boolean> (observer => {
+  //     this.user = JSON.parse(localStorage.getItem('currentUser'));
+  //     console.log("role do usuário logado", this.user.roles[0].name);
+  //     if (this.user.roles[0].name == "ROLE_ADMIN") {
+  //       observer.next(true);
+  //       observer.complete();
+  //     } else {
+  //       observer.next(false);
+  //     }
+  //   });
+  // }
 
   registerUser(user: UserDto): Observable<any> {
     return this.httpClient.post<any>(AppUtils.REGISTER_URL, user, {headers: AppUtils.HEADERS_COMMUN});

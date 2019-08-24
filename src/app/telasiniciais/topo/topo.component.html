@@ -1,33 +1,4 @@
-<!--<div class="fixed-top">
-    <nav class="navbar navbar-light bg-faded" class="body">
-      <div class="container"  >
-        <a href="#" class="navbar-brand">
-          <img src="/assets/logo.png" />
-        </a>
-      </div>
-    </nav>
-  
 
-  <div class="menu">
-    <div class="container">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="home"> <i class="fas fa-home"></i> Início </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="perfil"> <i class="fas fa-user-tie"></i> Perfil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="descricao"> <i class="fas fa-sitemap"></i>O que é um plano de negócio? </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="banner">
-  <img src="/assets/banners/img_7.jpg" />
-</div>-->
 
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark default-color ie-nav" [containerInside]="false">
 
@@ -65,7 +36,7 @@
     <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item waves-light py-1 mx-3" 
       *ngIf="isAutenticated() | async" mdbWavesEffect>
-        <a class="nav-link" routerLink="list-user" *ngIf='nomeDoRole === ROLE_ADMIN' routerLinkActive="active"> Usuários</a>
+        <a class="nav-link" routerLink="list-user" *ngIf="nomeDoRole === 'ROLE_ADMIN'" routerLinkActive="active"> Usuários</a>
       </li>
 
       <li class="nav-item dropdown" *ngIf="isAutenticated() | async" dropdown>

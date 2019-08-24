@@ -12,11 +12,11 @@ export class HomeComponent implements OnInit {
 
   public user = new UserDto;
 
-  constructor() { }
+  constructor(private topo: TopoComponent) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
-    
+    this.topo.verificaRole();
   }
 
 }

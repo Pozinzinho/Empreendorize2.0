@@ -28,19 +28,13 @@ export class TopoComponent implements OnInit {
     private messageService: MessageService) { }
 
   ngOnInit() {
-
+    this.verificaRole();
   }
 
-  verificaRoleNovamente(){
+  verificaRole(){
       this.user = JSON.parse(localStorage.getItem('currentUser'));
-        console.log("role do usuário logado", this.user.roles);
-        this.apiService.getUserById(this.user.id).subscribe(users => {
-          this.users = users;
-        }, error => {
-        });
-        this.getRole(this.user);
-        console.log("Nome role", this.getRole(this.user));
-        this.nomeDoRole= this.getRole(this.user);
+        this.nomeDoRole = this.user.roles[0].name;
+        console.log("role do usuário logado", this.nomeDoRole);
   }
 
   getRole(user: UserDto) {
@@ -52,6 +46,7 @@ export class TopoComponent implements OnInit {
       this.clearLocalStore();
       this.messageService.showSuccess('Logout', 'Logout realizado com sucesso');
       this.router.navigate(['loginUser']);
+      this.nomeDoRole = "";
     }, error => {
       this.messageService.showError('Logout', 'Erro na realização de logout');
     });
