@@ -15,7 +15,7 @@ import { UserDto } from 'src/app/core/model/model-user/userDto';
 @Injectable({
   providedIn: 'root',
 })
-export class TopoComponent implements OnInit {
+export class TopoComponent {
 
   roles: Role[];
   users: UserDto[];
@@ -26,16 +26,6 @@ export class TopoComponent implements OnInit {
   constructor(private apiService: ApiService, 
     private router: Router,
     private messageService: MessageService) { }
-
-  ngOnInit() {
-    this.verificaRole();
-  }
-
-  verificaRole(){
-      this.user = JSON.parse(localStorage.getItem('currentUser'));
-        this.nomeDoRole = this.user.roles[0].name;
-        console.log("role do usuário logado", this.nomeDoRole);
-  }
 
   getRole(user: UserDto) {
     return this.apiService.getRole(user.roles);
@@ -61,5 +51,9 @@ export class TopoComponent implements OnInit {
 
   isAutenticated(): Observable<boolean> {
     return this.apiService.isAuthenticated();
+  }
+
+  isAuthenticatedADM(): Observable<boolean> {
+    return this.apiService.isAuthenticatedADM();
   }
 }

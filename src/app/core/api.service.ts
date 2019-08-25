@@ -79,6 +79,22 @@ export class ApiService {
     });
   }
 
+   //Método para verificação do nível de acesso.
+   isAuthenticatedADM(): Observable<boolean> {
+    return new Observable<boolean> (observer => {
+      if (JSON.parse(localStorage.getItem('currentUser'))) {
+        this.user = JSON.parse(localStorage.getItem('currentUser'));
+        if (this.user.roles[0].name === "ROLE_ADMIN") {
+        observer.next(true);
+        observer.complete();
+        }
+      } else {
+        observer.next(false);
+      }
+    });
+  }
+
+
   registerUser(user: UserDto): Observable<any> {
     return this.httpClient.post<any>(AppUtils.REGISTER_URL, user, {headers: AppUtils.HEADERS_COMMUN});
   }
