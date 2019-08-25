@@ -79,28 +79,6 @@ export class ApiService {
     });
   }
 
-  // Método para verificação do role dde usuário.
-  isAdm(): Observable<boolean> {
-    this.user = JSON.parse(localStorage.getItem('currentUser'));
-    this.roleAtual = this.user.roles[0].name;
-    if (typeof this.roleAtual != "undefined") {
-      return new Observable<boolean>(observer => {
-        if (this.roleAtual == "ROLE_ADMIN") {
-          observer.next(true);
-          observer.complete();
-        } else {
-          observer.next(false);
-        }
-      });
-    }
-  }
-
-  // isAdm(value: string) {
-  //   this.user = JSON.parse(localStorage.getItem('currentUser'));
-  //   value = this.user.roles[0].name
-  //   this.roleAtual.next(value); 
-  // }
-
   registerUser(user: UserDto): Observable<any> {
     return this.httpClient.post<any>(AppUtils.REGISTER_URL, user, {headers: AppUtils.HEADERS_COMMUN});
   }

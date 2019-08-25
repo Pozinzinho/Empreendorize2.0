@@ -35,7 +35,7 @@
 
     <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item waves-light py-1 mx-3" 
-      *ngIf="isAutenticated() && isADM() | async" mdbWavesEffect>
+      *ngIf="nomeDoRole === 'ROLE_ADMIN'" mdbWavesEffect>
         <a class="nav-link" routerLink="list-user" routerLinkActive="active"> Usuários</a>
       </li>
 
