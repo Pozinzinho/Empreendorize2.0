@@ -41,7 +41,9 @@
               "./node_modules/mdbootstrap/css/mdb.min.css",
               "./node_modules/mdbootstrap/css/style.css",
 
-              "./node_modules/ngx-toastr/toastr.css"
+              "./node_modules/ngx-toastr/toastr.css",
+
+              "./node_modules/videogular2/fonts/videogular.css"
             ],
             "scripts": [
               "./node_modules/tether/dist/js/tether.min.js",

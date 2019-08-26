@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/core/api.service';
 import { Location } from '@angular/common';
 import { MessageService } from 'src/app/core/message.service';
 import  {NgxSpinnerService}  from 'ngx-spinner';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-analiseplano',
@@ -26,7 +27,8 @@ export class AnaliseplanoComponent implements OnInit {
     private apiService: ApiService,
     private location: Location,
     private messageService: MessageService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -39,6 +41,13 @@ export class AnaliseplanoComponent implements OnInit {
     this.recuperaPlano();
     this.pegarIdAnalise();
     
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogContentExampleDialog);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   // -------------------------------- RECUPERAR O PLANO PELO ID ---------------------------
@@ -115,3 +124,9 @@ export class AnaliseplanoComponent implements OnInit {
   }
 
 }
+
+@Component({
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'dialog-content-example-dialog.html',
+})
+export class DialogContentExampleDialog {}

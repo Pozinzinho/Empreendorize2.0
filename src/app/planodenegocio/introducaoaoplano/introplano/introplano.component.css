@@ -1,3 +1,20 @@
 #page-content-wrapper {
     min-width: 100vw;
   }
+
+  .centralizar {
+    text-align: center;
+    clear: both; 
+    width: 100%;
+    margin: 10px auto;
+}
+
+.container {
+    width: 90%;
+    height: 65%;
+    background: #6C7A89;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+  }

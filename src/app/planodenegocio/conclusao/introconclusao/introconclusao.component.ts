@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmbedVideoService } from 'ngx-embed-video';
 
 @Component({
   selector: 'app-introconclusao',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IntroconclusaoComponent implements OnInit {
 
-  constructor() { }
+  yt_iframe_html: any;
+
+  youtubeUrl = "https://www.youtube.com/watch?v=y4IqDI0paTA";
+
+  constructor(private embedService: EmbedVideoService) { 
+    this.yt_iframe_html = this.embedService.embed(this.youtubeUrl);
+  }
 
   ngOnInit() {
+ 
   }
+
+
 
 }

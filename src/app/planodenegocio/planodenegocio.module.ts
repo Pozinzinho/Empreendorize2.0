@@ -37,7 +37,7 @@ import { IndicadoresdeviabilidadeComponent } from './planomonetario/indicadoresd
 import { IntroanalisecriticaComponent } from './analisecritica/introanalisecritica/introanalisecritica.component';
 import { MatrizfofaComponent } from './analisecritica/matrizfofa/matrizfofa.component';
 import { IntroconclusaoComponent } from './conclusao/introconclusao/introconclusao.component';
-import { AnaliseplanoComponent } from './conclusao/analiseplano/analiseplano.component';
+import { AnaliseplanoComponent, DialogContentExampleDialog } from './conclusao/analiseplano/analiseplano.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -45,7 +45,7 @@ import { SideNavComponent } from '../planodenegocio/side-nav/side-nav.component'
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule,
-MatIconModule, MatListModule, MatExpansionModule, MatOptionModule, MatSelectModule, MatInputModule, MatTableModule, MatPaginator, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule, MatCardModule, MatFormField, MatFormFieldModule, MatMenuModule, MatTooltipModule } from '@angular/material';
+MatIconModule, MatListModule, MatExpansionModule, MatOptionModule, MatSelectModule, MatInputModule, MatTableModule, MatPaginator, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule, MatCardModule, MatFormField, MatFormFieldModule, MatMenuModule, MatTooltipModule, MatDialogModule } from '@angular/material';
 import {MatDividerModule} from '@angular/material/divider';
 import { SimpleSidenavModule } from 'simple-sidenav';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -54,17 +54,31 @@ import { DadosempEditComponent } from './introducaoaoplano/dadosemp/dadosemp-edi
 import { DadosempDetailComponent } from './introducaoaoplano/dadosemp/dadosemp-detail/dadosemp-detail.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
+import { EmbedVideo } from 'ngx-embed-video';
+import { MatVideoModule } from 'mat-video';
+import {VgCoreModule} from 'videogular2/compiled/core';
+import {VgControlsModule} from 'videogular2/compiled/controls';
+import {VgOverlayPlayModule} from 'videogular2/compiled/overlay-play';
+import {VgBufferingModule} from 'videogular2/compiled/buffering';
 
 @NgModule(
     {
         imports:[
             BrowserModule,
+            VgCoreModule,
+            VgControlsModule,
+            VgOverlayPlayModule,
+            VgBufferingModule,
             FormsModule,
             ReactiveFormsModule,
             BrowserAnimationsModule,
+            MatVideoModule,
             AppRoutingModule,
             SimpleSidenavModule,
             LayoutModule,
+            HttpClientModule,
+            EmbedVideo.forRoot(),
             MatInputModule,
             MatTableModule,
             MatPaginatorModule,
@@ -73,6 +87,7 @@ import { ToastrModule } from 'ngx-toastr';
             MatCardModule,
             MatFormFieldModule,
             MatDividerModule,
+            MatDialogModule,
             MatSelectModule,
             MatOptionModule,
             MatToolbarModule,
@@ -133,8 +148,10 @@ import { ToastrModule } from 'ngx-toastr';
             MatrizfofaComponent, 
             IntroconclusaoComponent, 
             AnaliseplanoComponent,
-            SideNavComponent
+            SideNavComponent,
+            DialogContentExampleDialog
         ],
+        entryComponents: [DialogContentExampleDialog],
         providers:[],
         bootstrap:[PlanodenegocioComponent]
     }

@@ -1,11 +1,18 @@
+<section class="grey-text w-responsive mx-auto" class="direita">
+<div class="form-group" (click)="openDialog()">
+    <label>Tenho dúvidas 
+      <mat-icon>live_help</mat-icon>
+    </label>
+  </div>
+</section>
 
-  <section class="grey-text w-responsive mx-auto p-5" >
+<section class="grey-text w-responsive mx-auto p-5" >
     <form #EditAnaliseDoPlano="ngForm" (ngSubmit)="EditAnaliseDoPlano.form.valid && onSubmit()">
       <div class="form-group" >
 
 
         <label for="descricaoAnalise">Análise do plano
-          <strong>(Descreva o que achou do plano)*</strong>
+          <strong>(Justifique com base nas etapas anteriores o porquê do seu négocio, ser um negócio viável)*</strong>
         </label>
         <textarea type="string" class="form-control" rows="3" name="descricaoAnalise" id="descricaoAnalise" 
           required
@@ -33,3 +40,5 @@
     </form>
   
   </section>
+
+      

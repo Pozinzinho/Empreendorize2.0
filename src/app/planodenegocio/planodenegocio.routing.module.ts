@@ -33,6 +33,7 @@ import { IntroconclusaoComponent } from './conclusao/introconclusao/introconclus
 import { AnaliseplanoComponent } from './conclusao/analiseplano/analiseplano.component';
 import { DadosempAddComponent } from './introducaoaoplano/dadosemp/dadosemp-add/dadosemp-add.component';
 import { DadosempEditComponent } from './introducaoaoplano/dadosemp/dadosemp-edit/dadosemp-edit.component';
+import { IntroplanomonetarioComponent } from './planomonetario/introplanomonetario/introplanomonetario.component';
 export const planodengocioRoutes = [
     {path: 'planodenegocio/:id', component: PlanodenegocioComponent, children: 
     [
@@ -67,6 +68,7 @@ export const planodengocioRoutes = [
         //--------------------------------------------------------------------------
 
         //COMPONENTES PLANO MONETÁRIO ----------------------------------------------
+        {path: 'introplanomonetario', component: IntroplanomonetarioComponent},
         {path: 'investimentosfixos', component: InvestimentosfixosComponent},
         {path: 'investimentospreop', component: InvestimentospreopComponent},
         {path: 'investimentototal', component: InvestimentototalComponent},

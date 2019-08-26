@@ -1,1 +1,25 @@
-<h1 class="mt-4">Estudo de mercado</h1>
+
+
+<h1 mat-dialog-title class="centralizar">Estudo de mercado</h1>
+<h2 mat-dialog-title class="centralizar">Chegamos a 2ª etapa pertinente ao estudo do mercado em sua área de atuação</h2>
+<section class="grey-text w-responsive" class="centralizar">
+  <mat-dialog-content class="mat-typography">
+    <h3>Veja o vídeo abaixo que explica o porquê desta etapa ser iportante, e como desenvolvê-la</h3>
+  </mat-dialog-content>
+</section>
+
+<div class="container">
+  <vg-player>
+
+    <vg-controls vgFor="my-video" [vgAutohide]="true" [vgAutohideTime]="5">
+    </vg-controls>
+
+    <video height="240" #myMedia [vgMedia]="myMedia" id="my-video" preload="auto" autoplay="true" controls>
+      <source src="assets/videos/mercado.mp4" type="video/mp4">
+    </video>
+  </vg-player>
+</div>
+
+
+<section class="grey-text w-responsive mx-auto p-5">
+</section>

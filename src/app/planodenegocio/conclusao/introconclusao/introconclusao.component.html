@@ -1,3 +1,25 @@
-<p>
-  introconclusao works!
-</p>
+
+
+<h1 mat-dialog-title class="centralizar">Conclusão</h1>
+<h2 mat-dialog-title class="centralizar">Finalmente chegamos a ultima etapa do planejamento</h2>
+<section class="grey-text w-responsive" class="centralizar">
+  <mat-dialog-content class="mat-typography">
+    <h3>Veja o vídeo abaixo que explica o porquê desta etapa ser iportante, e como desenvolvê-la</h3>
+  </mat-dialog-content>
+</section>
+
+<div class="container">
+  <vg-player>
+
+    <vg-controls vgFor="my-video" [vgAutohide]="true" [vgAutohideTime]="5">
+    </vg-controls>
+
+    <video height="240" #myMedia [vgMedia]="myMedia" id="my-video" preload="auto" autoplay="true" controls>
+      <source src="assets/videos/conclusao.mp4" type="video/mp4">
+    </video>
+  </vg-player>
+</div>
+
+
+<section class="grey-text w-responsive mx-auto p-5">
+</section>

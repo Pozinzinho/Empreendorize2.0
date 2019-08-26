@@ -53,6 +53,12 @@ import { DeleteUserModalComponent } from './shared/components/modals/delete-user
 import {NgxMaskModule} from 'ngx-mask';
 import { MustMatchDirective } from './helpers/must-match.directive';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { EmbedVideo } from 'ngx-embed-video';
+import { MatVideoModule } from 'mat-video';
+import {VgCoreModule} from 'videogular2/compiled/core';
+import {VgControlsModule} from 'videogular2/compiled/controls';
+import {VgOverlayPlayModule} from 'videogular2/compiled/overlay-play';
+import {VgBufferingModule} from 'videogular2/compiled/buffering';
 
 
 
@@ -79,9 +85,16 @@ import { NgxSpinnerModule } from "ngx-spinner";
   ],
   imports: [
     BrowserModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
     NgbModule,
+    MatVideoModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    HttpClientModule,
+    EmbedVideo.forRoot(),
     FormsModule,
     DlDateTimeDateModule,  // <--- Determines the data type of the model
     DlDateTimePickerModule,
