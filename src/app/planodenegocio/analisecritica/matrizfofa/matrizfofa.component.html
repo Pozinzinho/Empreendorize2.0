@@ -1,3 +1,12 @@
+<section class="grey-text w-responsive mx-auto" class="direita">
+    <div class="form-group" (click)="openDialog()">
+        <label>Tenho dúvidas 
+          <mat-icon>live_help</mat-icon>
+        </label>
+      </div>
+</section>
+    
+
 <section class="grey-text w-responsive mx-auto p-5">
     <form #EditAnaliseDoPlano="ngForm" (ngSubmit)="EditAnaliseDoPlano.form.valid && onSubmit()">
 
@@ -6,17 +15,18 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <label for="descricaoAnalise">Forças
+                            <label for="forcas">Forças
                                 <strong>(Descreva os pontos fortes da sua empresa)*</strong>
                             </label>
-                            <textarea type="string" class="form-control" rows="3" name="descricaoAnalise"
-                                id="descricaoAnalise" required
-                                [ngClass]="{ 'is-invalid': EditAnaliseDoPlano.submitted && descricaoAnalise.invalid }"
-                                placeholder="Ex: Descreva aqui o que achou do plano">
+                            <textarea type="string" class="form-control" rows="3" name="forcas"
+                                id="forcas" required
+                                [ngClass]="{ 'is-invalid': EditAnaliseDoPlano.submitted && forcas.invalid }"
+                                placeholder="Ex: Descreva aqui as forças"
+                                [(ngModel)]="fofa.forcas" #forcas="ngModel">
                                         </textarea>
-                            <div *ngIf="EditAnaliseDoPlano.submitted && descricaoAnalise.invalid"
+                            <div *ngIf="EditAnaliseDoPlano.submitted && forcas.invalid"
                                 class="alert alert-danger">
-                                <div *ngIf="descricaoAnalise.errors.required">O campo de análise do plano é obrigatório
+                                <div *ngIf="forcas.errors.required">O campo de análise do plano é obrigatório
                                 </div>
                             </div>
                         </div>
@@ -24,17 +34,18 @@
 
                     <td>
                         <div class="form-group">
-                            <label for="descricaoAnalise">Oportunidades
+                            <label for="oportunidades">Oportunidades
                                 <strong>(Descreva oportunidades abstraidas do ambiente externo)*</strong>
                             </label>
-                            <textarea type="string" class="form-control" rows="3" name="descricaoAnalise"
-                                id="descricaoAnalise" required
-                                [ngClass]="{ 'is-invalid': EditAnaliseDoPlano.submitted && descricaoAnalise.invalid }"
-                                placeholder="Ex: Descreva aqui o que achou do plano">
+                            <textarea type="string" class="form-control" rows="3" name="oportunidades"
+                                id="oportunidades" required
+                                [ngClass]="{ 'is-invalid': EditAnaliseDoPlano.submitted && oportunidades.invalid }"
+                                placeholder="Ex: Descreva aqui as oportunidades"
+                                [(ngModel)]="fofa.oportunidades" #oportunidades="ngModel">
                                         </textarea>
-                            <div *ngIf="EditAnaliseDoPlano.submitted && descricaoAnalise.invalid"
+                            <div *ngIf="EditAnaliseDoPlano.submitted && oportunidades.invalid"
                                 class="alert alert-danger">
-                                <div *ngIf="descricaoAnalise.errors.required">O campo de análise do plano é obrigatório
+                                <div *ngIf="oportunidades.errors.required">O campo de análise do plano é obrigatório
                                 </div>
                             </div>
                         </div>
@@ -48,17 +59,17 @@
                 <tr>
                     <td>
                         <div class="form-group">
-                            <label for="descricaoAnalise">Fraquezas
+                            <label for="fraquezas">Fraquezas
                                 <strong>(Descreva os pontos fracos da sua empresa)*</strong>
                             </label>
-                            <textarea type="string" class="form-control" rows="3" name="descricaoAnalise"
-                                id="descricaoAnalise" required
-                                [ngClass]="{ 'is-invalid': EditAnaliseDoPlano.submitted && descricaoAnalise.invalid }"
-                                placeholder="Ex: Descreva aqui o que achou do plano">
+                            <textarea type="string" class="form-control" rows="3" name="fraquezas"
+                                id="fraquezas" required
+                                [ngClass]="{ 'is-invalid': EditAnaliseDoPlano.submitted && fraquezas.invalid }"
+                                placeholder="Ex: Descreva aqui as fraquezas" [(ngModel)]="fofa.fraquezas" #fraquezas="ngModel">
                                         </textarea>
-                            <div *ngIf="EditAnaliseDoPlano.submitted && descricaoAnalise.invalid"
+                            <div *ngIf="EditAnaliseDoPlano.submitted && fraquezas.invalid"
                                 class="alert alert-danger">
-                                <div *ngIf="descricaoAnalise.errors.required">O campo de análise do plano é obrigatório
+                                <div *ngIf="fraquezas.errors.required">O campo de análise do plano é obrigatório
                                 </div>
                             </div>
                         </div>
@@ -66,23 +77,29 @@
 
                     <td>
                         <div class="form-group">
-                            <label for="descricaoAnalise">Ameaças
+                            <label for="ameacas">Ameaças
                                 <strong>(Descreva as ameaças abstraidas do ambiente externo)*</strong>
                             </label>
-                            <textarea type="string" class="form-control" rows="3" name="descricaoAnalise"
-                                id="descricaoAnalise" required
-                                [ngClass]="{ 'is-invalid': EditAnaliseDoPlano.submitted && descricaoAnalise.invalid }"
-                                placeholder="Ex: Descreva aqui o que achou do plano">
+                            <textarea type="string" class="form-control" rows="3" name="ameacas"
+                                id="ameacas" required
+                                [ngClass]="{ 'is-invalid': EditAnaliseDoPlano.submitted && ameacas.invalid }"
+                                placeholder="Ex: Descreva aqui as ameças" [(ngModel)]="fofa.ameacas" #ameacas="ngModel">
                                         </textarea>
-                            <div *ngIf="EditAnaliseDoPlano.submitted && descricaoAnalise.invalid"
+                            <div *ngIf="EditAnaliseDoPlano.submitted && ameacas.invalid"
                                 class="alert alert-danger">
-                                <div *ngIf="descricaoAnalise.errors.required">O campo de análise do plano é obrigatório</div>
+                                <div *ngIf="ameacas.errors.required">O campo de análise do plano é obrigatório</div>
                             </div>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
+
+        <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+            <button button class="btn btn-dark" *ngIf='fofa.id !== Undefined'>Atualizar</button>
+            <button button class="btn btn-dark" *ngIf='fofa.id === Undefined'>salvar</button>
+        </div>
 
     </form>
 

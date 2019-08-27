@@ -59,6 +59,7 @@ import {VgCoreModule} from 'videogular2/compiled/core';
 import {VgControlsModule} from 'videogular2/compiled/controls';
 import {VgOverlayPlayModule} from 'videogular2/compiled/overlay-play';
 import {VgBufferingModule} from 'videogular2/compiled/buffering';
+import { NgxUiLoaderModule } from  'ngx-ui-loader';
 
 
 
@@ -90,6 +91,7 @@ import {VgBufferingModule} from 'videogular2/compiled/buffering';
     VgOverlayPlayModule,
     VgBufferingModule,
     NgbModule,
+    NgxUiLoaderModule,
     MatVideoModule,
     BrowserAnimationsModule,
     FlexLayoutModule,

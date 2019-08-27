@@ -10,7 +10,8 @@ import 'rxjs/add/observable/throw';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
 import { MessageService } from './message.service';
-import  {NgxSpinnerService}  from 'ngx-spinner';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 @Injectable({
@@ -19,9 +20,10 @@ import  {NgxSpinnerService}  from 'ngx-spinner';
 export class InterceptorService implements HttpInterceptor {
 
   constructor(private apiService: ApiService,
-              private router: Router,
-              private messageService: MessageService,
-              private spinner: NgxSpinnerService) { }
+    private router: Router,
+    private ngxLoader: NgxUiLoaderService,
+    private messageService: MessageService,
+    private spinner: NgxSpinnerService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token: string = localStorage.getItem('accessToken');
@@ -41,31 +43,31 @@ export class InterceptorService implements HttpInterceptor {
         if (error instanceof HttpErrorResponse) {
           switch (error.status) {
             case 409:
-              this.spinner.hide();
+              this.ngxLoader.stop();
               this.messageService.showWarning('Falha de registro', 'O e-mail utilizado no cadastro está sendo usado por outro usuário!');
               return this.handleErrorGeneral(error);
             case 404:
-              this.spinner.hide();
+              this.ngxLoader.stop();
               // this.messageService.showError('Usuário não encontrado', 'Favor verificar se o seu e-mail foi didigato corretamente');
               return this.handleErrorGeneral(error);
             case 403:
-              this.spinner.hide();
+              this.ngxLoader.stop();
               console.log('error 403');
               return this.getAccessToken(request, next);
             case 0:
-              this.spinner.hide();
+              this.ngxLoader.stop();
               console.log('error 0');
               localStorage.removeItem('accessToken');
               return this.getAccessToken(request, next);
             case 401:
-              this.spinner.hide();
+              this.ngxLoader.stop();
               return this.handle401Error(error);
             case 400:
-              this.spinner.hide();
+              this.ngxLoader.stop();
               this.messageService.showError('Falha de autenticação', 'Usuário ou senha inválidos');
               return this.router.navigate(['loginUser']);
             case 303:
-              this.spinner.hide();
+              this.ngxLoader.stop();
               return this.handle303Error(error);
           }
         }
@@ -84,16 +86,16 @@ export class InterceptorService implements HttpInterceptor {
         }
       );
   }
-  
+
   handleErrorGeneral(error) {
-    this.spinner.hide();
-    if ( error.status === 409 || error.status === 404 ) {
+    this.ngxLoader.stop();
+    if (error.status === 409 || error.status === 404) {
       return EmptyObservable.create();
     }
     return EmptyObservable.create();
   }
   handle303Error(error) {
-    this.spinner.hide();
+    this.ngxLoader.stop();
     if (error.error.message === 'invalidToken') {
       this.messageService.showError('Vericação de registro', 'Token Inválido, favor solicitar novo token');
       return this.router.navigate(['resend-register-token']);
@@ -105,7 +107,7 @@ export class InterceptorService implements HttpInterceptor {
   }
 
   handle401Error(error) {
-    this.spinner.hide();
+    this.ngxLoader.stop();
     if (error.error.error_description === 'UserNotEnabled') {
       this.messageService.showError('Usuário não está habilitado', 'Favor habilitar o seu acesso através do e-mail de verificação');
       return this.router.navigate(['loginUser']);

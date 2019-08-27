@@ -35,7 +35,7 @@ import { CustosfixosopComponent } from './planomonetario/custosfixosop/custosfix
 import { DemonstrativoderesultadosComponent } from './planomonetario/demonstrativoderesultados/demonstrativoderesultados.component';
 import { IndicadoresdeviabilidadeComponent } from './planomonetario/indicadoresdeviabilidade/indicadoresdeviabilidade.component';
 import { IntroanalisecriticaComponent } from './analisecritica/introanalisecritica/introanalisecritica.component';
-import { MatrizfofaComponent } from './analisecritica/matrizfofa/matrizfofa.component';
+import { MatrizfofaComponent, DicasFOFA } from './analisecritica/matrizfofa/matrizfofa.component';
 import { IntroconclusaoComponent } from './conclusao/introconclusao/introconclusao.component';
 import { AnaliseplanoComponent, DialogContentExampleDialog } from './conclusao/analiseplano/analiseplano.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -61,12 +61,14 @@ import {VgCoreModule} from 'videogular2/compiled/core';
 import {VgControlsModule} from 'videogular2/compiled/controls';
 import {VgOverlayPlayModule} from 'videogular2/compiled/overlay-play';
 import {VgBufferingModule} from 'videogular2/compiled/buffering';
+import { NgxUiLoaderModule } from  'ngx-ui-loader';
 
 @NgModule(
     {
         imports:[
             BrowserModule,
             VgCoreModule,
+            NgxUiLoaderModule,
             VgControlsModule,
             VgOverlayPlayModule,
             VgBufferingModule,
@@ -149,9 +151,10 @@ import {VgBufferingModule} from 'videogular2/compiled/buffering';
             IntroconclusaoComponent, 
             AnaliseplanoComponent,
             SideNavComponent,
-            DialogContentExampleDialog
+            DialogContentExampleDialog,
+            DicasFOFA
         ],
-        entryComponents: [DialogContentExampleDialog],
+        entryComponents: [DialogContentExampleDialog, DicasFOFA],
         providers:[],
         bootstrap:[PlanodenegocioComponent]
     }

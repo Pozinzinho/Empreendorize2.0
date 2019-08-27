@@ -7,6 +7,7 @@ import { UserLogin } from './model/model-user/login';
 import { UserDto } from './model/model-user/userDto';
 import { PlanoDto } from './model/model-plano/planoDto';
 import { AnaliseDoPlanoDto } from './model/models-do-plano/model-conclusao/AnaliseDoPlanoDto';
+import { AnaliseDaMatrizDto } from './model/models-do-plano/model-analiseDaMatriz/analiseDaMatrizDto';
 
 
 
@@ -20,6 +21,7 @@ export class ApiService {
   public baseUrlR: string;
   public baseUrlEP: string;
   public baseUrlEC: string;
+  public baseUrlAM: string;
 
   public user = new UserDto;
   public roleAtual : string;
@@ -31,6 +33,7 @@ export class ApiService {
     this.baseUrlP = `${AppUtils.BASE_URL}` + 'api/planos';
     this.baseUrlEP = '/estudoProprio';
     this.baseUrlEC =  '/estudoDosConcorrentes';
+    this.baseUrlAM = '/analiseDaMatriz';
     this.baseUrlAP = '/analiseDoPlano';
 
     
@@ -134,6 +137,26 @@ export class ApiService {
   getEstudoDosConcorrentes(id: string): Observable<any> {
     return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEC}`, AppUtils.OPTIONS_OBJECTO);
   }
+
+    // ---------------- SERVIÇOS REFERENTES A Matriz F.O.F.A --------------------------------------------
+    getAnaliseDaMatriz(id: string): Observable<any> {
+      return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlAM}`, AppUtils.OPTIONS_OBJECTO);
+    }
+
+    getAnaliseDaMatrizById(idPlano: string, idAnalise: string): Observable<any>{
+      return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlAM}/${idAnalise}`, AppUtils.OPTIONS_OBJECTO);
+    }
+
+    updateAnaliseDaMatriz(analise: AnaliseDaMatrizDto, id: string): Observable<any> {
+      return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlAM}/${analise.id}`,
+      analise, AppUtils.OPTIONS_OBJECTO);
+    }
+
+    registerAnaliseDaMatriz(analise: AnaliseDaMatrizDto, id: string): Observable<any>{
+      return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlAM}`, analise,  AppUtils.OPTIONS_OBJECTO);
+    }
+    //--------------------------------------------------------------------------------------------------------
+  
 
   // ---------------- SERVIÇOS REFERENTES A ANÁLISE DO PLANO --------------------------------------------
   getAnaliseDoPlano(id: string): Observable<any> {

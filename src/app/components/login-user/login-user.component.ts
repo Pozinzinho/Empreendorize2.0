@@ -5,6 +5,7 @@ import { MessageService } from 'src/app/core/message.service';
 import { UserLogin } from 'src/app/core/model/model-user/login';
 import  {NgxSpinnerService}  from 'ngx-spinner';
 import { TopoComponent } from 'src/app/telasiniciais/topo/topo.component';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-login-user',
@@ -18,6 +19,7 @@ export class LoginUserComponent implements OnInit {
 
   constructor(private apiService: ApiService, 
     private spinner: NgxSpinnerService,
+    private ngxLoader: NgxUiLoaderService,
     private router:Router, 
     private messageService: MessageService,
     private topoComponent: TopoComponent) { }
@@ -27,7 +29,7 @@ export class LoginUserComponent implements OnInit {
   ngOnInit() {
 
     
-    this.spinner.hide();
+    this.ngxLoader.stop();
     
 
     if(!(localStorage.getItem('accessToken') === "")){
@@ -37,12 +39,12 @@ export class LoginUserComponent implements OnInit {
 
   public login() {
 
-    this.spinner.show();
+    this.ngxLoader.start();
 
     this.apiService.login(this.user).subscribe(data => {
       this.loginSuccess(data);
     }, error => {
-      this.spinner.hide();
+      this.ngxLoader.stop();
       this.messageService.showError('Login', 'Falha de autenticação');
     });
   }

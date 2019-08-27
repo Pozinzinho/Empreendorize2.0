@@ -6,6 +6,7 @@ import { AnaliseDoPlanoDto } from 'src/app/core/model/models-do-plano/model-conc
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
 import { MessageService } from 'src/app/core/message.service';
+import { AnaliseDaMatrizDto } from 'src/app/core/model/models-do-plano/model-analiseDaMatriz/analiseDaMatrizDto';
 
 @Component({
   selector: 'app-side-nav',
@@ -14,17 +15,19 @@ import { MessageService } from 'src/app/core/message.service';
 })
 export class SideNavComponent {
 
-  analiseDoPlano :  AnaliseDoPlanoDto[];
-  private idPlano : any;
-  idAnalise: string;
   
+  private idPlano : any;
   recebeTitulo = 'Empreendedorize';
-
   panelOpenState = false;
 
   public analise = new  AnaliseDoPlanoDto();
-
+  analiseDoPlano :  AnaliseDoPlanoDto[];
+  idAnalise: string;
   
+
+  public fofa = new  AnaliseDaMatrizDto();
+  analiseDaMatriz :  AnaliseDaMatrizDto[];
+  idFofa: string;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -45,10 +48,34 @@ export class SideNavComponent {
       console.log("Abaixo está o id do plano",this.idPlano)
 
       this.pegarIdAnalise();
+      this.pegarIdMatriz();
     }
 
-  pegarIdAnalise() {
+  //----------- Pegar e setar id da matriz F.O.F.A -----------------------------------------------
+  pegarIdMatriz() {
+    this.apiService.getAnaliseDaMatriz(this.idPlano).subscribe(analiseDaMatriz => {
+      this.analiseDaMatriz = analiseDaMatriz;
+      this.idFofa = analiseDaMatriz[0].id;
+      console.log("Abaixo está o id da matriz", this.idFofa)
+      this.iniciaMatriz();
+    }, error => {
+
+    });
+  }
+
+  iniciaMatriz(){
+    this.apiService.getAnaliseDaMatrizById(this.idPlano, this.idFofa).subscribe(fofa => {
+      this.fofa = fofa;
+      console.log('Retornou matriz com sucesso! ', this.fofa);
+    }, error => {
+      console.log('Error ao capturar plano por ID! ', error);
+    });
+  }
+  //---------------------------------------------------------------------------------------
+
+
     //----------- Setar id da análise -----------------------------------------------
+  pegarIdAnalise() {
     this.apiService.getAnaliseDoPlano(this.idPlano).subscribe(analiseDoPlano => {
       this.analiseDoPlano = analiseDoPlano;
       this.idAnalise = analiseDoPlano[0].id;

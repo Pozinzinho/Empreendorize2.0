@@ -66,7 +66,7 @@ export class AnaliseplanoComponent implements OnInit {
       this.analiseDoPlano = analiseDoPlano;
       this.idAnalise = analiseDoPlano[0].id;
       console.log("Abaixo está o id da análise", this.idAnalise)
-      this.iniciaAnalise();
+      this.recuperaPlano();
       if(this.idAnalise != "undefined"){
         this.router.navigate(['/planodenegocio/',this.idPlano,'analiseplano', this.idAnalise]);
       }
@@ -77,15 +77,6 @@ export class AnaliseplanoComponent implements OnInit {
     //---------------------------------------------------------------------------------------
 
   }
-
-    iniciaAnalise(){
-      this.apiService.getAnaliseDoPlanoById(this.idPlano, this.idAnalise).subscribe(analise => {
-        this.analise = analise;
-        console.log('Retornou analise com sucesso! ', this.analise);
-      }, error => {
-        console.log('Error ao capturar plano por ID! ', error);
-      });
-    }
 
   save(): void {
     this.apiService.registerAnaliseDoPlano(this.analise, this.idPlano).subscribe(data => {
@@ -103,9 +94,9 @@ export class AnaliseplanoComponent implements OnInit {
   update(): void {
     this.analise.id = this.idAnalise;
     this.apiService.updateAnaliseDoPlano(this.analise, this.idPlano).subscribe(() => {
-      this.messageService.showSuccess('Atualizado', 'Descrição alterado com sucesso!');
+      this.messageService.showSuccess('Atualizado', 'Descrição do plano alterada com sucesso!');
      }, error => {
-    this.messageService.showError('Falha na atualização', 'Erro ao tentar atualizar o usuário!');
+    this.messageService.showError('Falha na atualização', 'Erro ao tentar atualizar descrição do plano!');
     });
   }
 

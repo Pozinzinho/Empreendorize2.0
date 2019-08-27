@@ -71,6 +71,7 @@
     "ngx-slides": "^1.0.1",
     "ngx-spinner": "^7.2.0",
     "ngx-toastr": "^10.0.4",
+    "ngx-ui-loader": "^7.2.2",
     "open-iconic": "^1.1.1",
     "path": "^0.12.7",
     "popper.js": "^1.15.0",

@@ -27,17 +27,10 @@
         <button *ngIf="!submitted" class="btn btn-dark btn-block" 
       (click)="login()" [disabled]="!loginForm.form.valid">Entrar</button>
         
-          <ngx-spinner
-          bdColor="rgba(51,51,51,0.8)"
-          size="medium"
-          color="#fff"
-          type="ball-scale-multiple"
-          > 
-          <p style="font-size: 20px; color: white">Carregando...</p>
-        </ngx-spinner>
-        
-      
-      
+
+        <ngx-ui-loader fgsType= "three-strings" text= "Carregando"
+        logoPosition = "center-center" logoSize= "120" ></ngx-ui-loader>
+        <!-- logoUrl="/assets/logo.png" -->
         
   </form>
 </section>

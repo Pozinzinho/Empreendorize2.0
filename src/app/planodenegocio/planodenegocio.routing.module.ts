@@ -84,7 +84,7 @@ export const planodengocioRoutes = [
 
         //COMPONENTES ANÁLISE CRÍTICA ----------------------------------------------
         {path: 'introanalisecritica', component: IntroanalisecriticaComponent},
-        {path: 'matrizfofa', component: MatrizfofaComponent},
+        {path: 'matrizfofa/:id', component: MatrizfofaComponent},
         //--------------------------------------------------------------------------
 
         //COMPONENTES CONCLUSÃO ----------------------------------------------------
