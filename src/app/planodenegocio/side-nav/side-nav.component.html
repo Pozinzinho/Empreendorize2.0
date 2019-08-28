@@ -17,11 +17,7 @@
         </mat-expansion-panel-header>
 
 
-        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['missao']" (click)="clicouIntroducaoME()">Missão da empresa</a>
-        <mat-divider></mat-divider>
-        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['setordeatv']" (click)="clicouIntroducaoSA()">Setores de atividades</a>
-        <mat-divider></mat-divider>
-        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['capitalsocial']" (click)="clicouIntroducaoCS()">Capital social</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['missao/', introducao.id]" (click)="clicouIntroducaoME()">Missão da empresa e setores de atividade</a>
 
 
       </mat-expansion-panel>

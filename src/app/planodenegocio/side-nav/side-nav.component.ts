@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
 import { MessageService } from 'src/app/core/message.service';
 import { AnaliseDaMatrizDto } from 'src/app/core/model/models-do-plano/model-analiseDaMatriz/analiseDaMatrizDto';
+import { IntroducaoAoPlanoDto } from 'src/app/core/model/models-do-plano/model-introducao-plano/introducaoAoPlanoDto';
 
 @Component({
   selector: 'app-side-nav',
@@ -20,14 +21,18 @@ export class SideNavComponent {
   recebeTitulo = 'Empreendedorize';
   panelOpenState = false;
 
-  public analise = new  AnaliseDoPlanoDto();
-  analiseDoPlano :  AnaliseDoPlanoDto[];
-  idAnalise: string;
-  
+  public introducao = new  IntroducaoAoPlanoDto();
+  introducaoAoPlano :  IntroducaoAoPlanoDto[];
+  idIntroducao: string;
 
   public fofa = new  AnaliseDaMatrizDto();
   analiseDaMatriz :  AnaliseDaMatrizDto[];
   idFofa: string;
+
+  public analise = new  AnaliseDoPlanoDto();
+  analiseDoPlano :  AnaliseDoPlanoDto[];
+  idAnalise: string;
+
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -47,9 +52,32 @@ export class SideNavComponent {
       //--------------------------------------------------
       console.log("Abaixo está o id do plano",this.idPlano)
 
+      
       this.pegarIdAnalise();
       this.pegarIdMatriz();
+      this.pegarIdIntroducao();
     }
+
+ //----------- Pegar e setar id da Introdução -----------------------------------------------
+ pegarIdIntroducao() {
+  this.apiService.getIntroducaoPlano(this.idPlano).subscribe(introducaoAoPlano => {
+    this.introducaoAoPlano = introducaoAoPlano;
+    this.idIntroducao = introducaoAoPlano[0].id;
+    console.log("Abaixo está o id da introdução", this.idIntroducao)
+    this.iniciaIntroducao();
+  }, error => {
+  });
+}
+
+iniciaIntroducao(){
+  this.apiService.getIntroducaoPlanoById(this.idPlano, this.idIntroducao).subscribe(introducao => {
+    this.introducao = introducao;
+    console.log('Retornou introdução com sucesso! ', this.introducao);
+  }, error => {
+    console.log('Error ao capturar introdução por ID! ', error);
+  });
+}
+//---------------------------------------------------------------------------------------
 
   //----------- Pegar e setar id da matriz F.O.F.A -----------------------------------------------
   pegarIdMatriz() {
@@ -59,7 +87,6 @@ export class SideNavComponent {
       console.log("Abaixo está o id da matriz", this.idFofa)
       this.iniciaMatriz();
     }, error => {
-
     });
   }
 
@@ -74,7 +101,7 @@ export class SideNavComponent {
   //---------------------------------------------------------------------------------------
 
 
-    //----------- Setar id da análise -----------------------------------------------
+    //----------- Pegar e Setar id da análise -----------------------------------------------
   pegarIdAnalise() {
     this.apiService.getAnaliseDoPlano(this.idPlano).subscribe(analiseDoPlano => {
       this.analiseDoPlano = analiseDoPlano;
@@ -82,21 +109,21 @@ export class SideNavComponent {
       console.log("Abaixo está o id da análise", this.idAnalise)
       this.iniciaAnalise();
     }, error => {
-
     });
+  }
+  
+  iniciaAnalise() {
+    this.apiService.getAnaliseDoPlanoById(this.idPlano, this.idAnalise).subscribe(analise => {
+      this.analise = analise;
+      console.log('Retornou analise com sucesso! ', this.analise);
+    }, error => {
+      console.log('Error ao capturar plano por ID! ', error);
+    });
+  }
     //---------------------------------------------------------------------------------------
 
-  }
 
-    iniciaAnalise(){
-      this.apiService.getAnaliseDoPlanoById(this.idPlano, this.idAnalise).subscribe(analise => {
-        this.analise = analise;
-        console.log('Retornou analise com sucesso! ', this.analise);
-      }, error => {
-        console.log('Error ao capturar plano por ID! ', error);
-      });
-    }
-
+   
 
   // ------------------------------ MAPA DA INTRODUÇÃO --------------------------
   clicouIntroducao(){

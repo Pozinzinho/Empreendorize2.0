@@ -1,2 +1,74 @@
-<h1 class="mt-4">Missão da empresa</h1>
+<section class="grey-text w-responsive mx-auto" class="direita">
+        <div class="form-group" (click)="openDialog()">
+            <label>Tenho dúvidas 
+              <mat-icon>live_help</mat-icon>
+            </label>
+          </div>
+</section>
+
+<section class="grey-text w-responsive mx-auto p-5">
+    <form #EditIntroducaoPlano="ngForm" (ngSubmit)="EditIntroducaoPlano.form.valid && onSubmit()">
+
+        <div class="form-group">
+
+            <label class="titulos" for="descricaoMissao">Missão da empresa</label>
+            <textarea type="string" class="form-control" rows="3" name="descricaoMissao" id="descricaoMissao" required
+                [ngClass]="{ 'is-invalid': EditIntroducaoPlano.submitted && descricaoMissao.invalid }"
+                placeholder="Ex: Missão da empresa Nestlé “Oferecer ao consumidor brasileiro produtos reconhecidamente líderes em qualidade e valor nutricional, que contribuam para uma alimentação equilibrada, gerando sempre oportunidades de negócios para a empresa e valor compartilhado com a sociedade brasileira.”" 
+                [(ngModel)]="introducao.descricaoMissao"
+                #descricaoMissao="ngModel">
+        </textarea>
+            <div *ngIf="EditIntroducaoPlano.submitted && descricaoMissao.invalid" class="alert alert-danger">
+                <div *ngIf="descricaoMissao.errors.required">O campo de análise do plano é obrigatório</div>
+            </div>
+
+            <br />
+            <br />
+            <br />
+
+            <div class="form-group">
+
+                <section class="example-section" class="grey-text w-responsive">
+
+                    <label class="titulos" for="descricaoMissao">Setores de atividade</label>
+
+                    <div>
+                        <mat-checkbox #ref class="example-margin" [checked]="checouAgro"
+                            (change)="onAgro($event); false">Agropecuária</mat-checkbox>
+                    </div>
+
+                    <div>
+                        <mat-checkbox class="example-margin" class="example-margin" [checked]="checouServ"
+                        (change)="onServ($event); false">Serviços</mat-checkbox>
+                    </div>
+
+                    <div>
+                        <mat-checkbox class="example-margin" [checked]="checouIndu"
+                        (change)="onIndu($event); false">Indústria</mat-checkbox>
+                    </div>
+
+                    <div>
+                        <mat-checkbox class="example-margin" [checked]="checouComercio" (change)="onComercio($event); false">
+                            Comércio</mat-checkbox>
+                    </div>
+
+                    <label for="descricaoMissao">Outros?</label><input type="text" class="form-control col-md-6"
+                        placeholder="Qual?" [(ngModel)]="introducao.outros" name="outros"
+                        #outros="ngModel">
+
+                </section>
+            </div>
+
+        </div>
+
+        <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+            <button button class="btn btn-dark" *ngIf='introducao.id !== Undefined'>Atualizar</button>
+            <button button class="btn btn-dark" *ngIf='introducao.id === Undefined'>salvar</button>
+        </div>
+
+    </form>
+
+</section>
+
 

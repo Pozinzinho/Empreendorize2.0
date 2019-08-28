@@ -60,23 +60,24 @@ export class AnaliseplanoComponent implements OnInit {
     });
   }
 
-   //----------- Setar id da análise -----------------------------------------------
+  //----------- Setar id da análise -----------------------------------------------
   pegarIdAnalise() {
     this.apiService.getAnaliseDoPlano(this.idPlano).subscribe(analiseDoPlano => {
       this.analiseDoPlano = analiseDoPlano;
       this.idAnalise = analiseDoPlano[0].id;
       console.log("Abaixo está o id da análise", this.idAnalise)
       this.recuperaPlano();
-      if(this.idAnalise != "undefined"){
-        this.router.navigate(['/planodenegocio/',this.idPlano,'analiseplano', this.idAnalise]);
+      if (this.idAnalise != "undefined") {
+        this.router.navigate(['/planodenegocio/', this.idPlano, 'analiseplano', this.idAnalise]);
       }
-      
+
     }, error => {
 
     });
-    //---------------------------------------------------------------------------------------
-
   }
+  //---------------------------------------------------------------------------------------
+
+  
 
   save(): void {
     this.apiService.registerAnaliseDoPlano(this.analise, this.idPlano).subscribe(data => {

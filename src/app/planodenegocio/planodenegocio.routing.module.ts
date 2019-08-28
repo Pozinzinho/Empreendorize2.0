@@ -1,12 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PlanodenegocioComponent } from './planodenegocio.component';
-import { DadosempComponent } from './introducaoaoplano/dadosemp/dadosemp.component';
 import { IntroplanoComponent } from './introducaoaoplano/introplano/introplano.component';
 import { MissaoComponent } from './introducaoaoplano/missao/missao.component';
-import { SetordeatvComponent } from './introducaoaoplano/setordeatv/setordeatv.component';
-import { CapitalsocialComponent } from './introducaoaoplano/capitalsocial/capitalsocial.component';
-import { FonterecursosComponent } from './introducaoaoplano/fonterecursos/fonterecursos.component';
 import { IntroestudodemercadoComponent } from './estudodemercado/introestudodemercado/introestudodemercado.component';
 import { EstudodosclientesComponent } from './estudodemercado/estudodosclientes/estudodosclientes.component';
 import { EstudodosconcorrentesComponent } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes-list/estudodosconcorrentes.component';
@@ -31,8 +27,6 @@ import { IntroanalisecriticaComponent } from './analisecritica/introanalisecriti
 import { MatrizfofaComponent } from './analisecritica/matrizfofa/matrizfofa.component';
 import { IntroconclusaoComponent } from './conclusao/introconclusao/introconclusao.component';
 import { AnaliseplanoComponent } from './conclusao/analiseplano/analiseplano.component';
-import { DadosempAddComponent } from './introducaoaoplano/dadosemp/dadosemp-add/dadosemp-add.component';
-import { DadosempEditComponent } from './introducaoaoplano/dadosemp/dadosemp-edit/dadosemp-edit.component';
 import { IntroplanomonetarioComponent } from './planomonetario/introplanomonetario/introplanomonetario.component';
 export const planodengocioRoutes = [
     {path: 'planodenegocio/:id', component: PlanodenegocioComponent, children: 
@@ -40,15 +34,7 @@ export const planodengocioRoutes = [
 
         //COMPONENTES INTROCUÇÃO AO PLANO ----------------------------------------
         {path: 'introplano', component: IntroplanoComponent},
-        //CRUD dados dos empreendedores-------------------------------------------
-        {path: 'dadosempreendedores', component: DadosempComponent}, 
-        {path: 'dadosempreendedores-add', component: DadosempAddComponent},
-        {path: 'dadosempreendedores-edit', component: DadosempEditComponent},
-        //------------------------------------------------------------------------
-        {path: 'missao', component: MissaoComponent},
-        {path: 'setordeatv', component: SetordeatvComponent},
-        {path: 'capitalsocial', component: CapitalsocialComponent},
-        {path: 'fonterecursos', component: FonterecursosComponent},
+        {path: 'missao/:id', component: MissaoComponent},
         //-------------------------------------------------------------------------
 
         //COMPONENTES ESTUDO DE MERCADO -------------------------------------------

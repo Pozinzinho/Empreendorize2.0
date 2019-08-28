@@ -8,6 +8,7 @@ import { UserDto } from './model/model-user/userDto';
 import { PlanoDto } from './model/model-plano/planoDto';
 import { AnaliseDoPlanoDto } from './model/models-do-plano/model-conclusao/AnaliseDoPlanoDto';
 import { AnaliseDaMatrizDto } from './model/models-do-plano/model-analiseDaMatriz/analiseDaMatrizDto';
+import { IntroducaoAoPlanoDto } from './model/models-do-plano/model-introducao-plano/introducaoAoPlanoDto';
 
 
 
@@ -22,6 +23,7 @@ export class ApiService {
   public baseUrlEP: string;
   public baseUrlEC: string;
   public baseUrlAM: string;
+  public baseUrlIP: string;
 
   public user = new UserDto;
   public roleAtual : string;
@@ -33,6 +35,8 @@ export class ApiService {
     this.baseUrlP = `${AppUtils.BASE_URL}` + 'api/planos';
     this.baseUrlEP = '/estudoProprio';
     this.baseUrlEC =  '/estudoDosConcorrentes';
+
+    this.baseUrlIP = '/missaoDaEmpresa';
     this.baseUrlAM = '/analiseDaMatriz';
     this.baseUrlAP = '/analiseDoPlano';
 
@@ -137,6 +141,25 @@ export class ApiService {
   getEstudoDosConcorrentes(id: string): Observable<any> {
     return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEC}`, AppUtils.OPTIONS_OBJECTO);
   }
+
+ // ---------------- SERVIÇOS REFERENTES A Introdução do Plano ---------------------------------------------------------------
+  getIntroducaoPlano(id: string): Observable<any> {
+    return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIP}`, AppUtils.OPTIONS_OBJECTO);
+  }
+
+  getIntroducaoPlanoById(idPlano: string, idIntroducao: string): Observable<any> {
+    return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlIP}/${idIntroducao}`, AppUtils.OPTIONS_OBJECTO);
+  }
+
+  updateIntroducaoPlano(introducao: IntroducaoAoPlanoDto, id: string): Observable<any> {
+    return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIP}/${introducao.id}`,
+      introducao, AppUtils.OPTIONS_OBJECTO);
+  }
+
+  registerIntroducaoPlano(introducao: IntroducaoAoPlanoDto, id: string): Observable<any> {
+    return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIP}`, introducao, AppUtils.OPTIONS_OBJECTO);
+  }
+//---------------------------------------------------------------------------------------------------------------------------
 
     // ---------------- SERVIÇOS REFERENTES A Matriz F.O.F.A --------------------------------------------
     getAnaliseDaMatriz(id: string): Observable<any> {

@@ -7,11 +7,7 @@ import { PlanodenegocioRoutingModule } from './planodenegocio.routing.module';
 
 import {planodengocioRoutes} from './planodenegocio.routing.module';
 import { RouterModule } from '@angular/router';
-import { DadosempComponent } from './introducaoaoplano/dadosemp/dadosemp.component';
-import { MissaoComponent } from './introducaoaoplano/missao/missao.component';
-import { SetordeatvComponent } from './introducaoaoplano/setordeatv/setordeatv.component';
-import { CapitalsocialComponent } from './introducaoaoplano/capitalsocial/capitalsocial.component';
-import { FonterecursosComponent } from './introducaoaoplano/fonterecursos/fonterecursos.component';
+import { MissaoComponent, DicasMissao } from './introducaoaoplano/missao/missao.component';
 import { IntroplanoComponent } from './introducaoaoplano/introplano/introplano.component';
 import { IntroestudodemercadoComponent } from './estudodemercado/introestudodemercado/introestudodemercado.component';
 import { EstudodosclientesComponent } from './estudodemercado/estudodosclientes/estudodosclientes.component';
@@ -45,13 +41,10 @@ import { SideNavComponent } from '../planodenegocio/side-nav/side-nav.component'
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule,
-MatIconModule, MatListModule, MatExpansionModule, MatOptionModule, MatSelectModule, MatInputModule, MatTableModule, MatPaginator, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule, MatCardModule, MatFormField, MatFormFieldModule, MatMenuModule, MatTooltipModule, MatDialogModule } from '@angular/material';
+MatIconModule, MatListModule, MatExpansionModule, MatOptionModule, MatSelectModule, MatInputModule, MatTableModule, MatPaginator, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule, MatCardModule, MatFormField, MatFormFieldModule, MatMenuModule, MatTooltipModule, MatDialogModule, MatCheckboxModule } from '@angular/material';
 import {MatDividerModule} from '@angular/material/divider';
 import { SimpleSidenavModule } from 'simple-sidenav';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DadosempAddComponent } from './introducaoaoplano/dadosemp/dadosemp-add/dadosemp-add.component';
-import { DadosempEditComponent } from './introducaoaoplano/dadosemp/dadosemp-edit/dadosemp-edit.component';
-import { DadosempDetailComponent } from './introducaoaoplano/dadosemp/dadosemp-detail/dadosemp-detail.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
@@ -82,6 +75,7 @@ import { NgxUiLoaderModule } from  'ngx-ui-loader';
             HttpClientModule,
             EmbedVideo.forRoot(),
             MatInputModule,
+            MatCheckboxModule,
             MatTableModule,
             MatPaginatorModule,
             MatSortModule,
@@ -115,15 +109,8 @@ import { NgxUiLoaderModule } from  'ngx-ui-loader';
             MatMenuModule
         ],
         declarations:[
-            PlanodenegocioComponent, 
-            DadosempComponent, 
-            DadosempAddComponent,
-            DadosempEditComponent,
-            DadosempDetailComponent,
+            PlanodenegocioComponent,
             MissaoComponent, 
-            SetordeatvComponent,
-            CapitalsocialComponent, 
-            FonterecursosComponent, 
             IntroplanoComponent, 
             IntroestudodemercadoComponent, 
             EstudodosclientesComponent, 
@@ -152,9 +139,10 @@ import { NgxUiLoaderModule } from  'ngx-ui-loader';
             AnaliseplanoComponent,
             SideNavComponent,
             DialogContentExampleDialog,
-            DicasFOFA
+            DicasFOFA,
+            DicasMissao
         ],
-        entryComponents: [DialogContentExampleDialog, DicasFOFA],
+        entryComponents: [DialogContentExampleDialog, DicasFOFA, DicasMissao],
         providers:[],
         bootstrap:[PlanodenegocioComponent]
     }
