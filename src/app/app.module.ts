@@ -63,6 +63,7 @@ import { NgxUiLoaderModule } from  'ngx-ui-loader';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -110,12 +111,10 @@ import { NgxUiLoaderModule } from  'ngx-ui-loader';
     LayoutModule, MatButtonModule, MatSidenavModule, MatListModule, MatCheckboxModule,
     MatMenuModule, MatToolbarModule, MatIconModule,
     MDBBootstrapModule.forRoot(),
-    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
     ToastrModule.forRoot({       
       timeOut: 4000,

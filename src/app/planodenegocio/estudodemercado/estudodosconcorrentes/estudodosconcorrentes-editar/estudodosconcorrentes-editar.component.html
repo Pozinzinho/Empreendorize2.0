@@ -1,3 +1,123 @@
-<p>
-  estudodosconcorrentes-editar works!
-</p>
+<section class="grey-text w-responsive mx-auto p-5">
+  <form #EditConcorrenteForm="ngForm" (ngSubmit)="EditConcorrenteForm.form.valid && onSubmit()">
+    <h4 class="h4 mb-4 text-center"><span class="badge badge-light ">{{concorrentes.id}}</span> ->
+      {{concorrentes.nome}}</h4>
+
+      <div class="form-group">
+        <label for="nome">Nome do concorrente*</label>
+        <input type="text" class="form-control" id="firstName" required
+          [ngClass]="{ 'is-invalid': EditConcorrenteForm.submitted && nome.invalid }" placeholder="Nome da empresa concorrente"
+          [(ngModel)]="concorrentes.nome" name="nome" #nome="ngModel">
+        <div *ngIf="EditConcorrenteForm.submitted && nome.invalid" class="alert alert-danger">
+          <div *ngIf="nome.errors.required">O campo de nome do concorrente é obrigatório</div>
+        </div>
+      </div>
+
+    <div class="form-group">
+      <label for="qualidade">Qualidade*</label>
+      <textarea type="text" class="form-control" id="qualidade" required
+        [ngClass]="{ 'is-invalid': EditConcorrenteForm.submitted && qualidade.invalid }" placeholder="qualidade"
+        [(ngModel)]="concorrentes.qualidade" name="qualidade" #qualidade="ngModel">
+        </textarea>
+      <div *ngIf="EditConcorrenteForm.submitted && qualidade.invalid" class="alert alert-danger">
+        <div *ngIf="qualidade.errors.required">O campo de qualidade é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="preco">Preço*</label>
+      <textarea type="text" class="form-control" id="preco" required
+        [ngClass]="{ 'is-invalid': EditConcorrenteForm.submitted && preco.invalid }"
+        placeholder="Descreva sobre o preço do concorrente" [(ngModel)]="concorrentes.preco" name="preco"
+        #preco="ngModel">
+        </textarea>
+      <div *ngIf="EditConcorrenteForm.submitted && preco.invalid" class="alert alert-danger">
+        <div *ngIf="preco.errors.required">O campo de preço é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="condicoesDePag">Condições de pagamento*</label>
+      <textarea type="text" class="form-control" id="condicoesDePag" required
+        [ngClass]="{ 'is-invalid': EditConcorrenteForm.submitted && condicoesDePag.invalid }"
+        placeholder="Condições de pagamento do concorrente" [(ngModel)]="concorrentes.condicoesDePag"
+        name="condicoesDePag" #condicoesDePag="ngModel">
+      </textarea>
+      <div *ngIf="EditConcorrenteForm.submitted && condicoesDePag.invalid" class="alert alert-danger">
+        <div *ngIf="condicoesDePag.errors.required">O campo condições de pagamento é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="localizacao">Localização</label>
+      <textarea type="text" class="form-control" id="localizacao" required
+        [ngClass]="{ 'is-invalid': EditConcorrenteForm.submitted && localizacao.invalid }"
+        placeholder="Defina o ponto do seu cliente" [(ngModel)]="concorrentes.localizacao" name="localizacao"
+        #localizacao="ngModel">
+        </textarea>
+      <div *ngIf="EditConcorrenteForm.submitted && localizacao.invalid" class="alert alert-danger">
+        <div *ngIf="localizacao.errors.required">O campo de localização é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="atendimento">Atendimento*</label>
+      <textarea type="text" class="form-control" id="atendimento" required
+        [ngClass]="{ 'is-invalid': EditConcorrenteForm.submitted && atendimento.invalid }"
+        placeholder="Descreva a qualidade de atendimento do seu concorrente" [(ngModel)]="concorrentes.atendimento"
+        name="atendimento" #atendimento="ngModel">
+        </textarea>
+      <div *ngIf="EditConcorrenteForm.submitted && atendimento.invalid" class="alert alert-danger">
+        <div *ngIf="atendimento.errors.required">O campo atendimento é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="servicos">Serviços*</label>
+      <textarea type="text" class="form-control" id="servicos" required
+        [ngClass]="{ 'is-invalid': EditConcorrenteForm.submitted && servicos.invalid }"
+        placeholder="Descreva quais são os serviços oferecidos pelo seu concorrente" [(ngModel)]="concorrentes.servicos"
+        name="servicos" #servicos="ngModel">
+      </textarea>
+      <div *ngIf="EditConcorrenteForm.submitted && servicos.invalid" class="alert alert-danger">
+        <div *ngIf="servicos.errors.required">O campo pertinente ao serviço é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="garantiasOferecidas">Garantias oferecidas*</label>
+      <textarea type="text" class="form-control" id="garantiasOferecidas" required
+        [ngClass]="{ 'is-invalid': EditConcorrenteForm.submitted && garantiasOferecidas.invalid }"
+        placeholder="Quais garantias são oferecidas pelo seu concorrente" [(ngModel)]="concorrentes.garantiasOferecidas"
+        name="garantiasOferecidas" #garantiasOferecidas="ngModel">
+        </textarea>
+      <div *ngIf="EditConcorrenteForm.submitted && garantiasOferecidas.invalid" class="alert alert-danger">
+        <div *ngIf="garantiasOferecidas.errors.required">O campo pertinente as garantias oferecidas é obrigatório</div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="conclusoes">Conclusões
+      </label>
+      <textarea type="text" class="form-control" rows="3" name="conclusoes" id="conclusoes" required
+        [ngClass]="{ 'is-invalid': EditConcorrenteForm.submitted && conclusoes.invalid }"
+        placeholder="Descreva o que conclui-se deste concorrente" [(ngModel)]="concorrentes.conclusoes"
+        #conclusoes="ngModel">
+          </textarea>
+      <div *ngIf="EditConcorrenteForm.submitted && conclusoes.invalid" class="alert alert-danger">
+        <div *ngIf="conclusoes.errors.required">O campo de conclusões é obrigatório</div>
+      </div>
+    </div>
+
+
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+      <button button class="btn btn-dark">Atualizar</button>
+    </div>
+
+    <br />
+    <br />
+
+  </form>
+</section>

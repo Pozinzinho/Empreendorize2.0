@@ -4,6 +4,7 @@
       <thead>
       <tr>
         <th class="hidden">Id</th>
+        <th>Nome</th>
         <th>Qualidade</th>
         <th>Preço</th>
         <th>Condições de pg</th>
@@ -18,6 +19,7 @@
       <tbody>
       <tr *ngFor="let estudoProprio of estudoProprio; let i = index;">
         <td class="hidden">{{i+1}}</td>
+        <td>{{estudoProprio.nome}}</td>
         <td>{{estudoProprio.qualidade}}</td>
         <td>{{estudoProprio.preco}}</td>
         <td>{{estudoProprio.condicoesDePag}}</td>
@@ -35,6 +37,7 @@
       <thead>
       <tr>
         <th class="hidden">Id</th>
+        <th>Nome</th>
         <th>Qualidade</th>
         <th>Preço</th>
         <th>Condições de pg</th>
@@ -49,6 +52,7 @@
     <tbody>
         <tr *ngFor="let estudoDosConcorrentes of estudoDosConcorrentes; let i = index;">
             <td class="hidden">{{i+1}}</td>
+            <td>{{estudoDosConcorrentes.nome}}</td>
             <td>{{estudoDosConcorrentes.qualidade}}</td>
             <td>{{estudoDosConcorrentes.preco}}</td>
             <td>{{estudoDosConcorrentes.condicoesDePag}}</td>
@@ -57,6 +61,13 @@
             <td>{{estudoDosConcorrentes.servicos}}</td>
             <td>{{estudoDosConcorrentes.garantiasOferecidas}}</td>
             <td>{{estudoDosConcorrentes.conclusoes}}</td>
+            <td>
+              <div class="btn-group btn-group-sm">
+                  <button class="btn btn-danger " (click)="deleteConcorrenteModal.show()"> Excluir</button>
+                <button class="btn btn-info " [routerLink]="['/planodenegocio',idPlano,'editar-concorrente', estudoDosConcorrentes.id]" style="margin-left: 20px;"> Editar</button>
+              </div>
+            </td>
+            <app-delete-concorrente-modal #deleteConcorrenteModal [recebeItem]="estudoDosConcorrentes" (resposta)="deleteConcorrente($event)"></app-delete-concorrente-modal>
         </tr>
     </tbody>
     </table>

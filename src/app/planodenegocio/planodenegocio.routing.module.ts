@@ -28,6 +28,7 @@ import { MatrizfofaComponent } from './analisecritica/matrizfofa/matrizfofa.comp
 import { IntroconclusaoComponent } from './conclusao/introconclusao/introconclusao.component';
 import { AnaliseplanoComponent } from './conclusao/analiseplano/analiseplano.component';
 import { IntroplanomonetarioComponent } from './planomonetario/introplanomonetario/introplanomonetario.component';
+import { EstudodosconcorrentesEditarComponent } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes-editar/estudodosconcorrentes-editar.component';
 export const planodengocioRoutes = [
     {path: 'planodenegocio/:id', component: PlanodenegocioComponent, children: 
     [
@@ -39,9 +40,10 @@ export const planodengocioRoutes = [
 
         //COMPONENTES ESTUDO DE MERCADO -------------------------------------------
         {path: 'introestudodemercado', component: IntroestudodemercadoComponent},
-        {path: 'estudocliente', component: EstudodosclientesComponent},
-        {path: 'estudoconcorrente', component: EstudodosconcorrentesComponent},
-        {path: 'estudofornecedores', component: EstudodosfornecedoresComponent},
+        {path: 'estudocliente/:id', component: EstudodosclientesComponent},
+        {path: 'estudoconcorrente/:id', component: EstudodosconcorrentesComponent},
+        {path: 'editar-concorrente/:id', component: EstudodosconcorrentesEditarComponent},
+        {path: 'estudofornecedores/:id', component: EstudodosfornecedoresComponent},
         //-------------------------------------------------------------------------
 
         //COMPONENTES PLANO DE MARKETING ------------------------------------------

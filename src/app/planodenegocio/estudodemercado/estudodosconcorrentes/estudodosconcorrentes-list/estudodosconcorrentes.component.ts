@@ -16,7 +16,7 @@ export class EstudodosconcorrentesComponent implements OnInit {
   estudoProprio: EstudoProprioDto[];
   estudoDosConcorrentes: EstudoDosConcorrentesDto[];
 
-  private idUser : any;
+  private idPlano : any;
   
 
   constructor(
@@ -35,7 +35,7 @@ export class EstudodosconcorrentesComponent implements OnInit {
 
     //----------- PEGA ID DA URL DA ROTA PAI -----------
     this.route.parent.params.subscribe((param: any) => {
-      this.idUser = param['id'];
+      this.idPlano = param['id'];
     });
     //--------------------------------------------------
 
@@ -43,17 +43,26 @@ export class EstudodosconcorrentesComponent implements OnInit {
       this.router.navigate(['loginUser']);
     }
 
-    this.apiService.getEstudoProprio(this.idUser).subscribe(estudoProprio => {
+    this.apiService.getEstudoProprio(this.idPlano).subscribe(estudoProprio => {
       this.estudoProprio = estudoProprio;
     }, error => {
       this.messageService.showError('Lista de estudo proprio','Falha ao carregar estudo próprio!');
     });
 
     
-    this.apiService.getEstudoDosConcorrentes(this.idUser).subscribe(estudoDosConcorrentes => {
+    this.apiService.getEstudoDosConcorrentes(this.idPlano).subscribe(estudoDosConcorrentes => {
       this.estudoDosConcorrentes = estudoDosConcorrentes;
     }, error => {
       this.messageService.showError('Lista de Concorrentes','Falha ao carregar lista de concorrentes!');
+    });
+  }
+
+  deleteConcorrente(estudoDosConcorrentes : EstudoDosConcorrentesDto): void{
+    this.apiService.deleteConcorrentes(this.idPlano, estudoDosConcorrentes.id).subscribe(() => {
+      this.estudoDosConcorrentes = this.estudoDosConcorrentes.filter(u => u.id !== estudoDosConcorrentes.id);
+      this.messageService.showError('Deleção de concorrente','Concorrente deletado com sucesso!');
+    }, error => {
+      this.messageService.showError('Deleção de concorrente','Falha ao excluir concorrente!');
     });
   }
 

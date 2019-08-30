@@ -4,7 +4,7 @@ export class EstudoDosConcorrentesDto{
 
     id?: string;
     plano: PlanoDto;
-    descricaoAnalise: string;
+    nome: string;
     qualidade: string;
     preco: string;
     condicoesDePag: string;

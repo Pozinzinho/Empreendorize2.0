@@ -1,1 +1,69 @@
-<h1 class="mt-4">Estudo de clientes</h1>
+<section class="grey-text w-responsive mx-auto" class="direita">
+    <div class="form-group" (click)="openDialog()">
+        <label>Tenho dúvidas 
+          <mat-icon>live_help</mat-icon>
+        </label>
+      </div>
+    </section>
+    <section class="grey-text w-responsive mx-auto p-5">
+        <form #EditEstudoDosClientes="ngForm" (ngSubmit)="EditEstudoDosClientes.form.valid && onSubmit()">
+            <div class="form-group">
+    
+    
+                <label for="publicoAlvo">Público Alvo
+                    <strong>(Como são os seus clientes?)*</strong>
+                </label>
+                <textarea type="string" class="form-control" rows="3" name="publicoAlvo" id="publicoAlvo" required
+                    [ngClass]="{ 'is-invalid': EditEstudoDosClientes.submitted && publicoAlvo.invalid }"
+                    placeholder="Ex: Meus clientes são pessoas da faixa etária de 18 anos para frente"
+                    [(ngModel)]="clientes.publicoAlvo" #publicoAlvo="ngModel">
+                        </textarea>
+                <div *ngIf="EditEstudoDosClientes.submitted && publicoAlvo.invalid" class="alert alert-danger">
+                    <div *ngIf="publicoAlvo.errors.required">O campo de público alvo é obrigatório</div>
+                </div>
+    
+                <br/>
+                <br/>
+
+                <label for="comportamentoClientes">Comportamento dos clientes
+                    <strong>(Como eles agem?)*</strong>
+                </label>
+                <textarea type="string" class="form-control" rows="3" name="comportamentoClientes"
+                    id="comportamentoClientes" required
+                    [ngClass]="{ 'is-invalid': EditEstudoDosClientes.submitted && comportamentoClientes.invalid }"
+                    placeholder="Ex: São avaliadores cautelosos, relutantes com novos produtos."
+                    [(ngModel)]="clientes.comportamentoClientes" #comportamentoClientes="ngModel">
+                      </textarea>
+                <div *ngIf="EditEstudoDosClientes.submitted && comportamentoClientes.invalid" class="alert alert-danger">
+                    <div *ngIf="comportamentoClientes.errors.required">O campo de comportamento dos clientes é obrigatório
+                    </div>
+                </div>
+
+                <br/>
+                <br/>
+    
+                <label for="areaAbrangencia">Área de abrangência
+                    <strong>(Onde os clientes moram?)*</strong>
+                </label>
+                <textarea type="string" class="form-control" rows="3" name="areaAbrangencia" id="areaAbrangencia" required
+                    [ngClass]="{ 'is-invalid': EditEstudoDosClientes.submitted && areaAbrangencia.invalid }"
+                    placeholder="Ex: País, região, estado, cidade, bairro, regiões isoladas? regiões com temperatura baixa ou altas? e etc..."
+                    [(ngModel)]="clientes.areaAbrangencia" #areaAbrangencia="ngModel">
+                      </textarea>
+                <div *ngIf="EditEstudoDosClientes.submitted && areaAbrangencia.invalid" class="alert alert-danger">
+                    <div *ngIf="areaAbrangencia.errors.required">O campo de área de abrangência é obrigatório</div>
+                </div>
+            </div>
+    
+    
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+                <button button class="btn btn-dark" *ngIf='clientes.id !== Undefined'>Atualizar</button>
+                <button button class="btn btn-dark" *ngIf='clientes.id === Undefined'>salvar</button>
+            </div>
+        </form>
+
+        <br/>
+        <br/>
+    
+    </section>

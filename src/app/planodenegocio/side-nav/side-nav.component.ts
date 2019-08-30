@@ -8,6 +8,10 @@ import { ApiService } from 'src/app/core/api.service';
 import { MessageService } from 'src/app/core/message.service';
 import { AnaliseDaMatrizDto } from 'src/app/core/model/models-do-plano/model-analiseDaMatriz/analiseDaMatrizDto';
 import { IntroducaoAoPlanoDto } from 'src/app/core/model/models-do-plano/model-introducao-plano/introducaoAoPlanoDto';
+import { EstudoDosClientesDto } from 'src/app/core/model/models-do-plano/model-estudo-mercado/EstudoDosClientesDto';
+import { EstudoDosFornecedoresDto } from 'src/app/core/model/models-do-plano/model-estudo-mercado/EstudoDosFornecedoresDto';
+import { EstudoDosConcorrentesDto } from 'src/app/core/model/models-do-plano/model-estudo-mercado/EstudoDosConcorrentesDto';
+import { EstudoProprioDto } from 'src/app/core/model/models-do-plano/model-estudo-mercado/EstudoProprioDto';
 
 @Component({
   selector: 'app-side-nav',
@@ -24,6 +28,18 @@ export class SideNavComponent {
   public introducao = new  IntroducaoAoPlanoDto();
   introducaoAoPlano :  IntroducaoAoPlanoDto[];
   idIntroducao: string;
+
+  public clientes = new  EstudoDosClientesDto();
+  estudoDosClientes :  EstudoDosClientesDto[];
+  idClientes: string;
+
+  public fornecedores = new  EstudoDosFornecedoresDto();
+  estudoDosFornecedores :  EstudoDosFornecedoresDto[];
+  idFornecedores: string;
+
+  public concorrentes = new  EstudoDosConcorrentesDto();
+  estudoDosConcorrentes :  EstudoDosConcorrentesDto[];
+  idConcorrentes: string;
 
   public fofa = new  AnaliseDaMatrizDto();
   analiseDaMatriz :  AnaliseDaMatrizDto[];
@@ -52,18 +68,25 @@ export class SideNavComponent {
       //--------------------------------------------------
       console.log("Abaixo está o id do plano",this.idPlano)
 
+    
       
-      this.pegarIdAnalise();
-      this.pegarIdMatriz();
       this.pegarIdIntroducao();
+
+      this.pegarIdClientes();
+      this.pegarIdConcorrentes();
+      this.pegarIdFornecedores();
+
+      this.pegarIdMatriz();
+
+      this.pegarIdAnalise();
     }
 
- //----------- Pegar e setar id da Introdução -----------------------------------------------
+ //----------- Pegar e setar id da Introdução -----------------------------------------------------
  pegarIdIntroducao() {
   this.apiService.getIntroducaoPlano(this.idPlano).subscribe(introducaoAoPlano => {
     this.introducaoAoPlano = introducaoAoPlano;
     this.idIntroducao = introducaoAoPlano[0].id;
-    console.log("Abaixo está o id da introdução", this.idIntroducao)
+    console.log("Abaixo está o id da introdução", this.idIntroducao);
     this.iniciaIntroducao();
   }, error => {
   });
@@ -77,7 +100,70 @@ iniciaIntroducao(){
     console.log('Error ao capturar introdução por ID! ', error);
   });
 }
-//---------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+
+ //----------- Pegar e setar id do estudo dos clientes -----------------------------------------------
+ pegarIdClientes() {
+  this.apiService.getEstudoDosClientes(this.idPlano).subscribe(estudoDosClientes => {
+    this.estudoDosClientes = estudoDosClientes;
+    this.idClientes = estudoDosClientes[0].id;
+    console.log("Abaixo está o id dos clientes", this.idClientes);
+    this.iniciaClientes();
+  }, error => {
+  });
+}
+
+iniciaClientes(){
+  this.apiService.getEstudoDosClientesById(this.idPlano, this.idClientes).subscribe(clientes => {
+    this.clientes = clientes;
+    console.log('Retornou clientes com sucesso! ', this.clientes);
+  }, error => {
+    console.log('Error ao capturar clientes por ID! ', error);
+  });
+}
+//------------------------------------------------------------------------------------------------------
+
+//----------- Pegar e setar id do estudo dos concorrentes -----------------------------------------------
+pegarIdConcorrentes() {
+  this.apiService.getEstudoDosConcorrentes(this.idPlano).subscribe(estudoDosConcorrentes => {
+    this.estudoDosConcorrentes = estudoDosConcorrentes;
+    this.idConcorrentes = estudoDosConcorrentes[0].id;
+    console.log("Abaixo está o id dos Concorrentes", this.idConcorrentes);
+    this.iniciaConcorrentes();
+  }, error => {
+  });
+}
+
+iniciaConcorrentes(){
+  this.apiService.getEstudoDosConcorrentesById(this.idPlano, this.idConcorrentes).subscribe(concorrentes => {
+    this.concorrentes = concorrentes;
+    console.log('Retornou concorrentes com sucesso! ', this.concorrentes);
+  }, error => {
+    console.log('Error ao capturar concorrentes por ID! ', error);
+  });
+}
+//-----------------------------------------------------------------------------------------------------------
+
+//----------- Pegar e setar id do estudo dos fornecedores -------------------------------------------------
+pegarIdFornecedores() {
+  this.apiService.getEstudoDosFornecedores(this.idPlano).subscribe(estudoDosFornecedores => {
+    this.estudoDosFornecedores = estudoDosFornecedores;
+    this.idFornecedores = estudoDosFornecedores[0].id;
+    console.log("Abaixo está o id dos fornecedores", this.idFornecedores);
+    this.iniciaClientes();
+  }, error => {
+  });
+}
+
+iniciaFornecedores(){
+  this.apiService.getEstudoDosFornecedoresById(this.idPlano, this.idFornecedores).subscribe( fornecedores => {
+    this.fornecedores = fornecedores;
+    console.log('Retornou fornecedores com sucesso! ', this.fornecedores);
+  }, error => {
+    console.log('Error ao capturar fornecedores por ID! ', error);
+  });
+}
+//------------------------------------------------------------------------------------------------------
 
   //----------- Pegar e setar id da matriz F.O.F.A -----------------------------------------------
   pegarIdMatriz() {

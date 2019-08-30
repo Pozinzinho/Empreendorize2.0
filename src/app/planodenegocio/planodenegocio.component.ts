@@ -1,10 +1,11 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, ViewEncapsulation } from '@angular/core';
 
 
 @Component({
   selector: 'app-planodenegocio',
   templateUrl: './planodenegocio.component.html',
-  styleUrls: ['./planodenegocio.component.css']
+  styleUrls: ['./planodenegocio.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class PlanodenegocioComponent implements OnInit {

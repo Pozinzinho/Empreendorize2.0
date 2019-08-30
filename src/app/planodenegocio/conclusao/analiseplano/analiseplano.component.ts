@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
 import { Location } from '@angular/common';
 import { MessageService } from 'src/app/core/message.service';
-import  {NgxSpinnerService}  from 'ngx-spinner';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -27,7 +26,6 @@ export class AnaliseplanoComponent implements OnInit {
     private apiService: ApiService,
     private location: Location,
     private messageService: MessageService,
-    private spinner: NgxSpinnerService,
     public dialog: MatDialog
   ) { }
 
@@ -38,7 +36,7 @@ export class AnaliseplanoComponent implements OnInit {
     });
     //--------------------------------------------------
 
-    this.recuperaPlano();
+    this.recuperaPlano(); //Talvez eu não precise disto aqui...
     this.pegarIdAnalise();
     
   }

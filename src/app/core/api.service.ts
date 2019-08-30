@@ -9,6 +9,10 @@ import { PlanoDto } from './model/model-plano/planoDto';
 import { AnaliseDoPlanoDto } from './model/models-do-plano/model-conclusao/AnaliseDoPlanoDto';
 import { AnaliseDaMatrizDto } from './model/models-do-plano/model-analiseDaMatriz/analiseDaMatrizDto';
 import { IntroducaoAoPlanoDto } from './model/models-do-plano/model-introducao-plano/introducaoAoPlanoDto';
+import { EstudoDosClientesDto } from './model/models-do-plano/model-estudo-mercado/EstudoDosClientesDto';
+import { EstudoDosFornecedoresDto } from './model/models-do-plano/model-estudo-mercado/EstudoDosFornecedoresDto';
+import { EstudoDosConcorrentesDto } from './model/models-do-plano/model-estudo-mercado/EstudoDosConcorrentesDto';
+import { EstudoProprioDto } from './model/models-do-plano/model-estudo-mercado/EstudoProprioDto';
 
 
 
@@ -24,6 +28,8 @@ export class ApiService {
   public baseUrlEC: string;
   public baseUrlAM: string;
   public baseUrlIP: string;
+  public baseUrlECLI: string;
+  public baseUrlEF: string;
 
   public user = new UserDto;
   public roleAtual : string;
@@ -33,6 +39,8 @@ export class ApiService {
     this.baseUrlR = `${AppUtils.BASE_URL}` + 'api/users/roles/main';
 
     this.baseUrlP = `${AppUtils.BASE_URL}` + 'api/planos';
+    this.baseUrlECLI = '/estudoDosClientes';
+    this.baseUrlEF = '/estudoDosFornecedores';
     this.baseUrlEP = '/estudoProprio';
     this.baseUrlEC =  '/estudoDosConcorrentes';
 
@@ -134,14 +142,6 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.baseUrl}`, AppUtils.OPTIONS_OBJECTO);
   }
 
-  getEstudoProprio(id: string): Observable<any> {
-    return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEP}`, AppUtils.OPTIONS_OBJECTO);
-  }
-
-  getEstudoDosConcorrentes(id: string): Observable<any> {
-    return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEC}`, AppUtils.OPTIONS_OBJECTO);
-  }
-
  // ---------------- SERVIÇOS REFERENTES A Introdução do Plano ---------------------------------------------------------------
   getIntroducaoPlano(id: string): Observable<any> {
     return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIP}`, AppUtils.OPTIONS_OBJECTO);
@@ -159,6 +159,87 @@ export class ApiService {
   registerIntroducaoPlano(introducao: IntroducaoAoPlanoDto, id: string): Observable<any> {
     return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIP}`, introducao, AppUtils.OPTIONS_OBJECTO);
   }
+//---------------------------------------------------------------------------------------------------------------------------
+
+ // ---------------- SERVIÇOS REFERENTES AO ESTUDO DE CLIENTES ---------------------------------------------------------------
+ getEstudoDosClientes(id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlECLI}`, AppUtils.OPTIONS_OBJECTO);
+}
+
+getEstudoDosClientesById(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlECLI}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+
+updateEstudoDosClientes(estudoDosClientes: EstudoDosClientesDto, id: string): Observable<any> {
+  return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlECLI}/${estudoDosClientes.id}`,
+    estudoDosClientes, AppUtils.OPTIONS_OBJECTO);
+}
+
+registerEstudoDosClientes(estudoDosClientes: EstudoDosClientesDto, id: string): Observable<any> {
+  return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlECLI}`, estudoDosClientes, AppUtils.OPTIONS_OBJECTO);
+}
+//---------------------------------------------------------------------------------------------------------------------------
+
+// ---------------- SERVIÇOS REFERENTES AO ESTUDO DOS FORNECEDORES ---------------------------------------------------------------
+getEstudoDosFornecedores(id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEF}`, AppUtils.OPTIONS_OBJECTO);
+}
+
+getEstudoDosFornecedoresById(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlEF}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+
+updateEstudoDosFornecedores(estudoDosFornecedores: EstudoDosFornecedoresDto, id: string): Observable<any> {
+  return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEF}/${estudoDosFornecedores.id}`,
+    estudoDosFornecedores, AppUtils.OPTIONS_OBJECTO);
+}
+
+registerEstudoDosFornecedores(estudoDosFornecedores: EstudoDosFornecedoresDto, id: string): Observable<any> {
+  return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEF}`, estudoDosFornecedores, AppUtils.OPTIONS_OBJECTO);
+}
+
+deleteFornecedores(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.delete<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlEF}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+//---------------------------------------------------------------------------------------------------------------------------
+
+// ---------------- SERVIÇOS REFERENTES AO ESTUDO DOS CONCORRENTES ---------------------------------------------------------------
+getEstudoDosConcorrentes(id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEC}`, AppUtils.OPTIONS_OBJECTO);
+}
+
+getEstudoDosConcorrentesById(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlEC}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+
+updateEstudoDosConcorrentes(estudoDosConcorrentes: EstudoDosConcorrentesDto, id: string): Observable<any> {
+  return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEC}/${estudoDosConcorrentes.id}`,
+    estudoDosConcorrentes, AppUtils.OPTIONS_OBJECTO);
+}
+
+registerEstudoDosConcorrentes(estudoDosConcorrentes: EstudoDosConcorrentesDto, id: string): Observable<any> {
+  return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEC}`, estudoDosConcorrentes, AppUtils.OPTIONS_OBJECTO);
+}
+
+deleteConcorrentes(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.delete<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlEC}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+//---------------------------------------------------------------------------------------------------------------------------
+
+// ---------------- SERVIÇOS REFERENTES AO ESTUDO PRÓPRIO ---------------------------------------------------------------
+getEstudoProprio(id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEP}`, AppUtils.OPTIONS_OBJECTO);
+}
+getEstudoDosProprioById(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlEP}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+updateEstudoDosProprio(estudoProprio: EstudoProprioDto, id: string): Observable<any> {
+  return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEP}/${estudoProprio.id}`,
+    estudoProprio, AppUtils.OPTIONS_OBJECTO);
+}
+registerEstudoProprio(estudoProprio: EstudoProprioDto, id: string): Observable<any> {
+  return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEP}`, estudoProprio, AppUtils.OPTIONS_OBJECTO);
+}
 //---------------------------------------------------------------------------------------------------------------------------
 
     // ---------------- SERVIÇOS REFERENTES A Matriz F.O.F.A --------------------------------------------

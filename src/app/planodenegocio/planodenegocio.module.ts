@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 import { MissaoComponent, DicasMissao } from './introducaoaoplano/missao/missao.component';
 import { IntroplanoComponent } from './introducaoaoplano/introplano/introplano.component';
 import { IntroestudodemercadoComponent } from './estudodemercado/introestudodemercado/introestudodemercado.component';
-import { EstudodosclientesComponent } from './estudodemercado/estudodosclientes/estudodosclientes.component';
+import { EstudodosclientesComponent, DicasClientes } from './estudodemercado/estudodosclientes/estudodosclientes.component';
 import { EstudodosconcorrentesComponent } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes-list/estudodosconcorrentes.component';
 import { EstudodosfornecedoresComponent } from './estudodemercado/estudodosfornecedores/estudodosfornecedores.component';
 import { IntroplanodemarketingComponent } from './planodemarketing/introplanodemarketing/introplanodemarketing.component';
@@ -55,6 +55,9 @@ import {VgControlsModule} from 'videogular2/compiled/controls';
 import {VgOverlayPlayModule} from 'videogular2/compiled/overlay-play';
 import {VgBufferingModule} from 'videogular2/compiled/buffering';
 import { NgxUiLoaderModule } from  'ngx-ui-loader';
+import { EstudodosconcorrentesEditarComponent } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes-editar/estudodosconcorrentes-editar.component';
+import { DeleteConcorrenteModalComponent } from '../shared/components/modals/delete-concorrente-modal/delete-concorrente-modal.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule(
     {
@@ -95,6 +98,9 @@ import { NgxUiLoaderModule } from  'ngx-ui-loader';
             MatTooltipModule,
             CommonModule,
             NgbModule,
+            BrowserModule,
+            FlexLayoutModule,
+            MatMenuModule,
             MDBBootstrapModule.forRoot(),
             RouterModule.forChild(planodengocioRoutes),
             PlanodenegocioRoutingModule,
@@ -114,7 +120,8 @@ import { NgxUiLoaderModule } from  'ngx-ui-loader';
             IntroplanoComponent, 
             IntroestudodemercadoComponent, 
             EstudodosclientesComponent, 
-            EstudodosconcorrentesComponent, 
+            EstudodosconcorrentesComponent,
+            EstudodosconcorrentesEditarComponent, 
             EstudodosfornecedoresComponent, 
             IntroplanodemarketingComponent, 
             ProdutoseservicosComponent, 
@@ -140,9 +147,11 @@ import { NgxUiLoaderModule } from  'ngx-ui-loader';
             SideNavComponent,
             DialogContentExampleDialog,
             DicasFOFA,
-            DicasMissao
+            DicasMissao,
+            DicasClientes,
+            DeleteConcorrenteModalComponent
         ],
-        entryComponents: [DialogContentExampleDialog, DicasFOFA, DicasMissao],
+        entryComponents: [DialogContentExampleDialog, DicasFOFA, DicasMissao, DicasClientes],
         providers:[],
         bootstrap:[PlanodenegocioComponent]
     }
