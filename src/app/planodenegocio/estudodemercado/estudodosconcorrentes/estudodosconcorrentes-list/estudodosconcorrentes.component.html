@@ -1,22 +1,30 @@
-<section class="grey-text w-responsive mx-auto p-5">    
-    <h2 class="h4 mb-4 text-center font-weight-bold">Sua empresa</h2>
-    <table class="table table-striped">
-      <thead>
+<section class="grey-text w-responsive mx-auto" class="direita">
+  <div class="form-group" (click)="openDialog()">
+      <label>Tenho dúvidas 
+        <mat-icon>live_help</mat-icon>
+      </label>
+    </div>
+  </section>
+
+<h2 class="h4 mb-4 text-center font-weight-bold">Sua empresa</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
       <tr>
         <th class="hidden">Id</th>
         <th>Nome</th>
         <th>Qualidade</th>
         <th>Preço</th>
-        <th>Condições de pg</th>
+        <th>Condições de pagamento</th>
         <th>Localização</th>
         <th>Atendimento</th>
         <th>Serviços</th>
         <th>Garantias</th>
         <th>Conclusões</th>
       </tr>
-      </thead>
+    </thead>
 
-      <tbody>
+    <tbody>
       <tr *ngFor="let estudoProprio of estudoProprio; let i = index;">
         <td class="hidden">{{i+1}}</td>
         <td>{{estudoProprio.nome}}</td>
@@ -28,47 +36,79 @@
         <td>{{estudoProprio.servicos}}</td>
         <td>{{estudoProprio.garantiasOferecidas}}</td>
         <td>{{estudoProprio.conclusoes}}</td>
+        <td>
+          <div class="btn-group btn-group-sm">
+            <button class="btn btn-info "
+              [routerLink]="['/planodenegocio',idPlano,'editar-proprio', estudoProprio.id]"
+              style="margin-left: 20px;"> Editar</button>
+          </div>
+        </td>
       </tr>
-      </tbody>
-    </table>
+    </tbody>
+  </table>
 
-    <h2 class="h4 mb-4 text-center font-weight-bold">Concorrentes</h2>
-    <table class="table table-striped">
-      <thead>
+</div>
+<div class="form">
+  <button mat-fab class="cor-botton" *ngIf='idEstudo === Undefined' matTooltip="Adicionar auto análise"
+    matTooltipPosition='after' [routerLink]="['/planodenegocio',idPlano,'add-proprio']">
+    <mat-icon>add</mat-icon>
+  </button>
+  <br />
+  <br />
+</div>
+
+<h2 class="h4 mb-4 text-center font-weight-bold">Concorrentes</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
       <tr>
         <th class="hidden">Id</th>
         <th>Nome</th>
         <th>Qualidade</th>
         <th>Preço</th>
-        <th>Condições de pg</th>
+        <th>Condições de pagamento</th>
         <th>Localização</th>
         <th>Atendimento</th>
         <th>Serviços</th>
         <th>Garantias</th>
         <th>Conclusões</th>
       </tr>
-      </thead>
+    </thead>
 
     <tbody>
-        <tr *ngFor="let estudoDosConcorrentes of estudoDosConcorrentes; let i = index;">
-            <td class="hidden">{{i+1}}</td>
-            <td>{{estudoDosConcorrentes.nome}}</td>
-            <td>{{estudoDosConcorrentes.qualidade}}</td>
-            <td>{{estudoDosConcorrentes.preco}}</td>
-            <td>{{estudoDosConcorrentes.condicoesDePag}}</td>
-            <td>{{estudoDosConcorrentes.localizacao}}</td>
-            <td>{{estudoDosConcorrentes.atendimento}}</td>
-            <td>{{estudoDosConcorrentes.servicos}}</td>
-            <td>{{estudoDosConcorrentes.garantiasOferecidas}}</td>
-            <td>{{estudoDosConcorrentes.conclusoes}}</td>
-            <td>
-              <div class="btn-group btn-group-sm">
-                  <button class="btn btn-danger " (click)="deleteConcorrenteModal.show()"> Excluir</button>
-                <button class="btn btn-info " [routerLink]="['/planodenegocio',idPlano,'editar-concorrente', estudoDosConcorrentes.id]" style="margin-left: 20px;"> Editar</button>
-              </div>
-            </td>
-            <app-delete-concorrente-modal #deleteConcorrenteModal [recebeItem]="estudoDosConcorrentes" (resposta)="deleteConcorrente($event)"></app-delete-concorrente-modal>
-        </tr>
+      <tr *ngFor="let estudoDosConcorrentes of estudoDosConcorrentes; let i = index;">
+        <td class="hidden">{{i+1}}</td>
+        <td>{{estudoDosConcorrentes.nome}}</td>
+        <td>{{estudoDosConcorrentes.qualidade}}</td>
+        <td>{{estudoDosConcorrentes.preco}}</td>
+        <td>{{estudoDosConcorrentes.condicoesDePag}}</td>
+        <td>{{estudoDosConcorrentes.localizacao}}</td>
+        <td>{{estudoDosConcorrentes.atendimento}}</td>
+        <td>{{estudoDosConcorrentes.servicos}}</td>
+        <td>{{estudoDosConcorrentes.garantiasOferecidas}}</td>
+        <td>{{estudoDosConcorrentes.conclusoes}}</td>
+        <td>
+          <div class="btn-group btn-group-sm">
+            <button class="btn btn-danger " (click)="deleteConcorrenteModal.show()"> Excluir</button>
+            <button class="btn btn-info "
+              [routerLink]="['/planodenegocio',idPlano,'editar-concorrente', estudoDosConcorrentes.id]"
+              style="margin-left: 20px;"> Editar</button>
+          </div>
+        </td>
+        <app-delete-concorrente-modal #deleteConcorrenteModal [recebeItem]="estudoDosConcorrentes"
+          (resposta)="deleteConcorrente($event)"></app-delete-concorrente-modal>
+      </tr>
     </tbody>
-    </table>
-  </section>
+  </table>
+</div>
+
+<div [routerLink]="['/planodenegocio',idPlano,'add-concorrente']" class="form">
+  <button mat-fab class="cor-botton" matTooltip="Adicionar análise do concorrente" matTooltipPosition='after'>
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<br />
+<br />
+<br />
+<br />

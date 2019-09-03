@@ -233,7 +233,7 @@ getEstudoProprio(id: string): Observable<any> {
 getEstudoDosProprioById(idPlano: string, id: string): Observable<any> {
   return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlEP}/${id}`, AppUtils.OPTIONS_OBJECTO);
 }
-updateEstudoDosProprio(estudoProprio: EstudoProprioDto, id: string): Observable<any> {
+updateEstudoProprio(estudoProprio: EstudoProprioDto, id: string): Observable<any> {
   return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEP}/${estudoProprio.id}`,
     estudoProprio, AppUtils.OPTIONS_OBJECTO);
 }

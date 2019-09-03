@@ -29,6 +29,11 @@ import { IntroconclusaoComponent } from './conclusao/introconclusao/introconclus
 import { AnaliseplanoComponent } from './conclusao/analiseplano/analiseplano.component';
 import { IntroplanomonetarioComponent } from './planomonetario/introplanomonetario/introplanomonetario.component';
 import { EstudodosconcorrentesEditarComponent } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes-editar/estudodosconcorrentes-editar.component';
+import { EstudodosconcorrentesAddComponent } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes-add/estudodosconcorrentes-add.component';
+import { EstudoProprioAddComponent } from './estudodemercado/estudodosconcorrentes/estudo-proprio-add/estudo-proprio-add.component';
+import { EstudoProprioEditarComponent } from './estudodemercado/estudodosconcorrentes/estudo-proprio-editar/estudo-proprio-editar.component';
+import { EstudodosfornecedoresEditarComponent } from './estudodemercado/estudodosfornecedores/estudodosfornecedores-editar/estudodosfornecedores-editar.component';
+import { EstudodosfornecedoresAddComponent } from './estudodemercado/estudodosfornecedores/estudodosfornecedores-add/estudodosfornecedores-add.component';
 export const planodengocioRoutes = [
     {path: 'planodenegocio/:id', component: PlanodenegocioComponent, children: 
     [
@@ -41,9 +46,14 @@ export const planodengocioRoutes = [
         //COMPONENTES ESTUDO DE MERCADO -------------------------------------------
         {path: 'introestudodemercado', component: IntroestudodemercadoComponent},
         {path: 'estudocliente/:id', component: EstudodosclientesComponent},
+        {path: 'add-proprio', component: EstudoProprioAddComponent},
+        {path: 'editar-proprio/:id', component: EstudoProprioEditarComponent},
         {path: 'estudoconcorrente/:id', component: EstudodosconcorrentesComponent},
+        {path: 'add-concorrente', component: EstudodosconcorrentesAddComponent},
         {path: 'editar-concorrente/:id', component: EstudodosconcorrentesEditarComponent},
         {path: 'estudofornecedores/:id', component: EstudodosfornecedoresComponent},
+        {path: 'add-fornecedor', component: EstudodosfornecedoresAddComponent},
+        {path: 'editar-fornecedor/:id', component: EstudodosfornecedoresEditarComponent},
         //-------------------------------------------------------------------------
 
         //COMPONENTES PLANO DE MARKETING ------------------------------------------

@@ -60,6 +60,7 @@ import {VgControlsModule} from 'videogular2/compiled/controls';
 import {VgOverlayPlayModule} from 'videogular2/compiled/overlay-play';
 import {VgBufferingModule} from 'videogular2/compiled/buffering';
 import { NgxUiLoaderModule } from  'ngx-ui-loader';
+import { DeleteConcorrenteModalComponent } from './shared/components/modals/delete-concorrente-modal/delete-concorrente-modal.component';
 
 
 

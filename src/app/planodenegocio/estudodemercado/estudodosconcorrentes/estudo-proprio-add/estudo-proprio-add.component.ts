@@ -1,24 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { EstudoDosConcorrentesDto } from 'src/app/core/model/models-do-plano/model-estudo-mercado/EstudoDosConcorrentesDto';
 import { Location } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import { EstudoProprioDto } from 'src/app/core/model/models-do-plano/model-estudo-mercado/EstudoProprioDto';
 import { ApiService } from 'src/app/core/api.service';
 import { MessageService } from 'src/app/core/message.service';
-import { MatDialog } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-estudodosconcorrentes-add',
-  templateUrl: './estudodosconcorrentes-add.component.html',
-  styleUrls: ['./estudodosconcorrentes-add.component.css']
+  selector: 'app-estudo-proprio-add',
+  templateUrl: './estudo-proprio-add.component.html',
+  styleUrls: ['./estudo-proprio-add.component.css']
 })
-export class EstudodosconcorrentesAddComponent implements OnInit {
+export class EstudoProprioAddComponent implements OnInit {
 
-  estudoDosConcorrentes :  EstudoDosConcorrentesDto[];
   private idPlano : any;
-  idConcorrente: string;
 
 
-  public concorrente = new  EstudoDosConcorrentesDto();
+  public proprio = new  EstudoProprioDto();
 
   constructor(
     private route: ActivatedRoute,
@@ -37,12 +34,12 @@ export class EstudodosconcorrentesAddComponent implements OnInit {
   }
 
   save(): void {
-    this.apiService.registerEstudoDosConcorrentes(this.concorrente, this.idPlano).subscribe(data => {
+    this.apiService.registerEstudoProprio(this.proprio, this.idPlano).subscribe(data => {
       this.messageService.showSuccess('Cadastro realizado com sucesso!', 
-      'Concorrente cadastrado');
+      'Estudo próprio cadastrado');
       this.goBack();
     }, error => {
-      this.messageService.showError('Erro de cadastro', 'Falha ao cadastrar concorrente!');
+      this.messageService.showError('Erro de cadastro', 'Falha ao cadastrar estudo próprio!');
     });
   }
   goBack() {

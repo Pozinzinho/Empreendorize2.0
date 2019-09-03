@@ -1,0 +1,122 @@
+<section class="grey-text w-responsive mx-auto p-5">
+  <form #EditProprioForm="ngForm" (ngSubmit)="EditProprioForm.form.valid && onSubmit()">
+    <h4 class="h4 mb-4 text-center"><span class="badge badge-light ">{{proprio.id}}</span> ->
+      {{proprio.nome}}</h4>
+
+    <div class="form-group">
+      <label for="nome">Nome da minha empresa*</label>
+      <input type="text" class="form-control" id="firstName" required
+        [ngClass]="{ 'is-invalid': EditProprioForm.submitted && nome.invalid }" placeholder="Nome da minha empresa"
+        [(ngModel)]="proprio.nome" name="nome" #nome="ngModel">
+      <div *ngIf="EditProprioForm.submitted && nome.invalid" class="alert alert-danger">
+        <div *ngIf="nome.errors.required">O campo de nome da minha empresa é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="qualidade">Qualidade*</label>
+      <textarea type="text" class="form-control" id="qualidade" required
+        [ngClass]="{ 'is-invalid': EditProprioForm.submitted && qualidade.invalid }"
+        placeholder="qualidade do meu serviço ou produto" [(ngModel)]="proprio.qualidade" name="qualidade"
+        #qualidade="ngModel">
+        </textarea>
+      <div *ngIf="EditProprioForm.submitted && qualidade.invalid" class="alert alert-danger">
+        <div *ngIf="qualidade.errors.required">O campo de qualidade é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="preco">Preço*</label>
+      <textarea type="text" class="form-control" id="preco" required
+        [ngClass]="{ 'is-invalid': EditProprioForm.submitted && preco.invalid }"
+        placeholder="Descreva sobre o preço da minha empresa" [(ngModel)]="proprio.preco" name="preco" #preco="ngModel">
+        </textarea>
+      <div *ngIf="EditProprioForm.submitted && preco.invalid" class="alert alert-danger">
+        <div *ngIf="preco.errors.required">O campo de preço é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="condicoesDePag">Condições de pagamento*</label>
+      <textarea type="text" class="form-control" id="condicoesDePag" required
+        [ngClass]="{ 'is-invalid': EditProprioForm.submitted && condicoesDePag.invalid }"
+        placeholder="Condições de pagamento da minha empresa" [(ngModel)]="proprio.condicoesDePag" name="condicoesDePag"
+        #condicoesDePag="ngModel">
+      </textarea>
+      <div *ngIf="EditProprioForm.submitted && condicoesDePag.invalid" class="alert alert-danger">
+        <div *ngIf="condicoesDePag.errors.required">O campo condições de pagamento é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="localizacao">Localização</label>
+      <textarea type="text" class="form-control" id="localizacao" required
+        [ngClass]="{ 'is-invalid': EditProprioForm.submitted && localizacao.invalid }"
+        placeholder="Descreva o seu ponto de comercialização" [(ngModel)]="proprio.localizacao" name="localizacao"
+        #localizacao="ngModel">
+        </textarea>
+      <div *ngIf="EditProprioForm.submitted && localizacao.invalid" class="alert alert-danger">
+        <div *ngIf="localizacao.errors.required">O campo de localização é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="atendimento">Atendimento*</label>
+      <textarea type="text" class="form-control" id="atendimento" required
+        [ngClass]="{ 'is-invalid': EditProprioForm.submitted && atendimento.invalid }"
+        placeholder="Descreva sobre a sua qualidade de atendimento" [(ngModel)]="proprio.atendimento" name="atendimento"
+        #atendimento="ngModel">
+        </textarea>
+      <div *ngIf="EditProprioForm.submitted && atendimento.invalid" class="alert alert-danger">
+        <div *ngIf="atendimento.errors.required">O campo atendimento é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="servicos">Serviços*</label>
+      <textarea type="text" class="form-control" id="servicos" required
+        [ngClass]="{ 'is-invalid': EditProprioForm.submitted && servicos.invalid }"
+        placeholder="Descreva quais são os serviços oferecidos pela sua empresa" [(ngModel)]="proprio.servicos"
+        name="servicos" #servicos="ngModel">
+      </textarea>
+      <div *ngIf="EditProprioForm.submitted && servicos.invalid" class="alert alert-danger">
+        <div *ngIf="servicos.errors.required">O campo pertinente ao serviço é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="garantiasOferecidas">Garantias oferecidas*</label>
+      <textarea type="text" class="form-control" id="garantiasOferecidas" required
+        [ngClass]="{ 'is-invalid': EditProprioForm.submitted && garantiasOferecidas.invalid }"
+        placeholder="Quais garantias são oferecidas pela sua empresa?" [(ngModel)]="proprio.garantiasOferecidas"
+        name="garantiasOferecidas" #garantiasOferecidas="ngModel">
+        </textarea>
+      <div *ngIf="EditProprioForm.submitted && garantiasOferecidas.invalid" class="alert alert-danger">
+        <div *ngIf="garantiasOferecidas.errors.required">O campo pertinente as garantias oferecidas é obrigatório</div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="conclusoes">Conclusões
+      </label>
+      <textarea type="text" class="form-control" rows="3" name="conclusoes" id="conclusoes" required
+        [ngClass]="{ 'is-invalid': EditProprioForm.submitted && conclusoes.invalid }"
+        placeholder="Descreva o que conclui-se da sua empresa" [(ngModel)]="proprio.conclusoes" #conclusoes="ngModel">
+          </textarea>
+      <div *ngIf="EditProprioForm.submitted && conclusoes.invalid" class="alert alert-danger">
+        <div *ngIf="conclusoes.errors.required">O campo de conclusões é obrigatório</div>
+      </div>
+    </div>
+
+
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+      <button button class="btn btn-dark">Atualizar</button>
+    </div>
+
+    <br />
+    <br />
+
+  </form>
+</section>

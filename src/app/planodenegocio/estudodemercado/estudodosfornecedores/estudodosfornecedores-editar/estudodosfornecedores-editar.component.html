@@ -1,0 +1,84 @@
+<section class="grey-text w-responsive mx-auto p-5">
+  <form #EditFornecedoresForm="ngForm" (ngSubmit)="EditFornecedoresForm.form.valid && onSubmit()">
+    <h4 class="h4 mb-4 text-center"><span class="badge badge-light ">{{fornecedores.id}}</span> ->
+      {{fornecedores.nomeFornecedor}}</h4>
+
+      <div class="form-group">
+        <label for="nomeFornecedor">Nome do fornecedor*</label>
+        <input type="text" class="form-control" id="nomeFornecedor" required
+          [ngClass]="{ 'is-invalid': EditFornecedoresForm.submitted && nomeFornecedor.invalid }" placeholder="Descreva o nome da empresa fornecedora"
+          [(ngModel)]="fornecedores.nomeFornecedor" name="nomeFornecedor" #nomeFornecedor="ngModel">
+        <div *ngIf="EditFornecedoresForm.submitted && nomeFornecedor.invalid" class="alert alert-danger">
+          <div *ngIf="nomeFornecedor.errors.required">O campo nome do fornecedor é obrigatório</div>
+        </div>
+      </div>
+
+    <div class="form-group">
+      <label for="descricaoItens">Descrição dos itens ou serviços*</label>
+      <textarea type="text" class="form-control" id="descricaoItens" required
+        [ngClass]="{ 'is-invalid': EditFornecedoresForm.submitted && descricaoItens.invalid }" placeholder="Descreva os itens ou serviços oferecidos por este fornecedor"
+        [(ngModel)]="fornecedores.descricaoItens" name="descricaoItens" #descricaoItens="ngModel">
+        </textarea>
+      <div *ngIf="EditFornecedoresForm.submitted && descricaoItens.invalid" class="alert alert-danger">
+        <div *ngIf="descricaoItens.errors.required">O campo descrição dos itens é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="preco">Preço*</label>
+      <textarea type="text" class="form-control" id="preco" required
+        [ngClass]="{ 'is-invalid': EditFornecedoresForm.submitted && preco.invalid }"
+        placeholder="Descreva sobre o preço do forncedor" [(ngModel)]="fornecedores.preco" name="preco"
+        #preco="ngModel">
+        </textarea>
+      <div *ngIf="EditFornecedoresForm.submitted && preco.invalid" class="alert alert-danger">
+        <div *ngIf="preco.errors.required">O campo de preço é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="condicoesPg">Condições de pagamento*</label>
+      <textarea type="text" class="form-control" id="condicoesPg" required
+        [ngClass]="{ 'is-invalid': EditFornecedoresForm.submitted && condicoesPg.invalid }"
+        placeholder="Condições de pagamento do fornecedor" [(ngModel)]="fornecedores.condicoesPg"
+        name="condicoesPg" #condicoesPg="ngModel">
+      </textarea>
+      <div *ngIf="EditFornecedoresForm.submitted && condicoesPg.invalid" class="alert alert-danger">
+        <div *ngIf="condicoesPg.errors.required">O campo condições de pagamento é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="prazoEntrega">Prazo de entrega*</label>
+      <textarea type="text" class="form-control" id="prazoEntrega" required
+        [ngClass]="{ 'is-invalid': EditFornecedoresForm.submitted && prazoEntrega.invalid }"
+        placeholder="Descreva quais são os prazos de entrega definidos por este fornecedor" [(ngModel)]="fornecedores.prazoEntrega"
+        name="prazoEntrega" #prazoEntrega="ngModel">
+        </textarea>
+      <div *ngIf="EditFornecedoresForm.submitted && prazoEntrega.invalid" class="alert alert-danger">
+        <div *ngIf="prazoEntrega.errors.required">O campo prazo de entrega é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="localizacao">Localização</label>
+      <textarea type="text" class="form-control" id="localizacao" required
+        [ngClass]="{ 'is-invalid': EditFornecedoresForm.submitted && localizacao.invalid }"
+        placeholder="Defina o ponto do seu cliente" [(ngModel)]="fornecedores.localizacao" name="localizacao"
+        #localizacao="ngModel">
+        </textarea>
+      <div *ngIf="EditFornecedoresForm.submitted && localizacao.invalid" class="alert alert-danger">
+        <div *ngIf="localizacao.errors.required">O campo de localização é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+      <button button class="btn btn-dark">Atualizar</button>
+    </div>
+
+    <br />
+    <br />
+
+  </form>
+</section>

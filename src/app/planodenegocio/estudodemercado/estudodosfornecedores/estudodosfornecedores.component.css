@@ -1,0 +1,17 @@
+    
+.cor-botton{
+    background-color: #32CD32;
+}
+.cor-botton:hover{
+    background-color: #ADFF2F;
+}
+
+.direita {
+    text-align: center;
+    clear: both; 
+}
+
+.direita:hover{
+    font-size: 20px;
+    color : rgb(78, 165, 60);
+}

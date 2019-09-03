@@ -45,6 +45,7 @@ export class EstudodosconcorrentesEditarComponent implements OnInit {
     this.concorrentes.id = this.idConcorrentes;
     this.apiService.updateEstudoDosConcorrentes(this.concorrentes, this.idPlano).subscribe(() => {
       this.messageService.showSuccess('Atualizado', 'Concorrente atualizado com sucesso!');
+      this.goBack();
     }, error => {
       this.messageService.showError('Falha na atualização', 'Erro ao tentar atualizar o concorrente!');
     });

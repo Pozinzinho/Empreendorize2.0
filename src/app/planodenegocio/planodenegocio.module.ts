@@ -11,8 +11,8 @@ import { MissaoComponent, DicasMissao } from './introducaoaoplano/missao/missao.
 import { IntroplanoComponent } from './introducaoaoplano/introplano/introplano.component';
 import { IntroestudodemercadoComponent } from './estudodemercado/introestudodemercado/introestudodemercado.component';
 import { EstudodosclientesComponent, DicasClientes } from './estudodemercado/estudodosclientes/estudodosclientes.component';
-import { EstudodosconcorrentesComponent } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes-list/estudodosconcorrentes.component';
-import { EstudodosfornecedoresComponent } from './estudodemercado/estudodosfornecedores/estudodosfornecedores.component';
+import { EstudodosconcorrentesComponent, ExplicaMercado } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes-list/estudodosconcorrentes.component';
+import { EstudodosfornecedoresComponent, ExplicaFornecedores } from './estudodemercado/estudodosfornecedores/estudodosfornecedores.component';
 import { IntroplanodemarketingComponent } from './planodemarketing/introplanodemarketing/introplanodemarketing.component';
 import { ProdutoseservicosComponent } from './planodemarketing/produtoseservicos/produtoseservicos.component';
 import { PrecoComponent } from './planodemarketing/preco/preco.component';
@@ -56,13 +56,21 @@ import {VgOverlayPlayModule} from 'videogular2/compiled/overlay-play';
 import {VgBufferingModule} from 'videogular2/compiled/buffering';
 import { NgxUiLoaderModule } from  'ngx-ui-loader';
 import { EstudodosconcorrentesEditarComponent } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes-editar/estudodosconcorrentes-editar.component';
-import { DeleteConcorrenteModalComponent } from '../shared/components/modals/delete-concorrente-modal/delete-concorrente-modal.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { EstudodosconcorrentesExcluirComponent } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes-excluir/estudodosconcorrentes-excluir.component';
+import { DeleteConcorrenteModalComponent } from '../shared/components/modals/delete-concorrente-modal/delete-concorrente-modal.component';
+import { EstudodosconcorrentesAddComponent } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes-add/estudodosconcorrentes-add.component';
+import { EstudoProprioAddComponent } from './estudodemercado/estudodosconcorrentes/estudo-proprio-add/estudo-proprio-add.component';
+import { EstudoProprioEditarComponent } from './estudodemercado/estudodosconcorrentes/estudo-proprio-editar/estudo-proprio-editar.component';
+import { EstudodosfornecedoresEditarComponent } from './estudodemercado/estudodosfornecedores/estudodosfornecedores-editar/estudodosfornecedores-editar.component';
+import { DeleteFornecedorModalComponent } from '../shared/components/modals/delete-fornecedor-modal/delete-fornecedor-modal.component';
+import { EstudodosfornecedoresAddComponent } from './estudodemercado/estudodosfornecedores/estudodosfornecedores-add/estudodosfornecedores-add.component';
 
 @NgModule(
     {
         imports:[
             BrowserModule,
+            MDBBootstrapModule.forRoot(),
             VgCoreModule,
             NgxUiLoaderModule,
             VgControlsModule,
@@ -77,6 +85,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
             LayoutModule,
             HttpClientModule,
             EmbedVideo.forRoot(),
+            NgbModule.forRoot(),
             MatInputModule,
             MatCheckboxModule,
             MatTableModule,
@@ -101,7 +110,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
             BrowserModule,
             FlexLayoutModule,
             MatMenuModule,
-            MDBBootstrapModule.forRoot(),
             RouterModule.forChild(planodengocioRoutes),
             PlanodenegocioRoutingModule,
             ToastrModule.forRoot({       
@@ -149,9 +157,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
             DicasFOFA,
             DicasMissao,
             DicasClientes,
-            DeleteConcorrenteModalComponent
+            EstudodosconcorrentesExcluirComponent,
+            EstudodosconcorrentesAddComponent,
+            DeleteConcorrenteModalComponent,
+            EstudoProprioAddComponent,
+            EstudoProprioEditarComponent,
+            ExplicaMercado,
+            EstudodosfornecedoresAddComponent,
+            EstudodosfornecedoresEditarComponent,
+            DeleteFornecedorModalComponent,
+            ExplicaFornecedores
         ],
-        entryComponents: [DialogContentExampleDialog, DicasFOFA, DicasMissao, DicasClientes],
+        entryComponents: [DialogContentExampleDialog, DicasFOFA, DicasMissao, DicasClientes, ExplicaMercado,
+            ExplicaFornecedores],
         providers:[],
         bootstrap:[PlanodenegocioComponent]
     }

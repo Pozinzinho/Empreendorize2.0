@@ -1,1 +1,58 @@
-<h1 class="mt-4">Estudo fornecedores</h1>
+<section class="grey-text w-responsive mx-auto" class="direita">
+    <div class="form-group" (click)="openDialog()">
+        <label>Tenho dúvidas
+            <mat-icon>live_help</mat-icon>
+        </label>
+    </div>
+</section>
+  
+  <h2 class="h4 mb-4 text-center font-weight-bold">Fornecedores</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="hidden">Id</th>
+          <th>Descrição item</th>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Condições de pagamento</th>
+          <th>Prazo de entrega</th>
+          <th>Localização</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let estudoDosFornecedores of estudoDosFornecedores; let i = index;">
+          <td class="hidden">{{i+1}}</td>
+          <td>{{estudoDosFornecedores.descricaoItens}}</td>
+          <td>{{estudoDosFornecedores.nomeFornecedor}}</td>
+          <td>{{estudoDosFornecedores.preco}}</td>
+          <td>{{estudoDosFornecedores.condicoesPg}}</td>
+          <td>{{estudoDosFornecedores.prazoEntrega}}</td>
+          <td>{{estudoDosFornecedores.localizacao}}</td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <button class="btn btn-danger " (click)="deleteFornecedorModal.show()"> Excluir</button>
+              <button class="btn btn-info " 
+              [routerLink]="['/planodenegocio',idPlano,'editar-fornecedor', estudoDosFornecedores.id]"
+                style="margin-left: 20px;"> Editar</button>
+            </div>
+          </td>
+          <app-delete-fornecedor-modal #deleteFornecedorModal [recebeItem]="estudoDosFornecedores"
+          (resposta)="deleteFornecedor($event)"></app-delete-fornecedor-modal>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="form">
+    <button mat-fab class="cor-botton" matTooltip="Adicionar análise do fornecedor" 
+    matTooltipPosition='after' [routerLink]="['/planodenegocio',idPlano,'add-fornecedor']">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  
+  <br />
+  <br />
+  <br />
+  <br />
