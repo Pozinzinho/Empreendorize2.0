@@ -58,11 +58,11 @@ export const planodengocioRoutes = [
 
         //COMPONENTES PLANO DE MARKETING ------------------------------------------
         {path: 'introplanodemarketing', component: IntroplanodemarketingComponent},
-        {path: 'produtoseservicos', component: ProdutoseservicosComponent},
-        {path: 'preco', component: PrecoComponent},
-        {path: 'estrategiaspromocionais', component: EstrategiapromocionalComponent},
-        {path: 'estruturacomercializacao', component: EstruturadecomercializacaoComponent},
-        {path: 'localizacaonegocio', component: LocalizacaodonegocioComponent},
+        {path: 'produtoseservicos/:id', component: ProdutoseservicosComponent},
+        {path: 'preco/:id', component: PrecoComponent},
+        {path: 'estrategiaspromocionais/:id', component: EstrategiapromocionalComponent},
+        {path: 'estruturacomercializacao/:id', component: EstruturadecomercializacaoComponent},
+        {path: 'localizacaonegocio/:id', component: LocalizacaodonegocioComponent},
         //--------------------------------------------------------------------------
 
         //COMPONENTES PLANO MONETÁRIO ----------------------------------------------

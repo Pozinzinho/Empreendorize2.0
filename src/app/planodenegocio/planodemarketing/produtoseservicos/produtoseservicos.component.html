@@ -1,1 +1,41 @@
-<h1 class="mt-4">Produtos e serviços</h1>
+<section class="grey-text w-responsive mx-auto" class="direita">
+  <div class="form-group" (click)="openDialog()">
+    <label>Tenho dúvidas
+      <mat-icon>live_help</mat-icon>
+    </label>
+  </div>
+</section>
+    
+    <section class="grey-text w-responsive mx-auto p-5" >
+        <form #EditProdutosServicos="ngForm" (ngSubmit)="EditProdutosServicos.form.valid && onSubmit()">
+          <div class="form-group" >
+    
+    
+            <label for="descricaoProdutos">Descrição dos produtos ou serviços
+            </label>
+            <textarea type="string" class="form-control" rows="3" name="descricaoProdutos" id="descricaoProdutos" 
+              required
+              [ngClass]="{ 'is-invalid': EditProdutosServicos.submitted && descricaoProdutos.invalid }"
+              placeholder="Ex: Descreva aqui os produtos ou serviços que sua empresa irá fornecer"
+              [(ngModel)]="produtos.descricaoProdutos" #descricaoProdutos="ngModel">
+            </textarea>
+            <div *ngIf="EditProdutosServicos.submitted && descricaoProdutos.invalid" class="alert alert-danger">
+              <div *ngIf="descricaoProdutos.errors.required">O campo descrição dos produtos e serviços é obrigatório</div>
+          </div>
+          </div>
+      
+      
+          <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+            <button button class="btn btn-dark" *ngIf='produtos.id !== Undefined'>Atualizar</button>
+            <button button class="btn btn-dark" *ngIf='produtos.id === Undefined'>salvar</button>
+          </div>
+    
+          <!-- <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+            <p style="font-size: 20px; color: white">Alterando...</p>
+          </ngx-spinner> -->
+        
+      
+        </form>
+      
+      </section>

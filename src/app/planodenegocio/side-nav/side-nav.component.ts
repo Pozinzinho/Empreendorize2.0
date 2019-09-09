@@ -12,6 +12,11 @@ import { EstudoDosClientesDto } from 'src/app/core/model/models-do-plano/model-e
 import { EstudoDosFornecedoresDto } from 'src/app/core/model/models-do-plano/model-estudo-mercado/EstudoDosFornecedoresDto';
 import { EstudoDosConcorrentesDto } from 'src/app/core/model/models-do-plano/model-estudo-mercado/EstudoDosConcorrentesDto';
 import { EstudoProprioDto } from 'src/app/core/model/models-do-plano/model-estudo-mercado/EstudoProprioDto';
+import { EstrategiasPromocionaisDto } from 'src/app/core/model/models-do-plano/model-plano-de-marketing/EstrategiasPromocionaisDto';
+import { EstruturaDeComercializacaoDto } from 'src/app/core/model/models-do-plano/model-plano-de-marketing/EstruturaDeComercializacaoDto';
+import { LocalizacaoDto } from 'src/app/core/model/models-do-plano/model-plano-de-marketing/LocalizacaoDto';
+import { PrecoDto } from 'src/app/core/model/models-do-plano/model-plano-de-marketing/PrecoDto';
+import { ProdutosServicosDto } from 'src/app/core/model/models-do-plano/model-plano-de-marketing/ProdutosServicosDto';
 
 @Component({
   selector: 'app-side-nav',
@@ -40,6 +45,26 @@ export class SideNavComponent {
   public concorrentes = new  EstudoDosConcorrentesDto();
   estudoDosConcorrentes :  EstudoDosConcorrentesDto[];
   idConcorrentes: string;
+
+  public promocionais = new  EstrategiasPromocionaisDto();
+  estrategiaPromocionais :  EstrategiasPromocionaisDto[];
+  idPromocionais: string;
+
+  public comercializacao = new  EstruturaDeComercializacaoDto();
+  estruturaDeComercializacao :  EstruturaDeComercializacaoDto[];
+  idComercializacao: string;
+
+  public localizacao = new  LocalizacaoDto();
+  localizacaoMatriz :  LocalizacaoDto[];
+  idLocalizacao: string;
+
+  public preco = new  PrecoDto();
+  precoMatriz :  PrecoDto[];
+  idPreco: string;
+
+  public produtos = new  ProdutosServicosDto();
+  produtosServicos :  ProdutosServicosDto[];
+  idProdutos: string;
 
   public fofa = new  AnaliseDaMatrizDto();
   analiseDaMatriz :  AnaliseDaMatrizDto[];
@@ -75,6 +100,12 @@ export class SideNavComponent {
       this.pegarIdClientes();
       this.pegarIdConcorrentes();
       this.pegarIdFornecedores();
+
+      this.pegarIdPromocional();
+      this.pegarIdComercializacao();
+      this.pegarIdLocalizacao();
+      this.pegarIdPromocional();
+      this.pegarIdProdutosServicos();
 
       this.pegarIdMatriz();
 
@@ -164,6 +195,112 @@ iniciaFornecedores(){
   });
 }
 //------------------------------------------------------------------------------------------------------
+
+//----------- Pegar e setar id estrategias promocionais-------------------------------------------------
+pegarIdPromocional() {
+  this.apiService.getEstrategiasPromocionais(this.idPlano).subscribe(estrategiaPromocionais => {
+    this.estrategiaPromocionais = estrategiaPromocionais;
+    this.idPromocionais = estrategiaPromocionais[0].id;
+    console.log("Abaixo está o id da estratégia promocional", this.idPromocionais);
+    this.iniciaEstrategiaPromocional();
+  }, error => {
+  });
+}
+
+iniciaEstrategiaPromocional(){
+  this.apiService.getEstrategiasPromocionaisById(this.idPlano, this.idPromocionais).subscribe( promocionais => {
+    this.promocionais = promocionais;
+    console.log('Retornou a estratégia promocional com sucesso! ', this.promocionais);
+  }, error => {
+    console.log('Error ao capturar a estratégia promocional por ID! ', error);
+  });
+}
+//--------------------------------------------------------------------------------------------------------
+
+//----------- Pegar e setar id estrutura de comercialização-------------------------------------------------
+pegarIdComercializacao() {
+  this.apiService.getEstruturaDeComercializacao(this.idPlano).subscribe( estruturaDeComercializacao => {
+    this.estruturaDeComercializacao = estruturaDeComercializacao;
+    this.idComercializacao = estruturaDeComercializacao[0].id;
+    console.log("Abaixo está o id da estrutura de comercialização", this.idComercializacao);
+    this.iniciaEstruturaDeComercializacao();
+  }, error => {
+  });
+}
+
+iniciaEstruturaDeComercializacao(){
+  this.apiService.getEstruturaDeComercializacaoById(this.idPlano, this.idComercializacao).subscribe( comercializacao => {
+    this.comercializacao = comercializacao;
+    console.log('Retornou a estrutura de comercialização com sucesso! ', this.comercializacao);
+  }, error => {
+    console.log('Error ao capturar a estrutura de comercialização por ID! ', error);
+  });
+}
+//------------------------------------------------------------------------------------------------------
+
+//----------- Pegar e setar id localização-------------------------------------------------
+pegarIdLocalizacao() {
+  this.apiService.getLocalizacao(this.idPlano).subscribe( localizacaoMatriz => {
+    this.localizacaoMatriz = localizacaoMatriz;
+    this.idLocalizacao = localizacaoMatriz[0].id;
+    console.log("Abaixo está o id da localização", this.localizacao);
+    this.iniciaLocalizacao();
+  }, error => {
+  });
+}
+
+iniciaLocalizacao(){
+  this.apiService.getLocalizacaoById(this.idPlano, this.idLocalizacao).subscribe( localizacao => {
+    this.localizacao = localizacao;
+    console.log('Retornou a localização com sucesso! ', this.localizacao);
+  }, error => {
+    console.log('Error ao capturar localização por ID! ', error);
+  });
+}
+//------------------------------------------------------------------------------------------------------
+
+//----------- Pegar e setar id Preco-------------------------------------------------
+pegarIdPreco() {
+  this.apiService.getPreco(this.idPlano).subscribe( precoMatriz => {
+    this.precoMatriz = precoMatriz;
+    this.idPreco = precoMatriz[0].id;
+    console.log("Abaixo está o id do preco", this.preco);
+    this.iniciaPreco();
+  }, error => {
+  });
+}
+
+iniciaPreco(){
+  this.apiService.getPrecoById(this.idPlano, this.idPreco).subscribe( preco => {
+    this.preco = preco;
+    console.log('Retornou o preco com sucesso! ', this.preco);
+  }, error => {
+    console.log('Error ao capturar preco por ID! ', error);
+  });
+}
+//------------------------------------------------------------------------------------------------------
+
+//----------- Pegar e setar id Produtos e Servicos-------------------------------------------------
+pegarIdProdutosServicos() {
+  this.apiService.getProdutosServicos(this.idPlano).subscribe( produtosServicos => {
+    this.produtosServicos = produtosServicos;
+    this.idProdutos = produtosServicos[0].id;
+    console.log("Abaixo está o id dos produtos e serviços", this.produtosServicos);
+    this.iniciaProdutosEServicos();
+  }, error => {
+  });
+}
+
+iniciaProdutosEServicos(){
+  this.apiService.getProdutosServicosById(this.idPlano, this.idProdutos).subscribe( produtos => {
+    this.produtos = produtos;
+    console.log('Retornou o produtos e serviços com sucesso! ', this.produtos);
+  }, error => {
+    console.log('Error ao capturar produtos e serviços por ID! ', error);
+  });
+}
+//------------------------------------------------------------------------------------------------------
+
 
   //----------- Pegar e setar id da matriz F.O.F.A -----------------------------------------------
   pegarIdMatriz() {

@@ -13,6 +13,11 @@ import { EstudoDosClientesDto } from './model/models-do-plano/model-estudo-merca
 import { EstudoDosFornecedoresDto } from './model/models-do-plano/model-estudo-mercado/EstudoDosFornecedoresDto';
 import { EstudoDosConcorrentesDto } from './model/models-do-plano/model-estudo-mercado/EstudoDosConcorrentesDto';
 import { EstudoProprioDto } from './model/models-do-plano/model-estudo-mercado/EstudoProprioDto';
+import { EstrategiasPromocionaisDto } from './model/models-do-plano/model-plano-de-marketing/EstrategiasPromocionaisDto';
+import { EstruturaDeComercializacaoDto } from './model/models-do-plano/model-plano-de-marketing/EstruturaDeComercializacaoDto';
+import { LocalizacaoDto } from './model/models-do-plano/model-plano-de-marketing/LocalizacaoDto';
+import { PrecoDto } from './model/models-do-plano/model-plano-de-marketing/PrecoDto';
+import { ProdutosServicosDto } from './model/models-do-plano/model-plano-de-marketing/ProdutosServicosDto';
 
 
 
@@ -30,6 +35,12 @@ export class ApiService {
   public baseUrlIP: string;
   public baseUrlECLI: string;
   public baseUrlEF: string;
+  public baseUrlEPro: string;
+  public baseUrlEDC: string;
+  public baseUrlL: string;
+  public baseUrlPrecos: string;
+  public baseUrlProSer: string;
+
 
   public user = new UserDto;
   public roleAtual : string;
@@ -43,6 +54,12 @@ export class ApiService {
     this.baseUrlEF = '/estudoDosFornecedores';
     this.baseUrlEP = '/estudoProprio';
     this.baseUrlEC =  '/estudoDosConcorrentes';
+
+    this.baseUrlEPro =  '/estrategiasPromocionais';
+    this.baseUrlEDC =  '/estruturaDeComercializacao';
+    this.baseUrlL =  '/localizacao';
+    this.baseUrlPrecos =  '/precos';
+    this.baseUrlProSer =  '/produtosServicos';
 
     this.baseUrlIP = '/missaoDaEmpresa';
     this.baseUrlAM = '/analiseDaMatriz';
@@ -241,6 +258,86 @@ registerEstudoProprio(estudoProprio: EstudoProprioDto, id: string): Observable<a
   return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEP}`, estudoProprio, AppUtils.OPTIONS_OBJECTO);
 }
 //---------------------------------------------------------------------------------------------------------------------------
+
+// ---------------- SERVIÇOS REFERENTES AS ESTRATÉGIAS PROMOCIONAIS ---------------------------------------------------------------
+getEstrategiasPromocionais(id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEPro}`, AppUtils.OPTIONS_OBJECTO);
+}
+getEstrategiasPromocionaisById(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlEPro}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+updateEstrategiasPromocionais(estrategiasPromocionais: EstrategiasPromocionaisDto, id: string): Observable<any> {
+  return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEPro}/${estrategiasPromocionais.id}`,
+    estrategiasPromocionais, AppUtils.OPTIONS_OBJECTO);
+}
+registerEstrategiasPromocionais(estrategiasPromocionais: EstrategiasPromocionaisDto, id: string): Observable<any> {
+  return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEPro}`, estrategiasPromocionais, AppUtils.OPTIONS_OBJECTO);
+}
+//----------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------- SERVIÇOS REFERENTES AS ESTRUTURA DE COMERCIALIZAÇÃO ---------------------------------------------------------------
+getEstruturaDeComercializacao(id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEDC}`, AppUtils.OPTIONS_OBJECTO);
+}
+getEstruturaDeComercializacaoById(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlEDC}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+updateEstruturaDeComercializacao(estruturaDeComercializacao: EstruturaDeComercializacaoDto, id: string): Observable<any> {
+  return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEDC}/${estruturaDeComercializacao.id}`,
+    estruturaDeComercializacao, AppUtils.OPTIONS_OBJECTO);
+}
+registerEstruturaDeComercializacao(estruturaDeComercializacao: EstruturaDeComercializacaoDto, id: string): Observable<any> {
+  return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEDC}`, estruturaDeComercializacao, AppUtils.OPTIONS_OBJECTO);
+}
+//--------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------- SERVIÇOS REFERENTES A LOCALIZAÇÃO ---------------------------------------------------------------------------------
+getLocalizacao(id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlL}`, AppUtils.OPTIONS_OBJECTO);
+}
+getLocalizacaoById(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlL}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+updateLocalizacao(localizacao: LocalizacaoDto, id: string): Observable<any> {
+  return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlL}/${localizacao.id}`,
+  localizacao, AppUtils.OPTIONS_OBJECTO);
+}
+registerLocalizacao(localizacao: LocalizacaoDto, id: string): Observable<any> {
+  return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlL}`, localizacao, AppUtils.OPTIONS_OBJECTO);
+}
+//--------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------- SERVIÇOS REFERENTES AO PRECO ---------------------------------------------------------------------------------------
+getPreco(id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlPrecos}`, AppUtils.OPTIONS_OBJECTO);
+}
+getPrecoById(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlPrecos}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+updatePreco(precos: PrecoDto, id: string): Observable<any> {
+  return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlPrecos}/${precos.id}`,
+  precos, AppUtils.OPTIONS_OBJECTO);
+}
+registerPreco(precos: PrecoDto, id: string): Observable<any> {
+  return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlPrecos}`, precos, AppUtils.OPTIONS_OBJECTO);
+}
+//---------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------- SERVIÇOS REFERENTES AOS PRODUTOS E SERVIÇOS ------------------------------------------------------------------------
+getProdutosServicos(id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlProSer}`, AppUtils.OPTIONS_OBJECTO);
+}
+getProdutosServicosById(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlProSer}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+updateProdutosServicos(produtosServicos: ProdutosServicosDto, id: string): Observable<any> {
+  return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlProSer}/${produtosServicos.id}`,
+  produtosServicos, AppUtils.OPTIONS_OBJECTO);
+}
+registerProdutosServicos(produtosServicos: ProdutosServicosDto, id: string): Observable<any> {
+  return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlProSer}`, produtosServicos, AppUtils.OPTIONS_OBJECTO);
+}
+//---------------------------------------------------------------------------------------------------------------------------------------
 
     // ---------------- SERVIÇOS REFERENTES A Matriz F.O.F.A --------------------------------------------
     getAnaliseDaMatriz(id: string): Observable<any> {

@@ -1,1 +1,139 @@
-<h1 class="mt-4">Localização do negócio</h1>
+<section class="grey-text w-responsive mx-auto" class="direita">
+    <div class="form-group" (click)="openDialog()">
+        <label>Tenho dúvidas
+            <mat-icon>live_help</mat-icon>
+        </label>
+    </div>
+</section>
+
+<section class="grey-text w-responsive mx-auto p-5">
+    <form #EditLocalizacaoForm="ngForm" (ngSubmit)="EditLocalizacaoForm.form.valid && onSubmit()">
+
+        <div class="form-group col-md-10">
+            <label for="endereco">Endereço*</label>
+            <input type="text" class="form-control" id="endereco" required maxlength="50"
+                [ngClass]="{ 'is-invalid': EditLocalizacaoForm.submitted && endereco.invalid }"
+                placeholder="Ex: Rua Previsto de Morais, nº 904" [(ngModel)]="localizacao.endereco"
+                name="endereco" #endereco="ngModel">
+            <div *ngIf="EditLocalizacaoForm.submitted && endereco.invalid" class="alert alert-danger">
+                <div *ngIf="endereco.errors.required">O campo pertinente ao endereço é obrigatório</div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="bairro">Bairro*</label>
+            <input type="text" class="form-control" id="bairro" required maxlength="32"
+                [ngClass]="{ 'is-invalid': EditLocalizacaoForm.submitted && cidade.invalid }" placeholder="Ex: Setor morada do leste"
+                [(ngModel)]="localizacao.bairro" name="bairro" #bairro="ngModel">
+            <div *ngIf="EditLocalizacaoForm.submitted && bairro.invalid" class="alert alert-danger">
+                <div *ngIf="bairro.errors.required">O campo pertinente ao bairro é obrigatório</div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="cidade">Cidade*</label>
+            <input type="text" class="form-control" id="cidade" required maxlength="32"
+                [ngClass]="{ 'is-invalid': EditLocalizacaoForm.submitted && cidade.invalid }" placeholder="Cidade atual"
+                [(ngModel)]="localizacao.cidade" name="cidade" #cidade="ngModel">
+            <div *ngIf="EditLocalizacaoForm.submitted && cidade.invalid" class="alert alert-danger">
+                <div *ngIf="cidade.errors.required">O campo pertinente a cidade é obrigatório</div>
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-2">
+            <label for="estado">Estado</label>
+            <select type="text" class="form-control" id="estado" required name="estado"
+                [ngClass]="{ 'is-invalid': EditLocalizacaoForm.submitted && estado.invalid }" [(ngModel)]="localizacao.estado"
+                #estado="ngModel">
+                <option>AC</option>
+                <option>AL</option>
+                <option>AP</option>
+                <option>AM</option>
+                <option>BA</option>
+                <option>CE</option>
+                <option>DF</option>
+                <option>ES</option>
+                <option selected>GO</option>
+                <option>MA</option>
+                <option>MT</option>
+                <option>MS</option>
+                <option>MG</option>
+                <option>PA</option>
+                <option>PB</option>
+                <option>PR</option>
+                <option>PE</option>
+                <option>PI</option>
+                <option>RJ</option>
+                <option>RN</option>
+                <option>RS</option>
+                <option>RO</option>
+                <option>RR</option>
+                <option>SC</option>
+                <option>SP</option>
+                <option>SE</option>
+                <option>TO</option>
+            </select>
+            <div *ngIf="EditLocalizacaoForm.submitted && estado.invalid" class="alert alert-danger">
+                <div *ngIf="estado.errors.required">O campo pertinente ao estado é obrigatório</div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label for="fone1">Número do responsável pelo aluguel*</label>
+            <input type="text" class="form-control" id="fone1" required
+                [ngClass]="{ 'is-invalid': EditLocalizacaoForm.submitted && fone1.invalid }" placeholder="Ex: (DDD) + Número. Se o ponto for seu coloque o seu número"
+                minlength="11" [(ngModel)]="localizacao.fone1" name="fone1" #fone1="ngModel" mask="(00)00000-0000">
+            <div *ngIf="EditLocalizacaoForm.submitted && fone1.invalid" class="alert alert-danger">
+                <div *ngIf="fone1.errors.required">O campo de telefone é obrigatório</div>
+                <div *ngIf="fone1.errors.minlength">Seu número de telefone está incompleto</div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-10">
+            <label for="fone2">Segundo número do responsável*</label>
+            <input type="text" class="form-control" id="fone2" required
+                [ngClass]="{ 'is-invalid': EditLocalizacaoForm.submitted && fone2.invalid }" minlength="11"
+                placeholder="Caso o responsável do aluguel tenha 2 números, se o ponto for seu, adicione o seu segundo número, ou de alguém próximo a você" [(ngModel)]="localizacao.fone2"
+                name="fone2" #fone2="ngModel" mask="(00)00000-0000">
+            <div *ngIf="EditLocalizacaoForm.submitted && fone2.invalid" class="alert alert-danger">
+                <div *ngIf="fone2.errors.required">O campo do segundo número é obrigatório</div>
+                <div *ngIf="fone2.errors.minlength">Seu número de telefone está incompleto</div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-10">
+            <label for="fax">Código postal*</label>
+            <input type="text" class="form-control" id="fax" required maxlength="50"
+                [ngClass]="{ 'is-invalid': EditLocalizacaoForm.submitted && fax.invalid }" mask="00000-000"
+                placeholder="Ex: Código postal de caiapônia = 75850-000" [(ngModel)]="localizacao.fax"
+                name="fax" #fax="ngModel" minlength="8">
+            <div *ngIf="EditLocalizacaoForm.submitted && fax.invalid" class="alert alert-danger">
+                <div *ngIf="fax.errors.required">O campo pertinente ao código postal é obrigatório</div>
+                <div *ngIf="fax.errors.minlength">O seu código postal está incompleto</div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12" >
+            <label for="consideracoesPonto">Considerações do ponto
+                <strong>(Escreva um breve resumo que descreve as vantagens do seu ponto baseado em seu público alvo)*</strong>
+            </label>
+            <textarea type="text" class="form-control" rows="3" name="consideracoesPonto" id="consideracoesPonto" required
+                [ngClass]="{ 'is-invalid': EditLocalizacaoForm.submitted && consideracoesPonto.invalid }"
+                placeholder="Ex: Tecnólogo em análise e desenvolvimento de sistemas | Experiência em gestão de empresas | Estudante | etc..."
+                [(ngModel)]="localizacao.consideracoesPonto" #consideracoesPonto="ngModel">
+                            </textarea>
+            <div *ngIf="EditLocalizacaoForm.submitted && consideracoesPonto.invalid" class="alert alert-danger">
+                <div *ngIf="consideracoesPonto.errors.required">O campo pertinente as considerações do ponto é obrigatório</div>
+            </div>
+        </div>
+
+        <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+            <button button class="btn btn-dark" *ngIf='localizacao.id !== Undefined'>Atualizar</button>
+            <button button class="btn btn-dark" *ngIf='localizacao.id === Undefined'>salvar</button>
+        </div>
+
+    </form>
+
+</section>

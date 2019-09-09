@@ -14,11 +14,11 @@ import { EstudodosclientesComponent, DicasClientes } from './estudodemercado/est
 import { EstudodosconcorrentesComponent, ExplicaMercado } from './estudodemercado/estudodosconcorrentes/estudodosconcorrentes-list/estudodosconcorrentes.component';
 import { EstudodosfornecedoresComponent, ExplicaFornecedores } from './estudodemercado/estudodosfornecedores/estudodosfornecedores.component';
 import { IntroplanodemarketingComponent } from './planodemarketing/introplanodemarketing/introplanodemarketing.component';
-import { ProdutoseservicosComponent } from './planodemarketing/produtoseservicos/produtoseservicos.component';
-import { PrecoComponent } from './planodemarketing/preco/preco.component';
-import { EstrategiapromocionalComponent } from './planodemarketing/estrategiapromocional/estrategiapromocional.component';
-import { EstruturadecomercializacaoComponent } from './planodemarketing/estruturadecomercializacao/estruturadecomercializacao.component';
-import { LocalizacaodonegocioComponent } from './planodemarketing/localizacaodonegocio/localizacaodonegocio.component';
+import { ProdutoseservicosComponent, DicaProdutos } from './planodemarketing/produtoseservicos/produtoseservicos.component';
+import { PrecoComponent, DicaPreco } from './planodemarketing/preco/preco.component';
+import { EstrategiapromocionalComponent, DicaPromocional } from './planodemarketing/estrategiapromocional/estrategiapromocional.component';
+import { EstruturadecomercializacaoComponent, DicaComercializacao } from './planodemarketing/estruturadecomercializacao/estruturadecomercializacao.component';
+import { LocalizacaodonegocioComponent, DicaLocalizacao } from './planodemarketing/localizacaodonegocio/localizacaodonegocio.component';
 import { IntroplanomonetarioComponent } from './planomonetario/introplanomonetario/introplanomonetario.component';
 import { InvestimentosfixosComponent } from './planomonetario/investimentosfixos/investimentosfixos.component';
 import { InvestimentospreopComponent } from './planomonetario/investimentospreop/investimentospreop.component';
@@ -65,6 +65,7 @@ import { EstudoProprioEditarComponent } from './estudodemercado/estudodosconcorr
 import { EstudodosfornecedoresEditarComponent } from './estudodemercado/estudodosfornecedores/estudodosfornecedores-editar/estudodosfornecedores-editar.component';
 import { DeleteFornecedorModalComponent } from '../shared/components/modals/delete-fornecedor-modal/delete-fornecedor-modal.component';
 import { EstudodosfornecedoresAddComponent } from './estudodemercado/estudodosfornecedores/estudodosfornecedores-add/estudodosfornecedores-add.component';
+import {NgxMaskModule} from 'ngx-mask';
 
 @NgModule(
     {
@@ -109,6 +110,7 @@ import { EstudodosfornecedoresAddComponent } from './estudodemercado/estudodosfo
             NgbModule,
             BrowserModule,
             FlexLayoutModule,
+            NgxMaskModule.forRoot(),
             MatMenuModule,
             RouterModule.forChild(planodengocioRoutes),
             PlanodenegocioRoutingModule,
@@ -166,10 +168,16 @@ import { EstudodosfornecedoresAddComponent } from './estudodemercado/estudodosfo
             EstudodosfornecedoresAddComponent,
             EstudodosfornecedoresEditarComponent,
             DeleteFornecedorModalComponent,
-            ExplicaFornecedores
+            ExplicaFornecedores,
+            DicaProdutos,
+            DicaPreco,
+            DicaLocalizacao,
+            DicaPromocional,
+            DicaComercializacao
+            
         ],
-        entryComponents: [DialogContentExampleDialog, DicasFOFA, DicasMissao, DicasClientes, ExplicaMercado,
-            ExplicaFornecedores],
+        entryComponents: [DialogContentExampleDialog, DicasFOFA, DicasMissao, DicasClientes, ExplicaMercado, DicaProdutos,
+            ExplicaFornecedores, DicaPreco, DicaLocalizacao, DicaPromocional, DicaComercializacao],
         providers:[],
         bootstrap:[PlanodenegocioComponent]
     }

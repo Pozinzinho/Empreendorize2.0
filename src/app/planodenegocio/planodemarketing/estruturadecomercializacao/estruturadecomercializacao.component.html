@@ -1,1 +1,39 @@
-<h1 class="mt-4">Estrutura de comercialização</h1>
+<section class="grey-text w-responsive mx-auto" class="direita">
+    <div class="form-group" (click)="openDialog()">
+        <label>Tenho dúvidas
+            <mat-icon>live_help</mat-icon>
+        </label>
+    </div>
+</section>
+    
+<section class="grey-text w-responsive mx-auto p-5">
+    <form #EditComercializacao="ngForm" (ngSubmit)="EditComercializacao.form.valid && onSubmit()">
+        <div class="form-group">
+
+
+            <label for="descricaoComercializacao">Comercializacao</label>
+            <textarea type="string" class="form-control" rows="3" name="descricaoComercializacao" id="descricaoComercializacao" required
+                [ngClass]="{ 'is-invalid': EditComercializacao.submitted && descricaoComercializacao.invalid }"
+                placeholder="Ex: Descreva as estruturas de comercialização"
+                [(ngModel)]="comercializacao.descricaoComercializacao" #descricaoComercializacao="ngModel">
+            </textarea>
+            <div *ngIf="EditComercializacao.submitted && descricaoComercializacao.invalid" class="alert alert-danger">
+                <div *ngIf="descricaoComercializacao.errors.required">O campo relativo a estrutura de comercialização é obrigatório</div>
+            </div>
+        </div>
+
+
+        <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+            <button button class="btn btn-dark" *ngIf='comercializacao.id !== Undefined'>Atualizar</button>
+            <button button class="btn btn-dark" *ngIf='comercializacao.id === Undefined'>salvar</button>
+        </div>
+
+        <!-- <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+            <p style="font-size: 20px; color: white">Alterando...</p>
+          </ngx-spinner> -->
+
+
+    </form>
+
+</section>

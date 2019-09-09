@@ -45,15 +45,15 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['produtoseservicos']" (click)="clicouPlanoDeMarketingPS()">Produtos e serviços</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['produtoseservicos/', produtos.id]" (click)="clicouPlanoDeMarketingPS()">Produtos e serviços</a>
         <mat-divider></mat-divider>
-        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['preco']" (click)="clicouPlanoDeMarketingP()">Preço</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['preco/', preco.id]" (click)="clicouPlanoDeMarketingP()">Preço</a>
         <mat-divider></mat-divider>
-        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['estrategiaspromocionais']" (click)="clicouPlanoDeMarketingEP()">Estratégias promocionais</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['estrategiaspromocionais/', promocionais.id]" (click)="clicouPlanoDeMarketingEP()">Estratégias promocionais</a>
         <mat-divider></mat-divider>
-        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['estruturacomercializacao']" (click)="clicouPlanoDeMarketingEC()">Estrutura de comercialização</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['estruturacomercializacao/', comercializacao.id]" (click)="clicouPlanoDeMarketingEC()">Estrutura de comercialização</a>
         <mat-divider></mat-divider>
-        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['localizacaonegocio']" (click)="clicouPlanoDeMarketingLN()">Localização</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['localizacaonegocio/', localizacao.id]" (click)="clicouPlanoDeMarketingLN()">Localização</a>
 
       </mat-expansion-panel>
 
