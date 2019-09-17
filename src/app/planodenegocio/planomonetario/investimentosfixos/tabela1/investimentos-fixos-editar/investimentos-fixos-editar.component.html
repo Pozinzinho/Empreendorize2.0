@@ -1,0 +1,47 @@
+<section class="grey-text w-responsive mx-auto p-5">
+  <form #EditInvestimentosFixosForm="ngForm" (ngSubmit)="EditInvestimentosFixosForm.form.valid && onSubmit()">
+    <h4 class="h4 mb-4 text-center"><span class="badge badge-light ">{{investimentosF.id}}</span> ->
+      {{investimentosF.descricaoME}}</h4>
+
+      <div class="form-group col-md-9">
+        <label for="descricaoME">Descrição máquinas/equipamentos*</label>
+        <input type="text" class="form-control" id="descricaoME" required
+          [ngClass]="{ 'is-invalid': EditInvestimentosFixosForm.submitted && descricaoME.invalid }" 
+          placeholder="Descreva qual é o nome da máquina ou equipamento que será utilizado(a) na empresa"
+          [(ngModel)]="investimentosF.descricaoME" name="descricaoME" #descricaoME="ngModel">
+        <div *ngIf="EditInvestimentosFixosForm.submitted && descricaoME.invalid" class="alert alert-danger">
+          <div *ngIf="descricaoME.errors.required">O campo pertinente as máquinas ou equipamentos é obrigatório</div>
+        </div>
+      </div>
+
+    <div class="form-group col-md-2">
+      <label for="qtdeME">Quantidade*</label>
+      <input type="text" class="form-control" id="qtdeME" required
+        [ngClass]="{ 'is-invalid': EditInvestimentosFixosForm.submitted && qtdeME.invalid }" 
+        [(ngModel)]="investimentosF.qtdeME" name="qtdeME" #qtdeME="ngModel">
+      <div *ngIf="EditInvestimentosFixosForm.submitted && qtdeME.invalid" class="alert alert-danger">
+        <div *ngIf="qtdeME.errors.required">O campo de quantidade é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="valorUnitarioME">Valor unitário*</label>
+      <input type="text" class="form-control" id="valorUnitarioME" required currencyMask
+        [ngClass]="{ 'is-invalid': EditInvestimentosFixosForm.submitted && valorUnitarioME.invalid }" [(ngModel)]="investimentosF.valorUnitarioME" 
+        [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" name="valorUnitarioME"
+        #valorUnitarioME="ngModel">
+      <div *ngIf="EditInvestimentosFixosForm.submitted && valorUnitarioME.invalid" class="alert alert-danger">
+        <div *ngIf="valorUnitarioME.errors.required">O campo de valor unitário é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="btn-group btn-group-sm col-md-1">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+      <button button class="btn btn-dark">Atualizar</button>
+    </div>
+
+    <br />
+    <br />
+
+  </form>
+</section>

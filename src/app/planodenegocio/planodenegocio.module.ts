@@ -66,12 +66,21 @@ import { EstudodosfornecedoresEditarComponent } from './estudodemercado/estudodo
 import { DeleteFornecedorModalComponent } from '../shared/components/modals/delete-fornecedor-modal/delete-fornecedor-modal.component';
 import { EstudodosfornecedoresAddComponent } from './estudodemercado/estudodosfornecedores/estudodosfornecedores-add/estudodosfornecedores-add.component';
 import {NgxMaskModule} from 'ngx-mask';
+import { InvestimentosFixosEditarComponent } from './planomonetario/investimentosfixos/tabela1/investimentos-fixos-editar/investimentos-fixos-editar.component';
+import { InvestimentosFixosAddComponent } from './planomonetario/investimentosfixos/tabela1/investimentos-fixos-add/investimentos-fixos-add.component';
+import { NgxCurrencyModule } from "ngx-currency";
+import { InvestimentosFixosEditarMuComponent } from './planomonetario/investimentosfixos/tabela2/investimentos-fixos-editar-mu/investimentos-fixos-editar-mu.component';
+import { InvestimentosFixosEditarVComponent } from './planomonetario/investimentosfixos/tabela3/investimentos-fixos-editar-v/investimentos-fixos-editar-v.component';
+import { InvestimentosFixosAddMuComponent } from './planomonetario/investimentosfixos/tabela2/investimentos-fixos-add-mu/investimentos-fixos-add-mu.component';
+import { InvestimentosFixosAddVComponent } from './planomonetario/investimentosfixos/tabela3/investimentos-fixos-add-v/investimentos-fixos-add-v.component';
+
 
 @NgModule(
     {
         imports:[
             BrowserModule,
             MDBBootstrapModule.forRoot(),
+            NgxCurrencyModule,
             VgCoreModule,
             NgxUiLoaderModule,
             VgControlsModule,
@@ -141,6 +150,12 @@ import {NgxMaskModule} from 'ngx-mask';
             LocalizacaodonegocioComponent,
             IntroplanomonetarioComponent, 
             InvestimentosfixosComponent, 
+            InvestimentosFixosEditarComponent,
+            InvestimentosFixosEditarMuComponent,
+            InvestimentosFixosEditarVComponent,
+            InvestimentosFixosAddComponent,
+            InvestimentosFixosAddMuComponent,
+            InvestimentosFixosAddVComponent,
             InvestimentospreopComponent, 
             InvestimentototalComponent, 
             FaturamentomensalComponent, 

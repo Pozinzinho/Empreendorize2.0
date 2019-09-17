@@ -18,6 +18,9 @@ import { EstruturaDeComercializacaoDto } from './model/models-do-plano/model-pla
 import { LocalizacaoDto } from './model/models-do-plano/model-plano-de-marketing/LocalizacaoDto';
 import { PrecoDto } from './model/models-do-plano/model-plano-de-marketing/PrecoDto';
 import { ProdutosServicosDto } from './model/models-do-plano/model-plano-de-marketing/ProdutosServicosDto';
+import { InvestimentosFixosDto } from './model/models-do-plano/model-plano-financeiro/InvestimentosFixosDto';
+import { InvestimentosFixosMUDto } from './model/models-do-plano/model-plano-financeiro/investimentosFixosMUDto';
+import { InvestimentosFixosVDto } from './model/models-do-plano/model-plano-financeiro/investimentosFixosVDto';
 
 
 
@@ -41,6 +44,9 @@ export class ApiService {
   public baseUrlPrecos: string;
   public baseUrlProSer: string;
 
+  public baseUrlIF: string;
+  public baseUrlIFMU: string;
+  public baseUrlIFV: string;
 
   public user = new UserDto;
   public roleAtual : string;
@@ -60,6 +66,10 @@ export class ApiService {
     this.baseUrlL =  '/localizacao';
     this.baseUrlPrecos =  '/precos';
     this.baseUrlProSer =  '/produtosServicos';
+
+    this.baseUrlIF = '/investimentosFixos';
+    this.baseUrlIFMU = '/investimentosFixosMU';
+    this.baseUrlIFV = '/investimentosFixosV';
 
     this.baseUrlIP = '/missaoDaEmpresa';
     this.baseUrlAM = '/analiseDaMatriz';
@@ -336,6 +346,63 @@ updateProdutosServicos(produtosServicos: ProdutosServicosDto, id: string): Obser
 }
 registerProdutosServicos(produtosServicos: ProdutosServicosDto, id: string): Observable<any> {
   return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlProSer}`, produtosServicos, AppUtils.OPTIONS_OBJECTO);
+}
+//---------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------- SERVIÇOS REFERENTES AOS INVESTIMENTOS FIXOS ------------------------------------------------------------------------
+getInvestimentosFixos(id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIF}`, AppUtils.OPTIONS_OBJECTO);
+}
+getInvestimentosFixosById(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlIF}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+updateInvestimentosFixos(investimentosFixosDto: InvestimentosFixosDto, id: string): Observable<any> {
+  return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIF}/${investimentosFixosDto.id}`,
+  investimentosFixosDto, AppUtils.OPTIONS_OBJECTO);
+}
+registerInvestimentosFixos(investimentosFixosDto: InvestimentosFixosDto, id: string): Observable<any> {
+  return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIF}`, investimentosFixosDto, AppUtils.OPTIONS_OBJECTO);
+}
+deleteInvestimentosFixos(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.delete<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlIF}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+//---------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------- SERVIÇOS REFERENTES AOS INVESTIMENTOS FIXOS MÓVEIS E UTENSÍLIOS------------------------------------------------------
+getInvestimentosFixosMU(id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIFMU}`, AppUtils.OPTIONS_OBJECTO);
+}
+getInvestimentosFixosMUById(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlIFMU}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+updateInvestimentosFixosMU(investimentosFixosMUDto: InvestimentosFixosMUDto, id: string): Observable<any> {
+  return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIFMU}/${investimentosFixosMUDto.id}`,
+  investimentosFixosMUDto, AppUtils.OPTIONS_OBJECTO);
+}
+registerInvestimentosFixosMU(investimentosFixosMUDto: InvestimentosFixosMUDto, id: string): Observable<any> {
+  return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIFMU}`, investimentosFixosMUDto, AppUtils.OPTIONS_OBJECTO);
+}
+deleteInvestimentosFixosMU(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.delete<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlIFMU}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+//---------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------- SERVIÇOS REFERENTES AOS INVESTIMENTOS FIXOS VEÍCULOS ------------------------------------------------------
+getInvestimentosFixosV(id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIFV}`, AppUtils.OPTIONS_OBJECTO);
+}
+getInvestimentosFixosVById(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlIFV}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+updateInvestimentosFixosV(investimentosFixosVDto: InvestimentosFixosVDto, id: string): Observable<any> {
+  return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIFV}/${investimentosFixosVDto.id}`,
+  investimentosFixosVDto, AppUtils.OPTIONS_OBJECTO);
+}
+registerInvestimentosFixosV(investimentosFixosVDto: InvestimentosFixosVDto, id: string): Observable<any> {
+  return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIFV}`, investimentosFixosVDto, AppUtils.OPTIONS_OBJECTO);
+}
+deleteInvestimentosFixosV(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.delete<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlIFV}/${id}`, AppUtils.OPTIONS_OBJECTO);
 }
 //---------------------------------------------------------------------------------------------------------------------------------------
 

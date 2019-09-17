@@ -17,6 +17,7 @@ import { EstruturaDeComercializacaoDto } from 'src/app/core/model/models-do-plan
 import { LocalizacaoDto } from 'src/app/core/model/models-do-plano/model-plano-de-marketing/LocalizacaoDto';
 import { PrecoDto } from 'src/app/core/model/models-do-plano/model-plano-de-marketing/PrecoDto';
 import { ProdutosServicosDto } from 'src/app/core/model/models-do-plano/model-plano-de-marketing/ProdutosServicosDto';
+import { InvestimentosFixosDto } from 'src/app/core/model/models-do-plano/model-plano-financeiro/InvestimentosFixosDto';
 
 @Component({
   selector: 'app-side-nav',
@@ -66,6 +67,10 @@ export class SideNavComponent {
   produtosServicos :  ProdutosServicosDto[];
   idProdutos: string;
 
+  public investimentosF = new  InvestimentosFixosDto();
+  investimentosFixos :  InvestimentosFixosDto[];
+  idInvestimentosF: string;
+
   public fofa = new  AnaliseDaMatrizDto();
   analiseDaMatriz :  AnaliseDaMatrizDto[];
   idFofa: string;
@@ -106,6 +111,8 @@ export class SideNavComponent {
       this.pegarIdLocalizacao();
       this.pegarIdPromocional();
       this.pegarIdProdutosServicos();
+
+      this.pegarIdInvestimentosFixos();
 
       this.pegarIdMatriz();
 
@@ -280,7 +287,7 @@ iniciaPreco(){
 }
 //------------------------------------------------------------------------------------------------------
 
-//----------- Pegar e setar id Produtos e Servicos-------------------------------------------------
+//----------- Pegar e setar id Produtos e Servicos------------------------------------------------------
 pegarIdProdutosServicos() {
   this.apiService.getProdutosServicos(this.idPlano).subscribe( produtosServicos => {
     this.produtosServicos = produtosServicos;
@@ -299,8 +306,29 @@ iniciaProdutosEServicos(){
     console.log('Error ao capturar produtos e serviços por ID! ', error);
   });
 }
-//------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------
 
+
+//----------- Pegar e setar id dos investimentos fixos-------------------------------------------------
+pegarIdInvestimentosFixos() {
+  this.apiService.getInvestimentosFixos(this.idPlano).subscribe(investimentosFixos => {
+    this.investimentosFixos = investimentosFixos;
+    this.idInvestimentosF = investimentosFixos[0].id;
+    console.log("Abaixo está o id dos investimentos fixos", this.idInvestimentosF);
+    this.iniciaInvestimentosFixos();
+  }, error => {
+  });
+}
+
+iniciaInvestimentosFixos(){
+  this.apiService.getInvestimentosFixosById(this.idPlano, this.idInvestimentosF).subscribe( investimentosF => {
+    this.investimentosF = investimentosF;
+    console.log('Retornou investimentos fixos com sucesso! ', this.investimentosF);
+  }, error => {
+    console.log('Error ao capturar investimentos fixos por ID! ', error);
+  });
+}
+//------------------------------------------------------------------------------------------------------
 
   //----------- Pegar e setar id da matriz F.O.F.A -----------------------------------------------
   pegarIdMatriz() {

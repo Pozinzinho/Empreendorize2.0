@@ -34,6 +34,12 @@ import { EstudoProprioAddComponent } from './estudodemercado/estudodosconcorrent
 import { EstudoProprioEditarComponent } from './estudodemercado/estudodosconcorrentes/estudo-proprio-editar/estudo-proprio-editar.component';
 import { EstudodosfornecedoresEditarComponent } from './estudodemercado/estudodosfornecedores/estudodosfornecedores-editar/estudodosfornecedores-editar.component';
 import { EstudodosfornecedoresAddComponent } from './estudodemercado/estudodosfornecedores/estudodosfornecedores-add/estudodosfornecedores-add.component';
+import { InvestimentosFixosEditarComponent } from './planomonetario/investimentosfixos/tabela1/investimentos-fixos-editar/investimentos-fixos-editar.component';
+import { InvestimentosFixosEditarMuComponent } from './planomonetario/investimentosfixos/tabela2/investimentos-fixos-editar-mu/investimentos-fixos-editar-mu.component';
+import { InvestimentosFixosEditarVComponent } from './planomonetario/investimentosfixos/tabela3/investimentos-fixos-editar-v/investimentos-fixos-editar-v.component';
+import { InvestimentosFixosAddComponent } from './planomonetario/investimentosfixos/tabela1/investimentos-fixos-add/investimentos-fixos-add.component';
+import { InvestimentosFixosAddMuComponent } from './planomonetario/investimentosfixos/tabela2/investimentos-fixos-add-mu/investimentos-fixos-add-mu.component';
+import { InvestimentosFixosAddVComponent } from './planomonetario/investimentosfixos/tabela3/investimentos-fixos-add-v/investimentos-fixos-add-v.component';
 export const planodengocioRoutes = [
     {path: 'planodenegocio/:id', component: PlanodenegocioComponent, children: 
     [
@@ -67,7 +73,13 @@ export const planodengocioRoutes = [
 
         //COMPONENTES PLANO MONETÁRIO ----------------------------------------------
         {path: 'introplanomonetario', component: IntroplanomonetarioComponent},
-        {path: 'investimentosfixos', component: InvestimentosfixosComponent},
+        {path: 'investimentosfixos/:id', component: InvestimentosfixosComponent},
+        {path: 'editar-investimentosfixos/:id', component: InvestimentosFixosEditarComponent},
+        {path: 'editar-investimentosfixosMU/:id', component: InvestimentosFixosEditarMuComponent},
+        {path: 'editar-investimentosfixosV/:id', component: InvestimentosFixosEditarVComponent},
+        {path: 'add-investimentosfixos', component: InvestimentosFixosAddComponent},
+        {path: 'add-investimentosfixosMU', component: InvestimentosFixosAddMuComponent},
+        {path: 'add-investimentosfixosV', component: InvestimentosFixosAddVComponent},
         {path: 'investimentospreop', component: InvestimentospreopComponent},
         {path: 'investimentototal', component: InvestimentototalComponent},
         {path: 'faturamentomensal', component: FaturamentomensalComponent},

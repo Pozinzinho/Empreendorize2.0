@@ -64,7 +64,7 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['investimentosfixos']" (click)="clicouPlanoMonetarioIF()">Investimentos fixos</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['investimentosfixos/', investimentosF.id]" (click)="clicouPlanoMonetarioIF()">Investimentos fixos</a>
         <mat-divider></mat-divider>
         <a mat-list-item queryParamsHandling="preserve" [routerLink]="['investimentospreop']"(click)="clicouPlanoMonetarioIPO()">Investimentos pré-operacionais</a>
         <mat-divider></mat-divider>

@@ -1,1 +1,133 @@
-<h1 class="mt-4">Investimentos fixos</h1>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+
+<!-- <section class="grey-text w-responsive mx-auto" class="direita">
+    <div class="form-group" (click)="openDialog()">
+        <label>Tenho dúvidas
+            <mat-icon>live_help</mat-icon>
+        </label>
+    </div>
+</section> -->
+  
+  <h2 class="h4 mb-4 text-center font-weight-bold">Máquinas e equipamentos</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="hidden">Id</th>
+          <th>Descrição</th>
+          <th>Quantidade</th>
+          <th>Valor unitário</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let investimentosFixos of investimentosFixos; let i = index;">
+          <td class="hidden">{{i+1}}</td>
+          <td>{{investimentosFixos.descricaoME}}</td>
+          <td>{{investimentosFixos.qtdeME}}</td>
+          <td>{{investimentosFixos.valorUnitarioME | currency: 'R$ '}}</td>
+          <td>{{investimentosFixos.totalME | currency: 'R$ '}}</td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <button class="btn btn-danger "> Excluir</button>
+              <button class="btn btn-info " 
+                style="margin-left: 20px;"  
+                [routerLink]="['/planodenegocio',idPlano,'editar-investimentosfixos', investimentosFixos.id]"> Editar</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="form">
+    <button mat-fab class="cor-botton" matTooltip="Adicionar máquinas e equipamentos" 
+    matTooltipPosition='after'  [routerLink]="['/planodenegocio',idPlano,'add-investimentosfixos']">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <h2 class="h4 mb-4 text-center font-weight-bold">Móveis e utensílios</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="hidden">Id</th>
+          <th>Descrição</th>
+          <th>Quantidade</th>
+          <th>Valor unitário</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let investimentosFixosMU of investimentosFixosMU; let i = index;">
+          <td class="hidden">{{i+1}}</td>
+          <td>{{investimentosFixosMU.descricaoMU}}</td>
+          <td>{{investimentosFixosMU.qtdeMU}}</td>
+          <td>{{investimentosFixosMU.valorUnitarioMU | currency: 'R$ '}}</td>
+          <td>{{investimentosFixosMU.totalMU | currency: 'R$ '}}</td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <button class="btn btn-danger "> Excluir</button>
+              <button class="btn btn-info " 
+                style="margin-left: 20px;"  
+                [routerLink]="['/planodenegocio',idPlano,'editar-investimentosfixosMU', investimentosFixosMU.id]"> Editar</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="form">
+    <button mat-fab class="cor-botton" matTooltip="Adicionar móveis e utensílios" 
+    matTooltipPosition='after'[routerLink]="['/planodenegocio',idPlano,'add-investimentosfixosMU']">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <h2 class="h4 mb-4 text-center font-weight-bold">Veículos</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="hidden">Id</th>
+          <th>Descrição</th>
+          <th>Quantidade</th>
+          <th>Valor unitário</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let investimentosFixosV of investimentosFixosV; let i = index;">
+          <td class="hidden">{{i+1}}</td>
+          <td>{{investimentosFixosV.descricaoV}}</td>
+          <td>{{investimentosFixosV.qtdeV}}</td>
+          <td>{{investimentosFixosV.valorUnitarioV | currency: 'R$ '}}</td>
+          <td>{{investimentosFixosV.totalV | currency: 'R$ '}}</td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <button class="btn btn-danger "> Excluir</button>
+              <button class="btn btn-info " 
+                style="margin-left: 20px;"  
+                [routerLink]="['/planodenegocio',idPlano,'editar-investimentosfixosV', investimentosFixosV.id]"> Editar</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="form">
+    <button mat-fab class="cor-botton" matTooltip="Adicionar veículos" 
+    matTooltipPosition='after' [routerLink]="['/planodenegocio',idPlano,'add-investimentosfixosV']">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  
+  <br />
+  <br />
+  <br />
+  <br />
