@@ -40,6 +40,7 @@ import { InvestimentosFixosEditarVComponent } from './planomonetario/investiment
 import { InvestimentosFixosAddComponent } from './planomonetario/investimentosfixos/tabela1/investimentos-fixos-add/investimentos-fixos-add.component';
 import { InvestimentosFixosAddMuComponent } from './planomonetario/investimentosfixos/tabela2/investimentos-fixos-add-mu/investimentos-fixos-add-mu.component';
 import { InvestimentosFixosAddVComponent } from './planomonetario/investimentosfixos/tabela3/investimentos-fixos-add-v/investimentos-fixos-add-v.component';
+import { CapitalDeGiroComponent } from './planomonetario/capital-de-giro/capital-de-giro.component';
 export const planodengocioRoutes = [
     {path: 'planodenegocio/:id', component: PlanodenegocioComponent, children: 
     [
@@ -80,6 +81,9 @@ export const planodengocioRoutes = [
         {path: 'add-investimentosfixos', component: InvestimentosFixosAddComponent},
         {path: 'add-investimentosfixosMU', component: InvestimentosFixosAddMuComponent},
         {path: 'add-investimentosfixosV', component: InvestimentosFixosAddVComponent},
+
+        {path: 'capitalDeGiro', component: CapitalDeGiroComponent},
+
         {path: 'investimentospreop', component: InvestimentospreopComponent},
         {path: 'investimentototal', component: InvestimentototalComponent},
         {path: 'faturamentomensal', component: FaturamentomensalComponent},

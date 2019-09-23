@@ -73,6 +73,10 @@ import { InvestimentosFixosEditarMuComponent } from './planomonetario/investimen
 import { InvestimentosFixosEditarVComponent } from './planomonetario/investimentosfixos/tabela3/investimentos-fixos-editar-v/investimentos-fixos-editar-v.component';
 import { InvestimentosFixosAddMuComponent } from './planomonetario/investimentosfixos/tabela2/investimentos-fixos-add-mu/investimentos-fixos-add-mu.component';
 import { InvestimentosFixosAddVComponent } from './planomonetario/investimentosfixos/tabela3/investimentos-fixos-add-v/investimentos-fixos-add-v.component';
+import { DeleteInvestimentosFixosMeComponent } from '../shared/components/modals/delete-investimentos-fixos/delete-investimentos-fixos-me/delete-investimentos-fixos-me.component';
+import { DeleteInvestimentosFixosVComponent } from '../shared/components/modals/delete-investimentos-fixos/delete-investimentos-fixos-v/delete-investimentos-fixos-v.component';
+import { DeleteInvestimentosFixosMuComponent } from '../shared/components/modals/delete-investimentos-fixos/delete-investimentos-fixos-mu/delete-investimentos-fixos-mu.component';
+import { CapitalDeGiroComponent } from './planomonetario/capital-de-giro/capital-de-giro.component';
 
 
 @NgModule(
@@ -158,7 +162,8 @@ import { InvestimentosFixosAddVComponent } from './planomonetario/investimentosf
             InvestimentosFixosAddVComponent,
             InvestimentospreopComponent, 
             InvestimentototalComponent, 
-            FaturamentomensalComponent, 
+            FaturamentomensalComponent,
+            CapitalDeGiroComponent, 
             CustounitarioComponent, 
             CustosdecomercializacaoComponent,
             CustosdedepreComponent, 
@@ -188,7 +193,10 @@ import { InvestimentosFixosAddVComponent } from './planomonetario/investimentosf
             DicaPreco,
             DicaLocalizacao,
             DicaPromocional,
-            DicaComercializacao
+            DicaComercializacao,
+            DeleteInvestimentosFixosMeComponent,
+            DeleteInvestimentosFixosMuComponent,
+            DeleteInvestimentosFixosVComponent
             
         ],
         entryComponents: [DialogContentExampleDialog, DicasFOFA, DicasMissao, DicasClientes, ExplicaMercado, DicaProdutos,

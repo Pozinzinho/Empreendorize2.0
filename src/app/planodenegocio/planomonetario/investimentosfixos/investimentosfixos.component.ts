@@ -65,4 +65,32 @@ export class InvestimentosfixosComponent implements OnInit {
   });
 //----------------------------------------------------------------------------------------------------------------
   }
+
+  deleteInvestimentoFixoME(investimentosFixos  : InvestimentosFixosDto): void{
+    this.apiService.deleteInvestimentosFixos(this.idPlano, investimentosFixos.id).subscribe(() => {
+      this.investimentosFixos = this.investimentosFixos.filter(u => u.id !== investimentosFixos.id);
+      this.messageService.showError('Deleção de máquinas/equipamentos','Deletado com sucesso!');
+    }, error => {
+      this.messageService.showError('Deleção de máquinas/equipamentos','Falha ao excluir máquinas/equipamentos!');
+    });
+  }
+
+  deleteInvestimentoFixoMU(investimentosFixosMU  : InvestimentosFixosMUDto): void{
+    this.apiService.deleteInvestimentosFixosMU(this.idPlano, investimentosFixosMU.id).subscribe(() => {
+      this.investimentosFixosMU = this.investimentosFixosMU.filter(u => u.id !== investimentosFixosMU.id);
+      this.messageService.showError('Deleção de móveis/utensílios','Deletado com sucesso!');
+    }, error => {
+      this.messageService.showError('Deleção de móveis/utensílios','Falha ao excluir móveis/utensílios!');
+    });
+  }
+
+  deleteInvestimentoFixoV(investimentosFixosV  : InvestimentosFixosVDto): void{
+    this.apiService.deleteInvestimentosFixosV(this.idPlano, investimentosFixosV.id).subscribe(() => {
+      this.investimentosFixosV = this.investimentosFixosV.filter(u => u.id !== investimentosFixosV.id);
+      this.messageService.showError('Deleção de veículos','Deletado com sucesso!');
+    }, error => {
+      this.messageService.showError('Deleção de veículos','Falha ao excluir veículo!');
+    });
+  }
+
 }

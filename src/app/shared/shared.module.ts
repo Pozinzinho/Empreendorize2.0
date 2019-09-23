@@ -13,6 +13,9 @@ import {
 
 import { 
   MascaraDirective } from './directives/mascara.directive';
+import { DeleteInvestimentosFixosMeComponent } from './components/modals/delete-investimentos-fixos/delete-investimentos-fixos-me/delete-investimentos-fixos-me.component';
+import { DeleteInvestimentosFixosMuComponent } from './components/modals/delete-investimentos-fixos/delete-investimentos-fixos-mu/delete-investimentos-fixos-mu.component';
+import { DeleteInvestimentosFixosVComponent } from './components/modals/delete-investimentos-fixos/delete-investimentos-fixos-v/delete-investimentos-fixos-v.component';
 
 
 

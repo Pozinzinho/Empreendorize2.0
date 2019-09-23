@@ -30,12 +30,14 @@
           <td>{{investimentosFixos.totalME | currency: 'R$ '}}</td>
           <td>
             <div class="btn-group btn-group-sm">
-              <button class="btn btn-danger "> Excluir</button>
+              <button class="btn btn-danger " (click)="deleteMaquinasEquipamentosModal.show()"> Excluir</button>
               <button class="btn btn-info " 
                 style="margin-left: 20px;"  
                 [routerLink]="['/planodenegocio',idPlano,'editar-investimentosfixos', investimentosFixos.id]"> Editar</button>
             </div>
           </td>
+          <app-delete-investimentos-fixos-me #deleteMaquinasEquipamentosModal [recebeItem]="investimentosFixos"
+          (resposta)="deleteInvestimentoFixoME($event)"></app-delete-investimentos-fixos-me>
         </tr>
       </tbody>
     </table>
@@ -69,12 +71,14 @@
           <td>{{investimentosFixosMU.totalMU | currency: 'R$ '}}</td>
           <td>
             <div class="btn-group btn-group-sm">
-              <button class="btn btn-danger "> Excluir</button>
+              <button class="btn btn-danger " (click)="deleteInvestimentosFixosMuModal.show()"> Excluir</button>
               <button class="btn btn-info " 
                 style="margin-left: 20px;"  
                 [routerLink]="['/planodenegocio',idPlano,'editar-investimentosfixosMU', investimentosFixosMU.id]"> Editar</button>
             </div>
           </td>
+          <app-delete-investimentos-fixos-mu #deleteInvestimentosFixosMuModal [recebeItem]="investimentosFixosMU"
+          (resposta)="deleteInvestimentoFixoMU($event)"></app-delete-investimentos-fixos-mu>
         </tr>
       </tbody>
     </table>
@@ -109,12 +113,14 @@
           <td>{{investimentosFixosV.totalV | currency: 'R$ '}}</td>
           <td>
             <div class="btn-group btn-group-sm">
-              <button class="btn btn-danger "> Excluir</button>
+              <button class="btn btn-danger " (click)="deleteVeiculoModal.show()"> Excluir</button>
               <button class="btn btn-info " 
                 style="margin-left: 20px;"  
                 [routerLink]="['/planodenegocio',idPlano,'editar-investimentosfixosV', investimentosFixosV.id]"> Editar</button>
             </div>
           </td>
+          <app-delete-investimentos-fixos-v #deleteVeiculoModal [recebeItem]="investimentosFixosV"
+          (resposta)="deleteInvestimentoFixoV($event)"></app-delete-investimentos-fixos-v>
         </tr>
       </tbody>
     </table>
