@@ -1,0 +1,47 @@
+<section class="grey-text w-responsive mx-auto p-5">
+  <form #EditEstoqueInicial="ngForm" (ngSubmit)="EditEstoqueInicial.form.valid && onSubmit()">
+    <h4 class="h4 mb-4 text-center"><span class="badge badge-light ">{{estoqueInicial.id}}</span> ->
+      {{estoqueInicial.descricaoME}}</h4>
+
+      <div class="form-group col-md-9">
+        <label for="descricaoME">Descrição material*</label>
+        <input type="text" class="form-control" id="descricaoME" required
+          [ngClass]="{ 'is-invalid': EditEstoqueInicial.submitted && descricaoME.invalid }" 
+          placeholder="Descreva qual é o nome da máquina ou equipamento que será utilizado(a) na empresa"
+          [(ngModel)]="estoqueInicial.descricaoME" name="descricaoME" #descricaoME="ngModel">
+        <div *ngIf="EditEstoqueInicial.submitted && descricaoME.invalid" class="alert alert-danger">
+          <div *ngIf="descricaoME.errors.required">O campo pertinente a descrição do material é obrigatório</div>
+        </div>
+      </div>
+
+    <div class="form-group col-md-2">
+      <label for="qtdeME">Quantidade*</label>
+      <input type="text" class="form-control" id="qtdeME" required
+        [ngClass]="{ 'is-invalid': EditEstoqueInicial.submitted && qtdeME.invalid }" 
+        [(ngModel)]="estoqueInicial.qtdeME" name="qtdeME" #qtdeME="ngModel">
+      <div *ngIf="EditEstoqueInicial.submitted && qtdeME.invalid" class="alert alert-danger">
+        <div *ngIf="qtdeME.errors.required">O campo de quantidade é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="valorUnitarioME">Valor unitário*</label>
+      <input type="text" class="form-control" id="valorUnitarioME" required currencyMask
+        [ngClass]="{ 'is-invalid': EditEstoqueInicial.submitted && valorUnitarioME.invalid }" [(ngModel)]="estoqueInicial.valorUnitarioME" 
+        [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" name="valorUnitarioME"
+        #valorUnitarioME="ngModel">
+      <div *ngIf="EditEstoqueInicial.submitted && valorUnitarioME.invalid" class="alert alert-danger">
+        <div *ngIf="valorUnitarioME.errors.required">O campo de valor unitário é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="btn-group btn-group-sm col-md-1">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+      <button button class="btn btn-dark">Atualizar</button>
+    </div>
+
+    <br />
+    <br />
+
+  </form>
+</section>

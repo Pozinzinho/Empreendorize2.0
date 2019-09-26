@@ -66,9 +66,9 @@
 
         <a mat-list-item queryParamsHandling="preserve" [routerLink]="['investimentosfixos/', investimentosF.id]" (click)="clicouPlanoMonetarioIF()">Investimentos fixos</a>
         <mat-divider></mat-divider>
-        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['capitalDeGiro']" (click)="clicouPlanoMonetarioCG()">Capital de giro</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['capitalDeGiro/', estimativaCustos.id]" (click)="clicouPlanoMonetarioCG()">Capital de giro</a>
         <mat-divider></mat-divider>
-        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['investimentospreop']"(click)="clicouPlanoMonetarioIPO()">Investimentos pré-operacionais</a>
+        <a mat-list-item queryParamsHandling="preserve" [routerLink]="['investimentospreop/', investimentosPO.id]"(click)="clicouPlanoMonetarioIPO()">Investimentos pré-operacionais</a>
         <mat-divider></mat-divider>
         <a mat-list-item queryParamsHandling="preserve" [routerLink]="['investimentototal']" (click)="clicouPlanoMonetarioIT()">Investimento total</a>
         <mat-divider></mat-divider>

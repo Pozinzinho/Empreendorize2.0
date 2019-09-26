@@ -1,3 +1,219 @@
-<p>
-  capital-de-giro works!
-</p>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+
+
+
+  <h2 class="h4 mb-4 text-center font-weight-bold">Estoque inicial</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="hidden">Id</th>
+          <th>Descrição</th>
+          <th>Quantidade</th>
+          <th>Valor unitário</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let estoqueInicial of estoqueInicial; let i = index;">
+          <td class="hidden">{{i+1}}</td>
+          <td>{{estoqueInicial.descricaoME}}</td>
+          <td>{{estoqueInicial.qtdeME}}</td>
+          <td>{{estoqueInicial.valorUnitarioME | currency: 'R$ '}}</td>
+          <td>{{estoqueInicial.totalME | currency: 'R$ '}}</td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <button class="btn btn-danger " (click)="deleteEstoqueInicial.show()"> Excluir</button>
+              <button class="btn btn-info " 
+                style="margin-left: 20px;"  
+                [routerLink]="['/planodenegocio',idPlano,'editar-estoqueInicial', estoqueInicial.id]"> Editar</button>
+            </div>
+          </td>
+          <app-delete-estoque-inicial-modal #deleteEstoqueInicial [recebeItem]="estoqueInicial"
+          (resposta)="deletarEstoqueInicial($event)"></app-delete-estoque-inicial-modal>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="form">
+    <button mat-fab class="cor-botton" matTooltip="Adicionar material de estoqueInicial" 
+    matTooltipPosition='after' [routerLink]="['/planodenegocio',idPlano,'add-estoqueInicial']">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <section class="grey-text w-responsive mx-auto p-5" >
+      <form #EditCapitalDeGiro="ngForm" (ngSubmit)="EditCapitalDeGiro.form.valid && onSubmit()">
+        <h2 class="h4 mb-4 text-center font-weight-bold">Estimativa dos custos fixos mensais</h2>
+<!--------------------------------------------------- FORMULÁRIO ------------------------------------------------------>
+        <div class="form-group row">
+          <label for="valorAluguel" class="col-sm-3 col-form-label">Valor aluguel </label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="valorAluguel" id="valorAluguel" 
+              [ngClass]="{ 'is-invalid': EditCapitalDeGiro.submitted && valorAluguel.invalid }"
+              [(ngModel)]="estimativaCustos.valorAluguel" #valorAluguel="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <label for="valorCondominio" class="col-sm-3 col-form-label">Valor condomínio </label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="valorCondominio" id="valorCondominio" 
+              [ngClass]="{ 'is-invalid': EditCapitalDeGiro.submitted && valorCondominio.invalid }"
+              [(ngModel)]="estimativaCustos.valorCondominio" #valorCondominio="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="valorIPTU" class="col-sm-3 col-form-label">Valor IPTU</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="valorIPTU" id="valorIPTU" 
+              [ngClass]="{ 'is-invalid': EditCapitalDeGiro.submitted && valorIPTU.invalid }"
+              [(ngModel)]="estimativaCustos.valorIPTU" #valorIPTU="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="valorAgua" class="col-sm-3 col-form-label">Valor água</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="valorAgua" id="valorAgua"
+              [ngClass]="{ 'is-invalid': EditCapitalDeGiro.submitted && valorAgua.invalid }"
+              [(ngModel)]="estimativaCustos.valorAgua" #valorAgua="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="valorEnergia" class="col-sm-3 col-form-label">Valor energia</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="valorEnergia" id="valorEnergia"
+              [ngClass]="{ 'is-invalid': EditCapitalDeGiro.submitted && valorEnergia.invalid }"
+              [(ngModel)]="estimativaCustos.valorEnergia" #valorEnergia="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="valorTelefone" class="col-sm-3 col-form-label">Valor telefone</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="valorTelefone" id="valorTelefone" 
+              [ngClass]="{ 'is-invalid': EditCapitalDeGiro.submitted && valorTelefone.invalid }"
+              [(ngModel)]="estimativaCustos.valorTelefone" #valorTelefone="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="valorManutencaoDeEquipamentos" class="col-sm-3 col-form-label">Valor manutenção de equipamentos</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="valorManutencaoDeEquipamentos" id="valorManutencaoDeEquipamentos"
+              [ngClass]="{ 'is-invalid': EditCapitalDeGiro.submitted && valorManutencaoDeEquipamentos.invalid }"
+              [(ngModel)]="estimativaCustos.valorManutencaoDeEquipamentos" #valorManutencaoDeEquipamentos="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="valorMaterialDeLimpeza" class="col-sm-3 col-form-label">Valor material de limpeza</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="valorMaterialDeLimpeza" id="valorMaterialDeLimpeza"
+              [ngClass]="{ 'is-invalid': EditCapitalDeGiro.submitted && valorMaterialDeLimpeza.invalid }"
+              [(ngModel)]="estimativaCustos.valorMaterialDeLimpeza" #valorMaterialDeLimpeza="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="valorMaterialDeEscritorio" class="col-sm-3 col-form-label">Valor material de escritório</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="valorMaterialDeEscritorio" id="valorMaterialDeEscritorio"
+              [ngClass]="{ 'is-invalid': EditCapitalDeGiro.submitted && valorMaterialDeEscritorio.invalid }"
+              [(ngModel)]="estimativaCustos.valorMaterialDeEscritorio" #valorMaterialDeEscritorio="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="valorCombustivel" class="col-sm-3 col-form-label">Valor combustível</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="valorCombustivel" id="valorCombustivel"
+              [ngClass]="{ 'is-invalid': EditCapitalDeGiro.submitted && valorCombustivel.invalid }"
+              [(ngModel)]="estimativaCustos.valorCombustivel" #valorCombustivel="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="valorTaxasDiversas" class="col-sm-3 col-form-label">Valor taxas diversas</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="valorTaxasDiversas" id="valorTaxasDiversas"
+              [ngClass]="{ 'is-invalid': EditCapitalDeGiro.submitted && valorTaxasDiversas.invalid }"
+              [(ngModel)]="estimativaCustos.valorTaxasDiversas" #valorTaxasDiversas="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="valorServicosTerceiros" class="col-sm-3 col-form-label">Valor serviços terceiros</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="valorServicosTerceiros" id="valorServicosTerceiros"
+              [ngClass]="{ 'is-invalid': EditCapitalDeGiro.submitted && valorServicosTerceiros.invalid }"
+              [(ngModel)]="estimativaCustos.valorServicosTerceiros" #valorServicosTerceiros="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="valorOutrasDespesas" class="col-sm-3 col-form-label">Valor outras despesas</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="valorOutrasDespesas" id="valorOutrasDespesas"
+              [ngClass]="{ 'is-invalid': EditCapitalDeGiro.submitted && valorOutrasDespesas.invalid }"
+              [(ngModel)]="estimativaCustos.valorOutrasDespesas" #valorOutrasDespesas="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+<!--------------------------------------------------- FIM DO FORMULÁRIO ------------------------------------------------------>
+
+
+
+
+        <div class="btn-group btn-group-sm row">
+          <button button class="btn btn-dark" *ngIf='estimativaCustos.id !== Undefined'>Atualizar</button>
+          <button button class="btn btn-dark" *ngIf='estimativaCustos.id === Undefined'>salvar</button>
+        </div>
+
+        <br/>
+        <br/>
+        <br/>
+    
+      </form>
+    </section>
+
+
+  
+    <mat-divider></mat-divider>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="hidden">Caixa mínimo mensal</th>
+          </tr>
+        </thead>
+    
+        <tbody>
+          <tr>
+            <td>{{totalEstoque + total | currency: 'R$ '}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <br />

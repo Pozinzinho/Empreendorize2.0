@@ -41,6 +41,8 @@ import { InvestimentosFixosAddComponent } from './planomonetario/investimentosfi
 import { InvestimentosFixosAddMuComponent } from './planomonetario/investimentosfixos/tabela2/investimentos-fixos-add-mu/investimentos-fixos-add-mu.component';
 import { InvestimentosFixosAddVComponent } from './planomonetario/investimentosfixos/tabela3/investimentos-fixos-add-v/investimentos-fixos-add-v.component';
 import { CapitalDeGiroComponent } from './planomonetario/capital-de-giro/capital-de-giro.component';
+import { EstoqueInicialEditComponent } from './planomonetario/capital-de-giro/estoqueInicial/estoque-inicial-edit/estoque-inicial-edit.component';
+import { EstoqueInicialSaveComponent } from './planomonetario/capital-de-giro/estoqueInicial/estoque-inicial-save/estoque-inicial-save.component';
 export const planodengocioRoutes = [
     {path: 'planodenegocio/:id', component: PlanodenegocioComponent, children: 
     [
@@ -82,9 +84,11 @@ export const planodengocioRoutes = [
         {path: 'add-investimentosfixosMU', component: InvestimentosFixosAddMuComponent},
         {path: 'add-investimentosfixosV', component: InvestimentosFixosAddVComponent},
 
-        {path: 'capitalDeGiro', component: CapitalDeGiroComponent},
+        {path: 'capitalDeGiro/:id', component: CapitalDeGiroComponent},
+        {path: 'editar-estoqueInicial/:id', component: EstoqueInicialEditComponent},
+        {path: 'add-estoqueInicial', component: EstoqueInicialSaveComponent},
 
-        {path: 'investimentospreop', component: InvestimentospreopComponent},
+        {path: 'investimentospreop/:id', component: InvestimentospreopComponent},
         {path: 'investimentototal', component: InvestimentototalComponent},
         {path: 'faturamentomensal', component: FaturamentomensalComponent},
         {path: 'custouni', component: CustounitarioComponent},

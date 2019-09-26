@@ -23,6 +23,7 @@ import { InvestimentosFixosMUDto } from './model/models-do-plano/model-plano-fin
 import { InvestimentosFixosVDto } from './model/models-do-plano/model-plano-financeiro/investimentosFixosVDto';
 import { EstoqueInicialDto } from './model/models-do-plano/model-plano-financeiro/EstoqueInicialDto';
 import { EstimativaDosCustosFixosMensaisDto } from './model/models-do-plano/model-plano-financeiro/EstimativaDosCustosFixosMensaisDto';
+import { InvestimentosPreOperacionaisDto } from './model/models-do-plano/model-plano-financeiro/InvestimentosPreOperacionaisDto';
 
 
 
@@ -53,6 +54,8 @@ export class ApiService {
   public baseUrlIFMU: string;
   public baseUrlIFV: string;
 
+  public baseUrlIPO: string;
+
   public user = new UserDto;
   public roleAtual: string;
 
@@ -78,6 +81,8 @@ export class ApiService {
 
     this.baseUrlEsIni = '/estoqueInicial';
     this.baseUrlEsCFM = '/estimativaDosCustosFixosMensais';
+
+    this.baseUrlIPO = '/investimentosPreOperacionais'
 
     this.baseUrlIP = '/missaoDaEmpresa';
     this.baseUrlAM = '/analiseDaMatriz';
@@ -433,7 +438,7 @@ export class ApiService {
   }
   //---------------------------------------------------------------------------------------------------------------------------------------
 
-  // ---------------- SERVIÇOS REFERENTES AOS ESTIMATIVA DOS CUSTOS FIXOS OPERACIONAIS MENSAIS ------------------------------------------------------
+  // ---------------- SERVIÇOS REFERENTES AOS ESTIMATIVA DOS CUSTOS FIXOS OPERACIONAIS MENSAIS --------------------------------------------
   getEstimativaDosCFOM(id: string): Observable<any> {
     return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlEsCFM}`, AppUtils.OPTIONS_OBJECTO);
   }
@@ -449,6 +454,22 @@ export class ApiService {
   }
   deleteEstimativaDosCFOM(idPlano: string, id: string): Observable<any> {
     return this.httpClient.delete<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlEsCFM}/${id}`, AppUtils.OPTIONS_OBJECTO);
+  }
+  //---------------------------------------------------------------------------------------------------------------------------------------
+
+  // ---------------- SERVIÇOS REFERENTES AOS INVESTIMENTOS PRÉ-OPERACIONAIS ------------------------------------------------------
+  getInvestimentosPO(id: string): Observable<any> {
+    return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIPO}`, AppUtils.OPTIONS_OBJECTO);
+  }
+  getInvestimentosPOById(idPlano: string, id: string): Observable<any> {
+    return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlIPO}/${id}`, AppUtils.OPTIONS_OBJECTO);
+  }
+  updateInvestimentosPO(investimentosPreOperacionaisDto: InvestimentosPreOperacionaisDto, id: string): Observable<any> {
+    return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIPO}/${investimentosPreOperacionaisDto.id}`,
+    investimentosPreOperacionaisDto, AppUtils.OPTIONS_OBJECTO);
+  }
+  registerInvestimentosPO(investimentosPreOperacionaisDto: InvestimentosPreOperacionaisDto, id: string): Observable<any> {
+    return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIPO}`, investimentosPreOperacionaisDto, AppUtils.OPTIONS_OBJECTO);
   }
   //---------------------------------------------------------------------------------------------------------------------------------------
 

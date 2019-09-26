@@ -1,1 +1,96 @@
-<h1 class="mt-4">Investimentos pré-operacionais</h1>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+
+
+  <section class="grey-text w-responsive mx-auto p-5" >
+      <form #EditInvestimentosPO="ngForm" (ngSubmit)="EditInvestimentosPO.form.valid && onSubmit()">
+        <h2 class="h4 mb-4 text-center font-weight-bold">Investimentos pré-operacionais</h2>
+<!--------------------------------------------------- FORMULÁRIO ------------------------------------------------------>
+        <div class="form-group row">
+          <label for="despesasLegais" class="col-sm-3 col-form-label">Despesas de legalização </label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="despesasLegais" id="despesasLegais" 
+              [ngClass]="{ 'is-invalid': EditInvestimentosPO.submitted && despesasLegais.invalid }"
+              [(ngModel)]="investimentosPO.despesasLegais" #despesasLegais="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <label for="obrasOuReformas" class="col-sm-3 col-form-label">Obras civís e/ou reformas</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="obrasOuReformas" id="obrasOuReformas" 
+              [ngClass]="{ 'is-invalid': EditInvestimentosPO.submitted && obrasOuReformas.invalid }"
+              [(ngModel)]="investimentosPO.obrasOuReformas" #obrasOuReformas="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="divulgacao" class="col-sm-3 col-form-label">Divulgação</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="divulgacao" id="divulgacao" 
+              [ngClass]="{ 'is-invalid': EditInvestimentosPO.submitted && divulgacao.invalid }"
+              [(ngModel)]="investimentosPO.divulgacao" #divulgacao="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="cursosETreinamentos" class="col-sm-3 col-form-label">Cursos e treinamentos</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="cursosETreinamentos" id="cursosETreinamentos"
+              [ngClass]="{ 'is-invalid': EditInvestimentosPO.submitted && cursosETreinamentos.invalid }"
+              [(ngModel)]="investimentosPO.cursosETreinamentos" #cursosETreinamentos="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="outrasDespesas" class="col-sm-3 col-form-label">Outras despesas</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" rows="3" name="outrasDespesas" id="outrasDespesas"
+              [ngClass]="{ 'is-invalid': EditInvestimentosPO.submitted && outrasDespesas.invalid }"
+              [(ngModel)]="investimentosPO.outrasDespesas" #outrasDespesas="ngModel" currencyMask
+              [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+          </div>
+        </div>
+<!--------------------------------------------------- FIM DO FORMULÁRIO ------------------------------------------------------>
+
+
+
+
+        <div class="btn-group btn-group-sm row">
+            <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+            <button button class="btn btn-dark" *ngIf='investimentosPO.id !== Undefined'>Atualizar</button>
+            <button button class="btn btn-dark" *ngIf='investimentosPO.id === Undefined'>salvar</button>
+        </div>
+
+        <br/>
+        <br/>
+        <br/>
+    
+      </form>
+    </section>
+
+
+  
+    <mat-divider></mat-divider>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="hidden">Total investimentos pré-operacionais</th>
+          </tr>
+        </thead>
+    
+        <tbody>
+          <tr *ngFor="let investimentosPreOP of investimentosPreOP;">
+            <td>{{ investimentosPreOP.totalInvestimentos | currency: 'R$ '}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <br />

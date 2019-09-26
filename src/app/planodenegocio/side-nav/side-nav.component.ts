@@ -18,6 +18,8 @@ import { LocalizacaoDto } from 'src/app/core/model/models-do-plano/model-plano-d
 import { PrecoDto } from 'src/app/core/model/models-do-plano/model-plano-de-marketing/PrecoDto';
 import { ProdutosServicosDto } from 'src/app/core/model/models-do-plano/model-plano-de-marketing/ProdutosServicosDto';
 import { InvestimentosFixosDto } from 'src/app/core/model/models-do-plano/model-plano-financeiro/InvestimentosFixosDto';
+import { EstimativaDosCustosFixosMensaisDto } from 'src/app/core/model/models-do-plano/model-plano-financeiro/EstimativaDosCustosFixosMensaisDto';
+import { InvestimentosPreOperacionaisDto } from 'src/app/core/model/models-do-plano/model-plano-financeiro/InvestimentosPreOperacionaisDto';
 
 @Component({
   selector: 'app-side-nav',
@@ -71,6 +73,14 @@ export class SideNavComponent {
   investimentosFixos :  InvestimentosFixosDto[];
   idInvestimentosF: string;
 
+  public estimativaCustos = new EstimativaDosCustosFixosMensaisDto();
+  estimativaDosCFOM : EstimativaDosCustosFixosMensaisDto[];
+  idEstimativa: string;
+
+  public investimentosPO = new InvestimentosPreOperacionaisDto();
+  investimentosPreOperacionais : InvestimentosPreOperacionaisDto[];
+  idInvestimentosPO : string;
+
   public fofa = new  AnaliseDaMatrizDto();
   analiseDaMatriz :  AnaliseDaMatrizDto[];
   idFofa: string;
@@ -113,6 +123,10 @@ export class SideNavComponent {
       this.pegarIdProdutosServicos();
 
       this.pegarIdInvestimentosFixos();
+
+      this.pegarIdCapitalDeGiro();
+
+      this.pegarIdInvestimentosPO();
 
       this.pegarIdMatriz();
 
@@ -329,6 +343,49 @@ iniciaInvestimentosFixos(){
   });
 }
 //------------------------------------------------------------------------------------------------------
+
+//----------- Pegar e setar id da Estimativa Dos CFOM-------------------------------------------------
+pegarIdCapitalDeGiro() {
+  this.apiService.getEstimativaDosCFOM(this.idPlano).subscribe(estimativaDosCFOM => {
+    this.estimativaDosCFOM = estimativaDosCFOM;
+    this.idEstimativa = estimativaDosCFOM[0].id;
+    console.log("Abaixo está o id da estimativa dos CFOM", this.idEstimativa);
+    this.iniciaEstimativaDosCFOM();
+  }, error => {
+  });
+}
+
+iniciaEstimativaDosCFOM(){
+  this.apiService.getEstimativaDosCFOMById(this.idPlano, this.idEstimativa).subscribe( estimativaCustos => {
+    this.estimativaCustos = estimativaCustos;
+    console.log('Retornou estimativas dos CFOM com sucesso! ', this.estimativaCustos);
+  }, error => {
+    console.log('Error ao capturar estimativas dos CFOM por ID! ', error);
+  });
+}
+//------------------------------------------------------------------------------------------------------
+
+//----------- Pegar e setar id dos investimentos pré-operacionais -------------------------------------------------
+pegarIdInvestimentosPO() {
+  this.apiService.getInvestimentosPO(this.idPlano).subscribe(investimentosPreOperacionais => {
+    this.investimentosPreOperacionais = investimentosPreOperacionais;
+    this.idInvestimentosPO = investimentosPreOperacionais[0].id;
+    console.log("Abaixo está o id dos investimentos pré-operacionais", this.idInvestimentosPO);
+    this.iniciaInvestimentosPO();
+  }, error => {
+  });
+}
+
+iniciaInvestimentosPO(){
+  this.apiService.getInvestimentosPOById(this.idPlano, this.idInvestimentosPO).subscribe( investimentosPO => {
+    this.investimentosPO = investimentosPO;
+    console.log('Retornou investimentos pré-operacionais com sucesso! ', this.investimentosPO);
+  }, error => {
+    console.log('Error ao capturar investimentos pré-operacionais por ID! ', error);
+  });
+}
+//------------------------------------------------------------------------------------------------------
+
 
   //----------- Pegar e setar id da matriz F.O.F.A -----------------------------------------------
   pegarIdMatriz() {

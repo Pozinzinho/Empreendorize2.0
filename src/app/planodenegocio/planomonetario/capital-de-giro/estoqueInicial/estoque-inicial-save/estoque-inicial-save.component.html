@@ -1,0 +1,47 @@
+<section class="grey-text w-responsive mx-auto p-5">
+  <form #SaveEstoqueInicial="ngForm" (ngSubmit)="SaveEstoqueInicial.form.valid && onSubmit()">
+    
+    <div class="form-group col-md-11">
+      <label for="descricaoME">Descrição*</label>
+      <input type="text" class="form-control" id="descricaoME" required
+        [ngClass]="{ 'is-invalid': SaveEstoqueInicial.submitted && descricaoME.invalid }"
+        placeholder="Descreva qual é o insumo ou equipamento do material inicial que será utilizado(a) na empresa"
+        [(ngModel)]="estoqueIncial.descricaoME" name="descricaoME" #descricaoME="ngModel">
+      <div *ngIf="SaveEstoqueInicial.submitted && descricaoME.invalid" class="alert alert-danger">
+        <div *ngIf="descricaoME.errors.required">O campo pertinente a descrição é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="qtdeME">Quantidade*</label>
+      <input type="text" class="form-control" id="qtdeME" required
+        [ngClass]="{ 'is-invalid': SaveEstoqueInicial.submitted && qtdeME.invalid }"
+        [(ngModel)]="estoqueIncial.qtdeME" name="qtdeME" #qtdeME="ngModel">
+      <div *ngIf="SaveEstoqueInicial.submitted && qtdeME.invalid" class="alert alert-danger">
+        <div *ngIf="qtdeME.errors.required">O campo de quantidade é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="valorUnitarioME">Valor unitário*</label>
+      <input type="text" class="form-control" id="valorUnitarioME" required currencyMask
+        [ngClass]="{ 'is-invalid': SaveEstoqueInicial.submitted && valorUnitarioME.invalid }"
+        [(ngModel)]="estoqueIncial.valorUnitarioME" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+        name="valorUnitarioME" #valorUnitarioME="ngModel">
+      <div *ngIf="SaveEstoqueInicial.submitted && valorUnitarioME.invalid" class="alert alert-danger">
+        <div *ngIf="valorUnitarioME.errors.required">O campo de valor unitário é obrigatório</div>
+      </div>
+    </div>
+
+
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+      <button button class="btn btn-dark">salvar</button>
+    </div>
+
+    <br />
+    <br />
+
+  </form>
+
+</section>

@@ -77,6 +77,9 @@ import { DeleteInvestimentosFixosMeComponent } from '../shared/components/modals
 import { DeleteInvestimentosFixosVComponent } from '../shared/components/modals/delete-investimentos-fixos/delete-investimentos-fixos-v/delete-investimentos-fixos-v.component';
 import { DeleteInvestimentosFixosMuComponent } from '../shared/components/modals/delete-investimentos-fixos/delete-investimentos-fixos-mu/delete-investimentos-fixos-mu.component';
 import { CapitalDeGiroComponent } from './planomonetario/capital-de-giro/capital-de-giro.component';
+import { EstoqueInicialEditComponent } from './planomonetario/capital-de-giro/estoqueInicial/estoque-inicial-edit/estoque-inicial-edit.component';
+import { EstoqueInicialSaveComponent } from './planomonetario/capital-de-giro/estoqueInicial/estoque-inicial-save/estoque-inicial-save.component';
+import { DeleteEstoqueInicialModalComponent } from '../shared/components/modals/delete-estoque-inicial-modal/delete-estoque-inicial-modal.component';
 
 
 @NgModule(
@@ -146,6 +149,8 @@ import { CapitalDeGiroComponent } from './planomonetario/capital-de-giro/capital
             EstudodosconcorrentesComponent,
             EstudodosconcorrentesEditarComponent, 
             EstudodosfornecedoresComponent, 
+            EstoqueInicialEditComponent,
+            EstoqueInicialSaveComponent, 
             IntroplanodemarketingComponent, 
             ProdutoseservicosComponent, 
             PrecoComponent, 
@@ -168,7 +173,7 @@ import { CapitalDeGiroComponent } from './planomonetario/capital-de-giro/capital
             CustosdecomercializacaoComponent,
             CustosdedepreComponent, 
             CustosfixosopComponent, 
-            DemonstrativoderesultadosComponent, 
+            DemonstrativoderesultadosComponent,
             IndicadoresdeviabilidadeComponent,
             IntroanalisecriticaComponent, 
             MatrizfofaComponent, 
@@ -196,7 +201,8 @@ import { CapitalDeGiroComponent } from './planomonetario/capital-de-giro/capital
             DicaComercializacao,
             DeleteInvestimentosFixosMeComponent,
             DeleteInvestimentosFixosMuComponent,
-            DeleteInvestimentosFixosVComponent
+            DeleteInvestimentosFixosVComponent,
+            DeleteEstoqueInicialModalComponent
             
         ],
         entryComponents: [DialogContentExampleDialog, DicasFOFA, DicasMissao, DicasClientes, ExplicaMercado, DicaProdutos,
