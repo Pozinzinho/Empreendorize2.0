@@ -43,6 +43,10 @@ import { InvestimentosFixosAddVComponent } from './planomonetario/investimentosf
 import { CapitalDeGiroComponent } from './planomonetario/capital-de-giro/capital-de-giro.component';
 import { EstoqueInicialEditComponent } from './planomonetario/capital-de-giro/estoqueInicial/estoque-inicial-edit/estoque-inicial-edit.component';
 import { EstoqueInicialSaveComponent } from './planomonetario/capital-de-giro/estoqueInicial/estoque-inicial-save/estoque-inicial-save.component';
+import { FaturamentoMensalAddComponent } from './planomonetario/faturamentomensal/faturamento-mensal-add/faturamento-mensal-add.component';
+import { FaturamentoMensalEditComponent } from './planomonetario/faturamentomensal/faturamento-mensal-edit/faturamento-mensal-edit.component';
+import { CustoUnitarioAddComponent } from './planomonetario/custounitario/custo-unitario-add/custo-unitario-add.component';
+import { CustoUnitarioEditComponent } from './planomonetario/custounitario/custo-unitario-edit/custo-unitario-edit.component';
 export const planodengocioRoutes = [
     {path: 'planodenegocio/:id', component: PlanodenegocioComponent, children: 
     [
@@ -91,7 +95,11 @@ export const planodengocioRoutes = [
         {path: 'investimentospreop/:id', component: InvestimentospreopComponent},
         {path: 'investimentototal', component: InvestimentototalComponent},
         {path: 'faturamentomensal', component: FaturamentomensalComponent},
+        {path: 'faturamentomensal-add', component: FaturamentoMensalAddComponent},
+        {path: 'faturamentomensal-edit/:id', component: FaturamentoMensalEditComponent},
         {path: 'custouni', component: CustounitarioComponent},
+        {path: 'custouni-add', component: CustoUnitarioAddComponent},
+        {path: 'custouni-edit/:id', component: CustoUnitarioEditComponent},
         {path: 'custosdecomerc', component: CustosdecomercializacaoComponent},
         {path: 'custodedepre', component: CustosdedepreComponent},
         {path: 'custosfixosop', component: CustosfixosopComponent},

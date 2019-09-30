@@ -80,6 +80,12 @@ import { CapitalDeGiroComponent } from './planomonetario/capital-de-giro/capital
 import { EstoqueInicialEditComponent } from './planomonetario/capital-de-giro/estoqueInicial/estoque-inicial-edit/estoque-inicial-edit.component';
 import { EstoqueInicialSaveComponent } from './planomonetario/capital-de-giro/estoqueInicial/estoque-inicial-save/estoque-inicial-save.component';
 import { DeleteEstoqueInicialModalComponent } from '../shared/components/modals/delete-estoque-inicial-modal/delete-estoque-inicial-modal.component';
+import { FaturamentoMensalAddComponent } from './planomonetario/faturamentomensal/faturamento-mensal-add/faturamento-mensal-add.component';
+import { FaturamentoMensalEditComponent } from './planomonetario/faturamentomensal/faturamento-mensal-edit/faturamento-mensal-edit.component';
+import { CustoUnitarioAddComponent } from './planomonetario/custounitario/custo-unitario-add/custo-unitario-add.component';
+import { CustoUnitarioEditComponent } from './planomonetario/custounitario/custo-unitario-edit/custo-unitario-edit.component';
+import { DeleteCustoUnitarioModalComponent } from '../shared/components/modals/delete-custo-unitario-modal/delete-custo-unitario-modal.component';
+import { DeleteFaturamentoMensalModalComponent } from '../shared/components/modals/delete-faturamento-mensal-modal/delete-faturamento-mensal-modal.component';
 
 
 @NgModule(
@@ -168,8 +174,12 @@ import { DeleteEstoqueInicialModalComponent } from '../shared/components/modals/
             InvestimentospreopComponent, 
             InvestimentototalComponent, 
             FaturamentomensalComponent,
+            FaturamentoMensalAddComponent,
+            FaturamentoMensalEditComponent,
             CapitalDeGiroComponent, 
-            CustounitarioComponent, 
+            CustounitarioComponent,
+            CustoUnitarioAddComponent,
+            CustoUnitarioEditComponent, 
             CustosdecomercializacaoComponent,
             CustosdedepreComponent, 
             CustosfixosopComponent, 
@@ -202,7 +212,9 @@ import { DeleteEstoqueInicialModalComponent } from '../shared/components/modals/
             DeleteInvestimentosFixosMeComponent,
             DeleteInvestimentosFixosMuComponent,
             DeleteInvestimentosFixosVComponent,
-            DeleteEstoqueInicialModalComponent
+            DeleteEstoqueInicialModalComponent,
+            DeleteCustoUnitarioModalComponent,
+            DeleteFaturamentoMensalModalComponent
             
         ],
         entryComponents: [DialogContentExampleDialog, DicasFOFA, DicasMissao, DicasClientes, ExplicaMercado, DicaProdutos,

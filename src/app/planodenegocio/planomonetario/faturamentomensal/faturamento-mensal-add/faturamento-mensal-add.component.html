@@ -1,0 +1,45 @@
+<section class="grey-text w-responsive mx-auto p-5">
+  <form #AddFaturamentoMensal="ngForm" (ngSubmit)="AddFaturamentoMensal.form.valid && onSubmit()">
+
+      <div class="form-group col-md-9">
+        <label for="produtoServicos">Descrição produtos ou serviços*</label>
+        <input type="text" class="form-control" id="produtoServicos" required
+          [ngClass]="{ 'is-invalid': AddFaturamentoMensal.submitted && produtoServicos.invalid }" 
+          placeholder="Descreva qual é o produto ou serviço que será utilizado(a) na empresa"
+          [(ngModel)]="faturamentoMensal.produtoServicos" name="produtoServicos" #produtoServicos="ngModel">
+        <div *ngIf="AddFaturamentoMensal.submitted && produtoServicos.invalid" class="alert alert-danger">
+          <div *ngIf="produtoServicos.errors.required">O campo pertinente a descrição é obrigatório</div>
+        </div>
+      </div>
+
+    <div class="form-group col-md-5">
+      <label for="quantidadeVendas">Quantidade vendas mês*</label>
+      <input type="text" class="form-control" id="quantidadeVendas" required
+        [ngClass]="{ 'is-invalid': AddFaturamentoMensal.submitted && quantidadeVendas.invalid }" 
+        [(ngModel)]="faturamentoMensal.quantidadeVendas" name="quantidadeVendas" #quantidadeVendas="ngModel">
+      <div *ngIf="AddFaturamentoMensal.submitted && quantidadeVendas.invalid" class="alert alert-danger">
+        <div *ngIf="quantidadeVendas.errors.required">O campo de quantidade é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="precoVenda">Preço de mercado*</label>
+      <input type="text" class="form-control" id="precoVenda" required currencyMask
+        [ngClass]="{ 'is-invalid': AddFaturamentoMensal.submitted && precoVenda.invalid }" [(ngModel)]="faturamentoMensal.precoVenda" 
+        [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" name="precoVenda"
+        #precoVenda="ngModel">
+      <div *ngIf="AddFaturamentoMensal.submitted && precoVenda.invalid" class="alert alert-danger">
+        <div *ngIf="precoVenda.errors.required">O campo de Preço de mercado é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="btn-group btn-group-sm col-md-1">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+      <button button class="btn btn-dark">Salvar</button>
+    </div>
+
+    <br />
+    <br />
+
+  </form>
+</section>

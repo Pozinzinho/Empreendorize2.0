@@ -1,1 +1,66 @@
-<h1 class="mt-4">Custo unitário</h1>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+
+
+
+<h2 class="h4 mb-4 text-center font-weight-bold">Custo unitário</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="hidden">Id</th>
+        <th>Material/insumos</th>
+        <th>Quantidade</th>
+        <th>Tipo do quantitativo</th>
+        <th>Valor unitário</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let custoUnitario of custoUnitario; let i = index;">
+        <td class="hidden">{{i+1}}</td>
+        <td>{{custoUnitario.materialInsumos}}</td>
+        <td>{{custoUnitario.quantidade}}</td>
+        <td>{{custoUnitario.tipo}}</td>
+        <td>{{custoUnitario.custoUnitario | currency: 'R$ '}}</td>
+        <td>{{custoUnitario.total | currency: 'R$ '}}</td>
+        <td>
+          <div class="btn-group btn-group-sm">
+            <button class="btn btn-danger " (click)="deleteCustoUnitarioModal.show()"> Excluir</button>
+            <button class="btn btn-info " style="margin-left: 20px;"
+            [routerLink]="['/planodenegocio',idPlano,'custouni-edit', custoUnitario.id]"> Editar</button>
+          </div>
+        </td>
+        <app-delete-custo-unitario-modal #deleteCustoUnitarioModal [recebeItem]="custoUnitario"
+          (resposta)="deletarCustoUnitario($event)"></app-delete-custo-unitario-modal>
+        </tr>
+    </tbody>
+  </table>
+</div>
+<div class="form">
+  <button mat-fab class="cor-botton" matTooltip="Adicionar material de custoUnitario" matTooltipPosition='after'
+  [routerLink]="['/planodenegocio',idPlano,'custouni-add']">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<br />
+<br />
+<mat-divider></mat-divider>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="hidden">Custo total</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>{{custoTotal | currency: 'R$ '}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br />
+<br />

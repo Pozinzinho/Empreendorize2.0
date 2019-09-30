@@ -1,0 +1,59 @@
+<section class="grey-text w-responsive mx-auto p-5">
+  <form #EditCustoUnitario="ngForm" (ngSubmit)="EditCustoUnitario.form.valid && onSubmit()">
+    <h4 class="h4 mb-4 text-center"><span class="badge badge-light ">{{custosUnitarios.id}}</span> ->
+      {{custosUnitarios.materialInsumos}}</h4>
+
+      <div class="form-group col-md-9">
+        <label for="materialInsumos">Descrição material ou insumo*</label>
+        <input type="text" class="form-control" id="materialInsumos" required
+          [ngClass]="{ 'is-invalid': EditCustoUnitario.submitted && materialInsumos.invalid }" 
+          placeholder="Descreva qual é o material ou produto que será utilizado(a) no produto"
+          [(ngModel)]="custosUnitarios.materialInsumos" name="materialInsumos" #materialInsumos="ngModel">
+        <div *ngIf="EditCustoUnitario.submitted && materialInsumos.invalid" class="alert alert-danger">
+          <div *ngIf="materialInsumos.errors.required">O campo pertinente a descrição do material/insumo é obrigatório</div>
+        </div>
+      </div>
+
+    <div class="form-group col-md-2">
+      <label for="quantidade">Quantidade*</label>
+      <input type="text" class="form-control" id="quantidade" required
+        [ngClass]="{ 'is-invalid': EditCustoUnitario.submitted && quantidade.invalid }" 
+        [(ngModel)]="custosUnitarios.quantidade" name="quantidade" #quantidade="ngModel">
+      <div *ngIf="EditCustoUnitario.submitted && quantidade.invalid" class="alert alert-danger">
+        <div *ngIf="quantidade.errors.required">O campo de quantidade é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="datedomes">Tipo do quantitativo</label>
+      <select id="tipo" name="tipo" [(ngModel)]="custosUnitarios.tipo" #tipo="ngModel" class="form-control">
+        <option>Unidade</option>
+        <option>Centímetro(s)</option>
+        <option>Metro(s)</option>
+        <option>Grama(s)</option>
+        <option>Quilo(s)</option>
+        <option>Litro(s)</option>
+      </select>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="custoUnitario">Valor unitário*</label>
+      <input type="text" class="form-control" id="custoUnitario" required currencyMask
+        [ngClass]="{ 'is-invalid': EditCustoUnitario.submitted && custoUnitario.invalid }" [(ngModel)]="custosUnitarios.custoUnitario" 
+        [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" name="custoUnitario"
+        #custoUnitario="ngModel">
+      <div *ngIf="EditCustoUnitario.submitted && custoUnitario.invalid" class="alert alert-danger">
+        <div *ngIf="custoUnitario.errors.required">O campo de valor unitário é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="btn-group btn-group-sm col-md-1">
+      <button type="button" class="btn btn-dark" (click)="goBack()">Voltar</button>
+      <button button class="btn btn-dark">Atualizar</button>
+    </div>
+
+    <br />
+    <br />
+
+  </form>
+</section>

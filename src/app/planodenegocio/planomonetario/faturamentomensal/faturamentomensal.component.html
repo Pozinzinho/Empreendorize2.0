@@ -1,1 +1,64 @@
-<h1 class="mt-4">Faturamento mensal</h1>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+
+
+
+<h2 class="h4 mb-4 text-center font-weight-bold">Estimativa de faturamento mensal</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="hidden">Id</th>
+        <th>Produtos/Serviços</th>
+        <th>Quantidade vendas mês</th>
+        <th>Preço de mercado</th>
+        <th>Faturamento mensal</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let faturamentoMensal of faturamentoMensal; let i = index;">
+        <td class="hidden">{{i+1}}</td>
+        <td>{{faturamentoMensal.produtoServicos}}</td>
+        <td>{{faturamentoMensal.quantidadeVendas}}</td>
+        <td>{{faturamentoMensal.precoVenda | currency: 'R$ '}}</td>
+        <td>{{faturamentoMensal.faturamentoTotal | currency: 'R$ '}}</td>
+        <td>
+          <div class="btn-group btn-group-sm">
+            <button class="btn btn-danger " (click)="deleteFaturamentoMensalModel.show()"> Excluir</button>
+            <button class="btn btn-info " style="margin-left: 20px;"
+            [routerLink]="['/planodenegocio',idPlano,'faturamentomensal-edit', faturamentoMensal.id]"> Editar</button>
+          </div>
+        </td>
+        <app-delete-faturamento-mensal-modal #deleteFaturamentoMensalModel [recebeItem]="faturamentoMensal"
+          (resposta)="deletarFaturamentoMensal($event)"></app-delete-faturamento-mensal-modal>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="form">
+  <button mat-fab class="cor-botton" matTooltip="Adicionar produto ou serviço" matTooltipPosition='after'
+  [routerLink]="['/planodenegocio',idPlano,'faturamentomensal-add']">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<br />
+<br />
+<mat-divider></mat-divider>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="hidden">Faturamento mensal total</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>{{faturamentoTotal | currency: 'R$ '}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br />
+<br />

@@ -24,6 +24,8 @@ import { InvestimentosFixosVDto } from './model/models-do-plano/model-plano-fina
 import { EstoqueInicialDto } from './model/models-do-plano/model-plano-financeiro/EstoqueInicialDto';
 import { EstimativaDosCustosFixosMensaisDto } from './model/models-do-plano/model-plano-financeiro/EstimativaDosCustosFixosMensaisDto';
 import { InvestimentosPreOperacionaisDto } from './model/models-do-plano/model-plano-financeiro/InvestimentosPreOperacionaisDto';
+import { CustoUnitarioDto } from './model/models-do-plano/model-plano-financeiro/CustoUnitarioDto';
+import { FaturamentoMensalDto } from './model/models-do-plano/model-plano-financeiro/FaturamentoMensalDto';
 
 
 
@@ -56,6 +58,9 @@ export class ApiService {
 
   public baseUrlIPO: string;
 
+  public baseUrlCU: string;
+  public baseUrlFM: string;
+
   public user = new UserDto;
   public roleAtual: string;
 
@@ -81,6 +86,9 @@ export class ApiService {
 
     this.baseUrlEsIni = '/estoqueInicial';
     this.baseUrlEsCFM = '/estimativaDosCustosFixosMensais';
+
+    this.baseUrlCU = '/custoUnitario';
+    this.baseUrlFM = '/faturamentoMensal';
 
     this.baseUrlIPO = '/investimentosPreOperacionais'
 
@@ -472,6 +480,45 @@ export class ApiService {
     return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlIPO}`, investimentosPreOperacionaisDto, AppUtils.OPTIONS_OBJECTO);
   }
   //---------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------- SERVIÇOS REFERENTES AOS CUSTOS UNITÁRIOS ------------------------------------------------------------------------------
+getCustoUnitario(id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlCU}`, AppUtils.OPTIONS_OBJECTO);
+}
+getCustoUnitarioById(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlCU}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+updateCustoUnitario(custoUnitarioDto: CustoUnitarioDto, id: string): Observable<any> {
+  return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlCU}/${custoUnitarioDto.id}`,
+  custoUnitarioDto, AppUtils.OPTIONS_OBJECTO);
+}
+registerCustoUnitario(custoUnitarioDto: CustoUnitarioDto, id: string): Observable<any> {
+  return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlCU}`, custoUnitarioDto, AppUtils.OPTIONS_OBJECTO);
+}
+deleteCustoUnitario(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.delete<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlCU}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+//---------------------------------------------------------------------------------------------------------------------------------------
+
+// ---------------- SERVIÇOS REFERENTES AO FATURAMENTO MENSAL ---------------------------------------------------------------------------
+getFaturamentoMensal(id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlFM}`, AppUtils.OPTIONS_OBJECTO);
+}
+getFaturamentoMensalById(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.get<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlFM}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+updateFaturamentoMensal(faturamentoMensalDto: FaturamentoMensalDto, id: string): Observable<any> {
+  return this.httpClient.put<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlFM}/${faturamentoMensalDto.id}`,
+  faturamentoMensalDto, AppUtils.OPTIONS_OBJECTO);
+}
+registerFaturamentoMensal(faturamentoMensalDto: FaturamentoMensalDto, id: string): Observable<any> {
+  return this.httpClient.post<any>(`${AppUtils.BASE_URL2}${id}${this.baseUrlFM}`, faturamentoMensalDto, AppUtils.OPTIONS_OBJECTO);
+}
+deleteFaturamentoMensal(idPlano: string, id: string): Observable<any> {
+  return this.httpClient.delete<any>(`${AppUtils.BASE_URL2}${idPlano}${this.baseUrlFM}/${id}`, AppUtils.OPTIONS_OBJECTO);
+}
+//---------------------------------------------------------------------------------------------------------------------------------------
+
 
   // ---------------- SERVIÇOS REFERENTES A Matriz F.O.F.A --------------------------------------------
   getAnaliseDaMatriz(id: string): Observable<any> {
