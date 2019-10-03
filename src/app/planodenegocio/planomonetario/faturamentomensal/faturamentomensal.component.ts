@@ -3,6 +3,8 @@ import { FaturamentoMensalDto } from 'src/app/core/model/models-do-plano/model-p
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
 import { MessageService } from 'src/app/core/message.service';
+import { EstimativaDosCustosFixosMensaisDto } from 'src/app/core/model/models-do-plano/model-plano-financeiro/EstimativaDosCustosFixosMensaisDto';
+import { EstoqueInicialDto } from 'src/app/core/model/models-do-plano/model-plano-financeiro/EstoqueInicialDto';
 
 @Component({
   selector: 'app-faturamentomensal',
@@ -12,6 +14,12 @@ import { MessageService } from 'src/app/core/message.service';
 export class FaturamentomensalComponent implements OnInit {
   private faturamentoTotal: number = 0;
   faturamentoMensal :  FaturamentoMensalDto[];
+
+  estimativaCustosFixosOM: EstimativaDosCustosFixosMensaisDto[];
+  estoqueInicial: EstoqueInicialDto[];
+  totalECFOM: number = 0;
+  totalEstoque: number = 0;
+
   private idPlano : any;
 
   constructor(
@@ -28,6 +36,30 @@ export class FaturamentomensalComponent implements OnInit {
     //--------------------------------------------------
 
     this.pegarFaturamentoMensal();
+
+     //----------- ESTOQUE INICIAL -----------------------------------------------
+     this.apiService.getEstoqueInicial(this.idPlano).subscribe(estoqueInicial => {
+      this.estoqueInicial = estoqueInicial;
+      for (var i = 0; i < estoqueInicial.length; i++) {
+        this.totalEstoque += parseFloat(estoqueInicial[i].totalME);
+      }
+      console.log("Abaixo está o valor total do estoque", this.totalEstoque);
+    }, error => {
+    });
+    //---------------------------------------------------------------------------------
+
+    //----------- ESTIMATIVA DOS CUSTOS FIXOS OPERACIONAIS MENSAIS -----------------------------------------------
+    this.apiService.getEstimativaDosCFOM(this.idPlano).subscribe(estimativaCustosFixosOM => {
+      this.estimativaCustosFixosOM = estimativaCustosFixosOM;
+      this.totalECFOM = estimativaCustosFixosOM[0].valorAluguel + estimativaCustosFixosOM[0].valorCondominio
+        + estimativaCustosFixosOM[0].valorIPTU + estimativaCustosFixosOM[0].valorAgua + estimativaCustosFixosOM[0].valorEnergia
+        + estimativaCustosFixosOM[0].valorTelefone + estimativaCustosFixosOM[0].valorManutencaoDeEquipamentos
+        + estimativaCustosFixosOM[0].valorMaterialDeLimpeza + estimativaCustosFixosOM[0].valorMaterialDeEscritorio
+        + estimativaCustosFixosOM[0].valorCombustivel + estimativaCustosFixosOM[0].valorTaxasDiversas
+        + estimativaCustosFixosOM[0].valorServicosTerceiros + estimativaCustosFixosOM[0].valorOutrasDespesas;
+    }, error => {
+    });
+    //------------------------------------------------------------------------------------------------------
     
   }
 

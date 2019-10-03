@@ -1,1 +1,78 @@
-<h1 class="mt-4">Investimento total</h1>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="hidden">Total investimentos fixos</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>{{totalMee + totalMuu + totalVe| currency: 'R$ '}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br />
+<div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="hidden">Total capital de giro</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr>
+          <td>{{totalECFOM + totalEstoque| currency: 'R$ '}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br />
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="hidden">Total investimentos Pré-Operacionais</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr>
+          <td>{{totalIPO| currency: 'R$ '}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br />
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="hidden">Total custos unitários</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr>
+          <td>{{custoTotal| currency: 'R$ '}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br />
+
+<div class="container">
+
+  
+    <div class="secao">
+      <h3 class="text-center">Para abrir este negócio, você deverá ter em caixa, o valor de</h3>
+      <h5 class="text-center">{{totalMee + totalMuu + totalVe + totalECFOM + totalEstoque + totalIPO + custoTotal| currency: 'R$ '}}</h5>
+    </div>
+
+  
+  </div>
