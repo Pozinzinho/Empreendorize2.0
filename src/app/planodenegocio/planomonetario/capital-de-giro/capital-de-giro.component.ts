@@ -158,6 +158,19 @@ export class CapitalDeGiroComponent implements OnInit {
       this.messageService.showError('Deleção de estoque','Falha ao excluir material!');
     });
   }
-  
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DicaCapitalDeGiro);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 }
+
+@Component({
+  selector: 'dicaCapitalDeGiro',
+  templateUrl: 'dicaCapitalDeGiro.html',
+})
+export class DicaCapitalDeGiro {}
 

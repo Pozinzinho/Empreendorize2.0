@@ -1,7 +1,15 @@
-label {
-    color: black;
-}
+
 
 h2 {
     color: black;
+}
+
+.direita {
+    text-align: center;
+    clear: both; 
+}
+
+.direita:hover{
+    font-size: 20px;
+    color : rgb(78, 165, 60);
 }

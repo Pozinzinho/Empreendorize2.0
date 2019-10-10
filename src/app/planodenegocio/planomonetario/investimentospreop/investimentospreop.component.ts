@@ -102,5 +102,17 @@ export class InvestimentospreopComponent implements OnInit {
       this.update();
     }
   }
+  openDialog() {
+    const dialogRef = this.dialog.open(DicasInvestimentosPreOP);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
 }
+
+@Component({
+  selector: 'dicasInvestimentosPreOP',
+  templateUrl: 'dicasInvestimentosPreOP.html',
+})
+export class DicasInvestimentosPreOP {}

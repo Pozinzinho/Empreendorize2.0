@@ -19,10 +19,7 @@ import { InvestimentototalComponent } from './planomonetario/investimentototal/i
 import { FaturamentomensalComponent } from './planomonetario/faturamentomensal/faturamentomensal.component';
 import { CustounitarioComponent } from './planomonetario/custounitario/custounitario.component';
 import { CustosdecomercializacaoComponent } from './planomonetario/custosdecomercializacao/custosdecomercializacao.component';
-import { CustosdedepreComponent } from './planomonetario/custosdedepre/custosdedepre.component';
-import { CustosfixosopComponent } from './planomonetario/custosfixosop/custosfixosop.component';
 import { DemonstrativoderesultadosComponent } from './planomonetario/demonstrativoderesultados/demonstrativoderesultados.component';
-import { IndicadoresdeviabilidadeComponent } from './planomonetario/indicadoresdeviabilidade/indicadoresdeviabilidade.component';
 import { IntroanalisecriticaComponent } from './analisecritica/introanalisecritica/introanalisecritica.component';
 import { MatrizfofaComponent } from './analisecritica/matrizfofa/matrizfofa.component';
 import { IntroconclusaoComponent } from './conclusao/introconclusao/introconclusao.component';
@@ -101,10 +98,7 @@ export const planodengocioRoutes = [
         {path: 'custouni-add', component: CustoUnitarioAddComponent},
         {path: 'custouni-edit/:id', component: CustoUnitarioEditComponent},
         {path: 'custosdecomerc', component: CustosdecomercializacaoComponent},
-        {path: 'custodedepre', component: CustosdedepreComponent},
-        {path: 'custosfixosop', component: CustosfixosopComponent},
         {path: 'demonstrativoresultados', component: DemonstrativoderesultadosComponent},
-        {path: 'indicadoresviabilidade', component: IndicadoresdeviabilidadeComponent},
         //---------------------------------------------------------------------------
 
 

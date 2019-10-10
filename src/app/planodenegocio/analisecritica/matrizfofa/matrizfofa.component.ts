@@ -99,6 +99,7 @@ export class MatrizfofaComponent implements OnInit {
     
   }
 
+  
   openDialog() {
     const dialogRef = this.dialog.open(DicasFOFA);
     dialogRef.afterClosed().subscribe(result => {

@@ -5,6 +5,7 @@ import { MessageService } from 'src/app/core/message.service';
 import { ApiService } from 'src/app/core/api.service';
 import { InvestimentosFixosMUDto } from 'src/app/core/model/models-do-plano/model-plano-financeiro/investimentosFixosMUDto';
 import { InvestimentosFixosVDto } from 'src/app/core/model/models-do-plano/model-plano-financeiro/investimentosFixosVDto';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-investimentosfixos',
@@ -26,6 +27,7 @@ export class InvestimentosfixosComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
+    public dialog: MatDialog,
     private messageService: MessageService
     ) {}
 
@@ -93,4 +95,18 @@ export class InvestimentosfixosComponent implements OnInit {
     });
   }
 
+
+openDialog() {
+  const dialogRef = this.dialog.open(DicasInvestimentosFixos);
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+  });
 }
+
+}
+
+@Component({
+selector: 'dicasInvestimentosFixos',
+templateUrl: 'dicasInvestimentosFixos.html',
+})
+export class DicasInvestimentosFixos {}

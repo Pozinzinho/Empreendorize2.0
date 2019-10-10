@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
 import { MessageService } from 'src/app/core/message.service';
-import { MatDialog } from '@angular/material/dialog/typings/public-api';
+import { MatDialog } from '@angular/material/dialog';
 import { CustoUnitarioDto } from 'src/app/core/model/models-do-plano/model-plano-financeiro/CustoUnitarioDto';
 
 @Component({
@@ -20,6 +20,7 @@ export class CustounitarioComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
+    public dialog: MatDialog,
     private messageService: MessageService
   ) { }
 
@@ -57,5 +58,18 @@ export class CustounitarioComponent implements OnInit {
     });
   }
   
+  openDialog() {
+    const dialogRef = this.dialog.open(DicasCustoUnitario);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
 }
+
+@Component({
+  selector: 'dicasCustoUnitario',
+  templateUrl: 'dicasCustoUnitario.html',
+})
+export class DicasCustoUnitario {}
+

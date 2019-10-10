@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/core/api.service';
 import { MessageService } from 'src/app/core/message.service';
 import { EstimativaDosCustosFixosMensaisDto } from 'src/app/core/model/models-do-plano/model-plano-financeiro/EstimativaDosCustosFixosMensaisDto';
 import { EstoqueInicialDto } from 'src/app/core/model/models-do-plano/model-plano-financeiro/EstoqueInicialDto';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-faturamentomensal',
@@ -25,6 +26,7 @@ export class FaturamentomensalComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
+    public dialog: MatDialog,
     private messageService: MessageService
   ) { }
 
@@ -86,5 +88,17 @@ export class FaturamentomensalComponent implements OnInit {
     });
   }
   
+  openDialog() {
+    const dialogRef = this.dialog.open(DicasFaturamentoMensal);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
 }
+
+@Component({
+  selector: 'dicasFaturamentoMensal',
+  templateUrl: 'dicasFaturamentoMensal.html',
+})
+export class DicasFaturamentoMensal {}

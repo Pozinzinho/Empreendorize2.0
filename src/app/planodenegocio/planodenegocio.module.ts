@@ -20,18 +20,15 @@ import { EstrategiapromocionalComponent, DicaPromocional } from './planodemarket
 import { EstruturadecomercializacaoComponent, DicaComercializacao } from './planodemarketing/estruturadecomercializacao/estruturadecomercializacao.component';
 import { LocalizacaodonegocioComponent, DicaLocalizacao } from './planodemarketing/localizacaodonegocio/localizacaodonegocio.component';
 import { IntroplanomonetarioComponent } from './planomonetario/introplanomonetario/introplanomonetario.component';
-import { InvestimentosfixosComponent } from './planomonetario/investimentosfixos/investimentosfixos.component';
-import { InvestimentospreopComponent } from './planomonetario/investimentospreop/investimentospreop.component';
+import { InvestimentosfixosComponent, DicasInvestimentosFixos } from './planomonetario/investimentosfixos/investimentosfixos.component';
+import { InvestimentospreopComponent, DicasInvestimentosPreOP } from './planomonetario/investimentospreop/investimentospreop.component';
 import { InvestimentototalComponent } from './planomonetario/investimentototal/investimentototal.component';
-import { FaturamentomensalComponent } from './planomonetario/faturamentomensal/faturamentomensal.component';
-import { CustounitarioComponent } from './planomonetario/custounitario/custounitario.component';
+import { FaturamentomensalComponent, DicasFaturamentoMensal } from './planomonetario/faturamentomensal/faturamentomensal.component';
+import { CustounitarioComponent, DicasCustoUnitario } from './planomonetario/custounitario/custounitario.component';
 import { CustosdecomercializacaoComponent } from './planomonetario/custosdecomercializacao/custosdecomercializacao.component';
-import { CustosdedepreComponent } from './planomonetario/custosdedepre/custosdedepre.component';
-import { CustosfixosopComponent } from './planomonetario/custosfixosop/custosfixosop.component';
 import { DemonstrativoderesultadosComponent } from './planomonetario/demonstrativoderesultados/demonstrativoderesultados.component';
-import { IndicadoresdeviabilidadeComponent } from './planomonetario/indicadoresdeviabilidade/indicadoresdeviabilidade.component';
 import { IntroanalisecriticaComponent } from './analisecritica/introanalisecritica/introanalisecritica.component';
-import { MatrizfofaComponent, DicasFOFA } from './analisecritica/matrizfofa/matrizfofa.component';
+import { MatrizfofaComponent, DicasFOFA} from './analisecritica/matrizfofa/matrizfofa.component';
 import { IntroconclusaoComponent } from './conclusao/introconclusao/introconclusao.component';
 import { AnaliseplanoComponent, DialogContentExampleDialog } from './conclusao/analiseplano/analiseplano.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -76,7 +73,7 @@ import { InvestimentosFixosAddVComponent } from './planomonetario/investimentosf
 import { DeleteInvestimentosFixosMeComponent } from '../shared/components/modals/delete-investimentos-fixos/delete-investimentos-fixos-me/delete-investimentos-fixos-me.component';
 import { DeleteInvestimentosFixosVComponent } from '../shared/components/modals/delete-investimentos-fixos/delete-investimentos-fixos-v/delete-investimentos-fixos-v.component';
 import { DeleteInvestimentosFixosMuComponent } from '../shared/components/modals/delete-investimentos-fixos/delete-investimentos-fixos-mu/delete-investimentos-fixos-mu.component';
-import { CapitalDeGiroComponent } from './planomonetario/capital-de-giro/capital-de-giro.component';
+import { CapitalDeGiroComponent, DicaCapitalDeGiro } from './planomonetario/capital-de-giro/capital-de-giro.component';
 import { EstoqueInicialEditComponent } from './planomonetario/capital-de-giro/estoqueInicial/estoque-inicial-edit/estoque-inicial-edit.component';
 import { EstoqueInicialSaveComponent } from './planomonetario/capital-de-giro/estoqueInicial/estoque-inicial-save/estoque-inicial-save.component';
 import { DeleteEstoqueInicialModalComponent } from '../shared/components/modals/delete-estoque-inicial-modal/delete-estoque-inicial-modal.component';
@@ -181,10 +178,7 @@ import { DeleteFaturamentoMensalModalComponent } from '../shared/components/moda
             CustoUnitarioAddComponent,
             CustoUnitarioEditComponent, 
             CustosdecomercializacaoComponent,
-            CustosdedepreComponent, 
-            CustosfixosopComponent, 
             DemonstrativoderesultadosComponent,
-            IndicadoresdeviabilidadeComponent,
             IntroanalisecriticaComponent, 
             MatrizfofaComponent, 
             IntroconclusaoComponent, 
@@ -209,6 +203,11 @@ import { DeleteFaturamentoMensalModalComponent } from '../shared/components/moda
             DicaLocalizacao,
             DicaPromocional,
             DicaComercializacao,
+            DicasInvestimentosFixos,
+            DicaCapitalDeGiro,
+            DicasInvestimentosPreOP,
+            DicasCustoUnitario,
+            DicasFaturamentoMensal,
             DeleteInvestimentosFixosMeComponent,
             DeleteInvestimentosFixosMuComponent,
             DeleteInvestimentosFixosVComponent,
@@ -218,7 +217,8 @@ import { DeleteFaturamentoMensalModalComponent } from '../shared/components/moda
             
         ],
         entryComponents: [DialogContentExampleDialog, DicasFOFA, DicasMissao, DicasClientes, ExplicaMercado, DicaProdutos,
-            ExplicaFornecedores, DicaPreco, DicaLocalizacao, DicaPromocional, DicaComercializacao],
+            ExplicaFornecedores, DicaPreco, DicaLocalizacao, DicaPromocional, DicaComercializacao, DicasInvestimentosFixos,
+            DicaCapitalDeGiro, DicasInvestimentosPreOP, DicasCustoUnitario, DicasFaturamentoMensal],
         providers:[],
         bootstrap:[PlanodenegocioComponent]
     }
