@@ -13,7 +13,7 @@
 
   
   <div class="secao">
-    <h3 class="text-center">Lembre-se que seu faturamento mensal total deve ultrapassar ou ser igual a <p>{{totalECFOM + totalEstoque| currency: 'R$ '}}</p> para ter lucro ou alcançar o ponto de equilíbrio!</h3>
+    <h3 class="text-center">Lembre-se que seu faturamento mensal total deve ultrapassar ou ser igual aos seus gastos mensais de: <p>{{totalECFOM + totalEstoque| currency: 'R$ '}}</p> para ter lucro ou alcançar o ponto de equilíbrio!</h3>
   </div>
 
 
@@ -68,12 +68,14 @@
     <thead>
       <tr>
         <th class="hidden">Faturamento mensal total</th>
+        <th class="hidden">Situação</th>
       </tr>
     </thead>
 
     <tbody>
       <tr>
         <td>{{faturamentoTotal | currency: 'R$ '}}</td>
+        <td>{{texto}}</td>
       </tr>
     </tbody>
   </table>

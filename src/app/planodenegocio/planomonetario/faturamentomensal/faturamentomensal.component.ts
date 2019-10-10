@@ -20,6 +20,9 @@ export class FaturamentomensalComponent implements OnInit {
   estoqueInicial: EstoqueInicialDto[];
   totalECFOM: number = 0;
   totalEstoque: number = 0;
+  lucro: number = 0;
+
+  texto: String = "";
 
   private idPlano : any;
 
@@ -30,7 +33,7 @@ export class FaturamentomensalComponent implements OnInit {
     private messageService: MessageService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     //----------- PEGA ID DA URL DA ROTA PAI -----------
     this.route.parent.params.subscribe((param: any) => {
       this.idPlano = param['id'];
@@ -38,31 +41,20 @@ export class FaturamentomensalComponent implements OnInit {
     //--------------------------------------------------
 
     this.pegarFaturamentoMensal();
-
-     //----------- ESTOQUE INICIAL -----------------------------------------------
-     this.apiService.getEstoqueInicial(this.idPlano).subscribe(estoqueInicial => {
-      this.estoqueInicial = estoqueInicial;
-      for (var i = 0; i < estoqueInicial.length; i++) {
-        this.totalEstoque += parseFloat(estoqueInicial[i].totalME);
-      }
-      console.log("Abaixo está o valor total do estoque", this.totalEstoque);
-    }, error => {
-    });
-    //---------------------------------------------------------------------------------
-
-    //----------- ESTIMATIVA DOS CUSTOS FIXOS OPERACIONAIS MENSAIS -----------------------------------------------
-    this.apiService.getEstimativaDosCFOM(this.idPlano).subscribe(estimativaCustosFixosOM => {
-      this.estimativaCustosFixosOM = estimativaCustosFixosOM;
-      this.totalECFOM = estimativaCustosFixosOM[0].valorAluguel + estimativaCustosFixosOM[0].valorCondominio
-        + estimativaCustosFixosOM[0].valorIPTU + estimativaCustosFixosOM[0].valorAgua + estimativaCustosFixosOM[0].valorEnergia
-        + estimativaCustosFixosOM[0].valorTelefone + estimativaCustosFixosOM[0].valorManutencaoDeEquipamentos
-        + estimativaCustosFixosOM[0].valorMaterialDeLimpeza + estimativaCustosFixosOM[0].valorMaterialDeEscritorio
-        + estimativaCustosFixosOM[0].valorCombustivel + estimativaCustosFixosOM[0].valorTaxasDiversas
-        + estimativaCustosFixosOM[0].valorServicosTerceiros + estimativaCustosFixosOM[0].valorOutrasDespesas;
-    }, error => {
-    });
-    //------------------------------------------------------------------------------------------------------
+    await this.minhaChamadaApiEstoqueInicial();
+    await this.minhaChamadaApiECFM();
     
+    this.lucro = this.faturamentoTotal - (this.totalEstoque + this.totalECFOM);
+
+    if(this.faturamentoTotal == this.totalEstoque + this.totalECFOM){
+      this.texto = "Você alcaçou o ponto de equilíbrio";
+    }
+    else if(this.faturamentoTotal < this.totalEstoque + this.totalECFOM){
+      this.texto = "Sua empresa está sem rentabilidade";
+    }
+    else if(this.faturamentoTotal > this.totalEstoque + this.totalECFOM){
+      this.texto = "Sua empresa tem o lucro de: R$"+ this.lucro + " por mês!";
+    }
   }
 
   //----------- Setar id da análise -----------------------------------------------
@@ -83,6 +75,7 @@ export class FaturamentomensalComponent implements OnInit {
       this.faturamentoMensal = this.faturamentoMensal.filter(u => u.id !== faturamentoMensal.id);
       this.messageService.showError('Deleção do faturamento mensal','Deletado com sucesso!');
       this.faturamentoTotal = this.faturamentoTotal - faturamentoMensal.faturamentoTotal;
+      this.atualizaSituacao();
     }, error => {
       this.messageService.showError('Deleção de faturamento mensal','Falha ao faturamento mensal!');
     });
@@ -93,6 +86,51 @@ export class FaturamentomensalComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  atualizaSituacao(){
+    this.lucro = this.faturamentoTotal - (this.totalEstoque + this.totalECFOM);
+
+    if(this.faturamentoTotal == this.totalEstoque + this.totalECFOM){
+      this.texto = "Você alcaçou o ponto de equilíbrio";
+    }
+    else if(this.faturamentoTotal < this.totalEstoque + this.totalECFOM){
+      this.texto = "Sua empresa está sem rentabilidade";
+    }
+    else if(this.faturamentoTotal > this.totalEstoque + this.totalECFOM){
+      this.texto = "Sua empresa tem o lucro de: R$"+ this.lucro + " por mês!";
+    }
+  }
+
+  minhaChamadaApiEstoqueInicial(): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.apiService.getEstoqueInicial(this.idPlano).subscribe(estoqueInicial => {
+        this.estoqueInicial = estoqueInicial;
+        for (var i = 0; i < estoqueInicial.length; i++) {
+          this.totalEstoque += parseFloat(estoqueInicial[i].totalME);
+        }
+        resolve();
+      }, error => {
+        reject();
+      });
+    })
+  }
+
+  minhaChamadaApiECFM(): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.apiService.getEstimativaDosCFOM(this.idPlano).subscribe(estimativaCustosFixosOM => {
+        this.estimativaCustosFixosOM = estimativaCustosFixosOM;
+        this.totalECFOM = estimativaCustosFixosOM[0].valorAluguel + estimativaCustosFixosOM[0].valorCondominio
+          + estimativaCustosFixosOM[0].valorIPTU + estimativaCustosFixosOM[0].valorAgua + estimativaCustosFixosOM[0].valorEnergia
+          + estimativaCustosFixosOM[0].valorTelefone + estimativaCustosFixosOM[0].valorManutencaoDeEquipamentos
+          + estimativaCustosFixosOM[0].valorMaterialDeLimpeza + estimativaCustosFixosOM[0].valorMaterialDeEscritorio
+          + estimativaCustosFixosOM[0].valorCombustivel + estimativaCustosFixosOM[0].valorTaxasDiversas
+          + estimativaCustosFixosOM[0].valorServicosTerceiros + estimativaCustosFixosOM[0].valorOutrasDespesas;
+        resolve();
+      }, error => {
+        reject();
+      });
+    })
   }
 
 }

@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
 import { MessageService } from 'src/app/core/message.service';
 import { FaturamentoMensalDto } from 'src/app/core/model/models-do-plano/model-plano-financeiro/FaturamentoMensalDto';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-demonstrativoderesultados',
@@ -43,17 +44,23 @@ export class DemonstrativoderesultadosComponent implements OnInit {
   mesesParaRetorno: number = 1;
 
   faturamentoTotal: number = 0;
-  guardouFaturamento: number = 0;
+  guardouLucro: number = 0;
   faturamentoMensal: FaturamentoMensalDto[];
+
+  lucro: number = 0;
+  texto: String = "";
 
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private ngxLoader: NgxUiLoaderService
   ) { }
 
 
   async  ngOnInit() {
+
+    this.ngxLoader.start();
     //----------- PEGA ID DA URL DA ROTA PAI -----------
     this.route.parent.params.subscribe((param: any) => {
       this.idPlano = param['id'];
@@ -70,14 +77,32 @@ export class DemonstrativoderesultadosComponent implements OnInit {
     await this.minhaChamadaApiCU();
 
 
+    this.lucro = this.faturamentoTotal - (this.totalEstoque + this.totalECFOM);
+
     this.capitalInicial = this.totalMee + this.totalMuu + this.totalVe + this.totalECFOM + this.totalEstoque + this.totalIPO + this.custoTotal;
-    this.guardouFaturamento = this.faturamentoTotal;
+    this.guardouLucro = this.lucro;
 
 
-    while (this.faturamentoTotal < this.capitalInicial) {
-      this.mesesParaRetorno = this.mesesParaRetorno + 1;
-      this.faturamentoTotal = this.faturamentoTotal + this.guardouFaturamento;
+    
+
+    if(this.faturamentoTotal == this.totalEstoque + this.totalECFOM){
+      this.texto = "Você alcaçou o ponto de equilíbrio, isto quer dizer que sua empresa ainda não tem lucros nem prejuízos, impossibilitando o cálculo dos meses para retorno do capital investido.";
     }
+    else if(this.faturamentoTotal < this.totalEstoque + this.totalECFOM){
+      this.texto = "Sua empresa está sem rentabilidade! impossível calcular meses para retorno do capital investido.";
+    }
+    else if(this.faturamentoTotal > this.totalEstoque + this.totalECFOM){
+
+      
+      while (this.lucro < this.capitalInicial) {
+        this.mesesParaRetorno = this.mesesParaRetorno + 1;
+        this.lucro = this.guardouLucro + this.lucro;
+      }
+      this.texto = "Tendo como base o seu lucro mensal e o capital inicial investido, o tempo de retorno para o dinheiro investido é de "+ this.mesesParaRetorno + " mês(es)";
+    }
+    
+    this.ngxLoader.stop();
+
   }
 
   minhaChamadaApiFaturamentoMensal(): Promise<any> {
