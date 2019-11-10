@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/core/api.service';
 import {Location} from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'src/app/core/message.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-register-user',
@@ -15,11 +16,14 @@ import { MessageService } from 'src/app/core/message.service';
 export class RegisterConfirmationComponent implements OnInit {
     public token: string;
 
+    form: FormGroup;
+
   constructor(private apiService: ApiService,
               private location: Location,
               private route: ActivatedRoute,
               private router: Router,
-              private messageService: MessageService) { }
+              private messageService: MessageService,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.token = this.route.snapshot.paramMap.get('token');
@@ -30,6 +34,7 @@ export class RegisterConfirmationComponent implements OnInit {
       this.messageService.showError('Verificação de registro', 'Falha ao verificar registro!');
       this.router.navigate(['resend-register-token']);
     });
+
   }
 
   goBack() {

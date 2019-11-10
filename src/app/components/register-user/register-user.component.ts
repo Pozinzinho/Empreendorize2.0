@@ -7,6 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 import { UserDto } from 'src/app/core/model/model-user/userDto';
 
 
+
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
@@ -17,7 +18,6 @@ export class RegisterUserComponent implements OnInit, OnDestroy {
   public user = new UserDto;
   private unsubscribeMessage = new Subject();
   submitted = false;
-
 
   constructor( 
     private apiService: ApiService, 
@@ -30,11 +30,11 @@ export class RegisterUserComponent implements OnInit, OnDestroy {
         this.submitted = false;
       }
     });
-
     
   }
 
   save(): void {
+    this.submitted = true;
     this.apiService.registerUser(this.user).subscribe(data => {
       this.messageService.showSuccess('Cadastro realizado com sucesso!', 
       'Por favor, verifique seu e-mail para confirmação do cadastro');
@@ -53,14 +53,17 @@ export class RegisterUserComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(){
-    this.submitted = true;
     this.save();
   }
 
-  verificaFormulario(){
-    if(this.submitted == false){
-      this.messageService.showError('Formulário inválido!', 
-      'Por favor, verifique se todos os dados estão inseridos corretamente');
+  somenteLetras(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if ((charCode > 64 && charCode < 91) || 
+    (charCode > 96 && charCode < 123) ||
+    (charCode > 191 && charCode <= 255) ||
+    (charCode == 32) ) {
+      return true;
     }
+    return false;
   }
 }

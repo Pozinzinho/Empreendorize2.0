@@ -6,6 +6,8 @@ import {RouterModule} from '@angular/router'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AngularValidateBrLibModule } from 'angular-validate-br';
+import { CpfCnpjModule } from 'ng2-cpf-cnpj';
 
 import {routes} from '../app/app-routing.module';
 
@@ -60,7 +62,9 @@ import {VgControlsModule} from 'videogular2/compiled/controls';
 import {VgOverlayPlayModule} from 'videogular2/compiled/overlay-play';
 import {VgBufferingModule} from 'videogular2/compiled/buffering';
 import { NgxUiLoaderModule } from  'ngx-ui-loader';
-
+import { GerarRelatorioComponent } from './telasplano/gerar-relatorio/gerar-relatorio.component';
+import { SuporteTecnicoComponent } from './telasiniciais/suporte-tecnico/suporte-tecnico.component';
+import { NgxCpfCnpjModule } from  'ngx-cpf-cnpj';
 
 
 
@@ -83,10 +87,15 @@ import { NgxUiLoaderModule } from  'ngx-ui-loader';
     LoginUserComponent,
     EditarPlanoComponent,
     ExcluirPlanoComponent,
-    DeleteUserModalComponent
+    DeleteUserModalComponent,
+    GerarRelatorioComponent,
+    SuporteTecnicoComponent
     
   ],
   imports: [
+    NgxCpfCnpjModule,
+    CpfCnpjModule,
+    AngularValidateBrLibModule,
     BrowserModule,
     VgCoreModule,
     VgControlsModule,

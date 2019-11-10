@@ -11,9 +11,9 @@
     
         <div class="form-group col-md-3">
           <label for="cpf">CPF*</label>
-          <input type="text" class="form-control" id="cpf" required minlength="11"
+          <input type="text" class="form-control" id="cpf" required minlength="11" 
             [ngClass]="{ 'is-invalid': EditUserForm.submitted && cpf.invalid }" placeholder="CPF" [(ngModel)]="user.cpf"
-            name="cpf" #cpf="ngModel" mask="000.000.000-00">
+            name="cpf" #cpf="ngModel" nccCpfCnpjValidator nccCpfCnpjMask mask="000.000.000-00">
           <div *ngIf="EditUserForm.submitted && cpf.invalid" class="alert alert-danger">
             <div *ngIf="cpf.errors.required">O campo de CPF é obrigatório</div>
             <div *ngIf="cpf.errors.minlength">Seu CPF está faltando dígitos</div>
@@ -22,7 +22,7 @@
     
         <div class="form-group col-md-4">
           <label for="nomeusu">Nome*</label>
-          <input type="text" class="form-control" id="firstName" required maxlength="32"
+          <input type="text" class="form-control" id="firstName" required maxlength="32" (keypress)="somenteLetras($event)"
             [ngClass]="{ 'is-invalid': EditUserForm.submitted && nomeusu.invalid }" placeholder="Nome de usuário"
             [(ngModel)]="user.nomeusu" name="nomeusu" #nomeusu="ngModel">
           <div *ngIf="EditUserForm.submitted && nomeusu.invalid" class="alert alert-danger">
@@ -32,7 +32,7 @@
     
         <div class="form-group col-md-4">
           <label for="sobrenomeusu">Sobrenome*</label>
-          <input type="text" class="form-control" id="sobrenomeusu" required maxlength="100"
+          <input type="text" class="form-control" id="sobrenomeusu" required maxlength="20" (keypress)="somenteLetras($event)"
             [ngClass]="{ 'is-invalid': EditUserForm.submitted && sobrenomeusu.invalid }" placeholder="Sobrenome"
             [(ngModel)]="user.sobrenomeusu" name="sobrenomeusu" #sobrenomeusu="ngModel">
           <div *ngIf="EditUserForm.submitted && sobrenomeusu.invalid" class="alert alert-danger">
@@ -81,7 +81,7 @@
     
         <div class="form-group col-md-6">
           <label for="cidade">Cidade*</label>
-          <input type="text" class="form-control" id="cidade" required maxlength="32"
+          <input type="text" class="form-control" id="cidade" required maxlength="32" (keypress)="somenteLetras($event)"
             [ngClass]="{ 'is-invalid': EditUserForm.submitted && cidade.invalid }" placeholder="Cidade atual"
             [(ngModel)]="user.cidade" name="cidade" #cidade="ngModel">
           <div *ngIf="EditUserForm.submitted && cidade.invalid" class="alert alert-danger">
@@ -136,7 +136,7 @@
           <label for="observacao">Perfil
             <strong>(Breve currículo)*</strong>
           </label>
-          <textarea type="text" class="form-control" rows="3" name="curriculo" id="curriculo" required
+          <textarea type="text" class="form-control" rows="3" name="curriculo" id="curriculo" required (keypress)="somenteLetras($event)"
             [ngClass]="{ 'is-invalid': EditUserForm.submitted && curriculo.invalid }"
             placeholder="Ex: Tecnólogo em análise e desenvolvimento de sistemas | Experiência em gestão de empresas | Estudante | etc..."
             [(ngModel)]="user.curriculo" #curriculo="ngModel">

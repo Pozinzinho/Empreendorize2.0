@@ -13,7 +13,9 @@ import  {NgxSpinnerService}  from 'ngx-spinner';
 })
 export class PerfilComponent implements OnInit {
   users: UserDto[];
-  public user = new UserDto;
+  public user = new UserDto();
+
+  idUser: string;
 
   constructor(
     private apiService: ApiService,
@@ -25,11 +27,20 @@ export class PerfilComponent implements OnInit {
   ngOnInit() {
     this.spinner.hide();
     this.user = JSON.parse(localStorage.getItem('currentUser'));
+
+    this.idUser = this.user.id;
+
+    this.apiService.getUserById(this.idUser).subscribe(user =>{
+      this.user = user;
+      console.log('Retornou usuário com sucesso! ');
+    }, error => {
+      console.log('Error ao pegar usuário por ID! ', error);
+    });
   }
 
   update(): void {
     this.spinner.show();
-    this.user.id = this.user.id;
+    this.user.id = this.idUser;
     this.apiService.updateUser(this.user).subscribe(() => {
       this.messageService.showSuccess('Atualizado', 'Usuário atualizado com sucesso!');
       this.goBack();
@@ -44,5 +55,16 @@ export class PerfilComponent implements OnInit {
 
   onSubmit(){
     this.update();
+  }
+
+  somenteLetras(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if ((charCode > 64 && charCode < 91) || 
+    (charCode > 96 && charCode < 123) ||
+    (charCode > 191 && charCode <= 255) ||
+    (charCode == 32) ) {
+      return true;
+    }
+    return false;
   }
 }

@@ -50,11 +50,4 @@ export class CpfValidator {
         
         return ((digitos + '' + digVerificador) === cpf.substring(cpf.length, cpf.length - 2));
     }
-
 }
-
-
-
-
-
-

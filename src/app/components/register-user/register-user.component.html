@@ -1,3 +1,4 @@
+
 <section class="grey-text w-responsive mx-auto p-5">
   <form #RegisterUserForm="ngForm" (ngSubmit)="RegisterUserForm.form.valid && onSubmit()"
     [mustMatch]="['password', 'confirmPassword']" novalidate>
@@ -12,8 +13,9 @@
       <label for="cpf">CPF*</label>
       <input type="text" class="form-control" id="cpf" required minlength="11"
         [ngClass]="{ 'is-invalid': RegisterUserForm.submitted && cpf.invalid }" placeholder="CPF" [(ngModel)]="user.cpf"
-        name="cpf" #cpf="ngModel" mask="000.000.000-00">
+        name="cpf" nccCpfCnpjValidator #cpf="ngModel" nccCpfCnpjMask mask="000.000.000-00">
       <div *ngIf="RegisterUserForm.submitted && cpf.invalid" class="alert alert-danger">
+        <div *ngIf="cpf.invalid">O CPF não é válido</div>
         <div *ngIf="cpf.errors.required">O campo de CPF é obrigatório</div>
         <div *ngIf="cpf.errors.minlength">Seu CPF está faltando dígitos</div>
       </div>
@@ -21,9 +23,9 @@
 
     <div class="form-group col-md-4">
       <label for="nomeusu">Nome*</label>
-      <input type="text" class="form-control" id="firstName" required maxlength="32"
+      <input type="text" class="form-control" id="firstName" required maxlength="37" (keypress)="somenteLetras($event)"
         [ngClass]="{ 'is-invalid': RegisterUserForm.submitted && nomeusu.invalid }" placeholder="Nome de usuário"
-        [(ngModel)]="user.nomeusu" name="nomeusu" #nomeusu="ngModel">
+        [(ngModel)]="user.nomeusu" pattern="[a-zA-Z ]*" name="nomeusu" #nomeusu="ngModel">
       <div *ngIf="RegisterUserForm.submitted && nomeusu.invalid" class="alert alert-danger">
         <div *ngIf="nomeusu.errors.required">O campo de nome é obrigatório</div>
       </div>
@@ -31,8 +33,8 @@
 
     <div class="form-group col-md-4">
       <label for="sobrenomeusu">Sobrenome*</label>
-      <input type="text" class="form-control" id="sobrenomeusu" required maxlength="100"
-        [ngClass]="{ 'is-invalid': RegisterUserForm.submitted && sobrenomeusu.invalid }" placeholder="Sobrenome"
+      <input type="text" class="form-control" id="sobrenomeusu" required maxlength="20"
+        [ngClass]="{ 'is-invalid': RegisterUserForm.submitted && sobrenomeusu.invalid }" placeholder="Sobrenome" (keypress)="somenteLetras($event)"
         [(ngModel)]="user.sobrenomeusu" name="sobrenomeusu" #sobrenomeusu="ngModel">
       <div *ngIf="RegisterUserForm.submitted && sobrenomeusu.invalid" class="alert alert-danger">
         <div *ngIf="sobrenomeusu.errors.required">O campo de sobrenome é obrigatório</div>
@@ -118,7 +120,7 @@
     <div class="form-group col-md-6">
       <label for="cidade">Cidade*</label>
       <input type="text" class="form-control" id="cidade" required maxlength="32"
-        [ngClass]="{ 'is-invalid': RegisterUserForm.submitted && cidade.invalid }" placeholder="Cidade atual"
+        [ngClass]="{ 'is-invalid': RegisterUserForm.submitted && cidade.invalid }" placeholder="Cidade atual" (keypress)="somenteLetras($event)"
         [(ngModel)]="user.cidade" name="cidade" #cidade="ngModel">
       <div *ngIf="RegisterUserForm.submitted && cidade.invalid" class="alert alert-danger">
         <div *ngIf="cidade.errors.required">O campo pertinente a cidade é obrigatório</div>
@@ -172,7 +174,7 @@
       <label for="observacao">Perfil
         <strong>(Breve currículo)*</strong>
       </label>
-      <textarea type="text" class="form-control" rows="3" name="curriculo" id="curriculo" required
+      <textarea type="text" class="form-control" rows="3" name="curriculo" id="curriculo" required maxlength="100"
         [ngClass]="{ 'is-invalid': RegisterUserForm.submitted && curriculo.invalid }"
         placeholder="Ex: Tecnólogo em análise e desenvolvimento de sistemas | Experiência em gestão de empresas | Estudante | etc..."
         [(ngModel)]="user.curriculo" #curriculo="ngModel">
@@ -184,7 +186,7 @@
 
 
     <div class="form-group">
-      <button button *ngIf="!submitted" class="btn btn-dark btn-block" (click)="verificaFormulario()">Registrar </button>
+      <button button *ngIf="!submitted" class="btn btn-dark btn-block" >Registrar</button>
       <button *ngIf="submitted" class="btn btn-dark btn-block" type="button">
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         Carregando...

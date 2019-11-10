@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 
 import * as AppUtils from '../shared/comum/app.utils';
-import { HttpParams, HttpClient } from '@angular/common/http';
+import { HttpParams, HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { UserLogin } from './model/model-user/login';
 import { UserDto } from './model/model-user/userDto';
 import { PlanoDto } from './model/model-plano/planoDto';
@@ -26,6 +26,8 @@ import { EstimativaDosCustosFixosMensaisDto } from './model/models-do-plano/mode
 import { InvestimentosPreOperacionaisDto } from './model/models-do-plano/model-plano-financeiro/InvestimentosPreOperacionaisDto';
 import { CustoUnitarioDto } from './model/models-do-plano/model-plano-financeiro/CustoUnitarioDto';
 import { FaturamentoMensalDto } from './model/models-do-plano/model-plano-financeiro/FaturamentoMensalDto';
+import { APPLICATION_MODULE_PROVIDERS } from '@angular/core/src/application_module';
+import { catchError } from 'rxjs/operators';
 
 
 
@@ -33,6 +35,10 @@ import { FaturamentoMensalDto } from './model/models-do-plano/model-plano-financ
   providedIn: 'root'
 })
 export class ApiService {
+
+
+
+
   public baseUrl: string;
   public baseUrlP: string;
   public baseUrlAP: string;
@@ -61,8 +67,11 @@ export class ApiService {
   public baseUrlCU: string;
   public baseUrlFM: string;
 
+  public baseUrlRelatorio: string;
+
   public user = new UserDto;
   public roleAtual: string;
+
 
   constructor(private httpClient: HttpClient) {
     this.baseUrl = `${AppUtils.BASE_URL}` + 'api/users';
@@ -96,10 +105,11 @@ export class ApiService {
     this.baseUrlAM = '/analiseDaMatriz';
     this.baseUrlAP = '/analiseDoPlano';
 
-
+    this.baseUrlRelatorio = 'relatorioPdf'
   }
 
   login(user: UserLogin): Observable<any> {
+    
 
     const params = new HttpParams()
       .set('username', user.email)
@@ -159,7 +169,7 @@ export class ApiService {
 
 
   registerUser(user: UserDto): Observable<any> {
-    return this.httpClient.post<any>(AppUtils.REGISTER_URL, user, { headers: AppUtils.HEADERS_COMMUN });
+    return this.httpClient.post<any>(AppUtils.REGISTER_URL_LOCAL, user, { headers: AppUtils.HEADERS_COMMUN });
   }
 
   registerPlano(plano: PlanoDto): Observable<any> {
@@ -189,6 +199,21 @@ export class ApiService {
   getUsers(): Observable<any> {
     return this.httpClient.get<any>(`${this.baseUrl}`, AppUtils.OPTIONS_OBJECTO);
   }
+
+  // ---------------- IMPRIMIR RELATORIO -------------------------------------------------------------------------------------
+  public getPdf(id: string){
+
+    const httpOptions = {
+      responseType: 'blob' as 'json',
+      headers: new HttpHeaders({
+        'Authorization':  'Bearer ' + localStorage.getItem('accessToken'),
+      })
+    };
+    return this.httpClient.get<Blob>(`${AppUtils.BASE_URL2}${this.baseUrlRelatorio}/${id}`, httpOptions);
+    }
+
+  //--------------------------------------------------------------------------------------------------------------------------
+  
 
   // ---------------- SERVIÇOS REFERENTES A Introdução do Plano ---------------------------------------------------------------
   getIntroducaoPlano(id: string): Observable<any> {

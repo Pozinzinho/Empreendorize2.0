@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/core/api.service';
 import { MessageService } from 'src/app/core/message.service';
 import { PlanoDto } from 'src/app/core/model/model-plano/planoDto';
+import {saveAs as importedSaveAs} from "file-saver";
 
 @Component({
   selector: 'app-gerenciarplano',
@@ -13,11 +14,18 @@ export class GerenciarplanoComponent implements OnInit {
 
   planos: PlanoDto[];
 
+  fileName: string = "meuRelatorio.pdf";
+
+  private idPlano : any;
+
   constructor(private router: Router,
+              private route: ActivatedRoute,
               private apiService: ApiService,
               private messageService: MessageService) { }
 
   ngOnInit() {
+
+
     if (!this.apiService.isAuthenticated()) {
       this.router.navigate(['loginUser']);
     }
@@ -36,4 +44,5 @@ export class GerenciarplanoComponent implements OnInit {
       this.messageService.showError('Deleção de plano','Falha ao excluir plano!');
     });
   }
+
 }

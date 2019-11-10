@@ -10,7 +10,6 @@ import 'rxjs/add/observable/throw';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
 import { MessageService } from './message.service';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
@@ -22,8 +21,7 @@ export class InterceptorService implements HttpInterceptor {
   constructor(private apiService: ApiService,
     private router: Router,
     private ngxLoader: NgxUiLoaderService,
-    private messageService: MessageService,
-    private spinner: NgxSpinnerService) { }
+    private messageService: MessageService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token: string = localStorage.getItem('accessToken');
@@ -43,13 +41,12 @@ export class InterceptorService implements HttpInterceptor {
         if (error instanceof HttpErrorResponse) {
           switch (error.status) {
             case 409:
-              this.ngxLoader.stop();
               this.messageService.showWarning('Falha de registro', 'O e-mail utilizado no cadastro está sendo usado por outro usuário!');
               return this.handleErrorGeneral(error);
             case 404:
               this.ngxLoader.stop();
-              // this.messageService.showError('Usuário não encontrado', 'Favor verificar se o seu e-mail foi didigato corretamente');
               return this.handleErrorGeneral(error);
+              
             case 403:
               this.ngxLoader.stop();
               console.log('error 403');
@@ -72,6 +69,7 @@ export class InterceptorService implements HttpInterceptor {
           }
         }
         Observable.throw(error);
+        throw error;
       })));
   }
 
