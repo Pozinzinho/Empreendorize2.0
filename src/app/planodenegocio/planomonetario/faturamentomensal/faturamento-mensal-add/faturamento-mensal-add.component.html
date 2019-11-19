@@ -14,7 +14,7 @@
 
     <div class="form-group col-md-5">
       <label for="quantidadeVendas">Quantidade vendas mês*</label>
-      <input type="text" class="form-control" id="quantidadeVendas" required
+      <input type="text" class="form-control" id="quantidadeVendas" required (keypress)="numberOnly($event)" maxlength="6"
         [ngClass]="{ 'is-invalid': AddFaturamentoMensal.submitted && quantidadeVendas.invalid }" 
         [(ngModel)]="faturamentoMensal.quantidadeVendas" name="quantidadeVendas" #quantidadeVendas="ngModel">
       <div *ngIf="AddFaturamentoMensal.submitted && quantidadeVendas.invalid" class="alert alert-danger">
@@ -24,7 +24,7 @@
 
     <div class="form-group col-md-3">
       <label for="precoVenda">Preço de mercado*</label>
-      <input type="text" class="form-control" id="precoVenda" required currencyMask
+      <input type="text" class="form-control" id="precoVenda" required currencyMask 
         [ngClass]="{ 'is-invalid': AddFaturamentoMensal.submitted && precoVenda.invalid }" [(ngModel)]="faturamentoMensal.precoVenda" 
         [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" name="precoVenda"
         #precoVenda="ngModel">

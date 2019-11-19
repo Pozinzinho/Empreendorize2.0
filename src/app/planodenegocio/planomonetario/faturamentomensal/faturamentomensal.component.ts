@@ -46,6 +46,8 @@ export class FaturamentomensalComponent implements OnInit {
     
     this.lucro = this.faturamentoTotal - (this.totalEstoque + this.totalECFOM);
 
+    
+
     if(this.faturamentoTotal == this.totalEstoque + this.totalECFOM){
       this.texto = "Você alcaçou o ponto de equilíbrio";
     }
@@ -53,7 +55,7 @@ export class FaturamentomensalComponent implements OnInit {
       this.texto = "Sua empresa está sem rentabilidade";
     }
     else if(this.faturamentoTotal > this.totalEstoque + this.totalECFOM){
-      this.texto = "Sua empresa tem o lucro de: R$"+ this.lucro + " por mês!";
+      this.texto = "Sua empresa tem o lucro de: R$ "+ this.lucro.toLocaleString('pt-BR') + " por mês!";
     }
   }
 
@@ -64,6 +66,7 @@ export class FaturamentomensalComponent implements OnInit {
 
       for(var i=0;i < faturamentoMensal.length;i++) {
         this.faturamentoTotal += parseFloat(faturamentoMensal[i].faturamentoTotal);
+        
       }
     }, error => {
     });
@@ -75,6 +78,7 @@ export class FaturamentomensalComponent implements OnInit {
       this.faturamentoMensal = this.faturamentoMensal.filter(u => u.id !== faturamentoMensal.id);
       this.messageService.showError('Deleção do faturamento mensal','Deletado com sucesso!');
       this.faturamentoTotal = this.faturamentoTotal - faturamentoMensal.faturamentoTotal;
+      this.faturamentoTotal.toLocaleString('pt-BR');
       this.atualizaSituacao();
     }, error => {
       this.messageService.showError('Deleção de faturamento mensal','Falha ao faturamento mensal!');
@@ -98,7 +102,7 @@ export class FaturamentomensalComponent implements OnInit {
       this.texto = "Sua empresa está sem rentabilidade";
     }
     else if(this.faturamentoTotal > this.totalEstoque + this.totalECFOM){
-      this.texto = "Sua empresa tem o lucro de: R$"+ this.lucro + " por mês!";
+      this.texto = "Sua empresa tem o lucro de: R$"+ this.lucro.toLocaleString('pt-BR') + " por mês!";
     }
   }
 

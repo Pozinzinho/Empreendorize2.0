@@ -14,7 +14,7 @@
   
       <div class="form-group col-md-2">
         <label for="qtdeMU">Quantidade*</label>
-        <input type="text" class="form-control" id="qtdeMU" required
+        <input type="text" class="form-control" id="qtdeMU" required (keypress)="numberOnly($event)" maxlength="6"
           [ngClass]="{ 'is-invalid': SaveEstudoForm.submitted && qtdeMU.invalid }"
           [(ngModel)]="investimentosF.qtdeMU" name="qtdeMU" #qtdeMU="ngModel">
         <div *ngIf="SaveEstudoForm.submitted && qtdeMU.invalid" class="alert alert-danger">

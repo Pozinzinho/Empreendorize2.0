@@ -11,6 +11,15 @@ import { MessageService } from 'src/app/core/message.service';
   styleUrls: ['./investimentos-fixos-editar.component.css']
 })
 export class InvestimentosFixosEditarComponent implements OnInit {
+
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  }
+  
   investimentosF = new  InvestimentosFixosDto();
   idinvestimentosF: string;
 

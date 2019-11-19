@@ -45,4 +45,19 @@ export class CriarComponent implements OnInit {
     });
   }
 
+  onSubmit(){
+    this.save();
+  }
+
+  somenteLetras(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if ((charCode > 64 && charCode < 91) || 
+    (charCode > 96 && charCode < 123) ||
+    (charCode > 191 && charCode <= 255) ||
+    (charCode == 32) ) {
+      return true;
+    }
+    return false;
+  }
+
 }

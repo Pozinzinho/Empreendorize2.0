@@ -1,8 +1,8 @@
 <section class="grey-text w-responsive mx-auto p-5">
   <form (ngSubmit)="update()" #detailCustomerForm="ngForm">
-    <h4 class="h4 mb-4 text-center"><span class="badge badge-light ">{{user.id}}</span> -> {{user.nomeusu}}</h4>
+    <h4 class="h4 mb-4 text-center"> {{user.nomeusu}}</h4>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="cpf">CPF</label>
       <input type="text" class="form-control" id="cpf" required [(ngModel)]="user.cpf" name="cpf"
         #cpf="ngModel">
@@ -27,7 +27,7 @@
       <div [hidden]="sobrenomeusu.valid || sobrenomeusu.pristine" class="alert alert-danger">
         Favor digitar o o Ultimo nome
       </div>
-    </div>
+    </div> -->
 
     <div class="form-group">
       <label for="email">E-mail</label>

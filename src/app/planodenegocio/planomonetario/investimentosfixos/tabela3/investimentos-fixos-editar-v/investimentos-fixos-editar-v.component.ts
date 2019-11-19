@@ -12,6 +12,15 @@ import { InvestimentosFixosVDto } from 'src/app/core/model/models-do-plano/model
   styleUrls: ['./investimentos-fixos-editar-v.component.css']
 })
 export class InvestimentosFixosEditarVComponent implements OnInit {
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
+  }
+
   investimentosF = new  InvestimentosFixosVDto();
   idinvestimentosF: string;
 

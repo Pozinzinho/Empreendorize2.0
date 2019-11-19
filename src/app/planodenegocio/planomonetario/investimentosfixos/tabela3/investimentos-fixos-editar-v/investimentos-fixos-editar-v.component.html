@@ -1,6 +1,6 @@
 <section class="grey-text w-responsive mx-auto p-5">
   <form #EditInvestimentosFixosForm="ngForm" (ngSubmit)="EditInvestimentosFixosForm.form.valid && onSubmit()">
-    <h4 class="h4 mb-4 text-center"><span class="badge badge-light ">{{investimentosF.id}}</span> ->
+    <h4 class="h4 mb-4 text-center">
       {{investimentosF.descricaoV}}</h4>
 
       <div class="form-group col-md-9">
@@ -16,7 +16,7 @@
 
     <div class="form-group col-md-2">
       <label for="qtdeV">Quantidade*</label>
-      <input type="text" class="form-control" id="qtdeV" required
+      <input type="text" class="form-control" id="qtdeV" required (keypress)="numberOnly($event)" maxlength="6"
         [ngClass]="{ 'is-invalid': EditInvestimentosFixosForm.submitted && qtdeV.invalid }" 
         [(ngModel)]="investimentosF.qtdeV" name="qtdeV" #qtdeV="ngModel">
       <div *ngIf="EditInvestimentosFixosForm.submitted && qtdeV.invalid" class="alert alert-danger">

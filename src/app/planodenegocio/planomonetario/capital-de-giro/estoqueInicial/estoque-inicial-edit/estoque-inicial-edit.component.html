@@ -1,6 +1,6 @@
 <section class="grey-text w-responsive mx-auto p-5">
   <form #EditEstoqueInicial="ngForm" (ngSubmit)="EditEstoqueInicial.form.valid && onSubmit()">
-    <h4 class="h4 mb-4 text-center"><span class="badge badge-light ">{{estoqueInicial.id}}</span> ->
+    <h4 class="h4 mb-4 text-center">
       {{estoqueInicial.descricaoME}}</h4>
 
       <div class="form-group col-md-9">
@@ -16,7 +16,7 @@
 
     <div class="form-group col-md-2">
       <label for="qtdeME">Quantidade*</label>
-      <input type="text" class="form-control" id="qtdeME" required
+      <input type="text" class="form-control" id="qtdeME" required (keypress)="numberOnly($event)" maxlength="6"
         [ngClass]="{ 'is-invalid': EditEstoqueInicial.submitted && qtdeME.invalid }" 
         [(ngModel)]="estoqueInicial.qtdeME" name="qtdeME" #qtdeME="ngModel">
       <div *ngIf="EditEstoqueInicial.submitted && qtdeME.invalid" class="alert alert-danger">

@@ -12,6 +12,16 @@ import { InvestimentosFixosMUDto } from 'src/app/core/model/models-do-plano/mode
   styleUrls: ['./investimentos-fixos-editar-mu.component.css']
 })
 export class InvestimentosFixosEditarMuComponent implements OnInit {
+
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
+  }
+
   investimentosF = new  InvestimentosFixosMUDto();
   idinvestimentosF: string;
 

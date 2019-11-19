@@ -11,6 +11,16 @@ import { MessageService } from 'src/app/core/message.service';
   styleUrls: ['./investimentos-fixos-add-mu.component.css']
 })
 export class InvestimentosFixosAddMuComponent implements OnInit {
+
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
+  }
+
   private idPlano : any;
 
 

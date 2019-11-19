@@ -11,6 +11,15 @@ import { MessageService } from 'src/app/core/message.service';
   styleUrls: ['./estoque-inicial-edit.component.css']
 })
 export class EstoqueInicialEditComponent implements OnInit {
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
+  }
+
   estoqueInicial = new  EstoqueInicialDto();
   idEstoque: string;
 

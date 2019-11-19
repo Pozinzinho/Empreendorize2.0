@@ -1,6 +1,6 @@
 <section class="grey-text w-responsive mx-auto p-5">
   <form #EditFaturamentoMensal="ngForm" (ngSubmit)="EditFaturamentoMensal.form.valid && onSubmit()">
-    <h4 class="h4 mb-4 text-center"><span class="badge badge-light ">{{faturamentoMensal.id}}</span> ->
+    <h4 class="h4 mb-4 text-center">
       {{faturamentoMensal.produtoServicos}}</h4>
 
       <div class="form-group col-md-9">
@@ -16,7 +16,7 @@
 
     <div class="form-group col-md-5">
       <label for="quantidadeVendas">Quantidade vendas mês*</label>
-      <input type="text" class="form-control" id="quantidadeVendas" required
+      <input type="text" class="form-control" id="quantidadeVendas" required (keypress)="numberOnly($event)" maxlength="6"
         [ngClass]="{ 'is-invalid': EditFaturamentoMensal.submitted && quantidadeVendas.invalid }" 
         [(ngModel)]="faturamentoMensal.quantidadeVendas" name="quantidadeVendas" #quantidadeVendas="ngModel">
       <div *ngIf="EditFaturamentoMensal.submitted && quantidadeVendas.invalid" class="alert alert-danger">

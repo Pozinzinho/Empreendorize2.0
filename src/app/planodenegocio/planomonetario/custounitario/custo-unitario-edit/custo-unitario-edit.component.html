@@ -1,6 +1,6 @@
 <section class="grey-text w-responsive mx-auto p-5">
   <form #EditCustoUnitario="ngForm" (ngSubmit)="EditCustoUnitario.form.valid && onSubmit()">
-    <h4 class="h4 mb-4 text-center"><span class="badge badge-light ">{{custosUnitarios.id}}</span> ->
+    <h4 class="h4 mb-4 text-center">
       {{custosUnitarios.materialInsumos}}</h4>
 
       <div class="form-group col-md-9">
@@ -16,7 +16,7 @@
 
     <div class="form-group col-md-2">
       <label for="quantidade">Quantidade*</label>
-      <input type="text" class="form-control" id="quantidade" required
+      <input type="text" class="form-control" id="quantidade" required (keypress)="numberOnly($event)" maxlength="6"
         [ngClass]="{ 'is-invalid': EditCustoUnitario.submitted && quantidade.invalid }" 
         [(ngModel)]="custosUnitarios.quantidade" name="quantidade" #quantidade="ngModel">
       <div *ngIf="EditCustoUnitario.submitted && quantidade.invalid" class="alert alert-danger">

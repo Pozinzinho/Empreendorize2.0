@@ -1,38 +1,51 @@
-<hr/>
-<form>
-  <div class="form-row">
+<section class="grey-text w-responsive mx-auto p-5">
+  <form #RegisterPlanForm="ngForm" (ngSubmit)="RegisterPlanForm.form.valid && onSubmit()" novalidate>
 
-    <div class="form-group col-md-6">
-      <label for="nomePlano">Nome do plano</label>
-      <input id="nomePlano" name="nomePlano" type="text" [(ngModel)]="plano.nomePlano" class="form-control"  placeholder="Ex: Abrir açougue, Abrir papelaria...">
+
+    <div class="form-group col-md-4">
+      <label for="nomePlano">Nome do plano*</label>
+      <input type="text" class="form-control" id="nomePlano" required maxlength="37" (keypress)="somenteLetras($event)"
+        [ngClass]="{ 'is-invalid': RegisterPlanForm.submitted && nomePlano.invalid }" placeholder="Ex: Abrir açougue, Abrir papelaria..."
+        [(ngModel)]="plano.nomePlano" name="nomePlano" #nomePlano="ngModel">
+      <div *ngIf="RegisterPlanForm.submitted && nomePlano.invalid" class="alert alert-danger">
+        <div *ngIf="nomePlano.errors.required">O campo pertinente ao nome do plano é obrigatório</div>
+      </div>
     </div>
 
-    <div class="form-group col-md-6">
-      <label for="datedomes">Data estimada para conculsão</label>
-      <input id="dataConclusao" type="date" [(ngModel)]="plano.dataConclusao" name="datadomes" class="form-control">
+    <div class="form-group col-md-4">
+      <label for="dataConclusao">Data estimada para conculsão*</label>
+      <input type="date" class="form-control" id="dataConclusao" required
+        [ngClass]="{ 'is-invalid': RegisterPlanForm.submitted && dataConclusao.invalid }"
+        [(ngModel)]="plano.dataConclusao" name="dataConclusao" #dataConclusao="ngModel">
+      <div *ngIf="RegisterPlanForm.submitted && dataConclusao.invalid" class="alert alert-danger">
+        <div *ngIf="dataConclusao.errors.required">Por favor insira a data estimada para conclusão do plano</div>
+      </div>
     </div>
 
-    <div class="form-group col-md-6">
-      <label for="datedomes">Finalidade do plano</label>
-      <select id="finalide" name="finalidade" [(ngModel)]="plano.finalidade" class="form-control">
-          <option selected>Escolher...</option>
-          <option>Estudantil</option>
-          <option>Empreendedorismo</option>
-        </select>
+
+    <div class="form-group col-md-4">
+      <label for="finalidade">Finalidade do plano</label>
+      <select type="text" class="form-control" id="finalidade" required name="finalidade"
+        [ngClass]="{ 'is-invalid': RegisterPlanForm.submitted && finalidade.invalid }" [(ngModel)]="plano.finalidade"
+        #finalidade="ngModel">
+        <option selected>Escolher...</option>
+        <option>Estudantil</option>
+        <option>Empreendedorismo</option>
+      </select>
+      <div *ngIf="RegisterPlanForm.submitted && finalidade.invalid" class="alert alert-danger">
+        <div *ngIf="finalidade.errors.required">O campo pertinente a finalidade do plano é obrigatório</div>
+      </div>
     </div>
-   
-   
-  </div>
-  
-<div class="row justify-content-center">
-  <button *ngIf="!submitted"  class="btn btn-dark btn-block" (click)="save()" >Criar plano</button>
-  <button *ngIf="submitted" class="btn btn-dark btn-block" type="button">
-    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-    Carregando...
-  </button>
-</div>
 
-</form>
-<hr/>
-  
 
+    <div class="form-group">
+      <button button *ngIf="!submitted" class="btn btn-dark btn-block" >Criar plano</button>
+      <button *ngIf="submitted" class="btn btn-dark btn-block" type="button">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Carregando...
+      </button>
+    </div>
+
+  </form>
+
+</section>
