@@ -65,6 +65,10 @@ import { NgxUiLoaderModule } from  'ngx-ui-loader';
 import { GerarRelatorioComponent } from './telasplano/gerar-relatorio/gerar-relatorio.component';
 import { SuporteTecnicoComponent } from './telasiniciais/suporte-tecnico/suporte-tecnico.component';
 import { NgxCpfCnpjModule } from  'ngx-cpf-cnpj';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ChechIdUserTokenComponent } from './components/change-password/check-iduser-token.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { RegisterConfirmationComponent } from './components/register-user/register-confirmation.component';
 
 
 
@@ -77,6 +81,8 @@ import { NgxCpfCnpjModule } from  'ngx-cpf-cnpj';
     RodapeComponent,
     TopoComponent,
     CriarComponent,
+    ChangePasswordComponent,
+    ChechIdUserTokenComponent,
     PerfilComponent,
     DescricaoComponent,
     GerenciarplanoComponent,
@@ -89,7 +95,9 @@ import { NgxCpfCnpjModule } from  'ngx-cpf-cnpj';
     ExcluirPlanoComponent,
     DeleteUserModalComponent,
     GerarRelatorioComponent,
-    SuporteTecnicoComponent
+    SuporteTecnicoComponent,
+    ResetPasswordComponent,
+    RegisterConfirmationComponent
     
   ],
   imports: [

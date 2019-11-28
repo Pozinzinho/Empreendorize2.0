@@ -139,6 +139,31 @@ export class ApiService {
     return this.httpClient.post(AppUtils.URL_TOKEN, null, options);
   }
 
+// MÉTODOS PARA ALTERAÇÃO DE SENHA ------------------------------------------------------------------------------------------
+  resetPassword(email: string): Observable<any> {
+    return this.httpClient.post<any>(`${AppUtils.RESET_PASSWORD + '?email=' + email}`, { headers: AppUtils.HEADERS_COMMUN });
+  }
+  changePassword(idUser: string, tokenUser: string): Observable<any> {
+    const params = new HttpParams()
+      .set('id', idUser)
+      .set('token', tokenUser);
+    const options = {
+      headers: AppUtils.HEADERS_COMMUN,
+      params
+    };
+    return this.httpClient.get<any>(`${AppUtils.CHANGE_PASSWORD + '?id=' + idUser + '&token=' + tokenUser}`, options);
+  }
+  savePassword(password: string, token: string): Observable<Account> {
+    const params = new HttpParams()
+      .set('token', token)
+      .set('password', password);
+    const options = {
+      headers: AppUtils.HEADERS_COMMUN,
+      params
+    };
+    return this.httpClient.post<any>(AppUtils.SAVE_PASSWORD, null, options);
+  }
+  //---------------------------------------------------------------------------------------------------------------------------
 
   //Método para verificação do usuário logado.
   isAuthenticated(): Observable<boolean> {

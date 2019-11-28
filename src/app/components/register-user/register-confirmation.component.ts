@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/core/api.service';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'src/app/core/message.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-register-user',
@@ -14,27 +13,26 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   `
 })
 export class RegisterConfirmationComponent implements OnInit {
-    public token: string;
-
-    form: FormGroup;
+  public token: string;
 
   constructor(private apiService: ApiService,
-              private location: Location,
-              private route: ActivatedRoute,
-              private router: Router,
-              private messageService: MessageService,
-              private formBuilder: FormBuilder) { }
+    private location: Location,
+    private route: ActivatedRoute,
+    private router: Router,
+    private messageService: MessageService) { }
 
   ngOnInit() {
-    this.token = this.route.snapshot.paramMap.get('token');
-    this.apiService.confirmationRegisterToken(this.token).subscribe(register => {
-      this.messageService.showSuccess('Verificação de registro', 'Verificação de registro realizada com sucesso!');
-      this.router.navigate(['loginUser']);
-    }, error => {
-      this.messageService.showError('Verificação de registro', 'Falha ao verificar registro!');
-      this.router.navigate(['resend-register-token']);
-    });
-
+    this.route.queryParams.subscribe(
+      (param: any) => {
+        this.token = param.token;
+        this.apiService.confirmationRegisterToken(this.token).subscribe(register => {
+          this.messageService.showSuccess('Verificação de registro', 'Verificação de registro realizado com sucesso');
+          this.router.navigate(['loginUser']);
+        }, error => {
+          this.messageService.showError('Verificação de registro', 'Falha de confirmação de registro');
+          this.router.navigate(['resend-register-token']);
+        });
+      });
   }
 
   goBack() {
